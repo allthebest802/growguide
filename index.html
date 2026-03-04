@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowGuide — Free UK Garden Tools</title>
+<meta name="description" content="Free, practical gardening tools for UK growers. No login, no ads, no nonsense. Find out what to plant this month, identify pests and diseases, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810; --soil2:#3D2315; --bark:#6B4226;
+  --moss:#4A6741; --moss-d:#2E4228; --moss-l:#7A9E72; --moss-ll:#C8DBC4;
+  --sage:#8FAF87; --sage-l:#D4E8D0;
+  --cream:#F5F0E8; --cream2:#EDE6D8; --parchment:#FAF6EE;
+  --stone:#A89880; --amber:#C8842A; --amber-l:#F0D4A0; --amber-ll:#FDF5E4;
+  --rust:#B85C2A;
+  --text:#1E130C; --text2:#4A3020; --text3:#8A7060;
+  --border:#D8C8B0; --border2:#C0A888;
+  --radius:14px; --radius-lg:22px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 0% 0%,rgba(74,103,65,0.13),transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 100%,rgba(200,132,42,0.09),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+a{text-decoration:none;color:inherit}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.45;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ── HEADER ── */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-icon{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.72rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav-link{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.6);padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);transition:all 0.15s;letter-spacing:0.3px}
+.nav-link:hover{color:white;border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06)}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(160deg,var(--moss-d) 0%,#3A5830 50%,#2A4820 100%);
+  padding:56px 24px 52px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(ellipse 500px 300px at 20% 80%,rgba(200,132,42,0.15),transparent),
+    radial-gradient(ellipse 400px 400px at 80% 20%,rgba(255,255,255,0.04),transparent);
+}
+.hero-leaves{position:absolute;font-size:8rem;opacity:0.05;user-select:none;line-height:1}
+.hero-leaves.l1{top:-10px;left:-20px;transform:rotate(-20deg)}
+.hero-leaves.l2{bottom:-20px;right:-10px;transform:rotate(15deg)}
+.hero-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:100px;padding:6px 16px;
+  font-size:0.75rem;font-weight:700;color:var(--moss-ll);letter-spacing:0.8px;text-transform:uppercase;
+  margin-bottom:20px;backdrop-filter:blur(4px);
+}
+.hero h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,3rem);font-weight:700;
+  color:white;line-height:1.15;margin-bottom:16px;
+}
+.hero h2 em{color:var(--amber-l);font-style:italic}
+.hero p{
+  font-size:1.05rem;color:var(--moss-ll);line-height:1.7;
+  font-weight:300;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--amber);color:var(--soil);
+  padding:14px 30px;border-radius:100px;
+  font-size:0.95rem;font-weight:700;letter-spacing:0.3px;
+  box-shadow:0 6px 24px rgba(200,132,42,0.4);
+  transition:all 0.18s;
+}
+.hero-cta:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,132,42,0.5)}
+
+/* ── SEASONAL TIP ── */
+.seasonal-wrap{background:var(--amber-ll);border-top:3px solid var(--amber-l);border-bottom:3px solid var(--amber-l);padding:20px 24px;position:relative;z-index:1}
+.seasonal-inner{max-width:960px;margin:0 auto;display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.seasonal-icon{font-size:2rem;flex-shrink:0;margin-top:2px}
+.seasonal-text{}
+.seasonal-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:4px}
+.seasonal-heading{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--soil);margin-bottom:5px}
+.seasonal-body{font-size:0.88rem;color:var(--text2);line-height:1.65;font-weight:400}
+.seasonal-link{
+  margin-left:auto;align-self:center;flex-shrink:0;
+  background:var(--amber);color:white;padding:10px 20px;border-radius:100px;
+  font-size:0.82rem;font-weight:700;white-space:nowrap;
+  transition:all 0.15s;box-shadow:0 3px 12px rgba(200,132,42,0.3);
+}
+.seasonal-link:hover{background:#C07820;transform:translateY(-1px)}
+
+/* ── MAIN ── */
+.main{max-width:960px;margin:0 auto;padding:44px 24px 20px;position:relative;z-index:1}
+
+/* ── SECTION TITLE ── */
+.section-title{
+  font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
+  color:var(--text);margin-bottom:6px;
+}
+.section-sub{font-size:0.9rem;color:var(--text3);margin-bottom:24px;font-weight:300;line-height:1.5}
+
+/* ── TOOL CARDS ── */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:44px}
+.tool-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:all 0.2s;display:flex;flex-direction:column;
+}
+.tool-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
+.tool-card-top{padding:24px 24px 0}
+.tool-emoji{font-size:2.5rem;display:block;margin-bottom:14px}
+.tool-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.2}
+.tool-desc{font-size:0.87rem;color:var(--text3);line-height:1.65;flex:1;margin-bottom:20px}
+.tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.tool-tag{font-size:0.65rem;font-weight:700;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.4px;background:var(--sage-l);color:var(--moss-d);border:1px solid var(--moss-ll)}
+.tool-footer{
+  padding:14px 24px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--parchment);
+}
+.tool-link{
+  font-size:0.82rem;font-weight:700;color:var(--moss-d);
+  display:flex;align-items:center;gap:6px;transition:gap 0.15s;
+}
+.tool-card:hover .tool-link{gap:10px}
+.tool-link::after{content:'→'}
+.tool-free{font-size:0.7rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:0.5px}
+
+/* ── COMING SOON ── */
+.coming-soon{
+  background:white;border:1.5px dashed var(--border2);border-radius:var(--radius-lg);
+  padding:28px;text-align:center;color:var(--text3);
+}
+.coming-soon .cs-icon{font-size:2rem;display:block;margin-bottom:10px;opacity:0.5}
+.coming-soon h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text2);margin-bottom:6px}
+.coming-soon p{font-size:0.82rem;line-height:1.6}
+.coming-list{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:12px}
+.coming-chip{font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:100px;background:var(--cream2);color:var(--text3);border:1px solid var(--border2)}
+
+/* ── WHY GROWGUIDE ── */
+.why-section{margin-bottom:44px}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.why-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);text-align:center;
+  transition:transform 0.15s,box-shadow 0.15s;
+}
+.why-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.why-icon{font-size:1.8rem;display:block;margin-bottom:10px}
+.why-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.why-text{font-size:0.8rem;color:var(--text3);line-height:1.55}
+
+/* ── DONATE ── */
+.donate-section{
+  background:linear-gradient(135deg,var(--soil),var(--soil2));
+  border-radius:var(--radius-lg);padding:32px 36px;margin-bottom:44px;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.donate-section::before{content:'';position:absolute;right:-30px;top:-30px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.donate-section::after{content:'';position:absolute;left:60%;bottom:-40px;width:150px;height:150px;border-radius:50%;background:rgba(200,132,42,0.06)}
+.donate-text{flex:1;min-width:240px;position:relative;z-index:1}
+.donate-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:8px}
+.donate-text p{font-size:0.88rem;color:var(--stone);line-height:1.65;font-weight:300}
+.donate-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--amber);color:var(--soil);
+  padding:14px 26px;border-radius:100px;
+  font-size:0.92rem;font-weight:700;letter-spacing:0.2px;
+  box-shadow:0 6px 20px rgba(200,132,42,0.35);
+  transition:all 0.18s;white-space:nowrap;position:relative;z-index:1;flex-shrink:0;
+}
+.donate-btn:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,132,42,0.45)}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--soil);padding:24px;text-align:center;position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:18px}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px}
+.footer-links a{font-size:0.8rem;color:var(--stone);font-weight:700;transition:color 0.15s}
+.footer-links a:hover{color:var(--moss-ll)}
+.footer-copy{font-size:0.75rem;color:#5A4030}
+
+@media(max-width:600px){
+  .hero{padding:40px 20px 36px}
+  .donate-section{padding:24px 22px}
+  .main{padding:32px 16px 16px}
+  .seasonal-link{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>Free UK Garden Tools</p></div>
+    </div>
+    <nav class="header-nav">
+      <a class="nav-link" href="/what-to-plant/">🌿 Plant Planner</a>
+      <a class="nav-link" href="/pest-identifier/">🐛 Pest Finder</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-leaves l1">🌿</div>
+  <div class="hero-leaves l2">🍃</div>
+  <div class="hero-inner">
+    <div class="hero-badge">🇬🇧 Built for UK gardeners</div>
+    <h2>Grow more.<br><em>Worry less.</em></h2>
+    <p>Practical, no-nonsense garden tools for every UK grower — whether you've got a window box or a full allotment. Free, forever.</p>
+    <a href="/what-to-plant/" class="hero-cta">🌱 What should I plant this month?</a>
+  </div>
+</section>
+
+<!-- SEASONAL TIP -->
+<div class="seasonal-wrap">
+  <div class="seasonal-inner">
+    <div class="seasonal-icon" id="seasIcon"></div>
+    <div class="seasonal-text">
+      <div class="seasonal-label">In the garden this month</div>
+      <div class="seasonal-heading" id="seasHeading"></div>
+      <div class="seasonal-body" id="seasBody"></div>
+    </div>
+    <a class="seasonal-link" href="/what-to-plant/">See what to plant →</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TOOLS -->
+  <div style="margin-bottom:28px">
+    <div class="section-title">Our tools</div>
+    <div class="section-sub">Everything is free to use, works on any device, and needs no account or login.</div>
+  </div>
+
+  <div class="tool-grid">
+
+    <div class="tool-card">
+      <div class="tool-card-top">
+        <span class="tool-emoji">🌿</span>
+        <div class="tool-name">What to Plant This Month</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Veg & Fruit</span>
+          <span class="tool-tag">Flowers</span>
+          <span class="tool-tag">UK Regions</span>
+        </div>
+        <div class="tool-desc">Pick your region and month to see exactly what to sow, plant out, and harvest — with beginner tags, indoor/outdoor flags, and a practical tip for every plant.</div>
+      </div>
+      <div class="tool-footer">
+        <a class="tool-link" href="/what-to-plant/">Open tool</a>
+        <span class="tool-free">Free</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-top">
+        <span class="tool-emoji">🐛</span>
+        <div class="tool-name">Pest & Disease Identifier</div>
+        <div class="tool-tags">
+          <span class="tool-tag">All plants</span>
+          <span class="tool-tag">Organic fixes</span>
+          <span class="tool-tag">Prevention</span>
+        </div>
+        <div class="tool-desc">Select your plant type and the symptoms you can see — yellowing leaves, holes, mould, wilting — and we'll tell you what's wrong and how to fix it.</div>
+      </div>
+      <div class="tool-footer">
+        <a class="tool-link" href="/pest-identifier/">Open tool</a>
+        <span class="tool-free">Free</span>
+      </div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="coming-soon">
+      <span class="cs-icon">🔧</span>
+      <h3>More tools on the way</h3>
+      <p>We're building new tools to help you grow better. Up next:</p>
+      <div class="coming-list">
+        <span class="coming-chip">🌱 Seed to Harvest Timeline</span>
+        <span class="coming-chip">🤝 Companion Planting</span>
+        <span class="coming-chip">📅 Monthly Jobs Checklist</span>
+        <span class="coming-chip">🪴 Veg Patch Planner</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WHY GROWGUIDE -->
+  <div class="why-section">
+    <div class="section-title">Why GrowGuide?</div>
+    <div class="section-sub">No accounts, no paywalls, no adverts. Just useful tools for gardeners.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🆓</span>
+        <div class="why-title">Always free</div>
+        <div class="why-text">Every tool on this site is free to use. No premium tiers, no locked features.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🚫</span>
+        <div class="why-title">No adverts</div>
+        <div class="why-text">We don't sell ad space or track you across the web. Just clean, fast pages.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🔒</span>
+        <div class="why-title">No account needed</div>
+        <div class="why-text">Open any tool and use it straight away. We don't ask for your email address.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🇬🇧</span>
+        <div class="why-title">Built for the UK</div>
+        <div class="why-text">All advice is tailored to UK seasons, regions, and growing conditions — not the US or elsewhere.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📱</span>
+        <div class="why-title">Works on anything</div>
+        <div class="why-text">Phone, tablet, or desktop — every tool works on any device, in any browser.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🌱</span>
+        <div class="why-title">Beginner friendly</div>
+        <div class="why-text">No jargon. Every tool is built to be clear and useful whether you're brand new or experienced.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DONATE -->
+  <div class="donate-section">
+    <div class="donate-text">
+      <h3>☕ Find GrowGuide useful?</h3>
+      <p>GrowGuide is free to use and always will be. If it's saved you time or helped you grow something great, a small donation keeps the site running and helps us build more tools.</p>
+    </div>
+    <a class="donate-btn" href="https://buymeacoffee.com" target="_blank" rel="noopener">☕ Buy us a coffee</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/what-to-plant/">Plant Planner</a>
+    <a href="/pest-identifier/">Pest Identifier</a>
+    <a href="https://sendsteps.uk" target="_blank" rel="noopener">SendSteps.uk</a>
+  </div>
+  <div class="footer-copy">GrowGuide &mdash; Free UK Garden Tools &mdash; No login, no ads, no nonsense</div>
+</footer>
+
+<script>
+const MONTH_TIPS = [
+  {icon:'❄️', heading:'January — Plan and dream', body:'The garden is resting but your brain shouldn\'t be. Order seed catalogues, plan your crop rotation, and chit seed potatoes on a light windowsill. Sow broad beans indoors if you haven\'t already.'},
+  {icon:'🌱', heading:'February — First sows of the year', body:'Days are noticeably lengthening. Sow chillies and peppers indoors — they need the longest growing season. Prune apple and pear trees while still dormant. Chit potatoes now if not done in January.'},
+  {icon:'🌿', heading:'March — The growing year begins', body:'A busy month. Sow tomatoes on a warm windowsill, plant first early potatoes in the south, and start hardening off any seedlings you\'ve been growing. Watch for slugs as temperatures creep up.'},
+  {icon:'🌸', heading:'April — Spring in full swing', body:'Harden off indoor-raised seedlings before planting out. Plant onion sets and shallots. Start watering containers regularly — spring can be deceptively dry. Protect brassicas with netting.'},
+  {icon:'☀️', heading:'May — The most exciting month', body:'Plant out tender crops after your last frost date. Pinch out sweet peas for bushy growth. Check for aphids on new growth. Sow courgettes, squash and French beans if not done already.'},
+  {icon:'☀️', heading:'June — First harvests arrive', body:'Pick strawberries and salad leaves daily. Side-shoot tomatoes and feed weekly with a high-potash liquid fertiliser. Deadhead flowers constantly to keep blooms coming all summer.'},
+  {icon:'🌻', heading:'July — Midsummer abundance', body:'Harvest courgettes while small — they become marrows overnight. Water consistently; irregular watering causes blossom end rot in tomatoes. Sow French beans and spring onions for an autumn crop.'},
+  {icon:'🍂', heading:'August — Peak harvest season', body:'Lift maincrop potatoes and onions to dry. Sow kale, spring cabbage and winter salads for autumn and winter crops. Propagate strawberries by pinning runners into small pots of compost.'},
+  {icon:'🍂', heading:'September — A second spring', body:'A great month for sowing. Get sweet peas in now for earlier, stronger plants next year. Plant autumn garlic. Clear spent crops and add to the compost heap. Pot up herbs for the windowsill.'},
+  {icon:'🍁', heading:'October — Bulb-planting season', body:'Plant tulips, daffodils, and alliums for spring colour. Plant bare-root roses, trees, and hedging — far cheaper than container-grown. Collect fallen leaves for leaf mould. Lift dahlias after first frost.'},
+  {icon:'🌧️', heading:'November — Winding down', body:'Finish planting spring bulbs and bare-root plants. Mulch beds with compost or bark to protect roots over winter. Clean out the greenhouse and scrub glass to maximise winter light.'},
+  {icon:'❄️', heading:'December — Rest and reflect', body:'Plan next year\'s garden — draw a crop rotation plan and order seeds early for best variety choice. Check stored veg and tubers for rot. Prune apple and pear trees on dry days.'},
+];
+
+const m = new Date().getMonth();
+const tip = MONTH_TIPS[m];
+document.getElementById('seasIcon').textContent = tip.icon;
+document.getElementById('seasHeading').textContent = tip.heading;
+document.getElementById('seasBody').textContent = tip.body;
+</script>
+</body>
+</html>
