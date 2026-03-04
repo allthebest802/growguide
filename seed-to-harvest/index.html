@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seed to Harvest Timeline — GrowGuide</title>
+<meta name="description" content="Find out exactly how long any vegetable, fruit or flower takes from seed to harvest. Free UK garden tool.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
+  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
+  --sage:#8FAF87;--sage-l:#D4E8D0;
+  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
+  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
+  --rust:#B85C2A;--rust-l:#F5DDD4;
+  --sky:#5A9AB8;--sky-l:#C8E0EE;
+  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
+  --border:#D8C8B0;--border2:#C0A888;
+  --radius:12px;--radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+
+  /* timeline stage colours */
+  --col-germ:#7AAEC8;
+  --col-establish:#8FAF87;
+  --col-grow:#C8842A;
+  --col-harvest:#8C5A30;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),
+    radial-gradient(ellipse 600px 500px at 100% 100%,rgba(200,132,42,0.08),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 16px;font-size:0.8rem;color:var(--moss-ll);font-weight:700;letter-spacing:0.5px}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:28px 24px 60px;position:relative;z-index:1}
+
+/* INTRO */
+.intro-banner{background:linear-gradient(135deg,var(--moss-d),#3A5830);border-radius:var(--radius-lg);padding:26px 30px;margin-bottom:28px;display:flex;align-items:center;gap:20px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;flex-wrap:wrap}
+.intro-banner::before{content:'';position:absolute;right:-20px;top:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.intro-emoji{font-size:3rem;flex-shrink:0}
+.intro-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;font-weight:700;margin-bottom:5px}
+.intro-text p{font-size:0.88rem;color:var(--moss-ll);line-height:1.65;font-weight:300;max-width:520px}
+
+/* SEARCH */
+.search-box{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
+.search-box h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px}
+.search-row{display:flex;gap:10px;flex-wrap:wrap}
+.search-input{
+  flex:1;min-width:200px;
+  padding:11px 16px;border-radius:100px;
+  border:1.5px solid var(--border2);
+  font-family:'Lato',sans-serif;font-size:0.95rem;color:var(--text);
+  background:var(--parchment);outline:none;transition:border-color 0.2s,box-shadow 0.2s;
+}
+.search-input:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(74,103,65,0.12)}
+.search-input::placeholder{color:var(--stone)}
+
+/* FILTER CHIPS */
+.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.fchip{padding:7px 15px;border-radius:100px;font-size:0.78rem;font-weight:700;border:1.5px solid var(--border2);color:var(--text3);transition:all 0.15s;background:var(--parchment)}
+.fchip:hover{border-color:var(--bark);color:var(--text2)}
+.fchip.active{background:var(--soil);border-color:var(--soil);color:white}
+.fchip.active.fruit{background:var(--amber);border-color:var(--amber);color:var(--soil)}
+.fchip.active.flowers{background:#7070A8;border-color:#7070A8}
+
+/* PLANT GRID (browse) */
+.browse-section{margin-bottom:28px}
+.browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.browse-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:14px;cursor:pointer;box-shadow:var(--shadow);
+  transition:all 0.15s;text-align:center;
+}
+.browse-card:hover,.browse-card.active{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--moss-l)}
+.browse-card.active{border-color:var(--moss);background:var(--sage-l)}
+.browse-emoji{font-size:1.8rem;display:block;margin-bottom:6px}
+.browse-name{font-size:0.82rem;font-weight:700;color:var(--text);line-height:1.3}
+.browse-time{font-size:0.72rem;color:var(--text3);margin-top:3px}
+
+/* DETAIL PANEL */
+.detail-panel{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);margin-bottom:28px;overflow:hidden;animation:slideIn 0.3s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.detail-header{
+  background:linear-gradient(135deg,var(--soil),var(--soil2));
+  padding:24px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.detail-emoji{font-size:3rem;flex-shrink:0}
+.detail-title{flex:1}
+.detail-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:white;line-height:1.1;margin-bottom:6px}
+.detail-badges{display:flex;gap:7px;flex-wrap:wrap}
+.dbadge{font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px}
+.dbadge-veg{background:rgba(74,103,65,0.5);color:var(--moss-ll);border:1px solid rgba(200,220,195,0.3)}
+.dbadge-fruit{background:rgba(200,132,42,0.4);color:var(--amber-l);border:1px solid rgba(240,212,160,0.3)}
+.dbadge-flowers{background:rgba(112,112,168,0.4);color:#D0D0F0;border:1px solid rgba(200,195,235,0.3)}
+.dbadge-easy{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.2)}
+.dbadge-where{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.15)}
+.detail-total{
+  text-align:right;flex-shrink:0;
+}
+.detail-total-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--amber-l);line-height:1}
+.detail-total-label{font-size:0.72rem;color:var(--stone);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
+
+/* TIMELINE BAR */
+.timeline-section{padding:24px 28px;border-bottom:1px solid var(--border)}
+.timeline-label{font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:14px}
+.timeline-bar-wrap{position:relative;margin-bottom:20px}
+.timeline-bar{display:flex;height:36px;border-radius:100px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,0.08)}
+.tbar-seg{display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:white;letter-spacing:0.3px;transition:flex 0.4s ease;position:relative;overflow:hidden;white-space:nowrap;padding:0 4px}
+.tbar-seg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.15),transparent)}
+.tbar-germ{background:var(--col-germ)}
+.tbar-establish{background:var(--col-establish)}
+.tbar-grow{background:var(--col-grow)}
+.tbar-harvest{background:var(--col-harvest)}
+
+.timeline-legend{display:flex;gap:16px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:0.8rem;color:var(--text2)}
+.legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.legend-dot.germ{background:var(--col-germ)}
+.legend-dot.establish{background:var(--col-establish)}
+.legend-dot.grow{background:var(--col-grow)}
+.legend-dot.harvest{background:var(--col-harvest)}
+.legend-weeks{font-weight:700}
+.legend-label{color:var(--text3)}
+
+/* STAGE CARDS */
+.stages-section{padding:20px 28px;border-bottom:1px solid var(--border)}
+.stages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.stage-card{border-radius:var(--radius);padding:16px;position:relative;overflow:hidden}
+.stage-card::before{content:'';position:absolute;inset:0;opacity:0.08}
+.stage-card.germ{background:#EEF6FA;border:1.5px solid #A8CCE0}
+.stage-card.establish{background:#EEF5EE;border:1.5px solid #A0C8A0}
+.stage-card.grow{background:#FDF3E0;border:1.5px solid #E8C080}
+.stage-card.harvest{background:#F5EDE8;border:1.5px solid #D0A880}
+.stage-icon{font-size:1.4rem;margin-bottom:6px;display:block}
+.stage-title{font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px}
+.stage-card.germ .stage-title{color:#2A6080}
+.stage-card.establish .stage-title{color:var(--moss-d)}
+.stage-card.grow .stage-title{color:#7A5010}
+.stage-card.harvest .stage-title{color:#5A3010}
+.stage-duration{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.stage-card.germ .stage-duration{color:#2A6080}
+.stage-card.establish .stage-duration{color:var(--moss-d)}
+.stage-card.grow .stage-duration{color:#7A5010}
+.stage-card.harvest .stage-duration{color:#5A3010}
+.stage-desc{font-size:0.78rem;color:var(--text3);line-height:1.5}
+
+/* SOWING CALENDAR */
+.sow-section{padding:20px 28px;border-bottom:1px solid var(--border)}
+.month-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:14px}
+.month-cell{border-radius:6px;padding:6px 2px;text-align:center;font-size:0.62rem;font-weight:700;border:1.5px solid transparent;transition:all 0.15s}
+.month-cell .mc-name{display:block;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.3px;font-size:0.58rem}
+.month-cell .mc-dot{width:10px;height:10px;border-radius:50%;margin:0 auto;background:var(--border)}
+.month-cell.sow{background:var(--sage-l);border-color:var(--moss-ll)}
+.month-cell.sow .mc-dot{background:var(--moss)}
+.month-cell.sow .mc-name{color:var(--moss-d)}
+.month-cell.plant{background:var(--amber-ll);border-color:var(--amber-l)}
+.month-cell.plant .mc-dot{background:var(--amber)}
+.month-cell.plant .mc-name{color:#7A5010}
+.month-cell.harvest{background:var(--rust-l);border-color:#E0C0A8}
+.month-cell.harvest .mc-dot{background:var(--rust)}
+.month-cell.harvest .mc-name{color:var(--rust)}
+.month-cell.current{box-shadow:0 0 0 2px var(--soil);z-index:1;position:relative}
+.cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.cal-leg-item{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--text3)}
+.cal-leg-dot{width:10px;height:10px;border-radius:50%}
+
+/* TIPS */
+.tips-section{padding:20px 28px}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:14px}
+.tip-item{display:flex;align-items:flex-start;gap:10px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+.tip-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.tip-text{font-size:0.82rem;color:var(--text2);line-height:1.55}
+.tip-text strong{color:var(--text);font-weight:700}
+
+/* SUCCESSION TIP */
+.succession-box{background:var(--amber-ll);border:1.5px solid var(--amber-l);border-radius:var(--radius);padding:14px 18px;margin-top:14px;display:flex;gap:12px;align-items:flex-start}
+.succession-box .si{font-size:1.2rem;flex-shrink:0}
+.succession-box p{font-size:0.84rem;color:var(--text2);line-height:1.6}
+.succession-box strong{color:var(--soil)}
+
+/* EMPTY */
+.empty{text-align:center;padding:48px 20px;background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg)}
+.empty .ei{font-size:3rem;display:block;margin-bottom:12px;opacity:0.35}
+.empty h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--text2);margin-bottom:5px}
+.empty p{font-size:0.84rem;color:var(--text3)}
+
+/* FOOTER */
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
+
+@media(max-width:600px){
+  .browse-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .month-grid{grid-template-columns:repeat(6,1fr)}
+  .stages-grid{grid-template-columns:1fr 1fr}
+  .detail-header{padding:18px 20px}
+  .timeline-section,.stages-section,.sow-section,.tips-section{padding:16px 20px}
+  .detail-total{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">📅 Seed to Harvest Timeline</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="intro-banner">
+    <div class="intro-emoji">⏱️</div>
+    <div class="intro-text">
+      <h2>How long until harvest?</h2>
+      <p>Pick any vegetable, fruit or flower to see a full growing timeline — from germination through to the moment you can pick it — with a month-by-month sowing calendar.</p>
+    </div>
+  </div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="search-box">
+    <h3>🔍 Search or browse by type</h3>
+    <div class="search-row">
+      <input class="search-input" type="text" id="searchInput" placeholder="e.g. tomatoes, sunflowers, carrots…" oninput="filterPlants()">
+    </div>
+    <div class="filter-row">
+      <button class="fchip active" data-type="all" onclick="setType(this,'all')">All</button>
+      <button class="fchip" data-type="veg" onclick="setType(this,'veg')">🥦 Vegetables</button>
+      <button class="fchip fruit" data-type="fruit" onclick="setType(this,'fruit')">🍓 Fruit</button>
+      <button class="fchip flowers" data-type="flowers" onclick="setType(this,'flowers')">🌸 Flowers</button>
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL (hidden until selected) -->
+  <div id="detailPanel" style="display:none"></div>
+
+  <!-- BROWSE GRID -->
+  <div class="browse-section">
+    <div class="browse-grid" id="browseGrid"></div>
+    <div id="emptyState" style="display:none" class="empty">
+      <span class="ei">🌱</span>
+      <h3>No plants found</h3>
+      <p>Try a different search term or clear the filter.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+// germWeeks, establishWeeks (sow→plant out or 0 if direct), growWeeks, harvestWeeks (window)
+// sow[], plant[], harvest[] = month indices (south England)
+// successionWeeks = how often to re-sow for continuous harvest (0 = not applicable)
+
+const PLANTS = [
+  // VEGETABLES
+  {name:'Tomatoes',emoji:'🍅',type:'veg',where:'indoor',easy:false,
+   germWeeks:1.5,establishWeeks:8,growWeeks:10,harvestWeeks:10,
+   sow:[1,2,3],plant:[4,5],harvest:[6,7,8,9],
+   successionWeeks:0,
+   tips:['Start at 18–21°C for best germination','Pot on regularly — never let them get rootbound','Feed weekly with high-potash feed once first flowers appear','Remove sideshoots to keep energy in the fruit'],
+   succession:'Sow in one go — succession sowing isn\'t needed as plants crop for months.'},
+
+  {name:'Courgettes',emoji:'🥒',type:'veg',where:'indoor',easy:true,
+   germWeeks:1,establishWeeks:4,growWeeks:6,harvestWeeks:14,
+   sow:[3,4],plant:[4,5],harvest:[6,7,8,9,10],
+   successionWeeks:0,
+   tips:['Sow seeds on their side to prevent rotting','Just one or two plants feeds a family','Pick at 10–15cm — they become marrows overnight if left','Water at the base to prevent mildew'],
+   succession:'One sowing is enough — each plant produces prolifically all summer.'},
+
+  {name:'Cucumbers',emoji:'🥒',type:'veg',where:'greenhouse',easy:false,
+   germWeeks:1,establishWeeks:4,growWeeks:6,harvestWeeks:10,
+   sow:[3,4],plant:[5],harvest:[6,7,8,9],
+   successionWeeks:0,
+   tips:['Need warmth — ideal in a greenhouse or polytunnel','Remove male flowers on all-female varieties','Keep humidity high and water consistently','Harvest regularly to keep plants productive'],
+   succession:'Sow all at once — cucumbers fruit continuously once established.'},
+
+  {name:'Lettuce',emoji:'🥬',type:'veg',where:'outdoor',easy:true,
+   germWeeks:0.5,establishWeeks:0,growWeeks:6,harvestWeeks:3,
+   sow:[1,2,3,4,5,6,7,8],plant:[3,4,5,6,7,8],harvest:[4,5,6,7,8,9,10],
+   successionWeeks:3,
+   tips:['Cut-and-come-again varieties give multiple harvests from one sowing','Bolts quickly in heat — grow in light shade in summer','Sow little and often for a continuous supply','Water regularly for tender, non-bitter leaves'],
+   succession:'Sow a short row every 3 weeks for continuous salad all season.'},
+
+  {name:'Carrots',emoji:'🥕',type:'veg',where:'outdoor',easy:false,
+   germWeeks:2.5,establishWeeks:0,growWeeks:14,harvestWeeks:8,
+   sow:[2,3,4,5,6],plant:[],harvest:[6,7,8,9,10],
+   successionWeeks:4,
+   tips:['Sow direct — carrots hate being transplanted','Need fine, stone-free soil for straight roots','Sow thinly to reduce thinning','Cover with fleece to protect against carrot fly'],
+   succession:'Sow every 4 weeks from March to June for carrots all summer and autumn.'},
+
+  {name:'Radishes',emoji:'🔴',type:'veg',where:'outdoor',easy:true,
+   germWeeks:0.5,establishWeeks:0,growWeeks:4,harvestWeeks:2,
+   sow:[2,3,4,5,6,7,8],plant:[],harvest:[3,4,5,6,7,8,9],
+   successionWeeks:2,
+   tips:['The fastest vegetable you can grow — ready in just 4 weeks','Don\'t leave in the ground too long — they go woody and hot','Great gap-filler between slower crops','Water consistently or they split'],
+   succession:'Sow a short row every 2 weeks for radishes all season.'},
+
+  {name:'Peas',emoji:'🟢',type:'veg',where:'outdoor',easy:true,
+   germWeeks:1.5,establishWeeks:0,growWeeks:10,harvestWeeks:4,
+   sow:[2,3,4,5],plant:[3,4,5],harvest:[5,6,7,8],
+   successionWeeks:3,
+   tips:['Support with canes, netting or twiggy sticks','Pick regularly — leaving pods on the plant stops production','Mangetout and sugar snap varieties can be eaten whole','Water well once plants are in flower'],
+   succession:'Sow every 3 weeks from February to May for peas from May to August.'},
+
+  {name:'French Beans',emoji:'🫘',type:'veg',where:'indoor',easy:true,
+   germWeeks:1,establishWeeks:4,growWeeks:8,harvestWeeks:8,
+   sow:[3,4,5],plant:[5,6],harvest:[6,7,8,9],
+   successionWeeks:3,
+   tips:['Very productive once they get going','Pick regularly — daily in peak season','Don\'t sow until soil is 12°C or above if direct sowing','Climbing varieties are more productive than dwarf types'],
+   succession:'Sow every 3 weeks from April to June for beans right through summer.'},
+
+  {name:'Runner Beans',emoji:'🫘',type:'veg',where:'indoor',easy:true,
+   germWeeks:1,establishWeeks:4,growWeeks:10,harvestWeeks:10,
+   sow:[3,4],plant:[5],harvest:[7,8,9,10],
+   successionWeeks:0,
+   tips:['Needs a strong frame at least 2m tall','Water well once in flower to set pods','Pick before beans swell inside pods','Soak seeds overnight for faster germination'],
+   succession:'One sowing produces all summer — no need to succession sow.'},
+
+  {name:'Broad Beans',emoji:'🫘',type:'veg',where:'outdoor',easy:true,
+   germWeeks:2,establishWeeks:0,growWeeks:16,harvestWeeks:5,
+   sow:[10,11,1,2],plant:[10,2,3],harvest:[5,6,7],
+   successionWeeks:0,
+   tips:['Autumn-sown plants crop 3–4 weeks earlier than spring-sown','Pinch out the growing tips once in flower to deter blackfly','Pick pods when seeds are just visible through the pod','Freeze surplus immediately after blanching'],
+   succession:'Autumn and spring sowings give an extended harvest — two sowings is ideal.'},
+
+  {name:'Onions',emoji:'🧅',type:'veg',where:'outdoor',easy:true,
+   germWeeks:2,establishWeeks:0,growWeeks:20,harvestWeeks:4,
+   sow:[0,1],plant:[2,3],harvest:[7,8],
+   successionWeeks:0,
+   tips:['Sets (small bulbs) are easier and quicker than seeds','Plant with just the tip showing above soil','Stop watering once the foliage starts to die back','Lift on a dry day and let them dry in the sun before storing'],
+   succession:'Plant in one go — onions all mature together and store for months.'},
+
+  {name:'Garlic',emoji:'🧄',type:'veg',where:'outdoor',easy:true,
+   germWeeks:3,establishWeeks:0,growWeeks:28,harvestWeeks:3,
+   sow:[],plant:[10,11,2],harvest:[6,7],
+   successionWeeks:0,
+   tips:['Plant individual cloves pointed end up, 2cm deep','Autumn planting gives the best, biggest bulbs','Lift when about half the leaves have yellowed','Dry in a warm, airy spot for several weeks before storing'],
+   succession:'Plant in autumn and spring for a slightly extended harvest.'},
+
+  {name:'Leeks',emoji:'🌿',type:'veg',where:'indoor',easy:false,
+   germWeeks:2,establishWeeks:14,growWeeks:12,harvestWeeks:20,
+   sow:[1,2,3],plant:[5,6],harvest:[9,10,11,0,1,2],
+   successionWeeks:0,
+   tips:['Transplant when pencil-thick into deep holes — drop in and water, don\'t fill','Earth up stems as they grow for longer white shanks','Harvest as needed — they stand in the ground all winter','Choose different varieties for autumn, winter, and late winter harvest'],
+   succession:'Sow once — different varieties cover autumn through to spring.'},
+
+  {name:'Kale',emoji:'🥬',type:'veg',where:'outdoor',easy:true,
+   germWeeks:1,establishWeeks:6,growWeeks:16,harvestWeeks:20,
+   sow:[3,4,5],plant:[5,6],harvest:[9,10,11,0,1,2,3],
+   successionWeeks:0,
+   tips:['Often tastier after a frost — frost converts starch to sugar','Pick outer leaves regularly to keep plants producing','Incredibly nutritious — one of the best winter crops','Net against pigeons which love it in winter'],
+   succession:'One sowing provides leaves from autumn right through to spring.'},
+
+  {name:'Spinach',emoji:'🥬',type:'veg',where:'outdoor',easy:true,
+   germWeeks:1,establishWeeks:0,growWeeks:6,harvestWeeks:6,
+   sow:[2,3,4,7,8],plant:[],harvest:[4,5,6,9,10,11],
+   successionWeeks:4,
+   tips:['Bolts quickly in heat — best in spring and autumn','Pick outer leaves or cut the whole plant 2cm above the ground','Sow perpetual spinach (chard) for a summer-long substitute','Keep well watered to slow bolting'],
+   succession:'Sow every 4 weeks in spring and again in late summer for a continuous supply.'},
+
+  {name:'Beetroot',emoji:'🟣',type:'veg',where:'outdoor',easy:true,
+   germWeeks:1.5,establishWeeks:0,growWeeks:10,harvestWeeks:8,
+   sow:[3,4,5,6],plant:[],harvest:[6,7,8,9,10],
+   successionWeeks:4,
+   tips:['Each "seed" is actually a cluster — thin to one seedling','Harvest baby beets at golf-ball size or leave to grow larger','Leaves are edible too — use like spinach','Twist off rather than cutting to prevent bleeding'],
+   succession:'Sow every 4 weeks from April to June for beetroot all summer.'},
+
+  {name:'Potatoes (Early)',emoji:'🥔',type:'veg',where:'outdoor',easy:true,
+   germWeeks:3,establishWeeks:0,growWeeks:10,harvestWeeks:4,
+   sow:[],plant:[2,3],harvest:[5,6,7],
+   successionWeeks:0,
+   tips:['Chit (sprout) tubers from January on a light windowsill','Earth up as shoots appear to prevent greening','Ready when the flowers open — test by digging one plant','Harvest on a dry day and leave to dry before storing'],
+   succession:'Plant earlies in Feb/March and maincrops in April for a staggered harvest.'},
+
+  {name:'Potatoes (Maincrop)',emoji:'🥔',type:'veg',where:'outdoor',easy:true,
+   germWeeks:3,establishWeeks:0,growWeeks:16,harvestWeeks:6,
+   sow:[],plant:[3,4],harvest:[8,9,10],
+   successionWeeks:0,
+   tips:['Leave in the ground until foliage dies back completely','Harvest on a dry day and cure in light for a few hours','Store in paper sacks in a cool, dark, frost-free place','Don\'t wash before storing — soil protects them'],
+   succession:'Plant earlies in March and maincrops in April for season-long potatoes.'},
+
+  {name:'Sweetcorn',emoji:'🌽',type:'veg',where:'indoor',easy:false,
+   germWeeks:1,establishWeeks:4,growWeeks:14,harvestWeeks:3,
+   sow:[4,5],plant:[5,6],harvest:[8,9],
+   successionWeeks:0,
+   tips:['Plant in a block — not a row — for good wind pollination','Ready when silk turns brown and juice from a kernel is milky','Cook within hours of picking for sweetest flavour','Needs a good, warm summer to do well'],
+   succession:'One sowing — all cobs ripen together over 2–3 weeks.'},
+
+  {name:'Squash & Pumpkins',emoji:'🎃',type:'veg',where:'indoor',easy:true,
+   germWeeks:1,establishWeeks:4,growWeeks:16,harvestWeeks:4,
+   sow:[4],plant:[5,6],harvest:[9,10],
+   successionWeeks:0,
+   tips:['Sow seeds on their side to prevent rotting','Needs lots of space — up to 2m in each direction','Leave on the vine until stem is corky and skin hard','Cure in sun for 2 weeks after harvest — improves flavour and storage'],
+   succession:'One sowing produces enough fruit to last all winter if stored correctly.'},
+
+  {name:'Spring Onions',emoji:'🌿',type:'veg',where:'outdoor',easy:true,
+   germWeeks:1,establishWeeks:0,growWeeks:8,harvestWeeks:3,
+   sow:[2,3,4,5,6,7,8],plant:[],harvest:[4,5,6,7,8,9,10],
+   successionWeeks:3,
+   tips:['No thinning needed — grow them in a cluster and pick as needed','Ready in just 8 weeks from sowing','Sow a short row every 3 weeks for a continuous supply','Can be grown in pots on a windowsill or balcony'],
+   succession:'Sow every 3 weeks from March to August for spring onions all season.'},
+
+  // FRUIT
+  {name:'Strawberries',emoji:'🍓',type:'fruit',where:'outdoor',easy:true,
+   germWeeks:4,establishWeeks:0,growWeeks:52,harvestWeeks:5,
+   sow:[],plant:[3,4,8,9],harvest:[5,6,7],
+   successionWeeks:0,
+   tips:['Everbearing varieties fruit in flushes all summer','Tuck straw under ripening fruit to keep clean and deter slugs','Net against birds as soon as fruit starts to colour','Pin runners down into pots after harvest to make new plants free'],
+   succession:'Plant June-bearing and everbearing varieties together for fruit from May to October.'},
+
+  {name:'Raspberries',emoji:'🫐',type:'fruit',where:'outdoor',easy:true,
+   germWeeks:0,establishWeeks:0,growWeeks:52,harvestWeeks:6,
+   sow:[],plant:[10,11,2,3],harvest:[6,7,8,9],
+   successionWeeks:0,
+   tips:['Summer fruiting: prune old canes to the ground after harvest','Autumn fruiting: cut all canes to ground in February','Train canes along wires for support and airflow','Birds are a major pest — net well before fruit ripens'],
+   succession:'Plant summer and autumn fruiting varieties for berries from June to October.'},
+
+  {name:'Blueberries',emoji:'🫐',type:'fruit',where:'outdoor',easy:false,
+   germWeeks:0,establishWeeks:0,growWeeks:104,harvestWeeks:6,
+   sow:[],plant:[10,11,2,3],harvest:[7,8],
+   successionWeeks:0,
+   tips:['Must have acidic soil — pH 4.5–5.5. Grow in pots of ericaceous compost if unsure','Need two different varieties for good cross-pollination','Fruit only on 2+ year old wood — be patient','Pick when fully blue and slightly soft'],
+   succession:'Plant two or three different varieties to extend the harvest window.'},
+
+  {name:'Rhubarb',emoji:'🔴',type:'fruit',where:'outdoor',easy:true,
+   germWeeks:0,establishWeeks:0,growWeeks:52,harvestWeeks:10,
+   sow:[],plant:[10,2,3],harvest:[3,4,5,6,7],
+   successionWeeks:0,
+   tips:['Force early stalks by covering crowns with a pot from February','Don\'t harvest in the first year — let plants establish','Pull stalks rather than cutting — twist and pull from the base','Leave at least 4–5 stems on each crown when harvesting'],
+   succession:'Rhubarb comes back bigger every year — one planting lasts decades.'},
+
+  {name:'Gooseberries',emoji:'🟢',type:'fruit',where:'outdoor',easy:true,
+   germWeeks:0,establishWeeks:0,growWeeks:52,harvestWeeks:6,
+   sow:[],plant:[10,11,2,3],harvest:[6,7],
+   successionWeeks:0,
+   tips:['Incredibly tough and productive — one of the most reliable UK fruits','Thin fruits in May for larger berries','Prune to an open goblet shape for good airflow','Pick green for cooking or leave to ripen to sweet dessert fruit'],
+   succession:'One plant produces for 20+ years. Plant in autumn for best establishment.'},
+
+  // FLOWERS
+  {name:'Sunflowers',emoji:'🌻',type:'flowers',where:'outdoor',easy:true,
+   germWeeks:1,establishWeeks:3,growWeeks:10,harvestWeeks:4,
+   sow:[3,4,5],plant:[5,6],harvest:[],
+   successionWeeks:3,
+   tips:['Sow in 7cm pots and plant out after the last frost','Choose giant varieties for impact — or multi-headed for cutting','Face south for the best growth — they follow the sun','Leave seedheads in autumn for birds'],
+   succession:'Sow every 3 weeks from April to June for blooms from July to October.'},
+
+  {name:'Sweet Peas',emoji:'🌸',type:'flowers',where:'indoor',easy:true,
+   germWeeks:1.5,establishWeeks:12,growWeeks:6,harvestWeeks:12,
+   sow:[10,11,1,2,3],plant:[3,4,5],harvest:[],
+   successionWeeks:0,
+   tips:['Autumn-sown plants are far stronger and earlier than spring-sown','Nick the seed coat with a nail file before sowing to help germination','Pinch out growing tip at 15cm for bushy growth','Pick every single flower — leaving pods stops production completely'],
+   succession:'Autumn and spring sowings overlap for sweet peas from May to September.'},
+
+  {name:'Marigolds',emoji:'🌼',type:'flowers',where:'indoor',easy:true,
+   germWeeks:0.5,establishWeeks:4,growWeeks:8,harvestWeeks:16,
+   sow:[2,3,4],plant:[4,5],harvest:[],
+   successionWeeks:0,
+   tips:['Plant near tomatoes to deter aphids and whitefly','Deadhead constantly to keep plants producing all summer','African varieties (tall) and French varieties (compact) have different uses','Self-seeds — you\'ll often get free plants the following year'],
+   succession:'One sowing flowers all summer if deadheaded regularly.'},
+
+  {name:'Cosmos',emoji:'🌸',type:'flowers',where:'indoor',easy:true,
+   germWeeks:0.5,establishWeeks:4,growWeeks:10,harvestWeeks:16,
+   sow:[3,4],plant:[5],harvest:[],
+   successionWeeks:0,
+   tips:['Don\'t sow too early — cosmos sulks in cold conditions','Pinch out when 20cm tall for a bushier, more productive plant','Deadhead every few days for continuous blooms until frost','Brilliant cut flower — lasts well in a vase'],
+   succession:'One sowing gives flowers from July until the first frost.'},
+
+  {name:'Dahlias',emoji:'🌺',type:'flowers',where:'indoor',easy:false,
+   germWeeks:1.5,establishWeeks:6,growWeeks:12,harvestWeeks:16,
+   sow:[2,3],plant:[4,5],harvest:[],
+   successionWeeks:0,
+   tips:['Start tubers in pots in March — don\'t plant out until after last frost','Pinch out the first bud for more, better flowers','Feed every 2 weeks with a high-potash feed from July','Lift tubers after first frost and store in a frost-free place'],
+   succession:'One planting gives flowers from July to the first frost.'},
+
+  {name:'Lavender',emoji:'💜',type:'flowers',where:'indoor',easy:true,
+   germWeeks:3,establishWeeks:8,growWeeks:52,harvestWeeks:4,
+   sow:[2,3],plant:[4,5],harvest:[],
+   successionWeeks:0,
+   tips:['Slow from seed — easier to buy small plants or take cuttings','Cut back by a third after flowering to keep bushy','Never cut into old brown wood — it won\'t regrow','Thrives in poor, well-drained soil — avoid rich, heavy clay'],
+   succession:'A permanent planting that comes back bigger every year.'},
+
+  {name:'Cornflowers',emoji:'💙',type:'flowers',where:'outdoor',easy:true,
+   germWeeks:1,establishWeeks:0,growWeeks:10,harvestWeeks:8,
+   sow:[2,3,4,9],plant:[],harvest:[],
+   successionWeeks:3,
+   tips:['Sow direct where they are to grow — they hate being moved','Autumn-sown plants flower much earlier in spring','Brilliant cut flower — lasts up to 2 weeks in a vase','Self-seeds freely once established'],
+   succession:'Sow every 3 weeks from March to May for flowers from June to September.'},
+
+  {name:'Nasturtiums',emoji:'🟠',type:'flowers',where:'outdoor',easy:true,
+   germWeeks:1,establishWeeks:0,growWeeks:8,harvestWeeks:14,
+   sow:[3,4,5],plant:[5],harvest:[],
+   successionWeeks:0,
+   tips:['Sow direct — they don\'t like being transplanted','Flowers and leaves are edible with a peppery taste','Thrive in poor soil — too much feeding produces leaves not flowers','Brilliant for attracting aphids away from other crops'],
+   succession:'One sowing flowers all summer until the first frost.'},
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+let activeType = 'all';
+let searchTerm = '';
+let selectedPlant = null;
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function init(){
+  renderBrowse();
+}
+
+function setType(btn, type){
+  document.querySelectorAll('.fchip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  activeType = type;
+  filterPlants();
+}
+
+function filterPlants(){
+  searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  renderBrowse();
+}
+
+function getFiltered(){
+  return PLANTS.filter(p => {
+    const typeMatch = activeType === 'all' || p.type === activeType;
+    const searchMatch = !searchTerm || p.name.toLowerCase().includes(searchTerm);
+    return typeMatch && searchMatch;
+  });
+}
+
+function renderBrowse(){
+  const grid = document.getElementById('browseGrid');
+  const empty = document.getElementById('emptyState');
+  const filtered = getFiltered();
+
+  if(filtered.length === 0){
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  grid.style.display = 'grid';
+  empty.style.display = 'none';
+  grid.innerHTML = '';
+
+  filtered.forEach(p => {
+    const totalWeeks = p.germWeeks + p.establishWeeks + p.growWeeks;
+    const totalStr = totalWeeks >= 52
+      ? Math.round(totalWeeks/4) + ' months'
+      : Math.round(totalWeeks) + ' weeks';
+
+    const card = document.createElement('div');
+    card.className = 'browse-card' + (selectedPlant === p.name ? ' active' : '');
+    card.onclick = () => selectPlant(p);
+    card.innerHTML = `<span class="browse-emoji">${p.emoji}</span>
+      <div class="browse-name">${p.name}</div>
+      <div class="browse-time">~${totalStr} total</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function selectPlant(p){
+  selectedPlant = p.name;
+  renderBrowse(); // update active state
+  renderDetail(p);
+  document.getElementById('detailPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderDetail(p){
+  const panel = document.getElementById('detailPanel');
+  panel.style.display = 'block';
+
+  const totalWeeks = p.germWeeks + p.establishWeeks + p.growWeeks;
+  const totalStr = totalWeeks >= 52
+    ? (totalWeeks/52).toFixed(1).replace('.0','') + ' year' + (totalWeeks>=104?'s':'')
+    : Math.round(totalWeeks) + ' weeks';
+
+  // Timeline bar percentages
+  const total = p.germWeeks + p.establishWeeks + p.growWeeks;
+  const germPct = Math.round((p.germWeeks / total) * 100);
+  const estPct = Math.round((p.establishWeeks / total) * 100);
+  const growPct = Math.round((p.growWeeks / total) * 100);
+  const harvPct = 100 - germPct - estPct - growPct;
+
+  // Week labels for bar
+  const germLabel = p.germWeeks < 1 ? Math.round(p.germWeeks*7)+'d' : Math.round(p.germWeeks)+'w';
+  const estLabel = p.establishWeeks > 0 ? (p.establishWeeks < 1 ? Math.round(p.establishWeeks*7)+'d' : Math.round(p.establishWeeks)+'wk') : '';
+  const growLabel = p.growWeeks < 1 ? Math.round(p.growWeeks*7)+'d' : Math.round(p.growWeeks)+'wk';
+  const harvLabel = p.harvestWeeks > 0 ? Math.round(p.harvestWeeks)+'wk' : '';
+
+  // Badge
+  const typeBadge = `<span class="dbadge dbadge-${p.type}">${p.type === 'veg' ? '🥦 Vegetable' : p.type === 'fruit' ? '🍓 Fruit' : '🌸 Flower'}</span>`;
+  const easyBadge = p.easy ? '<span class="dbadge dbadge-easy">⭐ Beginner friendly</span>' : '';
+  const whereBadge = `<span class="dbadge dbadge-where">${p.where === 'indoor' ? '🏠 Start indoors' : p.where === 'greenhouse' ? '🏡 Greenhouse' : '🌳 Sow direct'}</span>`;
+
+  // Duration description
+  const germDesc = p.germWeeks < 1
+    ? `Seeds sprout in ${Math.round(p.germWeeks*7)} days`
+    : `Seeds sprout in ${p.germWeeks < 2 ? 'around 1 week' : Math.round(p.germWeeks) + ' weeks'}`;
+  const estDesc = p.establishWeeks > 0
+    ? `Grow on indoors for ~${Math.round(p.establishWeeks)} weeks before planting out`
+    : 'Sow direct — no transplanting needed';
+  const growDesc = `After planting, takes ${Math.round(p.growWeeks)} more weeks to reach harvest`;
+  const harvDesc = p.harvestWeeks > 0
+    ? `Harvest window lasts approximately ${Math.round(p.harvestWeeks)} weeks`
+    : 'Flowers continuously once established';
+
+  // Calendar
+  const currentMonth = new Date().getMonth();
+  const calCells = MONTHS.map((m, i) => {
+    let cls = '';
+    if(p.sow.includes(i)) cls = 'sow';
+    else if(p.plant.includes(i)) cls = 'plant';
+    else if(p.harvest.includes(i)) cls = 'harvest';
+    const cur = i === currentMonth ? ' current' : '';
+    return `<div class="month-cell ${cls}${cur}">
+      <span class="mc-name">${m}</span>
+      <div class="mc-dot"></div>
+    </div>`;
+  }).join('');
+
+  // Tips
+  const tipsHTML = p.tips.map(t => `<div class="tip-item"><span class="tip-icon">💡</span><span class="tip-text">${t}</span></div>`).join('');
+
+  // Succession
+  const succHTML = p.succession
+    ? `<div class="succession-box"><span class="si">🔄</span><p><strong>Succession sowing:</strong> ${p.succession}</p></div>`
+    : '';
+
+  panel.innerHTML = `
+    <div class="detail-header">
+      <div class="detail-emoji">${p.emoji}</div>
+      <div class="detail-title">
+        <div class="detail-name">${p.name}</div>
+        <div class="detail-badges">${typeBadge}${easyBadge}${whereBadge}</div>
+      </div>
+      <div class="detail-total">
+        <div class="detail-total-num">${totalStr}</div>
+        <div class="detail-total-label">Seed to harvest</div>
+      </div>
+    </div>
+
+    <div class="timeline-section">
+      <div class="timeline-label">Full growing timeline</div>
+      <div class="timeline-bar-wrap">
+        <div class="timeline-bar">
+          <div class="tbar-seg tbar-germ" style="flex:${germPct}">${germPct > 8 ? '🌱 '+germLabel : ''}</div>
+          ${p.establishWeeks > 0 ? `<div class="tbar-seg tbar-establish" style="flex:${estPct}">${estPct > 8 ? '🪴 '+estLabel : ''}</div>` : ''}
+          <div class="tbar-seg tbar-grow" style="flex:${growPct}">${growPct > 8 ? '🌿 '+growLabel : ''}</div>
+          ${p.harvestWeeks > 0 ? `<div class="tbar-seg tbar-harvest" style="flex:${Math.max(harvPct,4)}">${harvPct > 8 ? '✂️ '+harvLabel : ''}</div>` : ''}
+        </div>
+      </div>
+      <div class="timeline-legend">
+        <div class="legend-item"><div class="legend-dot germ"></div><span class="legend-weeks">${germLabel}</span>&nbsp;<span class="legend-label">Germination</span></div>
+        ${p.establishWeeks > 0 ? `<div class="legend-item"><div class="legend-dot establish"></div><span class="legend-weeks">${Math.round(p.establishWeeks)}wk</span>&nbsp;<span class="legend-label">Establish indoors</span></div>` : ''}
+        <div class="legend-item"><div class="legend-dot grow"></div><span class="legend-weeks">${Math.round(p.growWeeks)}wk</span>&nbsp;<span class="legend-label">Growing on</span></div>
+        ${p.harvestWeeks > 0 ? `<div class="legend-item"><div class="legend-dot harvest"></div><span class="legend-weeks">${Math.round(p.harvestWeeks)}wk</span>&nbsp;<span class="legend-label">Harvest window</span></div>` : ''}
+      </div>
+    </div>
+
+    <div class="stages-section">
+      <div class="timeline-label">Stage by stage</div>
+      <div class="stages-grid">
+        <div class="stage-card germ">
+          <span class="stage-icon">🌱</span>
+          <div class="stage-title">Germination</div>
+          <div class="stage-duration">${germLabel}</div>
+          <div class="stage-desc">${germDesc}</div>
+        </div>
+        ${p.establishWeeks > 0 ? `<div class="stage-card establish">
+          <span class="stage-icon">🪴</span>
+          <div class="stage-title">Establish indoors</div>
+          <div class="stage-duration">${Math.round(p.establishWeeks)} weeks</div>
+          <div class="stage-desc">${estDesc}</div>
+        </div>` : `<div class="stage-card establish">
+          <span class="stage-icon">🌳</span>
+          <div class="stage-title">Sow direct</div>
+          <div class="stage-duration">No transplanting</div>
+          <div class="stage-desc">${estDesc}</div>
+        </div>`}
+        <div class="stage-card grow">
+          <span class="stage-icon">🌿</span>
+          <div class="stage-title">Growing on</div>
+          <div class="stage-duration">${Math.round(p.growWeeks)} weeks</div>
+          <div class="stage-desc">${growDesc}</div>
+        </div>
+        <div class="stage-card harvest">
+          <span class="stage-icon">✂️</span>
+          <div class="stage-title">Harvest window</div>
+          <div class="stage-duration">${p.harvestWeeks > 0 ? Math.round(p.harvestWeeks)+' weeks' : 'Ongoing'}</div>
+          <div class="stage-desc">${harvDesc}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sow-section">
+      <div class="timeline-label">Sowing calendar (South England — other regions 1–4 weeks later)</div>
+      <div class="month-grid">${calCells}</div>
+      <div class="cal-legend">
+        ${p.sow.length ? '<div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--moss)"></div> Sow seeds</div>' : ''}
+        ${p.plant.length ? '<div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--amber)"></div> Plant out</div>' : ''}
+        ${p.harvest.length ? '<div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--rust)"></div> Harvest</div>' : ''}
+        <div class="cal-leg-item"><div class="cal-leg-dot" style="background:transparent;border:2px solid var(--soil);border-radius:50%"></div> This month</div>
+      </div>
+      ${succHTML}
+    </div>
+
+    <div class="tips-section">
+      <div class="timeline-label">Key tips for ${p.name.toLowerCase()}</div>
+      <div class="tips-grid">${tipsHTML}</div>
+    </div>`;
+}
+
+init();
+</script>
+</body>
+</html>
