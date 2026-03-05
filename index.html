@@ -61,14 +61,15 @@ body::before{
 .hero-leaves{position:absolute;font-size:8rem;opacity:0.05;user-select:none;line-height:1}
 .hero-leaves.l1{top:-10px;left:-20px;transform:rotate(-20deg)}
 .hero-leaves.l2{bottom:-20px;right:-10px;transform:rotate(15deg)}
-.hero-inner{position:relative;z-index:1;max-width:840px;margin:0 auto}
-.hero-single-line{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.hero-inner{position:relative;z-index:1;max-width:960px;margin:0 auto}
+.hero-single-line{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
 .hero-single-line h2{
   font-family:'Playfair Display',serif;
   font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;
   color:white;line-height:1.2;margin:0;
 }
 .hero-single-line h2 em{color:var(--amber-l);font-style:italic}
+.hero-tagline{font-size:0.88rem;color:var(--moss-ll);line-height:1.4;font-weight:300;margin:0;white-space:nowrap}
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
@@ -220,12 +221,6 @@ body::before{
       <div class="logo-icon">🌱</div>
       <div class="logo-text"><h1>GrowGuide</h1><p>Free UK Garden Tools</p></div>
     </div>
-    <nav class="header-nav">
-      <a class="nav-link" href="https://roaring-babka-3bfc9c.netlify.app/what-to-plant/">🌿 Plant Planner</a>
-      <a class="nav-link" href="/pest-identifier/">🐛 Pest Finder</a>
-      <a class="nav-link" href="/seed-to-harvest/">📅 Timelines</a>
-      <a class="nav-link" href="/companion-planting/">🤝 Companions</a>
-    </nav>
   </div>
 </header>
 
@@ -237,18 +232,16 @@ body::before{
     <div class="hero-single-line">
       <span class="hero-badge">🇬🇧 Built for UK gardeners</span>
       <h2>Grow more. <em>Worry less.</em></h2>
+      <p class="hero-tagline">Practical, no-nonsense garden tools for every UK grower — window box or full allotment. Free, forever.</p>
     </div>
-    <p>Practical, no-nonsense garden tools for every UK grower — whether you've got a window box or a full allotment. Free, forever.</p>
   </div>
 </section>
 
 <!-- SEASONAL TIP -->
 <div class="seasonal-wrap">
   <div class="seasonal-inner">
-    <div class="seasonal-icon" id="seasIcon"></div>
     <div class="seasonal-text">
-      <div class="seasonal-label">In the garden this month</div>
-      <div class="seasonal-heading" id="seasHeading"></div>
+      <div class="seasonal-label"><span id="seasIcon" style="margin-right:6px;font-size:1rem;vertical-align:middle"></span>In the garden this month — <span id="seasHeading" style="font-weight:700;color:var(--soil)"></span></div>
       <div class="seasonal-body" id="seasBody"></div>
     </div>
   </div>
@@ -429,7 +422,9 @@ const MONTH_TIPS = [
 const m = new Date().getMonth();
 const tip = MONTH_TIPS[m];
 document.getElementById('seasIcon').textContent = tip.icon;
-document.getElementById('seasHeading').textContent = tip.heading;
+// heading format is "Month — Title", extract just the title part
+const headingParts = tip.heading.split(' — ');
+document.getElementById('seasHeading').textContent = headingParts[1] || tip.heading;
 document.getElementById('seasBody').textContent = tip.body;
 </script>
 </body>
