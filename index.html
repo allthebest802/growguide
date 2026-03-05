@@ -61,7 +61,14 @@ body::before{
 .hero-leaves{position:absolute;font-size:8rem;opacity:0.05;user-select:none;line-height:1}
 .hero-leaves.l1{top:-10px;left:-20px;transform:rotate(-20deg)}
 .hero-leaves.l2{bottom:-20px;right:-10px;transform:rotate(15deg)}
-.hero-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.hero-inner{position:relative;z-index:1;max-width:840px;margin:0 auto}
+.hero-single-line{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.hero-single-line h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;
+  color:white;line-height:1.2;margin:0;
+}
+.hero-single-line h2 em{color:var(--amber-l);font-style:italic}
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
@@ -214,7 +221,7 @@ body::before{
       <div class="logo-text"><h1>GrowGuide</h1><p>Free UK Garden Tools</p></div>
     </div>
     <nav class="header-nav">
-      <a class="nav-link" href="/what-to-plant/">🌿 Plant Planner</a>
+      <a class="nav-link" href="https://roaring-babka-3bfc9c.netlify.app/what-to-plant/">🌿 Plant Planner</a>
       <a class="nav-link" href="/pest-identifier/">🐛 Pest Finder</a>
       <a class="nav-link" href="/seed-to-harvest/">📅 Timelines</a>
       <a class="nav-link" href="/companion-planting/">🤝 Companions</a>
@@ -227,8 +234,10 @@ body::before{
   <div class="hero-leaves l1">🌿</div>
   <div class="hero-leaves l2">🍃</div>
   <div class="hero-inner">
-    <div class="hero-badge">🇬🇧 Built for UK gardeners</div>
-    <h2>Grow more.<br><em>Worry less.</em></h2>
+    <div class="hero-single-line">
+      <span class="hero-badge">🇬🇧 Built for UK gardeners</span>
+      <h2>Grow more. <em>Worry less.</em></h2>
+    </div>
     <p>Practical, no-nonsense garden tools for every UK grower — whether you've got a window box or a full allotment. Free, forever.</p>
   </div>
 </section>
@@ -242,7 +251,6 @@ body::before{
       <div class="seasonal-heading" id="seasHeading"></div>
       <div class="seasonal-body" id="seasBody"></div>
     </div>
-    <a class="seasonal-link" href="/what-to-plant/">See what to plant →</a>
   </div>
 </div>
 
@@ -269,7 +277,7 @@ body::before{
         <div class="tool-desc">Pick your region and month to see exactly what to sow, plant out, and harvest — with beginner tags, indoor/outdoor flags, and a practical tip for every plant.</div>
       </div>
       <div class="tool-footer">
-        <a class="tool-link" href="/what-to-plant/">Open tool</a>
+        <a class="tool-link" href="https://roaring-babka-3bfc9c.netlify.app/what-to-plant/">Open tool</a>
         <span class="tool-free">Free</span>
       </div>
     </div>
@@ -393,7 +401,7 @@ body::before{
 <footer class="site-footer">
   <div class="footer-links">
     <a href="/">Home</a>
-    <a href="/what-to-plant/">Plant Planner</a>
+    <a href="https://roaring-babka-3bfc9c.netlify.app/what-to-plant/">Plant Planner</a>
     <a href="/pest-identifier/">Pest Identifier</a>
     <a href="/seed-to-harvest/">Seed Timelines</a>
     <a href="/companion-planting/">Companion Planting</a>
