@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Companion Planting Checker — GrowGuide</title>
+<meta name="description" content="Find out which plants grow well together and which to keep apart. Free UK companion planting guide — no login, no ads.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
+  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
+  --sage:#8FAF87;--sage-l:#D4E8D0;
+  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
+  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
+  --rust:#B85C2A;--rust-l:#F5DDD4;
+  --good:#2E7040;--good-l:#D4EEDC;--good-border:#90C8A0;
+  --bad:#A02020;--bad-l:#FDDCDC;--bad-border:#E0A0A0;
+  --neutral:#5A5A8A;--neutral-l:#E8E8F8;--neutral-border:#C0C0E0;
+  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
+  --border:#D8C8B0;--border2:#C0A888;
+  --radius:12px;--radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),
+    radial-gradient(ellipse 600px 500px at 100% 100%,rgba(200,132,42,0.08),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+a{text-decoration:none;color:inherit}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 16px;font-size:0.8rem;color:var(--moss-ll);font-weight:700;letter-spacing:0.5px}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:28px 24px 60px;position:relative;z-index:1}
+
+/* INTRO */
+.intro-banner{background:linear-gradient(135deg,var(--moss-d),#3A5830);border-radius:var(--radius-lg);padding:26px 30px;margin-bottom:28px;display:flex;align-items:center;gap:20px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;flex-wrap:wrap}
+.intro-banner::before{content:'';position:absolute;right:-20px;top:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.intro-emoji{font-size:3rem;flex-shrink:0}
+.intro-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;font-weight:700;margin-bottom:5px}
+.intro-text p{font-size:0.88rem;color:var(--moss-ll);line-height:1.65;font-weight:300;max-width:520px}
+
+/* SEARCH PANEL */
+.search-panel{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px;box-shadow:var(--shadow)}
+.search-panel h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px}
+.plant-search-wrap{position:relative;margin-bottom:14px}
+.plant-search{width:100%;padding:13px 18px;border-radius:100px;border:1.5px solid var(--border2);font-family:'Lato',sans-serif;font-size:0.95rem;color:var(--text);background:var(--parchment);outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.plant-search:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(74,103,65,0.12)}
+.plant-search::placeholder{color:var(--stone)}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:white;border:1.5px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:100;max-height:240px;overflow-y:auto;display:none}
+.dropdown.open{display:block}
+.dropdown-item{padding:11px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:0.9rem;transition:background 0.1s;border-bottom:1px solid var(--border)}
+.dropdown-item:last-child{border-bottom:none}
+.dropdown-item:hover{background:var(--sage-l)}
+.dropdown-item .di-emoji{font-size:1.2rem;flex-shrink:0}
+.dropdown-item .di-name{font-weight:700;color:var(--text)}
+.dropdown-item .di-type{font-size:0.72rem;color:var(--text3);margin-left:auto;text-transform:uppercase;letter-spacing:0.4px}
+
+/* SELECTED PLANT CHIPS */
+.selected-plants{display:flex;flex-wrap:wrap;gap:8px;min-height:40px;align-items:center}
+.selected-label{font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:8px}
+.plant-chip{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;background:var(--soil);color:white;font-size:0.85rem;font-weight:700;border:none;cursor:default}
+.plant-chip .pc-emoji{font-size:1rem}
+.plant-chip .pc-remove{margin-left:4px;opacity:0.6;cursor:pointer;font-size:1rem;transition:opacity 0.15s;background:none;border:none;color:white;padding:0;font-family:inherit}
+.plant-chip .pc-remove:hover{opacity:1}
+.empty-chips{font-size:0.85rem;color:var(--stone);font-style:italic}
+
+/* BROWSE GRID */
+.browse-wrap{margin-bottom:28px}
+.browse-label{font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:10px}
+.type-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.type-tab{padding:6px 14px;border-radius:100px;font-size:0.78rem;font-weight:700;border:1.5px solid var(--border2);color:var(--text3);transition:all 0.15s;background:var(--parchment)}
+.type-tab:hover{border-color:var(--bark);color:var(--text2)}
+.type-tab.active{background:var(--soil);border-color:var(--soil);color:white}
+.browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.browse-btn{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:12px 10px;text-align:center;cursor:pointer;
+  transition:all 0.15s;box-shadow:var(--shadow);
+}
+.browse-btn:hover{border-color:var(--moss-l);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.browse-btn.selected{background:var(--sage-l);border-color:var(--moss);box-shadow:var(--shadow-lg)}
+.browse-btn .bb-emoji{font-size:1.5rem;display:block;margin-bottom:4px}
+.browse-btn .bb-name{font-size:0.75rem;font-weight:700;color:var(--text);line-height:1.3}
+
+/* RESULTS */
+.results-section{animation:fadeUp 0.3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.results-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--text)}
+.results-subtitle{font-size:0.85rem;color:var(--text3);margin-top:2px}
+
+/* COMPATIBILITY MATRIX (2 plants selected) */
+.compat-card{
+  border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:16px;
+  display:flex;align-items:flex-start;gap:16px;
+  box-shadow:var(--shadow-lg);border:1.5px solid;
+  animation:fadeUp 0.25s ease both;
+}
+.compat-card.good{background:var(--good-l);border-color:var(--good-border)}
+.compat-card.bad{background:var(--bad-l);border-color:var(--bad-border)}
+.compat-card.neutral{background:var(--neutral-l);border-color:var(--neutral-border)}
+.compat-icon{font-size:2.2rem;flex-shrink:0;margin-top:2px}
+.compat-body{}
+.compat-verdict{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.compat-card.good .compat-verdict{color:var(--good)}
+.compat-card.bad .compat-verdict{color:var(--bad)}
+.compat-card.neutral .compat-verdict{color:var(--neutral)}
+.compat-reason{font-size:0.87rem;line-height:1.65;color:var(--text2)}
+
+/* FRIEND/FOE COLUMNS */
+.ff-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.ff-section{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+.ff-header{padding:14px 18px;display:flex;align-items:center;gap:8px}
+.ff-section.friends .ff-header{background:var(--good-l);border-bottom:1.5px solid var(--good-border)}
+.ff-section.foes .ff-header{background:var(--bad-l);border-bottom:1.5px solid var(--bad-border)}
+.ff-header-icon{font-size:1.2rem}
+.ff-header-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700}
+.ff-section.friends .ff-header-title{color:var(--good)}
+.ff-section.foes .ff-header-title{color:var(--bad)}
+.ff-header-count{margin-left:auto;font-size:0.72rem;font-weight:700;padding:2px 8px;border-radius:100px}
+.ff-section.friends .ff-header-count{background:var(--good);color:white}
+.ff-section.foes .ff-header-count{background:var(--bad);color:white}
+.ff-list{background:white;border:1.5px solid var(--border)}
+.ff-item{padding:11px 16px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--border);transition:background 0.1s}
+.ff-item:last-child{border-bottom:none}
+.ff-item:hover{background:var(--parchment)}
+.ff-item-emoji{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.ff-item-body{}
+.ff-item-name{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.ff-item-reason{font-size:0.75rem;color:var(--text3);line-height:1.5}
+.ff-empty{padding:16px;text-align:center;font-size:0.82rem;color:var(--stone);font-style:italic;background:white;border:1.5px solid var(--border)}
+
+/* NEUTRAL LIST */
+.neutral-section{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow)}
+.neutral-header{padding:12px 18px;background:var(--neutral-l);border-bottom:1px solid var(--neutral-border);display:flex;align-items:center;gap:8px}
+.neutral-header-title{font-size:0.82rem;font-weight:700;color:var(--neutral)}
+.neutral-pills{padding:12px 16px;display:flex;flex-wrap:wrap;gap:6px}
+.neutral-pill{font-size:0.78rem;font-weight:700;padding:4px 12px;border-radius:100px;background:var(--neutral-l);color:var(--neutral);border:1px solid var(--neutral-border)}
+
+/* TIPS SECTION */
+.tips-section{background:var(--amber-ll);border:1.5px solid var(--amber-l);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:14px}
+.tips-title{font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--amber);margin-bottom:10px}
+.tips-list{display:flex;flex-direction:column;gap:7px}
+.tip-row{display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;color:var(--text2);line-height:1.55}
+.tip-icon{flex-shrink:0;font-size:1rem;margin-top:1px}
+
+/* EMPTY / PROMPT */
+.prompt-box{text-align:center;padding:48px 20px;background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.prompt-box .pb-icon{font-size:3rem;display:block;margin-bottom:12px;opacity:0.35}
+.prompt-box h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--text2);margin-bottom:6px}
+.prompt-box p{font-size:0.85rem;color:var(--text3);line-height:1.6}
+
+/* FOOTER */
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
+
+@media(max-width:640px){
+  .ff-grid{grid-template-columns:1fr}
+  .browse-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">🤝 Companion Planting</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="intro-banner">
+    <div class="intro-emoji">🤝</div>
+    <div class="intro-text">
+      <h2>What grows well together?</h2>
+      <p>Search for any plant to see its best companions and worst neighbours — with the reason why. Select two plants to check if they're compatible with each other.</p>
+    </div>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="search-panel">
+    <h3>🔍 Select one or two plants to check</h3>
+    <div class="plant-search-wrap">
+      <input class="plant-search" id="plantSearch" type="text" placeholder="Search for a plant — e.g. tomatoes, carrots, basil…" autocomplete="off" oninput="onSearch()" onfocus="onSearch()">
+      <div class="dropdown" id="dropdown"></div>
+    </div>
+    <div class="selected-label">Selected plants</div>
+    <div class="selected-plants" id="selectedPlants">
+      <span class="empty-chips">No plants selected yet — search above or browse below</span>
+    </div>
+  </div>
+
+  <!-- BROWSE -->
+  <div class="browse-wrap">
+    <div class="browse-label">Or browse by type</div>
+    <div class="type-tabs">
+      <button class="type-tab active" data-t="all" onclick="setTab(this,'all')">All</button>
+      <button class="type-tab" data-t="veg" onclick="setTab(this,'veg')">🥦 Veg</button>
+      <button class="type-tab" data-t="fruit" onclick="setTab(this,'fruit')">🍓 Fruit</button>
+      <button class="type-tab" data-t="herb" onclick="setTab(this,'herb')">🌿 Herbs</button>
+      <button class="type-tab" data-t="flowers" onclick="setTab(this,'flowers')">🌸 Flowers</button>
+    </div>
+    <div class="browse-grid" id="browseGrid"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="resultsArea"></div>
+
+</main>
+
+<footer class="site-footer">
+  GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+// companions: array of { plant, reason } — good companions
+// foes:       array of { plant, reason } — bad neighbours
+// tips:       general growing tips relevant to companion planting
+
+const PLANTS = [
+  {id:'tomatoes', name:'Tomatoes', emoji:'🍅', type:'veg',
+   companions:[
+     {plant:'basil',      reason:'Repels aphids, whitefly and spider mites. Many gardeners swear it improves the flavour of tomatoes too.'},
+     {plant:'marigolds',  reason:'French marigolds deter whitefly and nematodes. Plant densely around the base of tomato plants.'},
+     {plant:'parsley',    reason:'Attracts predatory insects that prey on aphids and other tomato pests.'},
+     {plant:'carrots',    reason:'Carrots loosen the soil around tomato roots, improving drainage and aeration.'},
+     {plant:'borage',     reason:'Repels tomato hornworm and attracts pollinators. Also said to improve tomato growth and flavour.'},
+     {plant:'nasturtiums',reason:'Act as a trap crop — aphids prefer nasturtiums, drawing them away from tomatoes.'},
+     {plant:'garlic',     reason:'Repels spider mites and aphids. Plant at the base of tomato plants.'},
+     {plant:'asparagus',  reason:'Tomatoes repel asparagus beetles. In return, asparagus releases a chemical that deters root nematodes harmful to tomatoes.'},
+   ],
+   foes:[
+     {plant:'fennel',     reason:'Fennel is allelopathic — it releases chemicals that inhibit the growth of tomatoes and most other plants.'},
+     {plant:'brassicas',  reason:'Brassicas and tomatoes compete for the same nutrients and can stunt each other\'s growth.'},
+     {plant:'potatoes',   reason:'Both are in the same family and share diseases — especially blight. Keep them well apart.'},
+     {plant:'corn',       reason:'Both attract the same caterpillar pests. Growing together concentrates the problem.'},
+   ],
+   tips:['Plant basil and marigolds densely around tomatoes for a natural pest barrier','Never grow tomatoes where potatoes have been the previous year','Rotate tomato beds every 3–4 years to prevent soil-borne disease buildup']},
+
+  {id:'carrots', name:'Carrots', emoji:'🥕', type:'veg',
+   companions:[
+     {plant:'onions',     reason:'Onion scent confuses and deters carrot fly. One of the most reliable companion planting combinations.'},
+     {plant:'leeks',      reason:'Leeks repel carrot fly; carrots repel leek moth. A classic mutually beneficial pairing.'},
+     {plant:'rosemary',   reason:'The strong aromatic scent of rosemary confuses carrot fly, reducing egg-laying near crops.'},
+     {plant:'sage',       reason:'Strong scent masks carrots from carrot fly. Grow in alternating rows for best effect.'},
+     {plant:'tomatoes',   reason:'Tomatoes shade the soil, retaining moisture. Carrots loosen the soil around tomato roots.'},
+     {plant:'lettuce',    reason:'Lettuce fills gaps between carrot rows, suppressing weeds and retaining moisture.'},
+     {plant:'chives',     reason:'Chive scent deters carrot fly and aphids. A low-growing companion that doesn\'t shade the crop.'},
+   ],
+   foes:[
+     {plant:'dill',       reason:'Dill can cross-pollinate with carrots, and mature dill plants inhibit carrot growth.'},
+     {plant:'parsnips',   reason:'Both are in the same family and attract the same pests. Growing together concentrates problems.'},
+     {plant:'beets',      reason:'Beets and carrots compete strongly for the same soil nutrients when grown side by side.'},
+   ],
+   tips:['Interplant rows of carrots with rows of onions or chives for reliable carrot fly protection','Aromatic herbs are your best friends for carrots — the stronger the scent, the better','Avoid sowing near other umbellifers (parsnips, parsley, fennel) which share pests']},
+
+  {id:'brassicas', name:'Brassicas', emoji:'🥦', type:'veg',
+   companions:[
+     {plant:'nasturtiums', reason:'Act as a trap crop, luring aphids and caterpillars away from brassicas. Sacrifice the nasturtiums, save the cabbages.'},
+     {plant:'marigolds',   reason:'Repel cabbage white butterflies and other brassica pests with their scent.'},
+     {plant:'dill',        reason:'Attracts beneficial wasps that parasitise cabbage white caterpillars.'},
+     {plant:'thyme',       reason:'Strong scent deters cabbage white butterflies from landing and laying eggs.'},
+     {plant:'celery',      reason:'Said to repel the cabbage white butterfly. Grow around the edge of brassica beds.'},
+     {plant:'onions',      reason:'Strong allium scent confuses brassica pests. Good general companion for the brassica bed.'},
+   ],
+   foes:[
+     {plant:'tomatoes',    reason:'Both heavy feeders that compete for nutrients. Brassicas also suppress tomato growth.'},
+     {plant:'strawberries',reason:'Strawberries inhibit the growth of brassicas when grown in close proximity.'},
+     {plant:'fennel',      reason:'Fennel inhibits almost all brassica growth — keep well away.'},
+     {plant:'beans',       reason:'Climbing beans shade brassicas and compete for nutrients. Dwarf beans are slightly more tolerant.'},
+   ],
+   tips:['Net brassicas against cabbage white butterfly — companion planting helps but netting is the only certain protection','Rotate brassicas every 3–4 years minimum to prevent clubroot buildup in the soil','Interplant with nasturtiums as a sacrificial trap crop for aphids and caterpillars']},
+
+  {id:'beans', name:'Beans & Peas', emoji:'🫘', type:'veg',
+   companions:[
+     {plant:'carrots',     reason:'Beans fix nitrogen into the soil which benefits carrot growth. Carrots don\'t compete for the same nutrients.'},
+     {plant:'squash',      reason:'The classic "Three Sisters" combination. Squash leaves shade the ground, retaining moisture for bean roots.'},
+     {plant:'corn',        reason:'The "Three Sisters" trio — beans fix nitrogen for corn, corn provides a climbing frame for beans.'},
+     {plant:'cucumbers',   reason:'Both benefit from similar growing conditions. Beans fix nitrogen that cucumbers appreciate.'},
+     {plant:'nasturtiums', reason:'Attract aphids away from beans as a trap crop. Plant around the edges of bean beds.'},
+     {plant:'rosemary',    reason:'Rosemary repels bean beetles and is a reliable aromatic companion.'},
+     {plant:'marigolds',   reason:'Deter aphids and bean beetles. Plant at the base of climbing bean frames.'},
+   ],
+   foes:[
+     {plant:'onions',      reason:'Onions and garlic inhibit bean growth — allium chemicals are harmful to legumes. Keep well separated.'},
+     {plant:'garlic',      reason:'Garlic inhibits bean root development. One of the most well-documented bad combinations.'},
+     {plant:'fennel',      reason:'Fennel inhibits the growth of most vegetables, beans included.'},
+     {plant:'brassicas',   reason:'Brassicas are heavy feeders that compete with beans, and their allelopathic compounds inhibit legume growth.'},
+   ],
+   tips:['Never plant beans near any alliums — this is one of the most reliably documented bad pairings','After beans and peas finish, dig the roots into the soil — they fix nitrogen that benefits the next crop','The Three Sisters (beans, corn, squash) is one of the most productive traditional combinations']},
+
+  {id:'onions', name:'Onions & Garlic', emoji:'🧅', type:'veg',
+   companions:[
+     {plant:'carrots',     reason:'The most classic companion pair — each deters the other\'s main pest. Plant in alternating rows.'},
+     {plant:'beets',       reason:'Onions deter beet leaf miners. Beets don\'t compete with the shallow onion root system.'},
+     {plant:'lettuce',     reason:'Onions deter slugs and aphids that attack lettuce. Lettuce fills gaps and suppresses weeds.'},
+     {plant:'tomatoes',    reason:'Garlic especially is excellent with tomatoes — repels spider mites, aphids, and other pests.'},
+     {plant:'chamomile',   reason:'Said to improve the growth and flavour of onions. A traditional cottage garden pairing.'},
+     {plant:'roses',       reason:'Garlic planted at the base of roses reliably deters aphids and black spot fungus.'},
+   ],
+   foes:[
+     {plant:'beans',       reason:'Allium chemicals strongly inhibit bean root development and nitrogen fixation.'},
+     {plant:'peas',        reason:'Same issue as beans — alliums inhibit legume growth. Keep onions away from all legumes.'},
+     {plant:'sage',        reason:'Sage and onions compete and mutually inhibit each other\'s growth.'},
+     {plant:'asparagus',   reason:'Onions and garlic inhibit asparagus root development. Keep separated in the garden.'},
+   ],
+   tips:['Plant garlic at the base of roses every autumn to deter aphids the following spring','Interplant alternating rows of onions and carrots for reliable protection against both carrot fly and onion fly','Keep all alliums away from legumes — this is one of the most important companion planting rules']},
+
+  {id:'lettuce', name:'Lettuce & Salads', emoji:'🥬', type:'veg',
+   companions:[
+     {plant:'carrots',     reason:'Carrots grow deep without competing with shallow-rooted lettuce. Good use of vertical space.'},
+     {plant:'radishes',    reason:'Radishes grow and are harvested quickly, freeing up space for lettuce to spread. Also deter flea beetles.'},
+     {plant:'strawberries',reason:'Lettuce fills the bare ground between strawberry plants, suppressing weeds and retaining moisture.'},
+     {plant:'chives',      reason:'Chives deter aphids — one of the worst lettuce pests — and grow compactly without shading.'},
+     {plant:'nasturtiums', reason:'Act as a trap crop for aphids, drawing them away from lettuce.'},
+     {plant:'marigolds',   reason:'Deter aphids and slugs — two of the biggest lettuce problems.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits lettuce growth. Its allelopathic root chemicals affect most salad crops.'},
+     {plant:'parsley',     reason:'Parsley and lettuce compete, and parsley can inhibit lettuce germination when grown too closely.'},
+     {plant:'celery',      reason:'Celery releases chemicals that can inhibit lettuce growth when planted very close together.'},
+   ],
+   tips:['Plant chives around the edge of lettuce beds as a reliable aphid deterrent','Succession sow lettuce between slower crops — it\'s harvested before the main crop needs the space','Use cut-and-come-again varieties to maximise yield from a small companion planting bed']},
+
+  {id:'potatoes', name:'Potatoes', emoji:'🥔', type:'veg',
+   companions:[
+     {plant:'horseradish', reason:'Traditionally planted at the corners of potato beds to repel Colorado beetle and improve disease resistance.'},
+     {plant:'nasturtiums', reason:'Attract aphids away from potato foliage. Good trap crop planted around the potato patch.'},
+     {plant:'marigolds',   reason:'Repel nematodes in the soil — a serious potato pest. Plant French marigolds densely.'},
+     {plant:'beans',       reason:'Beans fix nitrogen which benefits potato growth, and the two crops don\'t compete significantly.'},
+     {plant:'sweetcorn',   reason:'Sweetcorn grows tall and doesn\'t compete with the potato root system. Different soil layers used.'},
+   ],
+   foes:[
+     {plant:'tomatoes',    reason:'Same family, same diseases — especially blight. Never grow together or in the same bed consecutively.'},
+     {plant:'fennel',      reason:'Fennel inhibits potato growth through allelopathic root chemicals.'},
+     {plant:'cucumbers',   reason:'Cucumbers are said to encourage potato blight. Keep well separated.'},
+     {plant:'sunflowers',  reason:'Sunflowers inhibit potato growth — their root secretions are harmful to potato development.'},
+     {plant:'raspberries', reason:'Both share similar soil-borne diseases. Don\'t plant potatoes near established raspberry canes.'},
+   ],
+   tips:['Rotate potatoes on at least a 3-year cycle — ideally 4 — to prevent blight and eelworm buildup','French marigolds planted densely are one of the best natural nematode deterrents for potato beds','Never follow tomatoes with potatoes or vice versa — they share too many diseases']},
+
+  {id:'squash', name:'Squash & Courgettes', emoji:'🎃', type:'veg',
+   companions:[
+     {plant:'corn',        reason:'The Three Sisters — corn provides height while squash leaves shade the ground, reducing water loss.'},
+     {plant:'beans',       reason:'Beans fix nitrogen that feeds the hungry squash. Squash leaves suppress weeds between bean rows.'},
+     {plant:'nasturtiums', reason:'Trap crop for aphids and squash bugs. Plant nasturtiums around the edges of the squash patch.'},
+     {plant:'marigolds',   reason:'Deter squash vine borers and nematodes. Plant at the base and around the patch.'},
+     {plant:'borage',      reason:'Deters squash pests and attracts pollinators — important for good courgette fruit set.'},
+   ],
+   foes:[
+     {plant:'potatoes',    reason:'Both are heavy feeders that compete for nutrients. Potatoes can also encourage squash disease.'},
+     {plant:'fennel',      reason:'Fennel inhibits squash growth. Keep fennel isolated from all vegetables.'},
+     {plant:'brassicas',   reason:'Compete heavily for nutrients and space. Brassicas can shade out sprawling squash.'},
+   ],
+   tips:['Borage is one of the best squash companions — plant a few nearby to improve pollination','The Three Sisters planting works best in a large space — at least 1.5m x 1.5m per group','Hand-pollinate courgettes in cool weather if poor fruit set — use a soft brush between male and female flowers']},
+
+  {id:'corn', name:'Sweetcorn', emoji:'🌽', type:'veg',
+   companions:[
+     {plant:'beans',       reason:'Beans fix nitrogen for corn. Corn provides a climbing frame for beans. A classic Three Sisters pairing.'},
+     {plant:'squash',      reason:'Squash leaves shade soil, reducing moisture loss and suppressing weeds around corn roots.'},
+     {plant:'cucumbers',   reason:'Cucumbers can be trained up corn stalks and the two crops use different soil levels.'},
+     {plant:'marigolds',   reason:'Deter corn aphids and attract predatory insects to the corn patch.'},
+     {plant:'sunflowers',  reason:'Attract pollinators and beneficial insects. Plant on the south side so they don\'t shade the corn.'},
+   ],
+   foes:[
+     {plant:'tomatoes',    reason:'Both attract similar caterpillar pests. Growing together concentrates the problem significantly.'},
+     {plant:'fennel',      reason:'Fennel inhibits corn growth — keep isolated from all vegetables.'},
+     {plant:'beets',       reason:'Beets and corn compete for the same nutrients and are said to inhibit each other\'s growth.'},
+   ],
+   tips:['Plant corn in a square block rather than a row for good wind pollination','The Three Sisters (corn, beans, squash) works best with a traditional planting layout — look it up before planning','Grow in a sheltered sunny spot — corn needs warmth and struggles in exposed, cool UK gardens']},
+
+  {id:'cucumbers', name:'Cucumbers', emoji:'🥒', type:'veg',
+   companions:[
+     {plant:'beans',       reason:'Beans fix nitrogen that cucumbers appreciate. Both prefer similar warm, moist growing conditions.'},
+     {plant:'nasturtiums', reason:'Act as a trap crop for aphids and cucumber beetles. Plant around the base.'},
+     {plant:'marigolds',   reason:'Deter cucumber beetles and nematodes. Plant French marigolds thickly around cucumber plants.'},
+     {plant:'dill',        reason:'Attracts beneficial insects including predatory wasps and hoverflies that control cucumber pests.'},
+     {plant:'sunflowers',  reason:'Provide shade for cucumbers in the hottest part of the day, reducing stress and mildew.'},
+   ],
+   foes:[
+     {plant:'potatoes',    reason:'Cucumbers are said to encourage potato blight. Keep the two crops well separated.'},
+     {plant:'sage',        reason:'Sage is thought to inhibit cucumber growth when planted in close proximity.'},
+     {plant:'fennel',      reason:'Fennel inhibits the growth of cucumbers as it does most vegetables.'},
+     {plant:'brassicas',   reason:'Compete for nutrients and attract different pests that can spread between the crops.'},
+   ],
+   tips:['Grow cucumbers with nasturtiums and marigolds for reliable aphid and beetle deterrence','Cucumbers need consistent watering — companions that retain soil moisture (like squash) are particularly useful','Train climbing cucumbers up supports to save space and improve airflow, reducing mildew']},
+
+  {id:'spinach', name:'Spinach & Chard', emoji:'🌿', type:'veg',
+   companions:[
+     {plant:'strawberries',reason:'Spinach acts as a living mulch under strawberries, suppressing weeds and retaining moisture.'},
+     {plant:'peas',        reason:'Peas fix nitrogen that spinach appreciates as a leafy green. Both prefer cool conditions.'},
+     {plant:'lettuce',     reason:'Both are cool-season crops that can be succession-sown together to maximise bed productivity.'},
+     {plant:'beans',       reason:'Beans fix nitrogen and provide light shade in summer — spinach tolerates and benefits from both.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits spinach growth as it does most vegetables.'},
+     {plant:'beets',       reason:'Both are in the same family and compete for the same nutrients. They can also cross-pollinate.'},
+   ],
+   tips:['Spinach does well in the shade of taller crops in summer, slowing bolting','Grow under peas and beans to maximise nitrogen availability','Sow spinach under sweetcorn or tall beans for a second crop from the same space']},
+
+  {id:'beets', name:'Beetroot', emoji:'🟣', type:'veg',
+   companions:[
+     {plant:'onions',      reason:'Onions deter beet leaf miners. A reliable and easy pairing for the allotment.'},
+     {plant:'lettuce',     reason:'Lettuce fills gaps between beetroot plants, suppressing weeds without competing for nutrients.'},
+     {plant:'brassicas',   reason:'Beets add minerals to the soil that benefit brassicas, and their deep roots don\'t compete with brassica surface roots.'},
+     {plant:'kohlrabi',    reason:'Traditional companion — beets and kohlrabi are said to actively benefit each other\'s growth.'},
+     {plant:'marigolds',   reason:'Deter aphids and soil nematodes that attack beetroot.'},
+   ],
+   foes:[
+     {plant:'beans',       reason:'Beans and beets compete strongly, and field beans in particular are said to inhibit beet growth.'},
+     {plant:'spinach',     reason:'Same family — both are chenopods. They compete for nutrients and can cross-pollinate if allowed to flower.'},
+     {plant:'corn',        reason:'Corn and beets compete for nutrients and are said to inhibit each other\'s growth.'},
+   ],
+   tips:['Beetroot is one of the easiest companion planting subjects — it gets on well with most crops','Plant between brassica rows to make use of space and improve soil mineral content','Each beetroot "seed" is a cluster — thin to one seedling to give full-sized roots']},
+
+  // HERBS
+  {id:'basil', name:'Basil', emoji:'🌿', type:'herb',
+   companions:[
+     {plant:'tomatoes',    reason:'The most famous companion planting pair. Basil repels aphids, whitefly, and spider mites near tomatoes.'},
+     {plant:'peppers',     reason:'Basil repels aphids and spider mites that attack peppers. Both enjoy the same warm, sunny conditions.'},
+     {plant:'asparagus',   reason:'Basil repels asparagus beetles. The two crops grow well together in terms of space and conditions.'},
+     {plant:'marigolds',   reason:'Both have strong scents that together create a powerful pest-deterrent zone.'},
+   ],
+   foes:[
+     {plant:'sage',        reason:'Sage and basil compete and are said to inhibit each other\'s growth when planted very closely.'},
+     {plant:'fennel',      reason:'Fennel inhibits basil as it does most plants.'},
+     {plant:'thyme',       reason:'Thyme and basil have different water requirements — thyme prefers dry, basil needs moisture. They compete.'},
+   ],
+   tips:['Plant basil inside the greenhouse or polytunnel with tomatoes for maximum effect','Pinch out basil flowers regularly to keep plants productive and prevent them bolting','A pot of basil near greenhouse vents is an excellent whitefly deterrent']},
+
+  {id:'chives', name:'Chives', emoji:'💜', type:'herb',
+   companions:[
+     {plant:'carrots',     reason:'Chive scent deters carrot fly — a reliable and low-maintenance companion.'},
+     {plant:'tomatoes',    reason:'Repel aphids, spider mites, and other tomato pests. Easy to interplant around the base.'},
+     {plant:'roses',       reason:'Chives planted at the base of roses help deter aphids and are said to prevent black spot.'},
+     {plant:'lettuce',     reason:'Deter aphids and slugs — two of the worst salad pests.'},
+     {plant:'cucumbers',   reason:'Repel aphids and cucumber beetles. A compact companion that doesn\'t compete for space.'},
+   ],
+   foes:[
+     {plant:'beans',       reason:'As alliums, chives inhibit bean root development and nitrogen fixation.'},
+     {plant:'peas',        reason:'Same as beans — all alliums inhibit legume growth.'},
+   ],
+   tips:['Chives are perennial and can be left in the same spot year after year','Allow some plants to flower — the purple blooms are beautiful and attract beneficial insects','Divide clumps every 3 years to keep plants vigorous']},
+
+  {id:'marigolds', name:'Marigolds', emoji:'🌼', type:'herb',
+   companions:[
+     {plant:'tomatoes',    reason:'Deter whitefly, aphids, and root nematodes. Plant densely around the base of every tomato plant.'},
+     {plant:'brassicas',   reason:'Repel cabbage white butterflies and aphids. Plant around the perimeter of brassica beds.'},
+     {plant:'beans',       reason:'Deter bean beetles and aphids. A reliable companion for all types of beans.'},
+     {plant:'cucumbers',   reason:'Repel cucumber beetles and nematodes. Plant French marigolds thickly nearby.'},
+     {plant:'squash',      reason:'Deter squash vine borers and nematodes in the soil.'},
+     {plant:'roses',       reason:'French marigolds near roses deter aphids and are said to improve soil health.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits marigold growth as it does with almost every plant.'},
+   ],
+   tips:['French marigolds (Tagetes patula) are far more effective for companion planting than African marigolds','Plant densely — a few scattered marigolds have much less effect than a thick planting','For maximum nematode control in the soil, plant a whole bed of marigolds as a green manure and dig in before flowering']},
+
+  {id:'rosemary', name:'Rosemary', emoji:'🌿', type:'herb',
+   companions:[
+     {plant:'brassicas',   reason:'Strong scent deters cabbage white butterflies from landing on brassica leaves.'},
+     {plant:'carrots',     reason:'Aromatic scent confuses carrot fly, reducing egg-laying near crops.'},
+     {plant:'beans',       reason:'Repels bean beetles. A reliable aromatic companion for the vegetable garden.'},
+     {plant:'sage',        reason:'Rosemary and sage are excellent companions — they share growing requirements and repel similar pests.'},
+   ],
+   foes:[
+     {plant:'cucumbers',   reason:'Rosemary doesn\'t pair well with cucumbers — different water requirements cause competition.'},
+     {plant:'pumpkins',    reason:'Pumpkins spread widely and can overwhelm rosemary, plus their water needs conflict.'},
+   ],
+   tips:['Rosemary is perennial and becomes an increasingly effective companion plant as it grows larger','Plant at the edge of brassica and carrot beds for year-round protection','Prune regularly to keep bushy and productive — straggly rosemary is less effective as a companion']},
+
+  {id:'dill', name:'Dill', emoji:'🌿', type:'herb',
+   companions:[
+     {plant:'brassicas',   reason:'Attracts beneficial wasps that parasitise cabbage white caterpillars. An excellent brassica companion.'},
+     {plant:'cucumbers',   reason:'Attracts beneficial insects that prey on cucumber pests. The two grow well together.'},
+     {plant:'lettuce',     reason:'Attracts hoverflies and other beneficials. Light and airy — doesn\'t shade lettuce significantly.'},
+     {plant:'onions',      reason:'Dill and onions coexist well and dill attracts predatory insects that benefit the whole bed.'},
+   ],
+   foes:[
+     {plant:'tomatoes',    reason:'Young dill improves tomatoes but mature dill inhibits tomato growth. Remove dill before it matures nearby.'},
+     {plant:'carrots',     reason:'Dill cross-pollinates with carrots (same family) and mature dill inhibits carrot growth.'},
+     {plant:'fennel',      reason:'Dill and fennel cross-pollinate easily, creating inferior offspring of both.'},
+   ],
+   tips:['Use young dill as a companion — remove plants before they mature and set seed near carrots or tomatoes','Dill self-seeds freely — let a few plants go to seed and you\'ll have dill forever','The flowers are excellent for attracting hoverflies, lacewings, and parasitic wasps']},
+
+  {id:'fennel', name:'Fennel', emoji:'🌿', type:'herb',
+   companions:[
+     {plant:'dill',        reason:'Fennel and dill are in the same family — however they will cross-pollinate and produce poor offspring. Grow apart if saving seed.'},
+   ],
+   foes:[
+     {plant:'tomatoes',    reason:'Fennel releases allelopathic chemicals that inhibit tomato growth strongly.'},
+     {plant:'beans',       reason:'Fennel inhibits bean growth — one of the most well-documented bad combinations.'},
+     {plant:'brassicas',   reason:'Fennel inhibits brassica growth. Keep well away from the vegetable garden.'},
+     {plant:'potatoes',    reason:'Fennel root chemicals inhibit potato development.'},
+     {plant:'lettuce',     reason:'Fennel inhibits almost all salad crops.'},
+     {plant:'basil',       reason:'Fennel and basil inhibit each other mutually.'},
+   ],
+   tips:['Grow fennel in its own isolated pot or bed — it is genuinely harmful to most garden vegetables','The flowers attract enormous numbers of beneficial insects — worth growing, but keep it isolated','Bronze fennel is ornamental and equally attractive to beneficial insects']},
+
+  {id:'thyme', name:'Thyme', emoji:'🌿', type:'herb',
+   companions:[
+     {plant:'brassicas',   reason:'Strong scent deters cabbage white butterflies and other brassica pests.'},
+     {plant:'strawberries',reason:'Thyme planted between strawberries deters slugs and attracts pollinators.'},
+     {plant:'roses',       reason:'Thyme attracts beneficial insects and its scent deters aphids around rose plants.'},
+     {plant:'tomatoes',    reason:'Repels tomato hornworm. A useful low-growing companion under tomato plants.'},
+   ],
+   foes:[
+     {plant:'basil',       reason:'Thyme is drought-tolerant; basil needs consistent moisture. They compete and one always suffers.'},
+     {plant:'cucumbers',   reason:'Cucumbers need high moisture; thyme prefers dry conditions. Incompatible growing requirements.'},
+   ],
+   tips:['Thyme is perennial and gets better as a companion plant as it establishes','Cut back by half after flowering to keep plants bushy and productive','Works well as an edging plant around strawberry beds or at the front of the brassica patch']},
+
+  {id:'sage', name:'Sage', emoji:'🌿', type:'herb',
+   companions:[
+     {plant:'brassicas',   reason:'Strong aromatic scent deters cabbage white butterflies from laying eggs on brassica leaves.'},
+     {plant:'carrots',     reason:'Sage scent deters carrot fly. Grow in alternating rows or around the plot edges.'},
+     {plant:'rosemary',    reason:'Sage and rosemary share growing conditions and repel similar pests. Excellent companions.'},
+     {plant:'tomatoes',    reason:'Repels various tomato pests with its strong scent.'},
+   ],
+   foes:[
+     {plant:'onions',      reason:'Sage and onions mutually inhibit each other\'s growth.'},
+     {plant:'cucumbers',   reason:'Sage is said to inhibit cucumber growth when planted nearby.'},
+     {plant:'basil',       reason:'Sage and basil are said to compete and inhibit each other when planted in close proximity.'},
+   ],
+   tips:['Sage becomes a more effective companion plant as it matures — established plants are more potent','Cut back after flowering to prevent woodiness','Purple and tricolor sage are ornamental and equally effective as companion plants']},
+
+  // FRUIT & FLOWERS
+  {id:'strawberries', name:'Strawberries', emoji:'🍓', type:'fruit',
+   companions:[
+     {plant:'lettuce',     reason:'Lettuce fills bare ground between strawberry plants, suppressing weeds and retaining moisture.'},
+     {plant:'spinach',     reason:'Acts as a living mulch under strawberries. Both are cool-season crops that work well together.'},
+     {plant:'thyme',       reason:'Thyme deters slugs and attracts pollinators — both critical for a good strawberry crop.'},
+     {plant:'chives',      reason:'Deter aphids and slugs. Plant around the edges of the strawberry bed.'},
+     {plant:'marigolds',   reason:'Deter aphids and nematodes. Plant French marigolds around the edge of the bed.'},
+     {plant:'borage',      reason:'Borage is traditionally grown with strawberries — said to improve flavour and attract pollinators.'},
+   ],
+   foes:[
+     {plant:'brassicas',   reason:'Brassicas inhibit strawberry growth. Keep the brassica bed well away from strawberries.'},
+     {plant:'fennel',      reason:'Fennel\'s allelopathic root chemicals inhibit strawberry plants.'},
+     {plant:'potatoes',    reason:'Both share verticillium wilt disease. Growing together or in rotation spreads the disease.'},
+   ],
+   tips:['Borage is one of the best traditional strawberry companions — plant a few plants within the bed','Use thyme as a slug-deterring ground cover between strawberry rows','Replace strawberry plants every 3 years and never replant in the same spot']},
+
+  {id:'roses', name:'Roses', emoji:'🌹', type:'flowers',
+   companions:[
+     {plant:'garlic',      reason:'Garlic planted at the base of roses reliably deters aphids and is said to help prevent black spot.'},
+     {plant:'chives',      reason:'Same effect as garlic but more ornamental. Attractive purple flowers complement roses beautifully.'},
+     {plant:'marigolds',   reason:'French marigolds near roses deter aphids and improve soil health.'},
+     {plant:'lavender',    reason:'Lavender attracts beneficial insects and deters aphids. A classic and beautiful rose companion.'},
+     {plant:'thyme',       reason:'Attracts pollinators and beneficial insects. Low-growing so doesn\'t compete with roses.'},
+     {plant:'catmint',     reason:'Nepeta planted around roses is a classic RHS-recommended companion — deters aphids and looks wonderful.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel\'s allelopathic chemicals inhibit rose growth.'},
+     {plant:'brassicas',   reason:'Brassicas compete for nutrients and can harbour pests that spread to roses.'},
+   ],
+   tips:['Plant garlic at the base of every rose in autumn — remove in early summer before it competes too much','Chives and catmint are two of the best ornamental rose companions','Avoid planting roses where roses have grown before — "rose replant disease" is a real phenomenon']},
+
+  {id:'lavender', name:'Lavender', emoji:'💜', type:'flowers',
+   companions:[
+     {plant:'roses',       reason:'A classic pairing. Lavender attracts beneficial insects and deters aphids near roses.'},
+     {plant:'brassicas',   reason:'Strong scent deters cabbage white butterflies and other brassica pests.'},
+     {plant:'thyme',       reason:'Lavender and thyme share conditions and together create a powerful aromatic pest barrier.'},
+     {plant:'sage',        reason:'All three Mediterranean herbs together create an excellent pest-deterrent planting.'},
+   ],
+   foes:[
+     {plant:'cucumbers',   reason:'Lavender needs dry conditions; cucumbers need moisture. Incompatible growing requirements.'},
+     {plant:'mint',        reason:'Mint spreads aggressively and will overwhelm lavender. Keep mint in containers.'},
+   ],
+   tips:['Lavender takes 2–3 years to become truly effective as a companion plant','Cut back by a third after flowering — never cut into old brown wood','Use as a permanent edging plant around rose beds or brassica plots for lasting protection']},
+
+  {id:'nasturtiums', name:'Nasturtiums', emoji:'🟠', type:'flowers',
+   companions:[
+     {plant:'tomatoes',    reason:'Act as a trap crop — aphids prefer nasturtiums, drawing them away from tomatoes.'},
+     {plant:'brassicas',   reason:'Lure aphids and caterpillars away as a sacrificial trap crop.'},
+     {plant:'cucumbers',   reason:'Deter cucumber beetles and aphids. Plant around the edge of the cucumber bed.'},
+     {plant:'beans',       reason:'Attract aphids away from beans. Plant at the base of climbing bean frames.'},
+     {plant:'squash',      reason:'Deter squash bugs and aphids. Plant around the perimeter of the squash patch.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits nasturtium growth along with most other plants.'},
+   ],
+   tips:['Let nasturtiums get a little aphid-infested — that\'s the point! They\'re drawing pests away from your crops','Flowers and young leaves are edible with a peppery flavour — great in salads','Sow direct where they\'re to grow — they don\'t like being transplanted']},
+
+  {id:'borage', name:'Borage', emoji:'💙', type:'flowers',
+   companions:[
+     {plant:'tomatoes',    reason:'Deters tomato hornworm and attracts pollinators. Many gardeners say it improves tomato flavour.'},
+     {plant:'strawberries',reason:'Traditional companion — said to improve strawberry flavour and attract pollinators. Plant throughout the bed.'},
+     {plant:'squash',      reason:'Attracts pollinators essential for good squash and courgette fruit set.'},
+     {plant:'brassicas',   reason:'Attracts beneficial insects that prey on cabbage pests.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits borage growth as it does most plants.'},
+   ],
+   tips:['Borage self-seeds prolifically — you\'ll have it forever after the first year','The flowers are edible — use in drinks and salads for a mild cucumber flavour','One of the best all-round companion plants — plant it everywhere']},
+
+  {id:'sunflowers', name:'Sunflowers', emoji:'🌻', type:'flowers',
+   companions:[
+     {plant:'cucumbers',   reason:'Sunflowers provide light afternoon shade for cucumbers in hot weather, reducing stress and mildew.'},
+     {plant:'corn',        reason:'Both benefit from the same conditions. Sunflowers attract pollinators and beneficial insects.'},
+     {plant:'nasturtiums', reason:'Sunflowers attract beneficial insects; nasturtiums act as trap crops. Together they create a productive border.'},
+   ],
+   foes:[
+     {plant:'potatoes',    reason:'Sunflower root secretions are allelopathic to potatoes and inhibit their growth.'},
+     {plant:'beans',       reason:'Sunflower allelopathic chemicals also inhibit bean development.'},
+     {plant:'fennel',      reason:'Fennel inhibits sunflower growth.'},
+   ],
+   tips:['Plant sunflowers on the north or east side of your plot so they don\'t shade other crops','Leave seedheads in autumn for birds — goldfinches in particular love them','Sunflower roots can inhibit many crops — rotate their position each year']},
+];
+
+// Build lookup map
+const PLANT_MAP = {};
+PLANTS.forEach(p => { PLANT_MAP[p.id] = p; });
+
+// Relationship lookup
+function getRelationship(a, b) {
+  // Check if b is in a's companions
+  const aComp = a.companions.find(c => c.plant === b.id);
+  const bComp = b.companions.find(c => c.plant === a.id);
+  const aFoe  = a.foes.find(c => c.plant === b.id);
+  const bFoe  = b.foes.find(c => c.plant === a.id);
+
+  if (aFoe || bFoe) return { type: 'bad', reason: (aFoe || bFoe).reason };
+  if (aComp || bComp) return { type: 'good', reason: (aComp || bComp).reason };
+  return { type: 'neutral', reason: 'No specific companion planting relationship is recorded between these two plants. They can generally be grown near each other without problems.' };
+}
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let selected = []; // max 2
+let browseType = 'all';
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function init() {
+  renderBrowse();
+  renderResults();
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.plant-search-wrap')) {
+      document.getElementById('dropdown').classList.remove('open');
+    }
+  });
+}
+
+function setTab(btn, type) {
+  document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  browseType = type;
+  renderBrowse();
+}
+
+function onSearch() {
+  const val = document.getElementById('plantSearch').value.toLowerCase().trim();
+  const dd = document.getElementById('dropdown');
+  const filtered = PLANTS.filter(p => {
+    const typeOk = browseType === 'all' || p.type === browseType;
+    const searchOk = !val || p.name.toLowerCase().includes(val);
+    return typeOk && searchOk && !selected.find(s => s.id === p.id);
+  });
+
+  if (filtered.length === 0) { dd.classList.remove('open'); return; }
+  dd.innerHTML = filtered.slice(0, 8).map(p =>
+    `<div class="dropdown-item" onclick="selectPlant('${p.id}')">
+      <span class="di-emoji">${p.emoji}</span>
+      <span class="di-name">${p.name}</span>
+      <span class="di-type">${p.type}</span>
+    </div>`).join('');
+  dd.classList.add('open');
+}
+
+function selectPlant(id) {
+  const p = PLANT_MAP[id];
+  if (!p || selected.find(s => s.id === id)) return;
+  if (selected.length >= 2) selected.shift();
+  selected.push(p);
+  document.getElementById('plantSearch').value = '';
+  document.getElementById('dropdown').classList.remove('open');
+  renderSelected();
+  renderBrowse();
+  renderResults();
+  document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function removePlant(id) {
+  selected = selected.filter(p => p.id !== id);
+  renderSelected();
+  renderBrowse();
+  renderResults();
+}
+
+function renderSelected() {
+  const wrap = document.getElementById('selectedPlants');
+  if (selected.length === 0) {
+    wrap.innerHTML = '<span class="empty-chips">No plants selected yet — search above or browse below</span>';
+    return;
+  }
+  wrap.innerHTML = selected.map(p =>
+    `<div class="plant-chip">
+      <span class="pc-emoji">${p.emoji}</span>${p.name}
+      <button class="pc-remove" onclick="removePlant('${p.id}')" title="Remove">✕</button>
+    </div>`).join('');
+}
+
+function renderBrowse() {
+  const grid = document.getElementById('browseGrid');
+  const filtered = PLANTS.filter(p => browseType === 'all' || p.type === browseType);
+  grid.innerHTML = filtered.map(p => {
+    const isSel = selected.find(s => s.id === p.id);
+    return `<button class="browse-btn${isSel ? ' selected' : ''}" onclick="selectPlant('${p.id}')">
+      <span class="bb-emoji">${p.emoji}</span>
+      <span class="bb-name">${p.name}</span>
+    </button>`;
+  }).join('');
+}
+
+function renderResults() {
+  const area = document.getElementById('resultsArea');
+
+  if (selected.length === 0) {
+    area.innerHTML = `<div class="prompt-box">
+      <span class="pb-icon">🌱</span>
+      <h3>Select a plant to get started</h3>
+      <p>Choose one plant to see all its friends and foes, or select two plants to check if they're compatible with each other.</p>
+    </div>`;
+    return;
+  }
+
+  let html = `<div class="results-section">`;
+
+  // TWO PLANTS — show compatibility check first
+  if (selected.length === 2) {
+    const [a, b] = selected;
+    const rel = getRelationship(a, b);
+    const icons = { good: '✅', bad: '❌', neutral: '🤝' };
+    const labels = {
+      good: `${a.name} and ${b.name} are great companions`,
+      bad:  `${a.name} and ${b.name} should be kept apart`,
+      neutral: `${a.name} and ${b.name} are neutral neighbours`,
+    };
+    html += `<div class="results-header">
+      <div>
+        <div class="results-title">${a.emoji} ${a.name} + ${b.emoji} ${b.name}</div>
+        <div class="results-subtitle">Compatibility check</div>
+      </div>
+    </div>
+    <div class="compat-card ${rel.type}">
+      <div class="compat-icon">${icons[rel.type]}</div>
+      <div class="compat-body">
+        <div class="compat-verdict">${labels[rel.type]}</div>
+        <div class="compat-reason">${rel.reason}</div>
+      </div>
+    </div>`;
+  }
+
+  // For each selected plant, show friends & foes
+  selected.forEach(p => {
+    html += `<div class="results-header" style="margin-top:${selected.length === 2 ? '24px' : '0'}">
+      <div>
+        <div class="results-title">${p.emoji} ${p.name}</div>
+        <div class="results-subtitle">Full companion planting guide</div>
+      </div>
+    </div>`;
+
+    // Friends & foes columns
+    const friendsHTML = p.companions.length === 0
+      ? `<div class="ff-empty">No specific companion data recorded</div>`
+      : p.companions.map(c => {
+          const cp = PLANT_MAP[c.plant];
+          if (!cp) return '';
+          return `<div class="ff-item">
+            <span class="ff-item-emoji">${cp.emoji}</span>
+            <div class="ff-item-body">
+              <div class="ff-item-name">${cp.name}</div>
+              <div class="ff-item-reason">${c.reason}</div>
+            </div>
+          </div>`;
+        }).join('');
+
+    const foesHTML = p.foes.length === 0
+      ? `<div class="ff-empty">No specific bad neighbours recorded</div>`
+      : p.foes.map(c => {
+          const cp = PLANT_MAP[c.plant];
+          if (!cp) return '';
+          return `<div class="ff-item">
+            <span class="ff-item-emoji">${cp.emoji}</span>
+            <div class="ff-item-body">
+              <div class="ff-item-name">${cp.name}</div>
+              <div class="ff-item-reason">${c.reason}</div>
+            </div>
+          </div>`;
+        }).join('');
+
+    html += `<div class="ff-grid">
+      <div class="ff-section friends">
+        <div class="ff-header">
+          <span class="ff-header-icon">💚</span>
+          <span class="ff-header-title">Good companions</span>
+          <span class="ff-header-count">${p.companions.length}</span>
+        </div>
+        <div class="ff-list">${friendsHTML}</div>
+      </div>
+      <div class="ff-section foes">
+        <div class="ff-header">
+          <span class="ff-header-icon">❌</span>
+          <span class="ff-header-title">Bad neighbours</span>
+          <span class="ff-header-count">${p.foes.length}</span>
+        </div>
+        <div class="ff-list">${foesHTML}</div>
+      </div>
+    </div>`;
+
+    // Tips
+    if (p.tips && p.tips.length) {
+      html += `<div class="tips-section">
+        <div class="tips-title">💡 Key tips for ${p.name.toLowerCase()}</div>
+        <div class="tips-list">
+          ${p.tips.map(t => `<div class="tip-row"><span class="tip-icon">→</span><span>${t}</span></div>`).join('')}
+        </div>
+      </div>`;
+    }
+  });
+
+  html += `</div>`;
+  area.innerHTML = html;
+}
+
+init();
+</script>
+</body>
+</html>
