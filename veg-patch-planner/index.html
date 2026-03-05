@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veg Patch Planner — GrowGuide</title>
+<meta name="description" content="Plan your raised bed or allotment with a drag-and-drop grid. Companion planting warnings, spacing guides, and printable layouts. Free UK garden tool.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
+  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
+  --sage:#8FAF87;--sage-l:#D4E8D0;
+  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
+  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
+  --rust:#B85C2A;
+  --good:#2E7040;--good-l:#D4EEDC;--good-b:#90C8A0;
+  --warn:#B86010;--warn-l:#FDF0D8;--warn-b:#E8C080;
+  --bad:#A02020;--bad-l:#FDDCDC;--bad-b:#E0A0A0;
+  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
+  --border:#D8C8B0;--border2:#C0A888;
+  --radius:12px;--radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+  /* plant type colours */
+  --c-veg:#4A8A50;--c-veg-l:#D8F0DC;
+  --c-fruit:#C87820;--c-fruit-l:#FDECD0;
+  --c-herb:#7A70C0;--c-herb-l:#E8E4F8;
+  --c-flower:#C05880;--c-flower-l:#F8E0EC;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),
+  radial-gradient(ellipse 600px 500px at 100% 100%,rgba(200,132,42,0.08),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+a{text-decoration:none;color:inherit}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:18px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-icon{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.72rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 16px;font-size:0.8rem;color:var(--moss-ll);font-weight:700;letter-spacing:0.5px}
+
+/* LAYOUT */
+.app-wrap{max-width:1100px;margin:0 auto;padding:24px 20px 60px;position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start}
+@media(max-width:860px){.app-wrap{grid-template-columns:1fr}}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:14px;position:sticky;top:20px}
+.panel{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+.panel-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.panel-head h3{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text)}
+.panel-body{padding:14px 16px}
+
+/* SETTINGS */
+.setting-row{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.setting-row:last-child{margin-bottom:0}
+.setting-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3)}
+.setting-select,.setting-input{
+  padding:9px 12px;border-radius:8px;border:1.5px solid var(--border2);
+  font-family:'Lato',sans-serif;font-size:0.88rem;color:var(--text);
+  background:var(--parchment);outline:none;transition:border-color 0.2s;width:100%;
+}
+.setting-select:focus,.setting-input:focus{border-color:var(--moss)}
+.size-row{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center}
+.size-x{font-size:0.8rem;font-weight:700;color:var(--text3);text-align:center}
+.btn-apply{width:100%;padding:10px;border-radius:8px;background:var(--moss);color:white;font-weight:700;font-size:0.88rem;transition:background 0.15s;margin-top:4px}
+.btn-apply:hover{background:var(--moss-d)}
+
+/* PLANT PALETTE */
+.type-tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.type-tab{padding:5px 10px;border-radius:100px;font-size:0.72rem;font-weight:700;border:1.5px solid var(--border2);color:var(--text3);transition:all 0.15s}
+.type-tab:hover{border-color:var(--bark);color:var(--text2)}
+.type-tab.active{background:var(--soil);border-color:var(--soil);color:white}
+.palette-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;max-height:300px;overflow-y:auto}
+.palette-item{
+  display:flex;align-items:center;gap:7px;padding:8px 10px;
+  border-radius:8px;border:1.5px solid var(--border);cursor:grab;
+  background:white;transition:all 0.15s;
+}
+.palette-item:hover{border-color:var(--border2);box-shadow:var(--shadow);transform:translateY(-1px)}
+.palette-item.dragging{opacity:0.5;cursor:grabbing}
+.palette-item.active-sel{border-color:var(--moss);background:var(--sage-l);box-shadow:var(--shadow)}
+.pi-emoji{font-size:1.1rem;flex-shrink:0}
+.pi-info{overflow:hidden}
+.pi-name{font-size:0.72rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pi-space{font-size:0.62rem;color:var(--text3)}
+.pi-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-left:auto}
+
+/* LEGEND */
+.legend-items{display:flex;flex-direction:column;gap:5px}
+.leg-row{display:flex;align-items:center;gap:8px;font-size:0.78rem;color:var(--text2)}
+.leg-dot{width:14px;height:14px;border-radius:4px;flex-shrink:0}
+
+/* MAIN AREA */
+.main-area{display:flex;flex-direction:column;gap:16px}
+
+/* TOOLBAR */
+.toolbar{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:12px 16px;box-shadow:var(--shadow);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tool-btn{padding:8px 14px;border-radius:8px;font-size:0.8rem;font-weight:700;border:1.5px solid var(--border2);color:var(--text2);transition:all 0.15s;display:flex;align-items:center;gap:6px}
+.tool-btn:hover{border-color:var(--bark);background:var(--cream2)}
+.tool-btn.danger{border-color:var(--bad-b);color:var(--bad)}
+.tool-btn.danger:hover{background:var(--bad-l)}
+.tool-btn.primary{background:var(--moss);border-color:var(--moss);color:white}
+.tool-btn.primary:hover{background:var(--moss-d)}
+.mode-indicator{margin-left:auto;font-size:0.75rem;color:var(--text3);font-style:italic;font-weight:400}
+
+/* GRID AREA */
+.grid-wrap{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow);overflow:auto}
+.grid-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.grid-sublabel{font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:var(--stone)}
+
+/* THE GRID */
+.patch-grid{display:inline-grid;gap:3px;border:2px solid var(--bark);border-radius:8px;padding:6px;background:var(--cream2);user-select:none}
+.patch-cell{
+  width:60px;height:60px;border-radius:6px;
+  border:1.5px solid rgba(0,0,0,0.08);
+  background:white;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;transition:all 0.12s;
+  position:relative;overflow:hidden;
+  font-size:1.4rem;
+}
+.patch-cell:hover{border-color:var(--moss-l);box-shadow:0 2px 8px rgba(74,103,65,0.2)}
+.patch-cell.drag-over{border-color:var(--moss);background:var(--sage-l);box-shadow:inset 0 0 0 2px var(--moss)}
+.patch-cell.occupied{cursor:pointer}
+.patch-cell.has-warn{box-shadow:inset 0 0 0 2px var(--warn);}
+.patch-cell.has-warn::after{content:'⚠️';position:absolute;top:2px;right:2px;font-size:0.55rem;line-height:1}
+.cell-label{font-size:0.5rem;font-weight:700;color:var(--text2);text-align:center;line-height:1.2;padding:0 2px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* row mode */
+.patch-grid.row-mode .patch-cell{width:80px;height:44px;border-radius:4px}
+.patch-grid.row-mode .patch-cell .cell-emoji{font-size:1.1rem}
+
+/* WARNINGS PANEL */
+.warnings-panel{border-radius:var(--radius-lg);padding:16px 18px;border:1.5px solid}
+.warnings-panel.ok{background:var(--good-l);border-color:var(--good-b)}
+.warnings-panel.warn{background:var(--warn-l);border-color:var(--warn-b)}
+.warnings-panel h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.warnings-panel.ok h4{color:var(--good)}
+.warnings-panel.warn h4{color:var(--warn)}
+.warn-item{font-size:0.82rem;color:var(--text2);line-height:1.55;padding:6px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
+.warn-item:last-child{border-bottom:none;padding-bottom:0}
+
+/* PLANT SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.summary-chip{background:white;border:1.5px solid var(--border);border-radius:var(--radius);padding:10px 12px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow)}
+.sc-emoji{font-size:1.2rem}
+.sc-info{overflow:hidden}
+.sc-name{font-size:0.75rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-count{font-size:0.68rem;color:var(--text3)}
+
+/* PRINT STYLES */
+@media print{
+  body{background:white !important}
+  body::before{display:none}
+  .site-header,.sidebar,.toolbar,.warnings-panel,.summary-section,.no-print{display:none !important}
+  .app-wrap{display:block;padding:0}
+  .main-area{display:block}
+  .grid-wrap{border:none;box-shadow:none;padding:0}
+  .patch-cell{border:1px solid #ccc !important;box-shadow:none !important}
+  .site-footer{display:none}
+}
+
+/* FOOTER */
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
+
+@media(max-width:500px){
+  .patch-cell{width:44px;height:44px;font-size:1rem}
+  .patch-cell .cell-label{display:none}
+  .patch-grid.row-mode .patch-cell{width:56px;height:36px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">🪴 Veg Patch Planner</div>
+  </div>
+</header>
+
+<div class="app-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar no-print">
+
+    <!-- SETTINGS -->
+    <div class="panel">
+      <div class="panel-head"><h3>⚙️ Patch settings</h3></div>
+      <div class="panel-body">
+        <div class="setting-row">
+          <div class="setting-label">Layout style</div>
+          <select class="setting-select" id="layoutMode" onchange="applySettings()">
+            <option value="bed">🟫 Raised bed (square foot)</option>
+            <option value="rows">🌾 Allotment rows</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">Grid size (squares)</div>
+          <div class="size-row">
+            <input class="setting-input" type="number" id="gridCols" value="6" min="2" max="16" placeholder="Cols">
+            <span class="size-x">×</span>
+            <input class="setting-input" type="number" id="gridRows" value="6" min="2" max="16" placeholder="Rows">
+          </div>
+        </div>
+        <button class="btn-apply" onclick="applySettings()">Apply & reset grid</button>
+      </div>
+    </div>
+
+    <!-- PLANT PALETTE -->
+    <div class="panel">
+      <div class="panel-head"><h3>🌿 Plant palette</h3></div>
+      <div class="panel-body">
+        <div class="type-tabs" id="paletteTabs">
+          <button class="type-tab active" data-t="all" onclick="setPaletteTab(this,'all')">All</button>
+          <button class="type-tab" data-t="veg" onclick="setPaletteTab(this,'veg')">Veg</button>
+          <button class="type-tab" data-t="fruit" onclick="setPaletteTab(this,'fruit')">Fruit</button>
+          <button class="type-tab" data-t="herb" onclick="setPaletteTab(this,'herb')">Herb</button>
+          <button class="type-tab" data-t="flower" onclick="setPaletteTab(this,'flower')">Flower</button>
+        </div>
+        <div class="palette-grid" id="paletteGrid"></div>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="panel">
+      <div class="panel-head"><h3>🎨 Colour key</h3></div>
+      <div class="panel-body">
+        <div class="legend-items">
+          <div class="leg-row"><div class="leg-dot" style="background:var(--c-veg-l);border:2px solid var(--c-veg)"></div>Vegetable</div>
+          <div class="leg-row"><div class="leg-dot" style="background:var(--c-fruit-l);border:2px solid var(--c-fruit)"></div>Fruit</div>
+          <div class="leg-row"><div class="leg-dot" style="background:var(--c-herb-l);border:2px solid var(--c-herb)"></div>Herb</div>
+          <div class="leg-row"><div class="leg-dot" style="background:var(--c-flower-l);border:2px solid var(--c-flower)"></div>Flower / companion</div>
+          <div class="leg-row" style="margin-top:6px"><span style="font-size:0.9rem">⚠️</span>Companion planting warning</div>
+          <div class="leg-row"><div class="leg-dot" style="background:white;border:2px solid #ccc"></div>Empty square</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+
+    <!-- TOOLBAR -->
+    <div class="toolbar no-print">
+      <button class="tool-btn" onclick="clearGrid()">🗑️ Clear all</button>
+      <button class="tool-btn" onclick="fillEmpty()">🌱 Fill empty</button>
+      <button class="tool-btn primary" onclick="window.print()">🖨️ Print layout</button>
+      <span class="mode-indicator" id="modeIndicator">Click a plant, then click squares to place it</span>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid-wrap">
+      <div class="grid-label">
+        Your patch
+        <span class="grid-sublabel" id="gridSizeLabel"></span>
+      </div>
+      <div id="patchGrid"></div>
+    </div>
+
+    <!-- WARNINGS -->
+    <div id="warningsPanel"></div>
+
+    <!-- SUMMARY -->
+    <div class="panel summary-section" id="summarySection" style="display:none">
+      <div class="panel-head"><h3>📋 What you're growing</h3></div>
+      <div class="panel-body">
+        <div class="summary-grid" id="summaryGrid"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer no-print">
+  GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+<script>
+// ── PLANT DATA ─────────────────────────────────────────────────────────────────
+// sqft: how many plants per square foot (raised bed)
+// rowSpacing: cm between rows (allotment)
+// foes: plant IDs that shouldn't be adjacent
+
+const PLANTS = [
+  // VEGETABLES
+  {id:'tomatoes',   name:'Tomatoes',    emoji:'🍅', type:'veg',   sqft:1,  rowSpacing:60, foes:['potatoes','fennel','brassicas']},
+  {id:'carrots',    name:'Carrots',     emoji:'🥕', type:'veg',   sqft:16, rowSpacing:15, foes:['dill','parsnips','fennel']},
+  {id:'lettuce',    name:'Lettuce',     emoji:'🥬', type:'veg',   sqft:4,  rowSpacing:20, foes:['fennel','celery','parsley']},
+  {id:'radishes',   name:'Radishes',    emoji:'🔴', type:'veg',   sqft:16, rowSpacing:10, foes:['hyssop']},
+  {id:'brassicas',  name:'Brassicas',   emoji:'🥦', type:'veg',   sqft:1,  rowSpacing:50, foes:['tomatoes','strawberries','fennel','beans']},
+  {id:'beans',      name:'Beans',       emoji:'🫘', type:'veg',   sqft:9,  rowSpacing:20, foes:['onions','garlic','fennel','brassicas']},
+  {id:'onions',     name:'Onions',      emoji:'🧅', type:'veg',   sqft:9,  rowSpacing:15, foes:['beans','peas','sage']},
+  {id:'garlic',     name:'Garlic',      emoji:'🧄', type:'veg',   sqft:9,  rowSpacing:15, foes:['beans','peas']},
+  {id:'potatoes',   name:'Potatoes',    emoji:'🥔', type:'veg',   sqft:1,  rowSpacing:60, foes:['tomatoes','cucumbers','fennel','sunflowers']},
+  {id:'courgettes', name:'Courgettes',  emoji:'🥒', type:'veg',   sqft:1,  rowSpacing:90, foes:['potatoes','fennel','brassicas']},
+  {id:'peas',       name:'Peas',        emoji:'🟢', type:'veg',   sqft:8,  rowSpacing:10, foes:['onions','garlic','fennel']},
+  {id:'spinach',    name:'Spinach',     emoji:'🌿', type:'veg',   sqft:9,  rowSpacing:15, foes:['fennel']},
+  {id:'beetroot',   name:'Beetroot',    emoji:'🟣', type:'veg',   sqft:9,  rowSpacing:10, foes:['beans','corn']},
+  {id:'sweetcorn',  name:'Sweetcorn',   emoji:'🌽', type:'veg',   sqft:1,  rowSpacing:45, foes:['tomatoes','fennel','beetroot']},
+  {id:'cucumbers',  name:'Cucumbers',   emoji:'🥒', type:'veg',   sqft:2,  rowSpacing:45, foes:['potatoes','sage','fennel','brassicas']},
+  {id:'squash',     name:'Squash',      emoji:'🎃', type:'veg',   sqft:1,  rowSpacing:120,foes:['potatoes','fennel','brassicas']},
+  {id:'leeks',      name:'Leeks',       emoji:'🌾', type:'veg',   sqft:9,  rowSpacing:15, foes:['beans','peas']},
+  {id:'kale',       name:'Kale',        emoji:'🥬', type:'veg',   sqft:1,  rowSpacing:45, foes:['tomatoes','strawberries','fennel','beans']},
+  {id:'parsnips',   name:'Parsnips',    emoji:'🥕', type:'veg',   sqft:9,  rowSpacing:15, foes:['carrots','fennel']},
+  {id:'celery',     name:'Celery',      emoji:'🌿', type:'veg',   sqft:4,  rowSpacing:30, foes:['lettuce','corn']},
+  // FRUIT
+  {id:'strawberries',name:'Strawberries',emoji:'🍓',type:'fruit', sqft:4,  rowSpacing:30, foes:['brassicas','fennel','potatoes']},
+  {id:'raspberries', name:'Raspberries', emoji:'🫐',type:'fruit', sqft:1,  rowSpacing:45, foes:['potatoes','fennel']},
+  {id:'rhubarb',     name:'Rhubarb',     emoji:'🔴',type:'fruit', sqft:1,  rowSpacing:90, foes:['fennel']},
+  // HERBS
+  {id:'basil',      name:'Basil',        emoji:'🌿', type:'herb',  sqft:4,  rowSpacing:20, foes:['sage','fennel','thyme']},
+  {id:'chives',     name:'Chives',       emoji:'💜', type:'herb',  sqft:16, rowSpacing:10, foes:['beans','peas']},
+  {id:'marigolds',  name:'Marigolds',    emoji:'🌼', type:'herb',  sqft:4,  rowSpacing:20, foes:['fennel']},
+  {id:'rosemary',   name:'Rosemary',     emoji:'🌿', type:'herb',  sqft:1,  rowSpacing:60, foes:['cucumbers','pumpkins']},
+  {id:'dill',       name:'Dill',         emoji:'🌿', type:'herb',  sqft:4,  rowSpacing:20, foes:['tomatoes','carrots','fennel']},
+  {id:'fennel',     name:'Fennel',       emoji:'🌿', type:'herb',  sqft:1,  rowSpacing:60, foes:['tomatoes','carrots','beans','brassicas','potatoes','lettuce','basil','cucumbers','courgettes','squash','peas','onions','garlic','dill','beetroot','sweetcorn','leeks','kale','parsnips']},
+  {id:'thyme',      name:'Thyme',        emoji:'🌿', type:'herb',  sqft:9,  rowSpacing:20, foes:['basil','cucumbers']},
+  {id:'sage',       name:'Sage',         emoji:'🌿', type:'herb',  sqft:4,  rowSpacing:30, foes:['onions','cucumbers','basil']},
+  {id:'mint',       name:'Mint',         emoji:'🌿', type:'herb',  sqft:4,  rowSpacing:30, foes:['lavender']},
+  // FLOWERS
+  {id:'nasturtiums',name:'Nasturtiums',  emoji:'🟠', type:'flower',sqft:4,  rowSpacing:20, foes:['fennel']},
+  {id:'sunflowers', name:'Sunflowers',   emoji:'🌻', type:'flower',sqft:1,  rowSpacing:45, foes:['potatoes','beans','fennel']},
+  {id:'lavender',   name:'Lavender',     emoji:'💜', type:'flower',sqft:2,  rowSpacing:45, foes:['cucumbers','mint']},
+  {id:'borage',     name:'Borage',       emoji:'💙', type:'flower',sqft:2,  rowSpacing:30, foes:['fennel']},
+  {id:'sweetpeas',  name:'Sweet Peas',   emoji:'🌸', type:'flower',sqft:4,  rowSpacing:20, foes:['onions','garlic']},
+];
+
+const PLANT_MAP = {};
+PLANTS.forEach(p => { PLANT_MAP[p.id] = p; });
+
+const TYPE_COLORS = {
+  veg:    {bg:'var(--c-veg-l)',   border:'var(--c-veg)'},
+  fruit:  {bg:'var(--c-fruit-l)', border:'var(--c-fruit)'},
+  herb:   {bg:'var(--c-herb-l)',  border:'var(--c-herb)'},
+  flower: {bg:'var(--c-flower-l)',border:'var(--c-flower)'},
+};
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+let cols = 6, rows = 6;
+let mode = 'bed'; // 'bed' | 'rows'
+let grid = []; // grid[row][col] = plantId | null
+let selectedPlantId = null;
+let paletteTab = 'all';
+let dragPlantId = null;
+
+// ── INIT ───────────────────────────────────────────────────────────────────────
+function init() {
+  buildGrid();
+  renderPalette();
+  renderGrid();
+  renderWarnings();
+}
+
+function buildGrid() {
+  grid = [];
+  for (let r = 0; r < rows; r++) {
+    grid.push(new Array(cols).fill(null));
+  }
+}
+
+function applySettings() {
+  const newCols = Math.max(2, Math.min(16, parseInt(document.getElementById('gridCols').value) || 6));
+  const newRows = Math.max(2, Math.min(16, parseInt(document.getElementById('gridRows').value) || 6));
+  const newMode = document.getElementById('layoutMode').value;
+  cols = newCols; rows = newRows; mode = newMode;
+  document.getElementById('gridCols').value = cols;
+  document.getElementById('gridRows').value = rows;
+  buildGrid();
+  renderGrid();
+  renderWarnings();
+  renderSummary();
+}
+
+// ── PALETTE ────────────────────────────────────────────────────────────────────
+function setPaletteTab(btn, type) {
+  document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  paletteTab = type;
+  renderPalette();
+}
+
+function renderPalette() {
+  const grid = document.getElementById('paletteGrid');
+  const filtered = PLANTS.filter(p => paletteTab === 'all' || p.type === paletteTab);
+  grid.innerHTML = filtered.map(p => {
+    const col = TYPE_COLORS[p.type];
+    const isActive = selectedPlantId === p.id;
+    const sqftLabel = mode === 'rows'
+      ? p.rowSpacing + 'cm rows'
+      : p.sqft + ' per sq ft';
+    return `<div class="palette-item${isActive ? ' active-sel' : ''}"
+      draggable="true"
+      onclick="selectPalettePlant('${p.id}')"
+      ondragstart="onDragStart(event,'${p.id}')"
+      style="border-color:${isActive ? 'var(--moss)' : col.border};background:${isActive ? 'var(--sage-l)' : col.bg}">
+      <span class="pi-emoji">${p.emoji}</span>
+      <div class="pi-info">
+        <div class="pi-name">${p.name}</div>
+        <div class="pi-space">${sqftLabel}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectPalettePlant(id) {
+  selectedPlantId = selectedPlantId === id ? null : id;
+  renderPalette();
+  const mi = document.getElementById('modeIndicator');
+  mi.textContent = selectedPlantId
+    ? `Placing: ${PLANT_MAP[selectedPlantId].emoji} ${PLANT_MAP[selectedPlantId].name} — click squares to place`
+    : 'Click a plant to select, then click squares to place';
+}
+
+// ── DRAG ───────────────────────────────────────────────────────────────────────
+function onDragStart(e, id) {
+  dragPlantId = id;
+  selectedPlantId = id;
+  e.dataTransfer.effectAllowed = 'copy';
+  renderPalette();
+}
+
+// ── GRID ───────────────────────────────────────────────────────────────────────
+function renderGrid() {
+  const container = document.getElementById('patchGrid');
+  const sqLabel = mode === 'bed'
+    ? `${cols} × ${rows} squares (each square = 30cm × 30cm)`
+    : `${cols} columns × ${rows} rows`;
+  document.getElementById('gridSizeLabel').textContent = sqLabel;
+
+  const gridEl = document.createElement('div');
+  gridEl.className = `patch-grid${mode === 'rows' ? ' row-mode' : ''}`;
+  gridEl.style.gridTemplateColumns = `repeat(${cols}, ${mode === 'rows' ? '80px' : '60px'})`;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'patch-cell';
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+
+      const plantId = grid[r][c];
+      if (plantId) {
+        const p = PLANT_MAP[plantId];
+        const col = TYPE_COLORS[p.type];
+        cell.style.background = col.bg;
+        cell.style.borderColor = col.border;
+        cell.classList.add('occupied');
+        cell.innerHTML = `<span class="cell-emoji">${p.emoji}</span><span class="cell-label">${p.name}</span>`;
+
+        // Check for warnings
+        if (hasAdjacentFoe(r, c, plantId)) {
+          cell.classList.add('has-warn');
+        }
+      } else {
+        cell.innerHTML = '';
+      }
+
+      cell.addEventListener('click', () => onCellClick(r, c));
+      cell.addEventListener('dragover', e => { e.preventDefault(); cell.classList.add('drag-over'); });
+      cell.addEventListener('dragleave', () => cell.classList.remove('drag-over'));
+      cell.addEventListener('drop', e => { e.preventDefault(); cell.classList.remove('drag-over'); onCellDrop(r, c); });
+
+      gridEl.appendChild(cell);
+    }
+  }
+
+  container.innerHTML = '';
+  container.appendChild(gridEl);
+}
+
+function onCellClick(r, c) {
+  if (selectedPlantId) {
+    // If same plant already here, remove it
+    if (grid[r][c] === selectedPlantId) {
+      grid[r][c] = null;
+    } else {
+      grid[r][c] = selectedPlantId;
+    }
+  } else {
+    // No plant selected — remove whatever is there
+    grid[r][c] = null;
+  }
+  renderGrid();
+  renderWarnings();
+  renderSummary();
+}
+
+function onCellDrop(r, c) {
+  if (dragPlantId) {
+    grid[r][c] = dragPlantId;
+    dragPlantId = null;
+    renderGrid();
+    renderWarnings();
+    renderSummary();
+  }
+}
+
+function hasAdjacentFoe(r, c, plantId) {
+  const plant = PLANT_MAP[plantId];
+  if (!plant || !plant.foes) return false;
+  const neighbours = [
+    [r-1,c],[r+1,c],[r,c-1],[r,c+1],
+    [r-1,c-1],[r-1,c+1],[r+1,c-1],[r+1,c+1]
+  ];
+  return neighbours.some(([nr,nc]) => {
+    if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) return false;
+    const nId = grid[nr][nc];
+    if (!nId) return false;
+    return plant.foes.includes(nId) || (PLANT_MAP[nId]?.foes?.includes(plantId));
+  });
+}
+
+// ── WARNINGS ───────────────────────────────────────────────────────────────────
+function renderWarnings() {
+  const panel = document.getElementById('warningsPanel');
+  const warnings = [];
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const plantId = grid[r][c];
+      if (!plantId) continue;
+      const plant = PLANT_MAP[plantId];
+      if (!plant?.foes) continue;
+
+      const neighbours = [[r-1,c],[r+1,c],[r,c-1],[r,c+1],[r-1,c-1],[r-1,c+1],[r+1,c-1],[r+1,c+1]];
+      neighbours.forEach(([nr,nc]) => {
+        if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) return;
+        const nId = grid[nr][nc];
+        if (!nId || nId === plantId) return;
+        if (plant.foes.includes(nId)) {
+          const key = [plantId, nId].sort().join('|');
+          if (!warnings.find(w => w.key === key)) {
+            const nPlant = PLANT_MAP[nId];
+            warnings.push({ key, text: `${plant.emoji} ${plant.name} and ${nPlant.emoji} ${nPlant.name} are bad neighbours — consider moving them apart.` });
+          }
+        }
+      });
+    }
+  }
+
+  if (warnings.length === 0) {
+    panel.innerHTML = `<div class="warnings-panel ok no-print">
+      <h4>✅ No companion planting conflicts</h4>
+      <span style="font-size:0.84rem;color:var(--good)">Your layout looks good! No bad neighbours detected.</span>
+    </div>`;
+  } else {
+    panel.innerHTML = `<div class="warnings-panel warn no-print">
+      <h4>⚠️ ${warnings.length} companion planting warning${warnings.length > 1 ? 's' : ''}</h4>
+      ${warnings.map(w => `<div class="warn-item">${w.text}</div>`).join('')}
+    </div>`;
+  }
+}
+
+// ── SUMMARY ────────────────────────────────────────────────────────────────────
+function renderSummary() {
+  const section = document.getElementById('summarySection');
+  const sgrid = document.getElementById('summaryGrid');
+  const counts = {};
+
+  grid.forEach(row => row.forEach(cell => {
+    if (cell) counts[cell] = (counts[cell] || 0) + 1;
+  }));
+
+  if (Object.keys(counts).length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+  sgrid.innerHTML = Object.entries(counts).map(([id, count]) => {
+    const p = PLANT_MAP[id];
+    const sqftNote = mode === 'bed'
+      ? `${count * p.sqft} plants` : `${count} squares`;
+    return `<div class="summary-chip">
+      <span class="sc-emoji">${p.emoji}</span>
+      <div class="sc-info">
+        <div class="sc-name">${p.name}</div>
+        <div class="sc-count">${sqftNote}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── UTILITIES ──────────────────────────────────────────────────────────────────
+function clearGrid() {
+  buildGrid();
+  renderGrid();
+  renderWarnings();
+  renderSummary();
+}
+
+function fillEmpty() {
+  // Fill all empty cells with a random veg
+  const vegs = PLANTS.filter(p => p.type === 'veg');
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (!grid[r][c]) {
+        grid[r][c] = vegs[Math.floor(Math.random() * vegs.length)].id;
+      }
+    }
+  }
+  renderGrid();
+  renderWarnings();
+  renderSummary();
+}
+
+init();
+</script>
+</body>
+</html>
