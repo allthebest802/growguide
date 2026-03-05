@@ -35,19 +35,13 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* ── HEADER ── */
-.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
-.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
-.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:14px}
-.logo-icon{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
-.logo-text h1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--cream);line-height:1}
-.logo-text p{font-size:0.72rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
-.header-nav{display:flex;gap:8px;flex-wrap:wrap}
-.nav-link{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.6);padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);transition:all 0.15s;letter-spacing:0.3px}
-.nav-link:hover{color:white;border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.06)}
-
 /* ── HERO ── */
+.logo-inline{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 0 0 2px rgba(200,219,196,0.4);flex-shrink:0}
+.logo-text-inline{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:white}
+.logo-sub{font-size:0.62rem;font-weight:300;color:var(--sage-l);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px}
+.hero-divider{width:1px;height:28px;background:rgba(255,255,255,0.2);flex-shrink:0}
 .hero{
   background:linear-gradient(160deg,var(--moss-d) 0%,#3A5830 50%,#2A4820 100%);
   padding:18px 24px 16px;text-align:center;position:relative;overflow:hidden;
@@ -214,22 +208,17 @@ body::before{
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">
-      <div class="logo-icon">🌱</div>
-      <div class="logo-text"><h1>GrowGuide</h1><p>Free UK Garden Tools</p></div>
-    </div>
-  </div>
-</header>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-leaves l1">🌿</div>
   <div class="hero-leaves l2">🍃</div>
   <div class="hero-inner">
     <div class="hero-single-line">
+      <div class="logo-inline">
+        <div class="logo-icon">🌱</div>
+        <div class="logo-text-inline"><span class="logo-name">GrowGuide</span><span class="logo-sub">Free UK Garden Tools</span></div>
+      </div>
+      <div class="hero-divider"></div>
       <span class="hero-badge">🇬🇧 Built for UK gardeners</span>
       <h2>Grow more. <em>Worry less.</em></h2>
       <p class="hero-tagline">Practical, no-nonsense garden tools for every UK grower — window box or full allotment. Free, forever.</p>
@@ -250,11 +239,11 @@ body::before{
 <!-- MAIN -->
 <main class="main">
 
-<!-- TOOLS -->
-<div style="margin-bottom:28px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
-  <div class="section-title" style="margin-bottom:0">Our tools</div>
-  <div class="section-sub" style="margin-bottom:0">Everything is free to use, works on any device, and needs no account or login.</div>
-</div>
+  <!-- TOOLS -->
+  <div style="margin-bottom:28px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div class="section-title" style="margin-bottom:0">Our tools</div>
+    <div class="section-sub" style="margin-bottom:0">Everything is free to use, works on any device, and needs no account or login.</div>
+  </div>
 
   <div class="tool-grid">
 
