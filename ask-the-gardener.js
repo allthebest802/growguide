@@ -402,15 +402,10 @@ Format: Plain conversational text only. No markdown, no bullet points, no header
     showTyping();
 
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const response = await fetch('/.netlify/functions/ask-the-gardener-function', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: messages,
-        }),
+        body: JSON.stringify({ messages: messages }),
       });
 
       const data = await response.json();
