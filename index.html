@@ -3,39 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seed to Harvest Timeline — GrowGuide</title>
-<meta name="description" content="Find out exactly how long any vegetable, fruit or flower takes from seed to harvest. Free UK garden tool.">
+<title>Garden Pest & Disease Identifier UK — GrowGuide</title>
+<meta name="description" content="Identify garden pests and diseases by plant type and symptoms — yellowing leaves, holes, mould, wilting and more. Get organic fixes and prevention advice free.">
+<meta name="keywords" content="garden pest identifier UK, plant disease identifier, yellowing leaves cause, holes in leaves UK, organic pest control garden, what's wrong with my plant">
+<link rel="canonical" href="https://growguideuk.netlify.app/pest-identifier/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguideuk.netlify.app/pest-identifier/">
+<meta property="og:title" content="Garden Pest & Disease Identifier UK — GrowGuide">
+<meta property="og:description" content="Select your plant type and symptoms to find out what's wrong and how to fix it — organically where possible.">
+<meta property="og:site_name" content="GrowGuide">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Garden Pest & Disease Identifier UK — GrowGuide">
+<meta name="twitter:description" content="Select your plant type and symptoms to find out what's wrong and how to fix it — organically where possible.">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
-  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
-  --sage:#8FAF87;--sage-l:#D4E8D0;
-  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
-  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
-  --rust:#B85C2A;--rust-l:#F5DDD4;
-  --sky:#5A9AB8;--sky-l:#C8E0EE;
-  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
-  --border:#D8C8B0;--border2:#C0A888;
-  --radius:12px;--radius-lg:20px;
+  --soil:#2C1810; --soil2:#3D2315; --bark:#6B4226;
+  --moss:#4A6741; --moss-d:#2E4228; --moss-l:#7A9E72; --moss-ll:#C8DBC4;
+  --sage:#8FAF87; --sage-l:#D4E8D0;
+  --cream:#F5F0E8; --parchment:#FAF6EE;
+  --stone:#A89880; --amber:#C8842A; --amber-l:#F0D4A0;
+  --rust:#B85C2A; --rust-l:#F5DDD4;
+  --sky:#7AAEC8; --sky-l:#C8E0EE;
+  --lavender:#8878B0; --lav-l:#D8D0EE;
+  --berry:#8C3A5A; --berry-l:#EED0DC;
+  --warn:#C87A20; --warn-l:#FDF0D8;
+  --danger:#B83030; --danger-l:#FCDCDC;
+  --safe:#2E7A4A; --safe-l:#D4EEE0;
+  --text:#1E130C; --text2:#4A3020; --text3:#8A7060;
+  --border:#D8C8B0; --border2:#C0A888;
+  --radius:12px; --radius-lg:20px;
   --shadow:0 3px 18px rgba(44,24,16,0.10);
-  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
-
-  /* timeline stage colours */
-  --col-germ:#7AAEC8;
-  --col-establish:#8FAF87;
-  --col-grow:#C8842A;
-  --col-harvest:#8C5A30;
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.16);
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+body{
+  font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
   background-image:
     radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),
     radial-gradient(ellipse 600px 500px at 100% 100%,rgba(200,132,42,0.08),transparent 60%);
 }
 button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
@@ -52,168 +66,140 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 /* MAIN */
 .main{max-width:960px;margin:0 auto;padding:28px 24px 60px;position:relative;z-index:1}
 
-/* INTRO */
-.intro-banner{background:linear-gradient(135deg,var(--moss-d),#3A5830);border-radius:var(--radius-lg);padding:26px 30px;margin-bottom:28px;display:flex;align-items:center;gap:20px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;flex-wrap:wrap}
-.intro-banner::before{content:'';position:absolute;right:-20px;top:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.04)}
+/* INTRO BANNER */
+.intro-banner{
+  background:linear-gradient(135deg,#3A1A0A,#5C2E12);
+  border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:28px;
+  display:flex;align-items:center;gap:20px;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;flex-wrap:wrap;
+}
+.intro-banner::before{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.03)}
 .intro-emoji{font-size:3rem;flex-shrink:0}
 .intro-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;font-weight:700;margin-bottom:5px}
-.intro-text p{font-size:0.88rem;color:var(--moss-ll);line-height:1.65;font-weight:300;max-width:520px}
+.intro-text p{font-size:0.88rem;color:var(--amber-l);line-height:1.6;font-weight:300;max-width:500px}
 
-/* SEARCH */
-.search-box{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
-.search-box h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px}
-.search-row{display:flex;gap:10px;flex-wrap:wrap}
-.search-input{
-  flex:1;min-width:200px;
-  padding:11px 16px;border-radius:100px;
-  border:1.5px solid var(--border2);
-  font-family:'Lato',sans-serif;font-size:0.95rem;color:var(--text);
-  background:var(--parchment);outline:none;transition:border-color 0.2s,box-shadow 0.2s;
+/* STEP SYSTEM */
+.steps{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.step-pill{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:100px;
+  font-size:0.78rem;font-weight:700;letter-spacing:0.3px;
+  border:1.5px solid var(--border2);color:var(--text3);
+  transition:all 0.2s;
 }
-.search-input:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(74,103,65,0.12)}
-.search-input::placeholder{color:var(--stone)}
+.step-pill.active{background:var(--moss);border-color:var(--moss);color:white}
+.step-pill.done{background:var(--sage-l);border-color:var(--moss-l);color:var(--moss-d)}
+.step-num{width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900}
 
-/* FILTER CHIPS */
-.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
-.fchip{padding:7px 15px;border-radius:100px;font-size:0.78rem;font-weight:700;border:1.5px solid var(--border2);color:var(--text3);transition:all 0.15s;background:var(--parchment)}
-.fchip:hover{border-color:var(--bark);color:var(--text2)}
-.fchip.active{background:var(--soil);border-color:var(--soil);color:white}
-.fchip.active.fruit{background:var(--amber);border-color:var(--amber);color:var(--soil)}
-.fchip.active.flowers{background:#7070A8;border-color:#7070A8}
-
-/* PLANT GRID (browse) */
-.browse-section{margin-bottom:28px}
-.browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.browse-card{
-  background:white;border:1.5px solid var(--border);border-radius:var(--radius);
-  padding:14px;cursor:pointer;box-shadow:var(--shadow);
-  transition:all 0.15s;text-align:center;
+/* FILTER SECTION */
+.filter-section{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow)}
+.filter-section h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.chip-group{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  padding:8px 16px;border-radius:100px;font-size:0.82rem;font-weight:700;
+  border:1.5px solid var(--border2);color:var(--text2);background:var(--parchment);
+  transition:all 0.15s;letter-spacing:0.2px;cursor:pointer;
 }
-.browse-card:hover,.browse-card.active{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--moss-l)}
-.browse-card.active{border-color:var(--moss);background:var(--sage-l)}
-.browse-emoji{font-size:1.8rem;display:block;margin-bottom:6px}
-.browse-name{font-size:0.82rem;font-weight:700;color:var(--text);line-height:1.3}
-.browse-time{font-size:0.72rem;color:var(--text3);margin-top:3px}
+.chip:hover{border-color:var(--bark);background:var(--cream2)}
+.chip.selected{background:var(--soil);border-color:var(--soil);color:white}
+.chip.selected.symptom-colour{background:#7A5020}
+.chip.selected.symptom-texture{background:#4A6741}
+.chip.selected.symptom-pest{background:#7A3020}
+.chip.selected.symptom-growth{background:#3A5070}
+.chip.selected.plant-type{background:var(--moss-d)}
 
-/* DETAIL PANEL */
-.detail-panel{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);margin-bottom:28px;overflow:hidden;animation:slideIn 0.3s ease both}
-@keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-
-.detail-header{
-  background:linear-gradient(135deg,var(--soil),var(--soil2));
-  padding:24px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+/* RESET / SEARCH */
+.action-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;align-items:center}
+.btn-search{
+  background:var(--moss);color:white;border-radius:100px;
+  padding:12px 28px;font-size:0.95rem;font-weight:700;
+  box-shadow:0 4px 16px rgba(46,66,40,0.25);
+  transition:all 0.15s;letter-spacing:0.3px;
 }
-.detail-emoji{font-size:3rem;flex-shrink:0}
-.detail-title{flex:1}
-.detail-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:white;line-height:1.1;margin-bottom:6px}
-.detail-badges{display:flex;gap:7px;flex-wrap:wrap}
-.dbadge{font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px}
-.dbadge-veg{background:rgba(74,103,65,0.5);color:var(--moss-ll);border:1px solid rgba(200,220,195,0.3)}
-.dbadge-fruit{background:rgba(200,132,42,0.4);color:var(--amber-l);border:1px solid rgba(240,212,160,0.3)}
-.dbadge-flowers{background:rgba(112,112,168,0.4);color:#D0D0F0;border:1px solid rgba(200,195,235,0.3)}
-.dbadge-easy{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.2)}
-.dbadge-where{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.15)}
-.detail-total{
-  text-align:right;flex-shrink:0;
+.btn-search:hover{background:var(--moss-d);transform:translateY(-1px);box-shadow:0 6px 20px rgba(46,66,40,0.3)}
+.btn-reset{
+  background:transparent;color:var(--text3);border-radius:100px;
+  padding:12px 20px;font-size:0.88rem;font-weight:700;
+  border:1.5px solid var(--border2);transition:all 0.15s;
 }
-.detail-total-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--amber-l);line-height:1}
-.detail-total-label{font-size:0.72rem;color:var(--stone);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
+.btn-reset:hover{border-color:var(--bark);color:var(--text2)}
+.selected-summary{font-size:0.82rem;color:var(--text3);font-style:italic;margin-left:4px;align-self:center}
 
-/* TIMELINE BAR */
-.timeline-section{padding:24px 28px;border-bottom:1px solid var(--border)}
-.timeline-label{font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:14px}
-.timeline-bar-wrap{position:relative;margin-bottom:20px}
-.timeline-bar{display:flex;height:36px;border-radius:100px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,0.08)}
-.tbar-seg{display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:white;letter-spacing:0.3px;transition:flex 0.4s ease;position:relative;overflow:hidden;white-space:nowrap;padding:0 4px}
-.tbar-seg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.15),transparent)}
-.tbar-germ{background:var(--col-germ)}
-.tbar-establish{background:var(--col-establish)}
-.tbar-grow{background:var(--col-grow)}
-.tbar-harvest{background:var(--col-harvest)}
+/* RESULTS */
+.results-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;flex-wrap:wrap;gap:8px;
+}
+.results-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text)}
+.results-count{font-size:0.8rem;font-weight:700;color:var(--text3);background:var(--cream2);border-radius:100px;padding:4px 12px;border:1px solid var(--border)}
 
-.timeline-legend{display:flex;gap:16px;flex-wrap:wrap}
-.legend-item{display:flex;align-items:center;gap:7px;font-size:0.8rem;color:var(--text2)}
-.legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.legend-dot.germ{background:var(--col-germ)}
-.legend-dot.establish{background:var(--col-establish)}
-.legend-dot.grow{background:var(--col-grow)}
-.legend-dot.harvest{background:var(--col-harvest)}
-.legend-weeks{font-weight:700}
-.legend-label{color:var(--text3)}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 
-/* STAGE CARDS */
-.stages-section{padding:20px 28px;border-bottom:1px solid var(--border)}
-.stages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.stage-card{border-radius:var(--radius);padding:16px;position:relative;overflow:hidden}
-.stage-card::before{content:'';position:absolute;inset:0;opacity:0.08}
-.stage-card.germ{background:#EEF6FA;border:1.5px solid #A8CCE0}
-.stage-card.establish{background:#EEF5EE;border:1.5px solid #A0C8A0}
-.stage-card.grow{background:#FDF3E0;border:1.5px solid #E8C080}
-.stage-card.harvest{background:#F5EDE8;border:1.5px solid #D0A880}
-.stage-icon{font-size:1.4rem;margin-bottom:6px;display:block}
-.stage-title{font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px}
-.stage-card.germ .stage-title{color:#2A6080}
-.stage-card.establish .stage-title{color:var(--moss-d)}
-.stage-card.grow .stage-title{color:#7A5010}
-.stage-card.harvest .stage-title{color:#5A3010}
-.stage-duration{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}
-.stage-card.germ .stage-duration{color:#2A6080}
-.stage-card.establish .stage-duration{color:var(--moss-d)}
-.stage-card.grow .stage-duration{color:#7A5010}
-.stage-card.harvest .stage-duration{color:#5A3010}
-.stage-desc{font-size:0.78rem;color:var(--text3);line-height:1.5}
+/* RESULT CARD */
+.result-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:all 0.2s;cursor:pointer;
+  animation:fadeUp 0.3s ease both;
+}
+.result-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* SOWING CALENDAR */
-.sow-section{padding:20px 28px;border-bottom:1px solid var(--border)}
-.month-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:14px}
-.month-cell{border-radius:6px;padding:6px 2px;text-align:center;font-size:0.62rem;font-weight:700;border:1.5px solid transparent;transition:all 0.15s}
-.month-cell .mc-name{display:block;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.3px;font-size:0.58rem}
-.month-cell .mc-dot{width:10px;height:10px;border-radius:50%;margin:0 auto;background:var(--border)}
-.month-cell.sow{background:var(--sage-l);border-color:var(--moss-ll)}
-.month-cell.sow .mc-dot{background:var(--moss)}
-.month-cell.sow .mc-name{color:var(--moss-d)}
-.month-cell.plant{background:var(--amber-ll);border-color:var(--amber-l)}
-.month-cell.plant .mc-dot{background:var(--amber)}
-.month-cell.plant .mc-name{color:#7A5010}
-.month-cell.harvest{background:var(--rust-l);border-color:#E0C0A8}
-.month-cell.harvest .mc-dot{background:var(--rust)}
-.month-cell.harvest .mc-name{color:var(--rust)}
-.month-cell.current{box-shadow:0 0 0 2px var(--soil);z-index:1;position:relative}
-.cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
-.cal-leg-item{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--text3)}
-.cal-leg-dot{width:10px;height:10px;border-radius:50%}
+.card-header{padding:16px 18px 12px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border)}
+.card-emoji{font-size:2rem;flex-shrink:0;margin-top:2px}
+.card-title-area{flex:1}
+.card-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.2}
+.card-badges{display:flex;flex-wrap:wrap;gap:4px}
+.badge{font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px}
+.badge-pest{background:#FDE8D8;color:#7A3010;border:1px solid #F0C0A0}
+.badge-disease{background:#D8E8FD;color:#103070;border:1px solid #A0C0F0}
+.badge-deficiency{background:#FDF8D8;color:#605010;border:1px solid #E0D090}
+.badge-serious{background:#FCDCDC;color:#8A1020;border:1px solid #F0A0A8}
+.badge-minor{background:#D4EED8;color:#1A5025;border:1px solid #90C898}
+.badge-moderate{background:#FDF0D8;color:#7A4A10;border:1px solid #E8C080}
 
-/* TIPS */
-.tips-section{padding:20px 28px}
-.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:14px}
-.tip-item{display:flex;align-items:flex-start;gap:10px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
-.tip-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
-.tip-text{font-size:0.82rem;color:var(--text2);line-height:1.55}
-.tip-text strong{color:var(--text);font-weight:700}
+.card-body{padding:14px 18px}
+.card-look{font-size:0.85rem;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.card-affects{font-size:0.75rem;color:var(--text3);margin-bottom:12px;font-style:italic}
+.card-affects strong{color:var(--text2);font-style:normal}
 
-/* SUCCESSION TIP */
-.succession-box{background:var(--amber-ll);border:1.5px solid var(--amber-l);border-radius:var(--radius);padding:14px 18px;margin-top:14px;display:flex;gap:12px;align-items:flex-start}
-.succession-box .si{font-size:1.2rem;flex-shrink:0}
-.succession-box p{font-size:0.84rem;color:var(--text2);line-height:1.6}
-.succession-box strong{color:var(--soil)}
+.fix-group{margin-bottom:10px}
+.fix-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:5px}
+.fix-label.organic{color:var(--moss-d)}
+.fix-label.chemical{color:var(--bark)}
+.fix-label.prevent{color:var(--sky)}
+.fix-item{font-size:0.8rem;color:var(--text2);line-height:1.5;padding-left:14px;position:relative;margin-bottom:3px}
+.fix-item::before{content:'→';position:absolute;left:0;color:var(--stone);font-size:0.7rem;top:2px}
+
+/* SEVERITY BAR */
+.severity-row{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.severity-label{font-size:0.7rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0}
+.severity-bar{flex:1;height:6px;background:var(--sage-l);border-radius:3px;overflow:hidden}
+.severity-fill{height:100%;border-radius:3px;transition:width 0.4s ease}
+.sev-1{width:25%;background:var(--moss-l)}
+.sev-2{width:50%;background:var(--amber)}
+.sev-3{width:75%;background:var(--rust)}
+.sev-4{width:100%;background:var(--danger)}
+.severity-text{font-size:0.72rem;font-weight:700;flex-shrink:0}
+.sev-text-1{color:var(--moss-d)}
+.sev-text-2{color:#8A5A10}
+.sev-text-3{color:var(--rust)}
+.sev-text-4{color:var(--danger)}
 
 /* EMPTY */
-.empty{text-align:center;padding:48px 20px;background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg)}
-.empty .ei{font-size:3rem;display:block;margin-bottom:12px;opacity:0.35}
-.empty h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--text2);margin-bottom:5px}
-.empty p{font-size:0.84rem;color:var(--text3)}
+.empty-state{text-align:center;padding:56px 20px;background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg)}
+.empty-state .es-icon{font-size:3.5rem;display:block;margin-bottom:12px;opacity:0.4}
+.empty-state h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text2);margin-bottom:6px}
+.empty-state p{font-size:0.85rem;color:var(--text3);line-height:1.6}
 
 /* FOOTER */
 .site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
 .site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
 
 @media(max-width:600px){
-  .browse-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
-  .month-grid{grid-template-columns:repeat(6,1fr)}
-  .stages-grid{grid-template-columns:1fr 1fr}
-  .detail-header{padding:18px 20px}
-  .timeline-section,.stages-section,.sow-section,.tips-section{padding:16px 20px}
-  .detail-total{display:none}
+  .result-grid{grid-template-columns:1fr}
+  .intro-banner{padding:18px}
+  .intro-emoji{font-size:2rem}
 }
 </style>
 </head>
@@ -221,49 +207,70 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="/">
+    <a class="logo" href="#">
       <div class="logo-icon">🌱</div>
       <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
     </a>
-    <div class="header-tool">📅 Seed to Harvest Timeline</div>
+    <div class="header-tool">🐛 Pest & Disease Identifier</div>
   </div>
 </header>
 
 <main class="main">
 
   <div class="intro-banner">
-    <div class="intro-emoji">⏱️</div>
+    <div class="intro-emoji">🔍</div>
     <div class="intro-text">
-      <h2>How long until harvest?</h2>
-      <p>Pick any vegetable, fruit or flower to see a full growing timeline — from germination through to the moment you can pick it — with a month-by-month sowing calendar.</p>
+      <h2>What's wrong with your plant?</h2>
+      <p>Select your plant type and what you can see. We'll narrow down what it might be and tell you how to fix it — organically where possible.</p>
     </div>
   </div>
 
-  <!-- SEARCH + FILTER -->
-  <div class="search-box">
-    <h3>🔍 Search or browse by type</h3>
-    <div class="search-row">
-      <input class="search-input" type="text" id="searchInput" placeholder="e.g. tomatoes, sunflowers, carrots…" oninput="filterPlants()">
+  <!-- STEP PROGRESS -->
+  <div class="steps">
+    <div class="step-pill active" id="step1pill"><span class="step-num">1</span> Choose plant type</div>
+    <div class="step-pill" id="step2pill"><span class="step-num">2</span> Pick symptoms</div>
+    <div class="step-pill" id="step3pill"><span class="step-num">3</span> See results</div>
+  </div>
+
+  <!-- PLANT TYPE -->
+  <div class="filter-section">
+    <h3>🌿 What type of plant is affected?</h3>
+    <div class="chip-group" id="plantChips"></div>
+  </div>
+
+  <!-- SYMPTOMS -->
+  <div class="filter-section">
+    <h3>👁️ What can you see? <span style="font-size:0.8rem;font-weight:400;color:var(--text3);font-style:italic;font-family:'Lato',sans-serif"> — pick all that apply</span></h3>
+    <div style="margin-bottom:12px">
+      <div style="font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:7px">Colour changes</div>
+      <div class="chip-group" id="colourChips"></div>
     </div>
-    <div class="filter-row">
-      <button class="fchip active" data-type="all" onclick="setType(this,'all')">All</button>
-      <button class="fchip" data-type="veg" onclick="setType(this,'veg')">🥦 Vegetables</button>
-      <button class="fchip fruit" data-type="fruit" onclick="setType(this,'fruit')">🍓 Fruit</button>
-      <button class="fchip flowers" data-type="flowers" onclick="setType(this,'flowers')">🌸 Flowers</button>
+    <div style="margin-bottom:12px">
+      <div style="font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:7px">Texture & surface</div>
+      <div class="chip-group" id="textureChips"></div>
+    </div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:7px">Visible creatures</div>
+      <div class="chip-group" id="pestChips"></div>
+    </div>
+    <div>
+      <div style="font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:7px">Growth & structure</div>
+      <div class="chip-group" id="growthChips"></div>
     </div>
   </div>
 
-  <!-- DETAIL PANEL (hidden until selected) -->
-  <div id="detailPanel" style="display:none"></div>
+  <div class="action-row">
+    <button class="btn-search" onclick="doSearch()">🔍 Find Problems</button>
+    <button class="btn-reset" onclick="resetAll()">↺ Start again</button>
+    <span class="selected-summary" id="selSummary"></span>
+  </div>
 
-  <!-- BROWSE GRID -->
-  <div class="browse-section">
-    <div class="browse-grid" id="browseGrid"></div>
-    <div id="emptyState" style="display:none" class="empty">
-      <span class="ei">🌱</span>
-      <h3>No plants found</h3>
-      <p>Try a different search term or clear the filter.</p>
+  <div id="resultsArea" style="display:none">
+    <div class="results-header">
+      <div class="results-title">Possible causes</div>
+      <div class="results-count" id="resultsCount"></div>
     </div>
+    <div class="result-grid" id="resultGrid"></div>
   </div>
 
 </main>
@@ -273,466 +280,462 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opa
 </footer>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-// germWeeks, establishWeeks (sow→plant out or 0 if direct), growWeeks, harvestWeeks (window)
-// sow[], plant[], harvest[] = month indices (south England)
-// successionWeeks = how often to re-sow for continuous harvest (0 = not applicable)
+// ── DATA ─────────────────────────────────────────────────────────────────────
 
-const PLANTS = [
-  // VEGETABLES
-  {name:'Tomatoes',emoji:'🍅',type:'veg',where:'indoor',easy:false,
-   germWeeks:1.5,establishWeeks:8,growWeeks:10,harvestWeeks:10,
-   sow:[1,2,3],plant:[4,5],harvest:[6,7,8,9],
-   successionWeeks:0,
-   tips:['Start at 18–21°C for best germination','Pot on regularly — never let them get rootbound','Feed weekly with high-potash feed once first flowers appear','Remove sideshoots to keep energy in the fruit'],
-   succession:'Sow in one go — succession sowing isn\'t needed as plants crop for months.'},
+const PLANT_TYPES = [
+  {id:'tomatoes', label:'🍅 Tomatoes'},
+  {id:'brassicas', label:'🥦 Brassicas'},
+  {id:'roots', label:'🥕 Root Veg'},
+  {id:'beans', label:'🫘 Beans & Peas'},
+  {id:'salads', label:'🥬 Salads & Leaves'},
+  {id:'alliums', label:'🧅 Onions & Garlic'},
+  {id:'courgettes', label:'🥒 Courgettes & Squash'},
+  {id:'potatoes', label:'🥔 Potatoes'},
+  {id:'fruit', label:'🍓 Fruit & Berries'},
+  {id:'roses', label:'🌹 Roses'},
+  {id:'trees', label:'🌳 Trees & Shrubs'},
+  {id:'flowers', label:'🌸 Flowers & Perennials'},
+  {id:'lawn', label:'🌿 Lawn & Grass'},
+  {id:'all', label:'🌱 Not sure / All plants'},
+];
 
-  {name:'Courgettes',emoji:'🥒',type:'veg',where:'indoor',easy:true,
-   germWeeks:1,establishWeeks:4,growWeeks:6,harvestWeeks:14,
-   sow:[3,4],plant:[4,5],harvest:[6,7,8,9,10],
-   successionWeeks:0,
-   tips:['Sow seeds on their side to prevent rotting','Just one or two plants feeds a family','Pick at 10–15cm — they become marrows overnight if left','Water at the base to prevent mildew'],
-   succession:'One sowing is enough — each plant produces prolifically all summer.'},
+const SYMPTOMS = {
+  colour:[
+    {id:'yellow-leaves', label:'Yellow leaves'},
+    {id:'brown-tips', label:'Brown leaf tips'},
+    {id:'brown-patches', label:'Brown patches on leaves'},
+    {id:'black-spots', label:'Black spots'},
+    {id:'purple-red', label:'Purple or red discolouration'},
+    {id:'pale-bleached', label:'Pale / bleached leaves'},
+    {id:'orange-rust', label:'Orange or rusty patches'},
+    {id:'white-coating', label:'White powdery coating'},
+    {id:'grey-mould', label:'Grey fluffy mould'},
+  ],
+  texture:[
+    {id:'holes-in-leaves', label:'Holes in leaves'},
+    {id:'sticky-residue', label:'Sticky / shiny residue'},
+    {id:'silvery-streaks', label:'Silvery streaks or trails'},
+    {id:'distorted-curled', label:'Distorted or curled leaves'},
+    {id:'sunken-patches', label:'Sunken or rotten patches'},
+    {id:'galls-lumps', label:'Galls or unusual lumps'},
+    {id:'slime-trails', label:'Slime trails'},
+    {id:'webbing', label:'Fine webbing on leaves'},
+    {id:'blistered', label:'Blistered or puckered leaves'},
+  ],
+  pest:[
+    {id:'aphids-visible', label:'Small insects (green/black/white)'},
+    {id:'caterpillars', label:'Caterpillars'},
+    {id:'slugs-snails', label:'Slugs or snails seen'},
+    {id:'white-flies', label:'Tiny white flies when disturbed'},
+    {id:'vine-weevil', label:'Notched leaf edges (no pest visible)'},
+    {id:'ants', label:'Ants on the plant'},
+    {id:'larvae-soil', label:'Grubs / larvae in soil'},
+    {id:'red-spider', label:'Tiny red or yellow mites'},
+  ],
+  growth:[
+    {id:'wilting', label:'Wilting despite watering'},
+    {id:'stunted', label:'Poor or stunted growth'},
+    {id:'dropping-fruit', label:'Fruit / flowers dropping early'},
+    {id:'rotting-base', label:'Rotting at the base'},
+    {id:'no-flowers', label:'Not flowering'},
+    {id:'leggy', label:'Leggy or etiolated growth'},
+    {id:'roots-rotted', label:'Roots brown or rotten'},
+  ],
+};
 
-  {name:'Cucumbers',emoji:'🥒',type:'veg',where:'greenhouse',easy:false,
-   germWeeks:1,establishWeeks:4,growWeeks:6,harvestWeeks:10,
-   sow:[3,4],plant:[5],harvest:[6,7,8,9],
-   successionWeeks:0,
-   tips:['Need warmth — ideal in a greenhouse or polytunnel','Remove male flowers on all-female varieties','Keep humidity high and water consistently','Harvest regularly to keep plants productive'],
-   succession:'Sow all at once — cucumbers fruit continuously once established.'},
+// ── PEST / DISEASE DATABASE ───────────────────────────────────────────────────
+// Each entry: id, name, emoji, type (pest/disease/deficiency), severity (1-4),
+// plants[], symptoms[], looks, organic[], chemical[], prevent[]
 
-  {name:'Lettuce',emoji:'🥬',type:'veg',where:'outdoor',easy:true,
-   germWeeks:0.5,establishWeeks:0,growWeeks:6,harvestWeeks:3,
-   sow:[1,2,3,4,5,6,7,8],plant:[3,4,5,6,7,8],harvest:[4,5,6,7,8,9,10],
-   successionWeeks:3,
-   tips:['Cut-and-come-again varieties give multiple harvests from one sowing','Bolts quickly in heat — grow in light shade in summer','Sow little and often for a continuous supply','Water regularly for tender, non-bitter leaves'],
-   succession:'Sow a short row every 3 weeks for continuous salad all season.'},
-
-  {name:'Carrots',emoji:'🥕',type:'veg',where:'outdoor',easy:false,
-   germWeeks:2.5,establishWeeks:0,growWeeks:14,harvestWeeks:8,
-   sow:[2,3,4,5,6],plant:[],harvest:[6,7,8,9,10],
-   successionWeeks:4,
-   tips:['Sow direct — carrots hate being transplanted','Need fine, stone-free soil for straight roots','Sow thinly to reduce thinning','Cover with fleece to protect against carrot fly'],
-   succession:'Sow every 4 weeks from March to June for carrots all summer and autumn.'},
-
-  {name:'Radishes',emoji:'🔴',type:'veg',where:'outdoor',easy:true,
-   germWeeks:0.5,establishWeeks:0,growWeeks:4,harvestWeeks:2,
-   sow:[2,3,4,5,6,7,8],plant:[],harvest:[3,4,5,6,7,8,9],
-   successionWeeks:2,
-   tips:['The fastest vegetable you can grow — ready in just 4 weeks','Don\'t leave in the ground too long — they go woody and hot','Great gap-filler between slower crops','Water consistently or they split'],
-   succession:'Sow a short row every 2 weeks for radishes all season.'},
-
-  {name:'Peas',emoji:'🟢',type:'veg',where:'outdoor',easy:true,
-   germWeeks:1.5,establishWeeks:0,growWeeks:10,harvestWeeks:4,
-   sow:[2,3,4,5],plant:[3,4,5],harvest:[5,6,7,8],
-   successionWeeks:3,
-   tips:['Support with canes, netting or twiggy sticks','Pick regularly — leaving pods on the plant stops production','Mangetout and sugar snap varieties can be eaten whole','Water well once plants are in flower'],
-   succession:'Sow every 3 weeks from February to May for peas from May to August.'},
-
-  {name:'French Beans',emoji:'🫘',type:'veg',where:'indoor',easy:true,
-   germWeeks:1,establishWeeks:4,growWeeks:8,harvestWeeks:8,
-   sow:[3,4,5],plant:[5,6],harvest:[6,7,8,9],
-   successionWeeks:3,
-   tips:['Very productive once they get going','Pick regularly — daily in peak season','Don\'t sow until soil is 12°C or above if direct sowing','Climbing varieties are more productive than dwarf types'],
-   succession:'Sow every 3 weeks from April to June for beans right through summer.'},
-
-  {name:'Runner Beans',emoji:'🫘',type:'veg',where:'indoor',easy:true,
-   germWeeks:1,establishWeeks:4,growWeeks:10,harvestWeeks:10,
-   sow:[3,4],plant:[5],harvest:[7,8,9,10],
-   successionWeeks:0,
-   tips:['Needs a strong frame at least 2m tall','Water well once in flower to set pods','Pick before beans swell inside pods','Soak seeds overnight for faster germination'],
-   succession:'One sowing produces all summer — no need to succession sow.'},
-
-  {name:'Broad Beans',emoji:'🫘',type:'veg',where:'outdoor',easy:true,
-   germWeeks:2,establishWeeks:0,growWeeks:16,harvestWeeks:5,
-   sow:[10,11,1,2],plant:[10,2,3],harvest:[5,6,7],
-   successionWeeks:0,
-   tips:['Autumn-sown plants crop 3–4 weeks earlier than spring-sown','Pinch out the growing tips once in flower to deter blackfly','Pick pods when seeds are just visible through the pod','Freeze surplus immediately after blanching'],
-   succession:'Autumn and spring sowings give an extended harvest — two sowings is ideal.'},
-
-  {name:'Onions',emoji:'🧅',type:'veg',where:'outdoor',easy:true,
-   germWeeks:2,establishWeeks:0,growWeeks:20,harvestWeeks:4,
-   sow:[0,1],plant:[2,3],harvest:[7,8],
-   successionWeeks:0,
-   tips:['Sets (small bulbs) are easier and quicker than seeds','Plant with just the tip showing above soil','Stop watering once the foliage starts to die back','Lift on a dry day and let them dry in the sun before storing'],
-   succession:'Plant in one go — onions all mature together and store for months.'},
-
-  {name:'Garlic',emoji:'🧄',type:'veg',where:'outdoor',easy:true,
-   germWeeks:3,establishWeeks:0,growWeeks:28,harvestWeeks:3,
-   sow:[],plant:[10,11,2],harvest:[6,7],
-   successionWeeks:0,
-   tips:['Plant individual cloves pointed end up, 2cm deep','Autumn planting gives the best, biggest bulbs','Lift when about half the leaves have yellowed','Dry in a warm, airy spot for several weeks before storing'],
-   succession:'Plant in autumn and spring for a slightly extended harvest.'},
-
-  {name:'Leeks',emoji:'🌿',type:'veg',where:'indoor',easy:false,
-   germWeeks:2,establishWeeks:14,growWeeks:12,harvestWeeks:20,
-   sow:[1,2,3],plant:[5,6],harvest:[9,10,11,0,1,2],
-   successionWeeks:0,
-   tips:['Transplant when pencil-thick into deep holes — drop in and water, don\'t fill','Earth up stems as they grow for longer white shanks','Harvest as needed — they stand in the ground all winter','Choose different varieties for autumn, winter, and late winter harvest'],
-   succession:'Sow once — different varieties cover autumn through to spring.'},
-
-  {name:'Kale',emoji:'🥬',type:'veg',where:'outdoor',easy:true,
-   germWeeks:1,establishWeeks:6,growWeeks:16,harvestWeeks:20,
-   sow:[3,4,5],plant:[5,6],harvest:[9,10,11,0,1,2,3],
-   successionWeeks:0,
-   tips:['Often tastier after a frost — frost converts starch to sugar','Pick outer leaves regularly to keep plants producing','Incredibly nutritious — one of the best winter crops','Net against pigeons which love it in winter'],
-   succession:'One sowing provides leaves from autumn right through to spring.'},
-
-  {name:'Spinach',emoji:'🥬',type:'veg',where:'outdoor',easy:true,
-   germWeeks:1,establishWeeks:0,growWeeks:6,harvestWeeks:6,
-   sow:[2,3,4,7,8],plant:[],harvest:[4,5,6,9,10,11],
-   successionWeeks:4,
-   tips:['Bolts quickly in heat — best in spring and autumn','Pick outer leaves or cut the whole plant 2cm above the ground','Sow perpetual spinach (chard) for a summer-long substitute','Keep well watered to slow bolting'],
-   succession:'Sow every 4 weeks in spring and again in late summer for a continuous supply.'},
-
-  {name:'Beetroot',emoji:'🟣',type:'veg',where:'outdoor',easy:true,
-   germWeeks:1.5,establishWeeks:0,growWeeks:10,harvestWeeks:8,
-   sow:[3,4,5,6],plant:[],harvest:[6,7,8,9,10],
-   successionWeeks:4,
-   tips:['Each "seed" is actually a cluster — thin to one seedling','Harvest baby beets at golf-ball size or leave to grow larger','Leaves are edible too — use like spinach','Twist off rather than cutting to prevent bleeding'],
-   succession:'Sow every 4 weeks from April to June for beetroot all summer.'},
-
-  {name:'Potatoes (Early)',emoji:'🥔',type:'veg',where:'outdoor',easy:true,
-   germWeeks:3,establishWeeks:0,growWeeks:10,harvestWeeks:4,
-   sow:[],plant:[2,3],harvest:[5,6,7],
-   successionWeeks:0,
-   tips:['Chit (sprout) tubers from January on a light windowsill','Earth up as shoots appear to prevent greening','Ready when the flowers open — test by digging one plant','Harvest on a dry day and leave to dry before storing'],
-   succession:'Plant earlies in Feb/March and maincrops in April for a staggered harvest.'},
-
-  {name:'Potatoes (Maincrop)',emoji:'🥔',type:'veg',where:'outdoor',easy:true,
-   germWeeks:3,establishWeeks:0,growWeeks:16,harvestWeeks:6,
-   sow:[],plant:[3,4],harvest:[8,9,10],
-   successionWeeks:0,
-   tips:['Leave in the ground until foliage dies back completely','Harvest on a dry day and cure in light for a few hours','Store in paper sacks in a cool, dark, frost-free place','Don\'t wash before storing — soil protects them'],
-   succession:'Plant earlies in March and maincrops in April for season-long potatoes.'},
-
-  {name:'Sweetcorn',emoji:'🌽',type:'veg',where:'indoor',easy:false,
-   germWeeks:1,establishWeeks:4,growWeeks:14,harvestWeeks:3,
-   sow:[4,5],plant:[5,6],harvest:[8,9],
-   successionWeeks:0,
-   tips:['Plant in a block — not a row — for good wind pollination','Ready when silk turns brown and juice from a kernel is milky','Cook within hours of picking for sweetest flavour','Needs a good, warm summer to do well'],
-   succession:'One sowing — all cobs ripen together over 2–3 weeks.'},
-
-  {name:'Squash & Pumpkins',emoji:'🎃',type:'veg',where:'indoor',easy:true,
-   germWeeks:1,establishWeeks:4,growWeeks:16,harvestWeeks:4,
-   sow:[4],plant:[5,6],harvest:[9,10],
-   successionWeeks:0,
-   tips:['Sow seeds on their side to prevent rotting','Needs lots of space — up to 2m in each direction','Leave on the vine until stem is corky and skin hard','Cure in sun for 2 weeks after harvest — improves flavour and storage'],
-   succession:'One sowing produces enough fruit to last all winter if stored correctly.'},
-
-  {name:'Spring Onions',emoji:'🌿',type:'veg',where:'outdoor',easy:true,
-   germWeeks:1,establishWeeks:0,growWeeks:8,harvestWeeks:3,
-   sow:[2,3,4,5,6,7,8],plant:[],harvest:[4,5,6,7,8,9,10],
-   successionWeeks:3,
-   tips:['No thinning needed — grow them in a cluster and pick as needed','Ready in just 8 weeks from sowing','Sow a short row every 3 weeks for a continuous supply','Can be grown in pots on a windowsill or balcony'],
-   succession:'Sow every 3 weeks from March to August for spring onions all season.'},
-
-  // FRUIT
-  {name:'Strawberries',emoji:'🍓',type:'fruit',where:'outdoor',easy:true,
-   germWeeks:4,establishWeeks:0,growWeeks:52,harvestWeeks:5,
-   sow:[],plant:[3,4,8,9],harvest:[5,6,7],
-   successionWeeks:0,
-   tips:['Everbearing varieties fruit in flushes all summer','Tuck straw under ripening fruit to keep clean and deter slugs','Net against birds as soon as fruit starts to colour','Pin runners down into pots after harvest to make new plants free'],
-   succession:'Plant June-bearing and everbearing varieties together for fruit from May to October.'},
-
-  {name:'Raspberries',emoji:'🫐',type:'fruit',where:'outdoor',easy:true,
-   germWeeks:0,establishWeeks:0,growWeeks:52,harvestWeeks:6,
-   sow:[],plant:[10,11,2,3],harvest:[6,7,8,9],
-   successionWeeks:0,
-   tips:['Summer fruiting: prune old canes to the ground after harvest','Autumn fruiting: cut all canes to ground in February','Train canes along wires for support and airflow','Birds are a major pest — net well before fruit ripens'],
-   succession:'Plant summer and autumn fruiting varieties for berries from June to October.'},
-
-  {name:'Blueberries',emoji:'🫐',type:'fruit',where:'outdoor',easy:false,
-   germWeeks:0,establishWeeks:0,growWeeks:104,harvestWeeks:6,
-   sow:[],plant:[10,11,2,3],harvest:[7,8],
-   successionWeeks:0,
-   tips:['Must have acidic soil — pH 4.5–5.5. Grow in pots of ericaceous compost if unsure','Need two different varieties for good cross-pollination','Fruit only on 2+ year old wood — be patient','Pick when fully blue and slightly soft'],
-   succession:'Plant two or three different varieties to extend the harvest window.'},
-
-  {name:'Rhubarb',emoji:'🔴',type:'fruit',where:'outdoor',easy:true,
-   germWeeks:0,establishWeeks:0,growWeeks:52,harvestWeeks:10,
-   sow:[],plant:[10,2,3],harvest:[3,4,5,6,7],
-   successionWeeks:0,
-   tips:['Force early stalks by covering crowns with a pot from February','Don\'t harvest in the first year — let plants establish','Pull stalks rather than cutting — twist and pull from the base','Leave at least 4–5 stems on each crown when harvesting'],
-   succession:'Rhubarb comes back bigger every year — one planting lasts decades.'},
-
-  {name:'Gooseberries',emoji:'🟢',type:'fruit',where:'outdoor',easy:true,
-   germWeeks:0,establishWeeks:0,growWeeks:52,harvestWeeks:6,
-   sow:[],plant:[10,11,2,3],harvest:[6,7],
-   successionWeeks:0,
-   tips:['Incredibly tough and productive — one of the most reliable UK fruits','Thin fruits in May for larger berries','Prune to an open goblet shape for good airflow','Pick green for cooking or leave to ripen to sweet dessert fruit'],
-   succession:'One plant produces for 20+ years. Plant in autumn for best establishment.'},
-
-  // FLOWERS
-  {name:'Sunflowers',emoji:'🌻',type:'flowers',where:'outdoor',easy:true,
-   germWeeks:1,establishWeeks:3,growWeeks:10,harvestWeeks:4,
-   sow:[3,4,5],plant:[5,6],harvest:[],
-   successionWeeks:3,
-   tips:['Sow in 7cm pots and plant out after the last frost','Choose giant varieties for impact — or multi-headed for cutting','Face south for the best growth — they follow the sun','Leave seedheads in autumn for birds'],
-   succession:'Sow every 3 weeks from April to June for blooms from July to October.'},
-
-  {name:'Sweet Peas',emoji:'🌸',type:'flowers',where:'indoor',easy:true,
-   germWeeks:1.5,establishWeeks:12,growWeeks:6,harvestWeeks:12,
-   sow:[10,11,1,2,3],plant:[3,4,5],harvest:[],
-   successionWeeks:0,
-   tips:['Autumn-sown plants are far stronger and earlier than spring-sown','Nick the seed coat with a nail file before sowing to help germination','Pinch out growing tip at 15cm for bushy growth','Pick every single flower — leaving pods stops production completely'],
-   succession:'Autumn and spring sowings overlap for sweet peas from May to September.'},
-
-  {name:'Marigolds',emoji:'🌼',type:'flowers',where:'indoor',easy:true,
-   germWeeks:0.5,establishWeeks:4,growWeeks:8,harvestWeeks:16,
-   sow:[2,3,4],plant:[4,5],harvest:[],
-   successionWeeks:0,
-   tips:['Plant near tomatoes to deter aphids and whitefly','Deadhead constantly to keep plants producing all summer','African varieties (tall) and French varieties (compact) have different uses','Self-seeds — you\'ll often get free plants the following year'],
-   succession:'One sowing flowers all summer if deadheaded regularly.'},
-
-  {name:'Cosmos',emoji:'🌸',type:'flowers',where:'indoor',easy:true,
-   germWeeks:0.5,establishWeeks:4,growWeeks:10,harvestWeeks:16,
-   sow:[3,4],plant:[5],harvest:[],
-   successionWeeks:0,
-   tips:['Don\'t sow too early — cosmos sulks in cold conditions','Pinch out when 20cm tall for a bushier, more productive plant','Deadhead every few days for continuous blooms until frost','Brilliant cut flower — lasts well in a vase'],
-   succession:'One sowing gives flowers from July until the first frost.'},
-
-  {name:'Dahlias',emoji:'🌺',type:'flowers',where:'indoor',easy:false,
-   germWeeks:1.5,establishWeeks:6,growWeeks:12,harvestWeeks:16,
-   sow:[2,3],plant:[4,5],harvest:[],
-   successionWeeks:0,
-   tips:['Start tubers in pots in March — don\'t plant out until after last frost','Pinch out the first bud for more, better flowers','Feed every 2 weeks with a high-potash feed from July','Lift tubers after first frost and store in a frost-free place'],
-   succession:'One planting gives flowers from July to the first frost.'},
-
-  {name:'Lavender',emoji:'💜',type:'flowers',where:'indoor',easy:true,
-   germWeeks:3,establishWeeks:8,growWeeks:52,harvestWeeks:4,
-   sow:[2,3],plant:[4,5],harvest:[],
-   successionWeeks:0,
-   tips:['Slow from seed — easier to buy small plants or take cuttings','Cut back by a third after flowering to keep bushy','Never cut into old brown wood — it won\'t regrow','Thrives in poor, well-drained soil — avoid rich, heavy clay'],
-   succession:'A permanent planting that comes back bigger every year.'},
-
-  {name:'Cornflowers',emoji:'💙',type:'flowers',where:'outdoor',easy:true,
-   germWeeks:1,establishWeeks:0,growWeeks:10,harvestWeeks:8,
-   sow:[2,3,4,9],plant:[],harvest:[],
-   successionWeeks:3,
-   tips:['Sow direct where they are to grow — they hate being moved','Autumn-sown plants flower much earlier in spring','Brilliant cut flower — lasts up to 2 weeks in a vase','Self-seeds freely once established'],
-   succession:'Sow every 3 weeks from March to May for flowers from June to September.'},
-
-  {name:'Nasturtiums',emoji:'🟠',type:'flowers',where:'outdoor',easy:true,
-   germWeeks:1,establishWeeks:0,growWeeks:8,harvestWeeks:14,
-   sow:[3,4,5],plant:[5],harvest:[],
-   successionWeeks:0,
-   tips:['Sow direct — they don\'t like being transplanted','Flowers and leaves are edible with a peppery taste','Thrive in poor soil — too much feeding produces leaves not flowers','Brilliant for attracting aphids away from other crops'],
-   succession:'One sowing flowers all summer until the first frost.'},
+const PROBLEMS = [
+  {
+    id:'aphids', name:'Aphids', emoji:'🦠', type:'pest', severity:2,
+    plants:['tomatoes','brassicas','beans','salads','roses','flowers','fruit','all'],
+    symptoms:['aphids-visible','sticky-residue','distorted-curled','ants'],
+    looks:'Clusters of tiny soft-bodied insects — green, black, white or grey — usually on new growth, shoot tips and undersides of leaves. Leaves may curl around colonies.',
+    affects:'Almost all plants, especially roses, broad beans, tomatoes, and soft new growth.',
+    organic:['Squash colonies by hand or blast off with a hose','Encourage ladybirds, lacewings and hoverflies — plant marigolds nearby','Use a diluted washing-up liquid spray as a last resort'],
+    chemical:['Pyrethrin-based insecticides (fast-acting, breaks down quickly)','Neem oil spray — effective and relatively low impact on beneficials'],
+    prevent:['Avoid overfeeding with nitrogen — soft growth attracts aphids','Check new plants before introducing to the garden','Grow companion plants like marigolds and nasturtiums to attract predators'],
+  },
+  {
+    id:'slugs', name:'Slugs & Snails', emoji:'🐌', type:'pest', severity:2,
+    plants:['salads','brassicas','beans','tomatoes','potatoes','flowers','all'],
+    symptoms:['holes-in-leaves','slime-trails','stunted'],
+    looks:'Irregular jagged holes in leaves, often near the ground. Shiny slime trails left behind — most visible in the morning on soil or leaves.',
+    affects:'Almost everything, especially seedlings, lettuce, hostas, dahlias, and young brassicas.',
+    organic:['Go out after dark with a torch and pick them off by hand','Lay copper tape around pots — slugs dislike the mild electric charge','Use wool pellets or sharp grit as a deterrent around vulnerable plants','Nematode treatment (Phasmarhabditis hermaphrodita) — watered into the soil, very effective'],
+    chemical:['Ferric phosphate pellets (slug pellets safe for wildlife and pets)','Avoid metaldehyde pellets — harmful to wildlife and now largely banned'],
+    prevent:['Clear debris and hiding spots — old pots, boards, damp corners','Encourage hedgehogs, frogs and thrushes — all eat slugs','Avoid evening watering — wet soil at night is ideal for slugs'],
+  },
+  {
+    id:'powdery-mildew', name:'Powdery Mildew', emoji:'🍄', type:'disease', severity:2,
+    plants:['courgettes','roses','brassicas','beans','fruit','flowers','all'],
+    symptoms:['white-coating','distorted-curled','stunted'],
+    looks:'Distinctive white or grey powdery coating on leaves, stems and sometimes fruit. Starts as patches then spreads to cover whole leaves. Leaves may yellow and drop.',
+    affects:'Very common on courgettes, pumpkins, roses, gooseberries, phlox, and asters — especially in dry summers.',
+    organic:['Remove and bin (don\'t compost) affected leaves immediately','Spray with a solution of 1 part milk to 9 parts water — surprisingly effective','Baking soda spray (1 tsp per litre of water with a drop of washing-up liquid)'],
+    chemical:['Fungicide sprays containing tebuconazole or difenoconazole'],
+    prevent:['Improve air circulation — don\'t crowd plants together','Water at the base, never overhead — wet foliage encourages spores','Choose resistant varieties, especially for courgettes and roses'],
+  },
+  {
+    id:'blight-tomato', name:'Tomato Blight (Late Blight)', emoji:'🍅', type:'disease', severity:4,
+    plants:['tomatoes','potatoes'],
+    symptoms:['brown-patches','black-spots','rotting-base','wilting'],
+    looks:'Dark brown or black patches on leaves and stems, often with a pale halo. In humid conditions a white fuzzy growth appears on the underside. Spreads rapidly — an entire plant can collapse within days.',
+    affects:'Tomatoes and potatoes — both in the same family and susceptible to the same pathogen (Phytophthora infestans).',
+    organic:['Remove and bin all affected material immediately — do not compost','Copper-based fungicides (e.g. Bordeaux mixture) can slow spread if applied early','Grow in a greenhouse or polytunnel to keep foliage dry'],
+    chemical:['Fungicides containing copper oxychloride applied as a preventive measure before symptoms appear'],
+    prevent:['Water at the base only — never wet the foliage','Grow blight-resistant varieties (e.g. Crimson Crush, Sarpo Mira for potatoes)','Remove lower leaves to improve airflow','Don\'t grow tomatoes and potatoes in the same spot year after year'],
+  },
+  {
+    id:'vine-weevil', name:'Vine Weevil', emoji:'🪲', type:'pest', severity:3,
+    plants:['fruit','flowers','roses','trees','all'],
+    symptoms:['vine-weevil','wilting','roots-rotted','larvae-soil'],
+    looks:'Adults cause distinctive notched U-shaped scallops around leaf edges. The real damage is underground — fat, creamy-white C-shaped larvae eat roots, causing plants to suddenly collapse and die.',
+    affects:'Strawberries, heucheras, primulas, cyclamen, sedums, and most container-grown plants.',
+    organic:['Nematode treatment (Steinernema kraussei) — water into compost in late summer / early autumn when soil is warm','Check root balls when repotting and pick out any grubs you find','Sticky barriers around pot rims deter adult weevils from climbing in'],
+    chemical:['Imidacloprid compost drenches (check current availability — restrictions apply)'],
+    prevent:['Inspect bought plants carefully before potting on','Refresh compost in pots every year — don\'t reuse infested compost','Go out at night with a torch to catch adult weevils on leaves'],
+  },
+  {
+    id:'black-spot', name:'Black Spot (Rose)', emoji:'🌹', type:'disease', severity:2,
+    plants:['roses'],
+    symptoms:['black-spots','yellow-leaves'],
+    looks:'Circular black or dark brown spots on rose leaves, often with a yellow halo. Leaves turn yellow and drop prematurely. Can affect the whole plant by midsummer in a bad year.',
+    affects:'Roses almost exclusively — some varieties are much more susceptible than others.',
+    organic:['Remove and bin all fallen leaves — do not compost','Spray with a diluted bicarbonate of soda solution as a preventive measure','Mulch around the base to prevent rain splashing spores from soil onto leaves'],
+    chemical:['Fungicide sprays containing tebuconazole — start early in the season before symptoms appear'],
+    prevent:['Choose resistant modern varieties (look for RHS Award of Garden Merit roses)','Water at the base only — wet foliage spreads spores','Improve air circulation by not overcrowding plants'],
+  },
+  {
+    id:'caterpillars', name:'Caterpillars', emoji:'🐛', type:'pest', severity:2,
+    plants:['brassicas','tomatoes','flowers','all'],
+    symptoms:['caterpillars','holes-in-leaves','stunted'],
+    looks:'Irregular or large holes in leaves — often with black or green frass (droppings) nearby. Caterpillars may be visible on leaves or tucked into the heart of the plant.',
+    affects:'Brassicas are the worst affected (cabbage white butterfly). Tomato hornworm can devastate tomatoes. Many flowers are also targeted.',
+    organic:['Pick off by hand and dispose of — check both sides of leaves','Bacillus thuringiensis (Bt) spray — biological control that targets caterpillars only','Squash egg clusters (yellow dots on leaf undersides) before they hatch'],
+    chemical:['Pyrethrin-based insecticides — use as a last resort and avoid spraying when flowers are open'],
+    prevent:['Net brassicas with fine mesh before plants are attacked — the only truly reliable method','Check plants regularly from May onwards for egg clusters','Encourage birds into the garden — great tits and blue tits eat caterpillars'],
+  },
+  {
+    id:'nitrogen-deficiency', name:'Nitrogen Deficiency', emoji:'🟡', type:'deficiency', severity:2,
+    plants:['tomatoes','brassicas','salads','beans','potatoes','all'],
+    symptoms:['yellow-leaves','pale-bleached','stunted','purple-red'],
+    looks:'Older (lower) leaves turn pale yellow-green, starting from the tips and working inward. Sometimes a pinkish-red flush appears on undersides. Growth slows significantly.',
+    affects:'Any plant, but most visible in fast-growing crops — brassicas, sweet corn, tomatoes, and lawns.',
+    organic:['Apply a liquid seaweed or comfrey feed immediately — fast-acting','Mulch with well-rotted manure or garden compost around the base','Plant nitrogen-fixing green manures in future (clover, vetches)'],
+    chemical:['Balanced granular fertiliser (e.g. Growmore) worked into the soil','Liquid tomato feed as a quick fix for container plants'],
+    prevent:['Improve soil with lots of organic matter before planting','Don\'t overwater — nutrients leach out of containers quickly','Rotate crops to avoid depleting soil in the same spot'],
+  },
+  {
+    id:'iron-deficiency', name:'Iron / Magnesium Deficiency', emoji:'🍃', type:'deficiency', severity:2,
+    plants:['fruit','roses','trees','flowers','all'],
+    symptoms:['yellow-leaves','pale-bleached'],
+    looks:'Yellowing between the leaf veins while the veins themselves stay green (interveinal chlorosis). Starts on younger leaves (iron) or older leaves (magnesium). Common in alkaline or chalky soils.',
+    affects:'Rhododendrons, azaleas, camellias, blueberries, raspberries — all acid-loving plants in alkaline soil.',
+    organic:['Apply sequestered iron as a soil drench — fast-acting','For magnesium: spray with Epsom salts solution (20g per litre)','Acidify the soil with sulphur chips or ericaceous compost around the roots'],
+    chemical:['Sequestered iron products (chelated iron) — very effective'],
+    prevent:['Grow acid-loving plants in ericaceous compost in pots if your soil is alkaline','Test your soil pH — aim for 5.5–6.5 for most plants','Mulch with pine needles or composted bark to slowly acidify soil'],
+  },
+  {
+    id:'red-spider-mite', name:'Red Spider Mite', emoji:'🕷️', type:'pest', severity:3,
+    plants:['tomatoes','courgettes','fruit','roses','flowers','all'],
+    symptoms:['red-spider','webbing','pale-bleached','silvery-streaks'],
+    looks:'Tiny (barely visible) mites on leaf undersides — yellowish or red. Upper leaf surface shows a fine pale mottling or bronze colouring. In severe infestations, fine webbing covers the plant.',
+    affects:'Worst in greenhouses and on indoor plants. Also affects tomatoes, cucumbers, strawberries, and roses in hot dry summers.',
+    organic:['Increase humidity — mites hate moisture. Mist plants regularly','Introduce the predatory mite Phytoseiulus persimilis — highly effective in greenhouses','Remove and bin severely affected leaves'],
+    chemical:['Fatty acid sprays (e.g. SB Plant Invigorator) — regular applications needed'],
+    prevent:['Avoid hot, dry, stagnant conditions — mites thrive in heat and drought','Water regularly and consistently','Inspect plants frequently, especially in greenhouses during summer'],
+  },
+  {
+    id:'whitefly', name:'Whitefly', emoji:'🦟', type:'pest', severity:2,
+    plants:['tomatoes','brassicas','courgettes','flowers','all'],
+    symptoms:['white-flies','sticky-residue','yellow-leaves'],
+    looks:'Tiny white moths (1–2mm) that fly up in a cloud when plants are disturbed. Undersides of leaves covered in scale-like nymphs. Leaves become sticky from honeydew, then blackened with sooty mould.',
+    affects:'Brassicas outdoors (cabbage whitefly). Tomatoes and cucumbers in greenhouses (glasshouse whitefly).',
+    organic:['Yellow sticky traps catch adults — hang near affected plants','Introduce parasitic wasp Encarsia formosa in greenhouses — extremely effective','Blast undersides of leaves with water to dislodge nymphs'],
+    chemical:['Pyrethrin-based sprays — treat undersides of leaves thoroughly'],
+    prevent:['Check bought plants carefully — whitefly hides under leaves','Hang yellow sticky traps as an early warning system','Keep greenhouses well-ventilated'],
+  },
+  {
+    id:'clubroot', name:'Clubroot', emoji:'🥦', type:'disease', severity:4,
+    plants:['brassicas'],
+    symptoms:['wilting','stunted','roots-rotted'],
+    looks:'Plants wilt on warm days even when watered, and fail to recover overnight. When pulled up, roots are massively swollen, club-shaped or distorted. A truly devastating soil-borne disease.',
+    affects:'All brassicas: cabbages, broccoli, kale, Brussels sprouts, cauliflower, and even wallflowers and stocks.',
+    organic:['No cure once infected — remove and bin entire plants including all root fragments','Lime the soil heavily to raise pH above 7.5 — clubroot cannot survive in alkaline conditions','Grow resistant varieties (e.g. Kilaton cabbage, Clapton cauliflower)'],
+    chemical:['No effective chemical treatments available to home gardeners'],
+    prevent:['Never move soil or plants from an infected area','Raise pH by liming — the most important step','Buy transplants only from trusted sources','Rotate brassicas on at least a 7-year cycle'],
+  },
+  {
+    id:'grey-mould', name:'Grey Mould (Botrytis)', emoji:'🍄', type:'disease', severity:3,
+    plants:['tomatoes','beans','salads','fruit','flowers','all'],
+    symptoms:['grey-mould','brown-patches','rotting-base','dropping-fruit'],
+    looks:'Fluffy grey-brown mould on leaves, stems, flowers, or fruit. Often starts at a wound or damaged area and spreads rapidly in cool, damp conditions. Infected tissue turns brown and collapses.',
+    affects:'Almost any plant in damp, cool conditions — particularly strawberries, lettuce, tomatoes, grapes, and dahlias.',
+    organic:['Remove all infected material immediately and bin it — never compost','Improve air circulation by thinning and spacing plants properly','Reduce watering and avoid getting foliage wet'],
+    chemical:['Fungicide sprays containing cyprodinil plus fludioxonil'],
+    prevent:['Remove dead or dying plant material promptly','Water at the base and water in the morning so foliage dries quickly','Don\'t leave damaged or harvested stumps — cut cleanly and remove'],
+  },
+  {
+    id:'rust', name:'Rust Disease', emoji:'🟠', type:'disease', severity:2,
+    plants:['roses','beans','alliums','flowers','trees'],
+    symptoms:['orange-rust','yellow-leaves','brown-patches'],
+    looks:'Bright orange, rusty-brown, or yellow pustules on the undersides of leaves. Upper surfaces show corresponding yellow or pale spots. Leaves may drop early.',
+    affects:'Roses, leeks, alliums, antirrhinum, hollyhocks, pelargoniums — each type of rust is usually specific to a plant family.',
+    organic:['Remove and bin affected leaves promptly — do not compost','Avoid wetting foliage when watering','Mulch around the base to prevent soil-splash spreading spores'],
+    chemical:['Fungicides containing tebuconazole or penthiopyrad'],
+    prevent:['Improve air circulation around susceptible plants','Choose resistant varieties where available','Clear fallen leaves at the end of the season'],
+  },
+  {
+    id:'onion-white-rot', name:'White Rot (Onions & Garlic)', emoji:'🧄', type:'disease', severity:4,
+    plants:['alliums'],
+    symptoms:['wilting','yellow-leaves','rotting-base','roots-rotted'],
+    looks:'Plants yellow and collapse. When pulled up, the base of the bulb and roots are covered in a fluffy white mould with tiny black dots (sclerotia). An unmistakable and devastating disease.',
+    affects:'Onions, garlic, leeks, chives, shallots — all alliums.',
+    organic:['No cure — remove and bin all infected plants and surrounding soil if possible','Do not compost any infected material','Consider growing alliums in raised beds or containers with fresh compost'],
+    chemical:['No effective chemical treatments available to home gardeners'],
+    prevent:['The sclerotia persist in soil for 20+ years — avoid growing alliums in infected soil','Rotate crops rigorously (though rotation alone isn\'t enough once established)','Do not bring soil in from other gardens on tools or boots'],
+  },
+  {
+    id:'potato-blight', name:'Potato Blight', emoji:'🥔', type:'disease', severity:4,
+    plants:['potatoes','tomatoes'],
+    symptoms:['brown-patches','black-spots','wilting','rotting-base'],
+    looks:'Dark brown blotches on leaves starting at leaf tips and margins, spreading rapidly. In humid weather a white downy growth appears on undersides. Tubers develop brown rot inside.',
+    affects:'Potatoes and tomatoes — same pathogen (Phytophthora infestans). Spreads fastest in warm, wet, humid weather.',
+    organic:['Cut and remove all top growth immediately if blight is confirmed — leave tubers in ground for 3 weeks before lifting','Copper-based sprays (Bordeaux mixture) as a preventive in high-risk weather','Grow resistant varieties (Sarpo Mira, Sarpo Axona, Setanta)'],
+    chemical:['Fungicides containing copper oxychloride — must be applied preventively'],
+    prevent:['Earth up potatoes well — keeps spores away from tubers','Remove and bin (not compost) any volunteer potatoes from previous years','Check the Blightwatch website for localised blight risk alerts'],
+  },
+  {
+    id:'mosaic-virus', name:'Mosaic Virus', emoji:'🌿', type:'disease', severity:3,
+    plants:['tomatoes','beans','courgettes','salads','all'],
+    symptoms:['distorted-curled','pale-bleached','stunted','blistered'],
+    looks:'Mottled, mosaic pattern of light and dark green (or yellow) on leaves. Leaves may be puckered, distorted, or curled. Growth stunted. No mould or visible pest.',
+    affects:'Courgettes, cucumbers, beans, tomatoes, potatoes, sweet peas — spread by aphids and by handling.',
+    organic:['No cure — remove and bin infected plants promptly to prevent spread','Wash hands and tools after handling infected plants before touching others'],
+    chemical:['No chemical treatments are effective against viruses'],
+    prevent:['Control aphids rigorously — they are the main vector','Avoid touching plants when you have been handling infected material','Buy certified virus-free seed potatoes and onion sets'],
+  },
+  {
+    id:'leatherjackets', name:'Leatherjackets', emoji:'🪱', type:'pest', severity:3,
+    plants:['lawn','all'],
+    symptoms:['wilting','stunted','larvae-soil','yellow-leaves'],
+    looks:'Patches of yellow, dying grass that can be pulled up easily — the roots have been eaten. Grey-brown legless grubs (up to 3cm) found just below the surface. Starlings and crows pecking at a lawn are a giveaway.',
+    affects:'Primarily lawns, but also vegetable seedlings and young plants when larvae are in the soil.',
+    organic:['Nematode treatment (Steinernema feltiae) — water in during September/October when soil is warm and moist','Cover affected lawn area with black polythene overnight — leatherjackets come to the surface and can be collected'],
+    chemical:['No chemical treatments licensed for home garden use in the UK'],
+    prevent:['Improve drainage — crane flies (daddy long legs) lay eggs in wet grass','Scarify and aerate the lawn regularly','Apply nematodes in late summer before eggs hatch'],
+  },
+  {
+    id:'capsid-bug', name:'Capsid Bug', emoji:'🐞', type:'pest', severity:2,
+    plants:['roses','fruit','flowers','all'],
+    symptoms:['holes-in-leaves','distorted-curled','blistered','dropping-fruit'],
+    looks:'Ragged, irregular holes in young leaves — caused when the leaf was very small and unfolded to reveal the damage. New growth at shoot tips may be distorted and puckered. The insects themselves are rarely seen.',
+    affects:'Roses, apples, gooseberries, hydrangeas, dahlias, and many other garden plants.',
+    organic:['Remove weeds around plants where capsid bugs overwinter','Encourage natural predators — ground beetles, spiders','Damage is usually cosmetic — plants often recover well'],
+    chemical:['Pyrethrin-based sprays — apply in the evening to avoid harming bees'],
+    prevent:['Keep garden tidy in autumn — clear leaf litter where eggs are laid','Avoid excessive nitrogen feeding which produces soft, attractive new growth'],
+  },
+  {
+    id:'chafer-grubs', name:'Chafer Grubs', emoji:'🪲', type:'pest', severity:3,
+    plants:['lawn','potatoes','all'],
+    symptoms:['wilting','larvae-soil','yellow-leaves','stunted'],
+    looks:'Patches of lawn turning yellow and dying — turf lifts away easily as roots are destroyed. Fat, white C-shaped grubs (up to 4cm) with a brown head found in the soil. Foxes and badgers may dig up a lawn to find them.',
+    affects:'Primarily lawns. Also attack potatoes and root vegetables in the soil.',
+    organic:['Nematode treatment (Heterorhabditis bacteriophora) — water into soil in August/September when grubs are small','Encourage starlings and green woodpeckers which are excellent natural predators'],
+    chemical:['No chemical treatments licensed for home garden use in the UK'],
+    prevent:['Improve lawn health with good feeding and aeration — healthy turf tolerates some damage','Apply nematodes annually in late summer as a preventive measure'],
+  },
+  {
+    id:'blossom-end-rot', name:'Blossom End Rot', emoji:'🍅', type:'deficiency', severity:2,
+    plants:['tomatoes','courgettes'],
+    symptoms:['brown-patches','sunken-patches','dropping-fruit'],
+    looks:'A sunken, dark brown or black leathery patch at the base (blossom end) of tomatoes, peppers or courgettes. The rest of the fruit may be perfectly healthy. Not a disease — caused by calcium deficiency due to irregular watering.',
+    affects:'Tomatoes, peppers, aubergines, courgettes — especially those grown in containers or in dry conditions.',
+    organic:['Water consistently and evenly — the key fix. Irregular wet/dry cycles stop calcium uptake','Mulch to retain soil moisture','Foliar spray of calcium solution can help in the short term'],
+    chemical:['Calcium foliar sprays available from garden centres'],
+    prevent:['Never let container tomatoes dry out completely','Mulch borders generously','Avoid excessive potassium or nitrogen fertiliser which competes with calcium uptake'],
+  },
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-let activeType = 'all';
-let searchTerm = '';
-let selectedPlant = null;
+
+let selectedPlants = new Set();
+let selectedSymptoms = new Set();
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
+
 function init(){
-  renderBrowse();
-}
-
-function setType(btn, type){
-  document.querySelectorAll('.fchip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  activeType = type;
-  filterPlants();
-}
-
-function filterPlants(){
-  searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-  renderBrowse();
-}
-
-function getFiltered(){
-  return PLANTS.filter(p => {
-    const typeMatch = activeType === 'all' || p.type === activeType;
-    const searchMatch = !searchTerm || p.name.toLowerCase().includes(searchTerm);
-    return typeMatch && searchMatch;
+  // Plant type chips
+  const pc = document.getElementById('plantChips');
+  PLANT_TYPES.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.dataset.id = p.id;
+    btn.dataset.group = 'plant-type';
+    btn.textContent = p.label;
+    btn.onclick = () => toggleChip(btn, selectedPlants, p.id);
+    pc.appendChild(btn);
   });
+
+  // Symptom chips
+  const groups = {
+    colour: document.getElementById('colourChips'),
+    texture: document.getElementById('textureChips'),
+    pest: document.getElementById('pestChips'),
+    growth: document.getElementById('growthChips'),
+  };
+  Object.entries(SYMPTOMS).forEach(([group, items]) => {
+    items.forEach(s => {
+      const btn = document.createElement('button');
+      btn.className = 'chip';
+      btn.dataset.id = s.id;
+      btn.dataset.group = `symptom-${group}`;
+      btn.textContent = s.label;
+      btn.onclick = () => toggleChip(btn, selectedSymptoms, s.id);
+      groups[group].appendChild(btn);
+    });
+  });
+
+  updateSteps();
 }
 
-function renderBrowse(){
-  const grid = document.getElementById('browseGrid');
-  const empty = document.getElementById('emptyState');
-  const filtered = getFiltered();
-
-  if(filtered.length === 0){
-    grid.style.display = 'none';
-    empty.style.display = 'block';
-    return;
+function toggleChip(btn, set, id){
+  if(set.has(id)){
+    set.delete(id);
+    btn.classList.remove('selected', btn.dataset.group);
+  } else {
+    set.add(id);
+    btn.classList.add('selected', btn.dataset.group);
   }
-  grid.style.display = 'grid';
-  empty.style.display = 'none';
+  updateSteps();
+  updateSummary();
+}
+
+function updateSteps(){
+  const s1 = document.getElementById('step1pill');
+  const s2 = document.getElementById('step2pill');
+  const s3 = document.getElementById('step3pill');
+  if(selectedPlants.size > 0){s1.classList.add('done');s1.classList.remove('active')}
+  else{s1.classList.remove('done');s1.classList.add('active')}
+  if(selectedSymptoms.size > 0){s2.classList.add('done');s2.classList.remove('active')}
+  else if(selectedPlants.size > 0){s2.classList.add('active');s2.classList.remove('done')}
+  else{s2.classList.remove('active','done')}
+  if(selectedSymptoms.size > 0){s3.classList.add('active')}
+  else{s3.classList.remove('active','done')}
+}
+
+function updateSummary(){
+  const el = document.getElementById('selSummary');
+  const parts = [];
+  if(selectedPlants.size) parts.push(selectedPlants.size + ' plant type' + (selectedPlants.size>1?'s':'') + ' selected');
+  if(selectedSymptoms.size) parts.push(selectedSymptoms.size + ' symptom' + (selectedSymptoms.size>1?'s':'') + ' selected');
+  el.textContent = parts.join(' · ');
+}
+
+function doSearch(){
+  const resultsArea = document.getElementById('resultsArea');
+  const grid = document.getElementById('resultGrid');
+  const countEl = document.getElementById('resultsCount');
+
+  // Score each problem
+  const scored = PROBLEMS.map(p => {
+    let score = 0;
+    // Plant match
+    if(selectedPlants.size === 0 || selectedPlants.has('all')){
+      score += 1;
+    } else {
+      const plantMatch = [...selectedPlants].some(pt => p.plants.includes(pt) || p.plants.includes('all'));
+      if(!plantMatch) return {p, score:-1};
+      score += 2;
+    }
+    // Symptom match
+    if(selectedSymptoms.size > 0){
+      const matches = [...selectedSymptoms].filter(s => p.symptoms.includes(s)).length;
+      if(matches === 0) return {p, score:-1};
+      score += matches * 3;
+    }
+    return {p, score};
+  }).filter(x => x.score > 0).sort((a,b) => b.score - a.score);
+
+  countEl.textContent = scored.length + ' possible ' + (scored.length===1?'cause':'causes') + ' found';
+  resultsArea.style.display = 'block';
   grid.innerHTML = '';
 
-  filtered.forEach(p => {
-    const totalWeeks = p.germWeeks + p.establishWeeks + p.growWeeks;
-    const totalStr = totalWeeks >= 52
-      ? Math.round(totalWeeks/4) + ' months'
-      : Math.round(totalWeeks) + ' weeks';
+  if(scored.length === 0){
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <span class="es-icon">🔍</span>
+      <h3>No matches found</h3>
+      <p>Try selecting fewer or different symptoms, or choose "Not sure / All plants" as the plant type.</p>
+    </div>`;
+    resultsArea.scrollIntoView({behavior:'smooth', block:'start'});
+    return;
+  }
+
+  scored.forEach(({p}, i) => {
+    const typeBadge = `<span class="badge badge-${p.type}">${p.type.charAt(0).toUpperCase()+p.type.slice(1)}</span>`;
+    const sevLabels = ['','Minor','Moderate','Serious','Severe'];
+    const sevClass = ['','minor','moderate','serious','serious'];
+    const sevBadge = `<span class="badge badge-${sevClass[p.severity]}">${sevLabels[p.severity]}</span>`;
+    const sevText = ['','Watch and wait','Treat soon','Act quickly','Act immediately'];
+    const sevTextClass = ['','sev-1','sev-2','sev-3','sev-4'];
+
+    const organicHTML = p.organic.map(o=>`<div class="fix-item">${o}</div>`).join('');
+    const chemHTML = p.chemical.map(c=>`<div class="fix-item">${c}</div>`).join('');
+    const preventHTML = p.prevent.map(pr=>`<div class="fix-item">${pr}</div>`).join('');
 
     const card = document.createElement('div');
-    card.className = 'browse-card' + (selectedPlant === p.name ? ' active' : '');
-    card.onclick = () => selectPlant(p);
-    card.innerHTML = `<span class="browse-emoji">${p.emoji}</span>
-      <div class="browse-name">${p.name}</div>
-      <div class="browse-time">~${totalStr} total</div>`;
+    card.className = 'result-card';
+    card.style.animationDelay = (i*0.05)+'s';
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-emoji">${p.emoji}</div>
+        <div class="card-title-area">
+          <div class="card-name">${p.name}</div>
+          <div class="card-badges">${typeBadge}${sevBadge}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-look">${p.looks}</div>
+        <div class="card-affects"><strong>Commonly affects:</strong> ${p.affects}</div>
+        <div class="fix-group">
+          <div class="fix-label organic">🌿 Organic fixes</div>
+          ${organicHTML}
+        </div>
+        <div class="fix-group">
+          <div class="fix-label chemical">🧪 Chemical options</div>
+          ${chemHTML}
+        </div>
+        <div class="fix-group">
+          <div class="fix-label prevent">🛡️ Prevention</div>
+          ${preventHTML}
+        </div>
+        <div class="severity-row">
+          <span class="severity-label">Severity</span>
+          <div class="severity-bar"><div class="severity-fill sev-${p.severity}"></div></div>
+          <span class="severity-text ${sevTextClass[p.severity]}">${sevText[p.severity]}</span>
+        </div>
+      </div>`;
     grid.appendChild(card);
   });
+
+  resultsArea.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-function selectPlant(p){
-  selectedPlant = p.name;
-  renderBrowse(); // update active state
-  renderDetail(p);
-  document.getElementById('detailPanel').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function renderDetail(p){
-  const panel = document.getElementById('detailPanel');
-  panel.style.display = 'block';
-
-  const totalWeeks = p.germWeeks + p.establishWeeks + p.growWeeks;
-  const totalStr = totalWeeks >= 52
-    ? (totalWeeks/52).toFixed(1).replace('.0','') + ' year' + (totalWeeks>=104?'s':'')
-    : Math.round(totalWeeks) + ' weeks';
-
-  // Timeline bar percentages
-  const total = p.germWeeks + p.establishWeeks + p.growWeeks;
-  const germPct = Math.round((p.germWeeks / total) * 100);
-  const estPct = Math.round((p.establishWeeks / total) * 100);
-  const growPct = Math.round((p.growWeeks / total) * 100);
-  const harvPct = 100 - germPct - estPct - growPct;
-
-  // Week labels for bar
-  const germLabel = p.germWeeks < 1 ? Math.round(p.germWeeks*7)+'d' : Math.round(p.germWeeks)+'w';
-  const estLabel = p.establishWeeks > 0 ? (p.establishWeeks < 1 ? Math.round(p.establishWeeks*7)+'d' : Math.round(p.establishWeeks)+'wk') : '';
-  const growLabel = p.growWeeks < 1 ? Math.round(p.growWeeks*7)+'d' : Math.round(p.growWeeks)+'wk';
-  const harvLabel = p.harvestWeeks > 0 ? Math.round(p.harvestWeeks)+'wk' : '';
-
-  // Badge
-  const typeBadge = `<span class="dbadge dbadge-${p.type}">${p.type === 'veg' ? '🥦 Vegetable' : p.type === 'fruit' ? '🍓 Fruit' : '🌸 Flower'}</span>`;
-  const easyBadge = p.easy ? '<span class="dbadge dbadge-easy">⭐ Beginner friendly</span>' : '';
-  const whereBadge = `<span class="dbadge dbadge-where">${p.where === 'indoor' ? '🏠 Start indoors' : p.where === 'greenhouse' ? '🏡 Greenhouse' : '🌳 Sow direct'}</span>`;
-
-  // Duration description
-  const germDesc = p.germWeeks < 1
-    ? `Seeds sprout in ${Math.round(p.germWeeks*7)} days`
-    : `Seeds sprout in ${p.germWeeks < 2 ? 'around 1 week' : Math.round(p.germWeeks) + ' weeks'}`;
-  const estDesc = p.establishWeeks > 0
-    ? `Grow on indoors for ~${Math.round(p.establishWeeks)} weeks before planting out`
-    : 'Sow direct — no transplanting needed';
-  const growDesc = `After planting, takes ${Math.round(p.growWeeks)} more weeks to reach harvest`;
-  const harvDesc = p.harvestWeeks > 0
-    ? `Harvest window lasts approximately ${Math.round(p.harvestWeeks)} weeks`
-    : 'Flowers continuously once established';
-
-  // Calendar
-  const currentMonth = new Date().getMonth();
-  const calCells = MONTHS.map((m, i) => {
-    let cls = '';
-    if(p.sow.includes(i)) cls = 'sow';
-    else if(p.plant.includes(i)) cls = 'plant';
-    else if(p.harvest.includes(i)) cls = 'harvest';
-    const cur = i === currentMonth ? ' current' : '';
-    return `<div class="month-cell ${cls}${cur}">
-      <span class="mc-name">${m}</span>
-      <div class="mc-dot"></div>
-    </div>`;
-  }).join('');
-
-  // Tips
-  const tipsHTML = p.tips.map(t => `<div class="tip-item"><span class="tip-icon">💡</span><span class="tip-text">${t}</span></div>`).join('');
-
-  // Succession
-  const succHTML = p.succession
-    ? `<div class="succession-box"><span class="si">🔄</span><p><strong>Succession sowing:</strong> ${p.succession}</p></div>`
-    : '';
-
-  panel.innerHTML = `
-    <div class="detail-header">
-      <div class="detail-emoji">${p.emoji}</div>
-      <div class="detail-title">
-        <div class="detail-name">${p.name}</div>
-        <div class="detail-badges">${typeBadge}${easyBadge}${whereBadge}</div>
-      </div>
-      <div class="detail-total">
-        <div class="detail-total-num">${totalStr}</div>
-        <div class="detail-total-label">Seed to harvest</div>
-      </div>
-    </div>
-
-    <div class="timeline-section">
-      <div class="timeline-label">Full growing timeline</div>
-      <div class="timeline-bar-wrap">
-        <div class="timeline-bar">
-          <div class="tbar-seg tbar-germ" style="flex:${germPct}">${germPct > 8 ? '🌱 '+germLabel : ''}</div>
-          ${p.establishWeeks > 0 ? `<div class="tbar-seg tbar-establish" style="flex:${estPct}">${estPct > 8 ? '🪴 '+estLabel : ''}</div>` : ''}
-          <div class="tbar-seg tbar-grow" style="flex:${growPct}">${growPct > 8 ? '🌿 '+growLabel : ''}</div>
-          ${p.harvestWeeks > 0 ? `<div class="tbar-seg tbar-harvest" style="flex:${Math.max(harvPct,4)}">${harvPct > 8 ? '✂️ '+harvLabel : ''}</div>` : ''}
-        </div>
-      </div>
-      <div class="timeline-legend">
-        <div class="legend-item"><div class="legend-dot germ"></div><span class="legend-weeks">${germLabel}</span>&nbsp;<span class="legend-label">Germination</span></div>
-        ${p.establishWeeks > 0 ? `<div class="legend-item"><div class="legend-dot establish"></div><span class="legend-weeks">${Math.round(p.establishWeeks)}wk</span>&nbsp;<span class="legend-label">Establish indoors</span></div>` : ''}
-        <div class="legend-item"><div class="legend-dot grow"></div><span class="legend-weeks">${Math.round(p.growWeeks)}wk</span>&nbsp;<span class="legend-label">Growing on</span></div>
-        ${p.harvestWeeks > 0 ? `<div class="legend-item"><div class="legend-dot harvest"></div><span class="legend-weeks">${Math.round(p.harvestWeeks)}wk</span>&nbsp;<span class="legend-label">Harvest window</span></div>` : ''}
-      </div>
-    </div>
-
-    <div class="stages-section">
-      <div class="timeline-label">Stage by stage</div>
-      <div class="stages-grid">
-        <div class="stage-card germ">
-          <span class="stage-icon">🌱</span>
-          <div class="stage-title">Germination</div>
-          <div class="stage-duration">${germLabel}</div>
-          <div class="stage-desc">${germDesc}</div>
-        </div>
-        ${p.establishWeeks > 0 ? `<div class="stage-card establish">
-          <span class="stage-icon">🪴</span>
-          <div class="stage-title">Establish indoors</div>
-          <div class="stage-duration">${Math.round(p.establishWeeks)} weeks</div>
-          <div class="stage-desc">${estDesc}</div>
-        </div>` : `<div class="stage-card establish">
-          <span class="stage-icon">🌳</span>
-          <div class="stage-title">Sow direct</div>
-          <div class="stage-duration">No transplanting</div>
-          <div class="stage-desc">${estDesc}</div>
-        </div>`}
-        <div class="stage-card grow">
-          <span class="stage-icon">🌿</span>
-          <div class="stage-title">Growing on</div>
-          <div class="stage-duration">${Math.round(p.growWeeks)} weeks</div>
-          <div class="stage-desc">${growDesc}</div>
-        </div>
-        <div class="stage-card harvest">
-          <span class="stage-icon">✂️</span>
-          <div class="stage-title">Harvest window</div>
-          <div class="stage-duration">${p.harvestWeeks > 0 ? Math.round(p.harvestWeeks)+' weeks' : 'Ongoing'}</div>
-          <div class="stage-desc">${harvDesc}</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sow-section">
-      <div class="timeline-label">Sowing calendar (South England — other regions 1–4 weeks later)</div>
-      <div class="month-grid">${calCells}</div>
-      <div class="cal-legend">
-        ${p.sow.length ? '<div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--moss)"></div> Sow seeds</div>' : ''}
-        ${p.plant.length ? '<div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--amber)"></div> Plant out</div>' : ''}
-        ${p.harvest.length ? '<div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--rust)"></div> Harvest</div>' : ''}
-        <div class="cal-leg-item"><div class="cal-leg-dot" style="background:transparent;border:2px solid var(--soil);border-radius:50%"></div> This month</div>
-      </div>
-      ${succHTML}
-    </div>
-
-    <div class="tips-section">
-      <div class="timeline-label">Key tips for ${p.name.toLowerCase()}</div>
-      <div class="tips-grid">${tipsHTML}</div>
-    </div>`;
+function resetAll(){
+  selectedPlants.clear();
+  selectedSymptoms.clear();
+  document.querySelectorAll('.chip.selected').forEach(c => {
+    c.classList.remove('selected');
+    // remove group class
+    ['plant-type','symptom-colour','symptom-texture','symptom-pest','symptom-growth'].forEach(g => c.classList.remove(g));
+  });
+  document.getElementById('resultsArea').style.display='none';
+  document.getElementById('selSummary').textContent='';
+  updateSteps();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 init();
