@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Companion Planting Checker — GrowGuide</title>
-<meta name="description" content="Find out which plants grow well together and which to keep apart. Free UK companion planting guide — no login, no ads.">
+<title>Companion Planting Checker UK — GrowGuide</title>
+<meta name="description" content="Find out which plants grow well together and which to keep apart. Check any UK vegetable, herb, fruit or flower for its best companions and worst neighbours — 70+ plants covered. Free, no login.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -630,6 +630,358 @@ const PLANTS = [
      {plant:'fennel',      reason:'Fennel inhibits sunflower growth.'},
    ],
    tips:['Plant sunflowers on the north or east side of your plot so they don\'t shade other crops','Leave seedheads in autumn for birds — goldfinches in particular love them','Sunflower roots can inhibit many crops — rotate their position each year']},
+
+  // ADDITIONAL VEGETABLES
+  {id:'leeks', name:'Leeks', emoji:'🌿', type:'veg',
+   companions:[
+     {plant:'carrots',     reason:'The classic pairing — leeks repel carrot fly; carrots repel leek moth. Interplant rows for mutual protection.'},
+     {plant:'celery',      reason:'Both thrive in similar rich, moist conditions and don\'t compete strongly.'},
+     {plant:'onions',      reason:'Alliums together create a strong aromatic barrier against many pests.'},
+   ],
+   foes:[
+     {plant:'beans',       reason:'Allium compounds inhibit bean root development and nitrogen fixation.'},
+     {plant:'peas',        reason:'Same as beans — leeks inhibit legume growth. Keep well apart.'},
+   ],
+   tips:['Interplanting leeks and carrots in alternating rows is one of the most reliable companion combinations','Earth up leeks regularly to blanch the stems and exclude light','A long season crop — combine with fast-growing salads to use space efficiently']},
+
+  {id:'garlic', name:'Garlic', emoji:'🧄', type:'veg',
+   companions:[
+     {plant:'roses',       reason:'One of the most reliable companion pairings — garlic planted at the base of roses deters aphids and black spot.'},
+     {plant:'tomatoes',    reason:'Repels spider mites and aphids. Plant at the base of each tomato plant.'},
+     {plant:'carrots',     reason:'Strong scent deters carrot fly. Part of the classic carrot and allium pairing.'},
+     {plant:'fruit',       reason:'Garlic planted under fruit trees deters aphids, borers and other fruit tree pests.'},
+   ],
+   foes:[
+     {plant:'beans',       reason:'Garlic chemicals strongly inhibit bean root development — one of the most documented bad pairings.'},
+     {plant:'peas',        reason:'Same inhibitory effect as on beans — keep garlic away from all legumes.'},
+     {plant:'sage',        reason:'Garlic and sage mutually inhibit each other.'},
+   ],
+   tips:['Plant garlic at the base of roses in autumn for season-long aphid protection','Garlic is one of the most useful companion plants in the garden — grow it generously','Autumn-planted garlic is in the ground over winter when space is otherwise unused']},
+
+  {id:'peas', name:'Peas', emoji:'🟢', type:'veg',
+   companions:[
+     {plant:'carrots',     reason:'Peas fix nitrogen that benefits carrots. Roots occupy different soil layers so competition is minimal.'},
+     {plant:'radishes',    reason:'Radishes act as a trap crop for pea leaf weevil. The quick turnover of radishes also keeps the bed productive.'},
+     {plant:'lettuce',     reason:'Lettuce grows happily in the light shade of pea plants. They fill gaps and suppress weeds.'},
+     {plant:'spinach',     reason:'Both prefer cooler conditions and grow well together as early-season companions.'},
+     {plant:'corn',        reason:'Peas fix nitrogen that benefits corn. A simplified version of the Three Sisters.'},
+     {plant:'mint',        reason:'Mint deters aphids and pea weevils. Grow in a pot nearby rather than directly in the bed.'},
+   ],
+   foes:[
+     {plant:'onions',      reason:'Alliums inhibit legume growth — keep peas and beans away from all alliums.'},
+     {plant:'garlic',      reason:'Garlic chemicals inhibit pea root development and nitrogen fixation.'},
+     {plant:'fennel',      reason:'Fennel is inhibitory to peas as it is to most vegetables.'},
+   ],
+   tips:['Pea roots fix nitrogen — dig them in rather than pulling them when finished','Support with twiggy sticks or netting from the start — they grow faster than you expect','Sow with sweet peas for an attractive and productive combination']},
+
+  {id:'courgettes', name:'Courgettes & Squash', emoji:'🥒', type:'veg',
+   companions:[
+     {plant:'corn',        reason:'The Three Sisters classic — corn provides height, beans fix nitrogen, squash shades the ground.'},
+     {plant:'beans',       reason:'Beans fix nitrogen that squash uses heavily. Squash leaves shade the soil, reducing moisture loss.'},
+     {plant:'nasturtiums', reason:'Deter squash bugs and aphids. Plant around the perimeter of the squash patch.'},
+     {plant:'borage',      reason:'Attracts pollinators essential for courgette fruit set. Essential if growing under cover.'},
+     {plant:'marigolds',   reason:'Deter aphids and whitefly. French marigolds are particularly effective.'},
+     {plant:'radishes',    reason:'Deter squash vine borers and cucumber beetles when planted nearby.'},
+   ],
+   foes:[
+     {plant:'potatoes',    reason:'Both are susceptible to blight and other diseases — growing together concentrates the risk.'},
+     {plant:'fennel',      reason:'Fennel inhibits courgette and squash growth.'},
+   ],
+   tips:['Hand-pollinate courgettes in cool weather if fruit is setting poorly — use a soft brush','Plant borage nearby to attract pollinators — essential for good fruit set','Pinch out the growing tip once 4–5 fruits have set to improve ripening']},
+
+  {id:'celery', name:'Celery', emoji:'🌿', type:'veg',
+   companions:[
+     {plant:'tomatoes',    reason:'Celery repels the tomato hornworm and aphids. A useful border plant around tomatoes.'},
+     {plant:'brassicas',   reason:'Said to repel cabbage white butterflies from the brassica bed.'},
+     {plant:'leeks',       reason:'Both prefer rich, moist conditions. They grow well together without competing strongly.'},
+     {plant:'beans',       reason:'Beans provide light shade that celery appreciates in hot weather.'},
+   ],
+   foes:[
+     {plant:'corn',        reason:'Corn competes strongly with celery for nutrients and space.'},
+     {plant:'potatoes',    reason:'Potatoes can inhibit celery growth when grown in close proximity.'},
+   ],
+   tips:['Celery is a hungry, thirsty plant — grow in rich soil and never let it dry out','Self-blanching varieties are the easiest for most home growers','Celery makes a useful border plant around the tomato bed']},
+
+  {id:'asparagus', name:'Asparagus', emoji:'🌿', type:'veg',
+   companions:[
+     {plant:'tomatoes',    reason:'Tomatoes repel asparagus beetles. Asparagus releases chemicals that deter root nematodes harmful to tomatoes.'},
+     {plant:'basil',       reason:'Basil repels aphids and other pests that attack asparagus foliage.'},
+     {plant:'parsley',     reason:'Attracts predatory insects. A traditional companion for asparagus beds.'},
+     {plant:'marigolds',   reason:'Deter nematodes in the soil around asparagus roots — important for long-term bed health.'},
+   ],
+   foes:[
+     {plant:'onions',      reason:'Onions and garlic inhibit asparagus root development.'},
+     {plant:'garlic',      reason:'Garlic compounds are harmful to asparagus roots.'},
+     {plant:'potatoes',    reason:'Potatoes compete strongly and can spread disease to asparagus.'},
+   ],
+   tips:['Asparagus is a permanent bed — plan companion planting carefully as you can\'t rotate','Marigolds planted through the bed deter nematodes over the long term','Don\'t grow anything too vigorous nearby that might encroach on the crowns']},
+
+  {id:'beetroot', name:'Beetroot', emoji:'🟣', type:'veg',
+   companions:[
+     {plant:'onions',      reason:'Onions deter beet leaf miners and aphids. A classic pairing for the beet bed.'},
+     {plant:'lettuce',     reason:'Lettuce and beetroot fill different vertical niches and grow well together, each suppressing weeds for the other.'},
+     {plant:'brassicas',   reason:'Beetroot is said to benefit brassicas by adding minerals to the soil via leaf drop.'},
+     {plant:'garlic',      reason:'Garlic deters aphids that attack beet foliage.'},
+     {plant:'mint',        reason:'Mint deters aphids and beet leaf miners. Keep in a pot to prevent it spreading.'},
+   ],
+   foes:[
+     {plant:'beans',       reason:'Beans and beets compete strongly for nutrients and beans can inhibit beet growth.'},
+     {plant:'carrots',     reason:'Both are root crops competing for the same deep soil nutrients.'},
+     {plant:'fennel',      reason:'Fennel inhibits beetroot growth.'},
+   ],
+   tips:['Beetroot tops are edible — harvest outer leaves like chard for an extra harvest','A useful gap-filler between taller crops','Sow a short row every 3 weeks for continuous harvest through summer']},
+
+  {id:'sweetcorn', name:'Sweetcorn', emoji:'🌽', type:'veg',
+   companions:[
+     {plant:'beans',       reason:'The Three Sisters — beans fix nitrogen for corn. Corn provides a climbing frame for beans.'},
+     {plant:'courgettes',  reason:'Squash and courgette leaves shade the soil, conserving moisture for corn roots.'},
+     {plant:'peas',        reason:'Peas fix nitrogen. A simplified version of the Three Sisters that works well together.'},
+     {plant:'sunflowers',  reason:'Both thrive in full sun and attract the same beneficial insects.'},
+     {plant:'cucumbers',   reason:'Cucumbers can scramble between corn stalks. Both benefit from similar conditions.'},
+   ],
+   foes:[
+     {plant:'tomatoes',    reason:'Both attract similar caterpillar pests — growing together concentrates the problem.'},
+     {plant:'celery',      reason:'Corn shades celery excessively and competes for nutrients.'},
+     {plant:'fennel',      reason:'Fennel inhibits corn growth as it does most vegetables.'},
+   ],
+   tips:['Plant in a block rather than rows for reliable wind pollination','Sweetcorn needs a warm site — a sheltered south-facing spot is ideal in the UK','Three Sisters is one of the most productive traditional growing combinations']},
+
+  {id:'cucumber', name:'Cucumbers', emoji:'🥒', type:'veg',
+   companions:[
+     {plant:'beans',       reason:'Beans fix nitrogen that cucumbers appreciate. Both like similar warm, moist conditions.'},
+     {plant:'nasturtiums', reason:'Deter cucumber beetles and aphids. A reliable trap crop companion.'},
+     {plant:'sunflowers',  reason:'Provide afternoon shade that reduces heat stress and mildew in cucumbers.'},
+     {plant:'dill',        reason:'Attracts beneficial predatory insects. Dill planted nearby reduces aphid pressure on cucumbers.'},
+     {plant:'marigolds',   reason:'Deter whitefly, aphids and cucumber beetles. Plant around the base of plants.'},
+     {plant:'radishes',    reason:'Deter cucumber beetles when planted as a border around cucumber plants.'},
+   ],
+   foes:[
+     {plant:'sage',        reason:'Sage is said to inhibit cucumber growth when planted very close.'},
+     {plant:'fennel',      reason:'Fennel inhibits most vegetable growth including cucumbers.'},
+     {plant:'potatoes',    reason:'Both susceptible to similar diseases. Keep apart to reduce disease risk.'},
+   ],
+   tips:['Cucumbers need pollinators — grow borage and marigolds nearby','Keep cucumbers well watered and fed — they\'re heavy drinkers','Grow vertically to save space and improve air circulation']},
+
+  {id:'radishes', name:'Radishes', emoji:'🔴', type:'veg',
+   companions:[
+     {plant:'carrots',     reason:'Radishes act as a marker row — they germinate fast and mark the row while slow carrots catch up.'},
+     {plant:'cucumber',    reason:'Deter cucumber beetles when planted as a border around cucumbers.'},
+     {plant:'courgettes',  reason:'Deter squash vine borers and cucumber beetles.'},
+     {plant:'lettuce',     reason:'Both quick crops that work well interplanted. Radishes are harvested before lettuce needs the space.'},
+     {plant:'peas',        reason:'Act as a trap crop for pea leaf weevil, drawing pests away from the main crop.'},
+     {plant:'spinach',     reason:'Both prefer cool conditions and grow well together as fast-growing companions.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits radish growth.'},
+     {plant:'hyssop',      reason:'Hyssop is said to inhibit radish development.'},
+   ],
+   tips:['Use radishes as a quick catch crop between slower growing vegetables','Sow a short row every 2 weeks for radishes almost all season','Radishes help break up soil for crops that follow — dig the roots in']},
+
+  {id:'spinach', name:'Spinach', emoji:'🌿', type:'veg',
+   companions:[
+     {plant:'strawberries', reason:'Spinach thrives in the dappled shade under strawberry leaves. Both benefit from similar moist conditions.'},
+     {plant:'peas',        reason:'Both prefer cool conditions and grow well together as early-season crops.'},
+     {plant:'beans',       reason:'Beans fix nitrogen that benefits spinach. Light shade from beans suits spinach in summer.'},
+     {plant:'radishes',    reason:'Both fast-growing cool-season crops that work well interplanted.'},
+     {plant:'lettuce',     reason:'Spinach and lettuce share similar conditions and fill gaps in each other\'s harvest windows.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits spinach growth.'},
+     {plant:'beets',       reason:'Both are in the same family and attract similar pests — growing together concentrates problems.'},
+   ],
+   tips:['Spinach bolts quickly in heat — use as an early-season crop before summer vegetables fill the space','Cut-and-come-again harvesting extends the season significantly','Perpetual spinach (actually a chard) is more heat tolerant and easier to grow year-round']},
+
+  {id:'aubergine', name:'Aubergine', emoji:'🍆', type:'veg',
+   companions:[
+     {plant:'basil',       reason:'Repels aphids, spider mites and other pests. A reliable companion for all solanums including aubergine.'},
+     {plant:'marigolds',   reason:'Deter aphids, whitefly and nematodes — the same pests that attack aubergine.'},
+     {plant:'spinach',     reason:'Spinach grows happily in the partial shade of aubergine plants.'},
+     {plant:'thyme',       reason:'Aromatic herbs generally deter the aphids and whitefly that target aubergines.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits most vegetable growth.'},
+     {plant:'potatoes',    reason:'Same family — share diseases including blight. Keep apart to reduce risk.'},
+     {plant:'tomatoes',    reason:'Same family as aubergine — can share pests and diseases if grown very close together.'},
+   ],
+   tips:['Grow in a greenhouse or warm sheltered spot — aubergines need heat to thrive in the UK','Basil is the classic companion — plant several plants around each aubergine','Pot-growing allows you to move plants to the sunniest spot as the season progresses']},
+
+  {id:'sweetpotato', name:'Sweet Potato', emoji:'🍠', type:'veg',
+   companions:[
+     {plant:'beans',       reason:'Beans fix nitrogen that benefits sweet potato growth. Good ground-level companions.'},
+     {plant:'marigolds',   reason:'Deter nematodes in the soil — important for root crops like sweet potato.'},
+     {plant:'thyme',       reason:'Aromatic herbs deter many of the pests that attack sweet potato foliage.'},
+   ],
+   foes:[
+     {plant:'squash',      reason:'Both are vigorous trailing plants that compete for space and light.'},
+     {plant:'fennel',      reason:'Fennel inhibits sweet potato growth.'},
+   ],
+   tips:['Sweet potatoes need warmth — a south-facing raised bed or greenhouse gives the best results in the UK','The trailing vines make effective ground cover between taller plants','Grow through black plastic mulch to warm the soil and suppress weeds']},
+
+  // ADDITIONAL FRUIT
+  {id:'fruit', name:'Fruit Trees & Bushes', emoji:'🍎', type:'fruit',
+   companions:[
+     {plant:'garlic',      reason:'Planted under fruit trees, garlic deters aphids, borers and other fruit tree pests.'},
+     {plant:'chives',      reason:'Chives under apple trees are a traditional companion that deters scab and aphids.'},
+     {plant:'nasturtiums', reason:'Attract aphids away from fruit trees as a trap crop. Easy to grow under the canopy.'},
+     {plant:'marigolds',   reason:'Deter nematodes in the soil around fruit tree roots.'},
+     {plant:'lavender',    reason:'Attracts pollinators essential for fruit set, and deters aphids and other pests.'},
+     {plant:'comfrey',     reason:'Deep roots mine nutrients from subsoil. Cut leaves make an excellent mulch around fruit trees.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel is allelopathic and inhibits many plants including fruit trees planted nearby.'},
+     {plant:'potatoes',    reason:'Potatoes compete for nutrients and can share disease with fruit trees.'},
+   ],
+   tips:['Grow a "guild" around each fruit tree — garlic, comfrey, chives and marigolds make a productive underplanting','Avoid growing grass right up to fruit tree trunks — it competes for moisture and nutrients','Wildflower strips nearby dramatically improve pollination and fruit set']},
+
+  {id:'strawberries', name:'Strawberries', emoji:'🍓', type:'fruit',
+   companions:[
+     {plant:'borage',      reason:'A classic pairing — borage is said to improve strawberry flavour and attracts pollinators to the bed.'},
+     {plant:'spinach',     reason:'Spinach thrives in the dappled shade of strawberry plants without competing for fruit.'},
+     {plant:'lettuce',     reason:'Lettuce fills gaps between strawberry plants, suppressing weeds and retaining moisture.'},
+     {plant:'marigolds',   reason:'Deter aphids, slugs and nematodes in the strawberry bed.'},
+     {plant:'thyme',       reason:'Repels slugs and aphids. A low-growing companion that doesn\'t shade fruits.'},
+     {plant:'garlic',      reason:'Deters aphids and botrytis (grey mould) — one of the biggest strawberry problems.'},
+   ],
+   foes:[
+     {plant:'brassicas',   reason:'Brassicas inhibit strawberry growth when grown in close proximity.'},
+     {plant:'fennel',      reason:'Fennel inhibits strawberry growth.'},
+     {plant:'potatoes',    reason:'Potatoes can spread verticillium wilt to strawberries — avoid in rotation.'},
+   ],
+   tips:['Borage is the classic strawberry companion — plant generously throughout the bed','Replace strawberry plants every 3 years — they exhaust the soil and virus levels build up','Net as soon as fruits start to colour — birds are fast']},
+
+  // ADDITIONAL HERBS
+  {id:'mint', name:'Mint', emoji:'🌿', type:'herbs',
+   companions:[
+     {plant:'brassicas',   reason:'Strong mint scent deters cabbage white butterflies and aphids from the brassica bed.'},
+     {plant:'peas',        reason:'Mint repels aphids and pea weevils. A useful border plant near peas.'},
+     {plant:'tomatoes',    reason:'Repels aphids and spider mites. Plant nearby but not too close.'},
+     {plant:'carrots',     reason:'Mint scent deters carrot fly. Keep in a pot nearby rather than planting directly.'},
+     {plant:'beetroot',    reason:'Deters aphids and beet leaf miners.'},
+   ],
+   foes:[
+     {plant:'parsley',     reason:'Mint and parsley compete strongly and are said to inhibit each other.'},
+     {plant:'chamomile',   reason:'The two herbs are not compatible when planted very close together.'},
+   ],
+   tips:['Always grow mint in a pot — it spreads aggressively by underground runners and will take over if planted directly in the ground','Spearmint and apple mint are the most useful culinary varieties','Bury the pot in the ground to get the companion planting benefits without the spreading']},
+
+  {id:'parsley', name:'Parsley', emoji:'🌿', type:'herbs',
+   companions:[
+     {plant:'tomatoes',    reason:'Attracts hoverflies and other beneficial predatory insects that control aphids on tomatoes.'},
+     {plant:'asparagus',   reason:'A traditional companion — parsley attracts beneficial insects to the asparagus bed.'},
+     {plant:'carrots',     reason:'Attracts predatory insects. Note: don\'t let parsley go to seed near carrots as they can cross.'},
+     {plant:'roses',       reason:'Attracts aphid predators to the rose bed. A useful low-growing companion.'},
+   ],
+   foes:[
+     {plant:'mint',        reason:'Mint inhibits parsley growth when planted close together.'},
+     {plant:'onions',      reason:'Onions are said to inhibit parsley development.'},
+     {plant:'lettuce',     reason:'Parsley is said to inhibit lettuce when grown in very close proximity.'},
+   ],
+   tips:['Parsley is slow to establish — be patient and keep the soil moist','Flat-leaf varieties have better flavour than curly for cooking','Let a few plants flower to attract beneficial insects to the garden']},
+
+  {id:'chamomile', name:'Chamomile', emoji:'🌼', type:'herbs',
+   companions:[
+     {plant:'brassicas',   reason:'Said to improve the growth of brassicas when planted nearby. A traditional cottage garden pairing.'},
+     {plant:'onions',      reason:'Chamomile is said to improve the flavour and growth of onions.'},
+     {plant:'cucumber',    reason:'Attracts beneficial insects and pollinators to the cucumber bed.'},
+     {plant:'beans',       reason:'Attracts beneficial insects. A useful flowering companion in the vegetable garden.'},
+   ],
+   foes:[
+     {plant:'mint',        reason:'The two herbs are not compatible when planted very close together.'},
+   ],
+   tips:['German chamomile self-seeds freely — you\'ll rarely need to sow it again after the first year','The "physician plant" — said to revive ailing plants grown nearby','Roman chamomile is perennial; German chamomile is annual — both are useful companions']},
+
+  {id:'lemon_balm', name:'Lemon Balm', emoji:'🌿', type:'herbs',
+   companions:[
+     {plant:'tomatoes',    reason:'Attracts pollinators and repels aphids. A useful companion for tomatoes.'},
+     {plant:'squash',      reason:'Attracts pollinators for courgette and squash fruit set.'},
+     {plant:'brassicas',   reason:'Attracts beneficial insects to the brassica bed.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits most herbs including lemon balm.'},
+   ],
+   tips:['Grow in a pot like mint — it can spread aggressively','A powerful pollinator attractor — the fresh lemon scent is irresistible to bees','Cut back hard after flowering to prevent self-seeding and encourage fresh growth']},
+
+  {id:'hyssop', name:'Hyssop', emoji:'🌿', type:'herbs',
+   companions:[
+     {plant:'brassicas',   reason:'Deters cabbage white butterflies and cabbage moths. One of the better deterrents for brassica pests.'},
+     {plant:'grapes',      reason:'Traditional companion for grapevines — said to improve grape yield and health.'},
+     {plant:'fruit',       reason:'Attracts pollinators and deters some fruit tree pests.'},
+   ],
+   foes:[
+     {plant:'radishes',    reason:'Hyssop is said to inhibit radish development.'},
+     {plant:'fennel',      reason:'Fennel inhibits hyssop growth.'},
+   ],
+   tips:['A semi-evergreen shrubby herb with beautiful blue flowers','Bees absolutely love hyssop — grow it as a bee magnet near fruit and vegetables','Prune lightly after flowering to keep it neat and encourage fresh growth']},
+
+  // ADDITIONAL FLOWERS
+  {id:'calendula', name:'Calendula', emoji:'🟡', type:'flowers',
+   companions:[
+     {plant:'tomatoes',    reason:'Repels whitefly and aphids. French and pot marigolds are both excellent around tomatoes.'},
+     {plant:'asparagus',   reason:'Deters asparagus beetles and nematodes.'},
+     {plant:'cucumber',    reason:'Deters cucumber beetles and attracts beneficial insects.'},
+     {plant:'beans',       reason:'Attracts aphids as a trap crop, drawing them away from beans.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits calendula growth as it does most plants.'},
+   ],
+   tips:['One of the easiest flowers to grow and one of the most useful companion plants','Deadhead regularly for months of blooms','Petals are edible — add to salads for colour and a mild flavour']},
+
+  {id:'sweet_peas', name:'Sweet Peas', emoji:'🌸', type:'flowers',
+   companions:[
+     {plant:'peas',        reason:'Sweet peas attract pollinators that also benefit vegetable peas. A beautiful and useful combination.'},
+     {plant:'beans',       reason:'Attract pollinators to the bean frame. Plant at the base of climbing bean frames.'},
+     {plant:'lettuce',     reason:'Lettuce grows well in the partial shade at the base of sweet pea plants.'},
+   ],
+   foes:[
+     {plant:'onions',      reason:'Alliums can inhibit sweet pea growth when planted directly alongside.'},
+     {plant:'fennel',      reason:'Fennel inhibits sweet peas.'},
+   ],
+   tips:['Grow up the same frame as climbing beans for a beautiful and productive combination','Pick every single flower to keep plants producing — never leave pods to set seed','Sweet peas also fix nitrogen like vegetable peas — dig the roots in at the end of the season']},
+
+  {id:'echinacea', name:'Echinacea', emoji:'🌸', type:'flowers',
+   companions:[
+     {plant:'tomatoes',    reason:'Attracts beneficial insects and pollinators to the tomato bed.'},
+     {plant:'beans',       reason:'Attracts a wide range of beneficial insects to the vegetable garden.'},
+     {plant:'lavender',    reason:'Both attract pollinators and beneficial insects. A beautiful long-flowering combination.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel is inhibitory to most plants including echinacea.'},
+   ],
+   tips:['Leave seedheads over winter — they\'re beautiful and provide food for birds','Long-lived perennial that grows larger and more impressive each year','Plant near vegetables to attract the beneficial insects that control pests']},
+
+  {id:'phacelia', name:'Phacelia', emoji:'💜', type:'flowers',
+   companions:[
+     {plant:'beans',       reason:'Attracts hoverflies whose larvae eat aphids, protecting beans from infestations.'},
+     {plant:'brassicas',   reason:'One of the best beneficial insect attractors for the vegetable garden — attracts predators of cabbage pests.'},
+     {plant:'tomatoes',    reason:'Attracts hoverflies and other aphid predators. Scatter seed around tomato plants.'},
+     {plant:'carrots',     reason:'Attracts beneficial insects that prey on carrot fly and aphids.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits most flowering plants.'},
+   ],
+   tips:['One of the absolute best plants for attracting beneficial insects to the vegetable garden','Sow direct in gaps between vegetables — it grows quickly and flowers prolifically','Also used as a green manure — dig in before it sets seed to add organic matter']},
+
+  {id:'cornflower', name:'Cornflowers', emoji:'💙', type:'flowers',
+   companions:[
+     {plant:'beans',       reason:'Attract beneficial insects that prey on bean aphids and other pests.'},
+     {plant:'brassicas',   reason:'Attract hoverflies and parasitic wasps that control cabbage pests.'},
+     {plant:'strawberries',reason:'Attract pollinators to the strawberry bed. A beautiful combination.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel inhibits cornflower growth.'},
+   ],
+   tips:['Self-seeds freely once established — you\'ll have them every year after the first sowing','An excellent cut flower that lasts well in a vase','Sow in autumn for earlier, stronger plants that flower from late spring']},
+
+  {id:'comfrey', name:'Comfrey', emoji:'🌿', type:'herbs',
+   companions:[
+     {plant:'fruit',       reason:'Deep taproots mine nutrients from the subsoil. Cut leaves make the richest homemade fertiliser available.'},
+     {plant:'potatoes',    reason:'Line the bottom of potato trenches with comfrey leaves for a slow-release potassium feed.'},
+     {plant:'tomatoes',    reason:'Comfrey tea is an excellent potassium-rich feed for tomatoes and other fruiting crops.'},
+   ],
+   foes:[
+     {plant:'fennel',      reason:'Fennel can inhibit comfrey when planted in direct competition.'},
+   ],
+   tips:['Bocking 14 is the sterile cultivar — it won\'t set seed and spread uncontrollably','Cut leaves 3–4 times a year and use as mulch or steep in water for 4 weeks to make liquid feed','Plant in a corner — it\'s permanent and vigorous but one of the most useful plants in any garden']},
 ];
 
 // Build lookup map
@@ -849,5 +1201,6 @@ function renderResults() {
 
 init();
 </script>
+<script src="/ask-the-gardener.js"></script>
 </body>
 </html>
