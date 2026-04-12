@@ -3,7 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pest & Disease Identifier — GrowGuide</title>
+<title>Garden Pest & Disease Identifier UK — GrowGuide</title>
+<meta name="description" content="Identify garden pests and diseases by plant type and symptoms — yellowing leaves, holes, mould, wilting and more. Get organic fixes and prevention advice free.">
+<meta name="keywords" content="garden pest identifier UK, plant disease identifier, yellowing leaves cause, holes in leaves UK, organic pest control garden, what's wrong with my plant">
+<link rel="canonical" href="https://growguideuk.netlify.app/pest-identifier/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguideuk.netlify.app/pest-identifier/">
+<meta property="og:title" content="Garden Pest & Disease Identifier UK — GrowGuide">
+<meta property="og:description" content="Select your plant type and symptoms to find out what's wrong and how to fix it — organically where possible.">
+<meta property="og:site_name" content="GrowGuide">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Garden Pest & Disease Identifier UK — GrowGuide">
+<meta name="twitter:description" content="Select your plant type and symptoms to find out what's wrong and how to fix it — organically where possible.">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -326,6 +340,9 @@ const SYMPTOMS = {
     {id:'no-flowers', label:'Not flowering'},
     {id:'leggy', label:'Leggy or etiolated growth'},
     {id:'roots-rotted', label:'Roots brown or rotten'},
+    {id:'split-cracked', label:'Split or cracked fruit / stems'},
+    {id:'scorched-edges', label:'Scorched or crispy leaf edges'},
+    {id:'sooty-mould', label:'Black sooty coating on leaves'},
   ],
 };
 
@@ -534,6 +551,257 @@ const PROBLEMS = [
     chemical:['No chemical treatments licensed for home garden use in the UK'],
     prevent:['Improve lawn health with good feeding and aeration — healthy turf tolerates some damage','Apply nematodes annually in late summer as a preventive measure'],
   },
+
+  {
+    id:'scab-apple', name:'Apple & Pear Scab', emoji:'🍎', type:'disease', severity:2,
+    plants:['fruit','trees'],
+    symptoms:['black-spots','brown-patches','dropping-fruit'],
+    looks:'Olive-brown or black scabby patches on leaves and fruit. Infected leaves may yellow and drop early. Fruit develops raised, corky scabs that crack open, allowing secondary rots to enter. Severe in wet springs.',
+    affects:'Apples and pears — some varieties are much more susceptible than others.',
+    organic:['Rake up and remove all fallen leaves in autumn — scab overwinters on leaf litter','Apply copper-based fungicide (Bordeaux mixture) from bud burst as a preventive','Choose resistant varieties: Cox's Orange Pippin is very susceptible; Discovery and Pixie are much more resistant'],
+    chemical:['Fungicides containing myclobutanil — apply from bud burst through to midsummer'],
+    prevent:['Clear leaf litter thoroughly each autumn — this is the most important preventive step','Improve air circulation by pruning to an open, vase-shaped structure','Grow resistant apple varieties where scab is a persistent problem'],
+  },
+  {
+    id:'woolly-aphid', name:'Woolly Aphid', emoji:'🍎', type:'pest', severity:2,
+    plants:['fruit','trees'],
+    symptoms:['galls-lumps','sticky-residue','white-coating'],
+    looks:'Distinctive fluffy white woolly coating on branches and in bark crevices of apple trees. Beneath the fluff are clusters of brownish aphids. Causes galls and swellings on branches and can introduce canker.',
+    affects:'Apples primarily — very occasionally on related trees.',
+    organic:['Scrub colonies off with a stiff brush dipped in diluted washing-up liquid','Encourage natural predators — earwigs eat woolly aphids effectively','Cut out badly galled branches and dispose of them — don't compost'],
+    chemical:['Systemic insecticides can be effective but timing is difficult due to the waxy coating'],
+    prevent:['Keep trees healthy — stressed trees are more susceptible','Seal pruning wounds to prevent aphids entering via cuts','Check trees carefully in spring when colonies start to build up'],
+  },
+  {
+    id:'fireblight', name:'Fireblight', emoji:'🍎', type:'disease', severity:4,
+    plants:['fruit','trees'],
+    symptoms:['brown-patches','wilting','rotting-base'],
+    looks:'Shoots suddenly wilt and die as if scorched by fire — the characteristic "shepherd's crook" bend at the tip. Leaves turn brown but stay attached to the plant. A bacterial ooze may appear in wet weather.',
+    affects:'Apples, pears, quinces, rowans, hawthorns and other members of the rose family. A notifiable disease — you should inform your local council.',
+    organic:['Cut out all infected wood at least 60cm below visible symptoms — sterilise tools between cuts with diluted bleach','Burn or bin all prunings — do not compost','There is no cure — prevention and prompt removal are the only options'],
+    chemical:['No effective chemical treatments available to home gardeners'],
+    prevent:['Avoid high-nitrogen feeding in summer which produces the soft growth most susceptible to infection','Choose resistant varieties — some are significantly less susceptible','Disinfect pruning tools between cuts, especially in summer'],
+  },
+  {
+    id:'canker-apple', name:'Apple Canker', emoji:'🍎', type:'disease', severity:3,
+    plants:['fruit','trees'],
+    symptoms:['sunken-patches','brown-patches','rotting-base'],
+    looks:'Sunken, discoloured, dead patches of bark on branches, often with concentric rings of cracked bark. The branch above the canker may die. White pustules appear in summer, red pustules in winter.',
+    affects:'Apples primarily — also pears and occasionally other fruit trees.',
+    organic:['Cut out infected wood well back into clean, white tissue — sterilise tools between cuts','Paint cut surfaces with wound paint or grafting wax to prevent reinfection','Ensure good drainage — waterlogged soil dramatically increases canker risk'],
+    chemical:['Copper-based fungicides applied after leaf fall and at bud burst help reduce infection'],
+    prevent:['Improve drainage — canker thrives in wet conditions','Choose resistant varieties (Cox is very susceptible; Bramley is more resistant)','Remove and burn all infected prunings'],
+  },
+  {
+    id:'box-blight', name:'Box Blight', emoji:'🌿', type:'disease', severity:3,
+    plants:['trees','flowers'],
+    symptoms:['brown-patches','grey-mould','dropping-fruit'],
+    looks:'Patches of box leaves turn brown and drop suddenly, leaving bare stems. A white fluffy fungal growth may be visible in humid conditions. Spreads rapidly through a hedge, especially in warm, wet weather.',
+    affects:'Buxus (box) exclusively — all species and varieties are susceptible.',
+    organic:['Remove and bin all affected material — do not compost','Improve air circulation by thinning and reducing humidity around plants','Copper-based fungicides applied regularly can help slow the spread'],
+    chemical:['Fungicides containing tebuconazole — must be applied regularly through the growing season'],
+    prevent:['Avoid wetting the foliage when watering — use drip irrigation','Don't clip box in wet weather — cutting spreads the spores','Consider switching to an alternative hedge plant — box blight is increasingly difficult to control'],
+  },
+  {
+    id:'honey-fungus', name:'Honey Fungus', emoji:'🍄', type:'disease', severity:4,
+    plants:['trees','fruit','roses','flowers'],
+    symptoms:['wilting','rotting-base','roots-rotted','yellow-leaves'],
+    looks:'Plants suddenly die or decline rapidly. White mycelium (like thick white sheets) under the bark at the base of the plant. Black bootlace-like rhizomorphs in the soil. Honey-coloured toadstools in autumn.',
+    affects:'One of the most destructive garden diseases — attacks a huge range of trees, shrubs and perennials. Privet, birch, roses and conifers are particularly susceptible.',
+    organic:['No cure — remove infected plants including as many roots as possible','Create a physical barrier by burying a sheet of heavy-duty plastic 45cm deep around the infected area','Remove stumps promptly — they are the main reservoir of infection'],
+    chemical:['No effective chemical treatments are available to home gardeners'],
+    prevent:['Remove tree stumps promptly — never leave them to rot down','Grow resistant plants: box, yew, beech, and most bamboos are resistant','Maintain good soil health — healthy, well-fed plants can resist infection better'],
+  },
+  {
+    id:'phytophthora', name:'Phytophthora Root Rot', emoji:'🌳', type:'disease', severity:4,
+    plants:['trees','fruit','roses'],
+    symptoms:['wilting','roots-rotted','yellow-leaves','rotting-base'],
+    looks:'Plants wilt and die despite adequate watering. Roots are dark brown or black and rotten. A dark staining can be seen under the bark at the crown. Death can be sudden or slow over several seasons.',
+    affects:'A very wide range of trees and shrubs — particularly rhododendrons, heathers, camellias, beech and larch. Often occurs in waterlogged conditions.',
+    organic:['No cure — improve drainage radically to prevent spread','Remove infected plants and as many roots as possible','Do not replant susceptible species in the same spot'],
+    chemical:['No effective chemical treatments licensed for home garden use'],
+    prevent:['Improve drainage before planting — Phytophthora thrives in waterlogged soil','Choose resistant rootstocks for fruit trees where available','Never plant during very wet conditions'],
+  },
+  {
+    id:'rose-aphid', name:'Rose Aphid', emoji:'🌹', type:'pest', severity:2,
+    plants:['roses'],
+    symptoms:['aphids-visible','sticky-residue','distorted-curled','ants'],
+    looks:'Dense clusters of pale green or pinkish aphids crowded on new shoots, buds and undersides of young leaves. Stems may be completely smothered. Leaves and buds become distorted. Sticky honeydew attracts ants and encourages sooty mould.',
+    affects:'Roses almost exclusively in large numbers, though related aphid species attack many other plants.',
+    organic:['Squash colonies with fingers or blast off with a hose','Encourage ladybirds and lacewings — avoid insecticides that kill them','Plant garlic and chives around roses — a traditional and effective deterrent'],
+    chemical:['Pyrethrin-based sprays — apply in the evening to avoid harming bees','Systemic insecticides containing imidacloprid — use only as a last resort'],
+    prevent:['Plant garlic at the base of roses in autumn — one of the most reliable preventives','Avoid excessive nitrogen feeding which produces soft, attractive new growth','Check plants weekly from April and act early before colonies establish'],
+  },
+  {
+    id:'sawfly', name:'Sawfly', emoji:'🐛', type:'pest', severity:2,
+    plants:['roses','fruit','trees','flowers'],
+    symptoms:['holes-in-leaves','caterpillars','stunted'],
+    looks:'Leaves are skeletonised (veins remain but tissue is eaten away) or have large irregular holes. Small pale green caterpillar-like larvae (sawfly larvae, not true caterpillars) found on leaf undersides. Roses and gooseberries are most commonly affected.',
+    affects:'Roses (rose slug sawfly), gooseberries (gooseberry sawfly), Solomon's seal, and many other garden plants.',
+    organic:['Pick off larvae by hand — check leaf undersides regularly','Blast off with a strong jet of water','Encourage birds — they eat sawfly larvae readily'],
+    chemical:['Pyrethrin-based insecticides applied to leaf undersides'],
+    prevent:['Check plants regularly from May for the first signs of damage','Encourage a diverse garden with birds and natural predators','Healthy, well-fed plants recover from sawfly damage more readily'],
+  },
+  {
+    id:'lily-beetle', name:'Lily Beetle', emoji:'🔴', type:'pest', severity:3,
+    plants:['flowers'],
+    symptoms:['holes-in-leaves','caterpillars'],
+    looks:'Bright scarlet beetles (about 8mm) and their larvae covered in black excrement feeding on lily and fritillary leaves. Damage is rapid and severe — a plant can be stripped within days.',
+    affects:'Lilies and fritillaries almost exclusively.',
+    organic:['Pick off beetles and larvae by hand — check both leaf surfaces daily','Hold a tray under the plant when checking — beetles drop when disturbed','Encourage natural predators, though lily beetle has few in the UK'],
+    chemical:['Pyrethrin-based sprays — apply in the evening','Systemic insecticides can be effective for severe infestations'],
+    prevent:['Check plants from the moment shoots emerge in spring — catching it early is everything','Grow lily species that are less attractive to the beetle, such as Cardiocrinum','Remove egg clusters (orange-red, laid in lines on leaf undersides) before they hatch'],
+  },
+  {
+    id:'scale-insects', name:'Scale Insects', emoji:'🌿', type:'pest', severity:2,
+    plants:['trees','fruit','roses','flowers'],
+    symptoms:['sticky-residue','sooty-mould','yellow-leaves'],
+    looks:'Small brown, white or yellow waxy lumps on stems and branches — often mistaken for part of the bark. Beneath each scale is a feeding insect. Produces honeydew that encourages black sooty mould. Heavily infested plants look sticky and blackened.',
+    affects:'A very wide range of trees, shrubs and houseplants. Horse chestnuts, camellias, bay and fruit trees are commonly affected.',
+    organic:['Scrub off with a soft brush and soapy water in winter when plants are dormant','Spray with a solution of washing-up liquid in summer to target crawlers','Encourage ladybirds, lacewings and parasitic wasps which prey on scale'],
+    chemical:['Fatty acid sprays (SB Plant Invigorator) applied repeatedly through the season','Systemic insecticides in severe cases — avoid when in flower'],
+    prevent:['Check new plants carefully before introducing to the garden','Maintain plant health — stressed plants are far more susceptible','Prune to improve air circulation which discourages scale buildup'],
+  },
+  {
+    id:'mealybugs', name:'Mealybugs', emoji:'🌿', type:'pest', severity:2,
+    plants:['flowers','trees'],
+    symptoms:['white-coating','sticky-residue','sooty-mould'],
+    looks:'Clusters of small insects covered in white waxy fluff, often in leaf axils, stem joints and protected crevices. Produces copious honeydew which leads to black sooty mould. Plants gradually weaken.',
+    affects:'Most common on greenhouse and houseplants. Also affects grapevines and some outdoor ornamentals in warm summers.',
+    organic:['Dab individual insects with a cotton bud soaked in surgical spirit','Introduce the parasitic wasp Leptomastix dactylopii in greenhouses','Spray with a diluted washing-up liquid solution'],
+    chemical:['Fatty acid sprays (SB Plant Invigorator) applied thoroughly to all plant surfaces'],
+    prevent:['Inspect new plants carefully — mealybugs are easily introduced on bought plants','Avoid overfeeding with nitrogen — lush soft growth attracts mealybugs','Quarantine new plants for 2 weeks before adding to a collection'],
+  },
+  {
+    id:'thrips', name:'Thrips (Thunder Flies)', emoji:'🌾', type:'pest', severity:2,
+    plants:['tomatoes','courgettes','flowers','all'],
+    symptoms:['silvery-streaks','pale-bleached','distorted-curled'],
+    looks:'Fine silvery or pale brown streaking on leaves and petals, giving them a washed-out appearance. Tiny, slender insects (1–2mm) — dark adults, pale larvae — visible on leaf surfaces in warm weather. Flower petals may be streaked or discoloured.',
+    affects:'Very wide range of plants — particularly serious in greenhouses. Onions, leeks, gladioli and many other plants are commonly affected.',
+    organic:['Blue or yellow sticky traps catch adults','Increase humidity — thrips dislike moist conditions','Introduce the predatory mite Amblyseius cucumeris in greenhouses'],
+    chemical:['Pyrethrin-based sprays applied in the evening — repeat applications needed'],
+    prevent:['Avoid hot, dry, stagnant conditions — ideal for thrips','Remove and bin heavily infested plant material','Water regularly to maintain humidity around plants'],
+  },
+  {
+    id:'flea-beetle', name:'Flea Beetle', emoji:'🪲', type:'pest', severity:2,
+    plants:['brassicas','salads','roots'],
+    symptoms:['holes-in-leaves'],
+    looks:'Masses of tiny round or irregular holes in leaves — as if peppered with shotgun pellets. Tiny, shiny jumping beetles (2–3mm) visible on leaf surfaces that jump when disturbed, like fleas. Most damaging to seedlings.',
+    affects:'Brassica seedlings and salad leaves — particularly rocket, radishes, turnips and pak choi. Can devastate a seedling tray overnight.',
+    organic:['Cover vulnerable seedlings with fleece from germination','Delay sowing until plants are large enough to tolerate damage','Water well — dry conditions encourage flea beetle'],
+    chemical:['Pyrethrin-based sprays — limited effectiveness as beetles move quickly'],
+    prevent:['Fleece is the only reliable protection for seedlings','Sow thickly and thin later — some losses to flea beetle are expected','Water regularly — moist conditions discourage flea beetles'],
+  },
+  {
+    id:'carrot-fly', name:'Carrot Fly', emoji:'🥕', type:'pest', severity:3,
+    plants:['roots'],
+    symptoms:['wilting','stunted','brown-patches'],
+    looks:'Carrot foliage turns yellow, red or bronze and wilts. When pulled up, the roots have rusty-brown tunnels running through them, made by small creamy-white maggots. The foliage damage can resemble drought stress.',
+    affects:'Carrots primarily — also parsnips, celery, parsley and other umbellifers.',
+    organic:['Grow under fleece or enviromesh from sowing — the only reliable protection','Erect a 60cm barrier of fine mesh or polythene around the bed — flies are low fliers','Sow after mid-May to avoid the main first generation of flies'],
+    chemical:['No effective chemical treatments licensed for home garden use'],
+    prevent:['Grow under fine mesh from sowing to harvest — essential in affected areas','Avoid thinning in the evening when carrot flies are most active','Grow resistant varieties (Resistafly, Flyaway) which are less attractive to flies'],
+  },
+  {
+    id:'onion-fly', name:'Onion Fly', emoji:'🧅', type:'pest', severity:3,
+    plants:['alliums'],
+    symptoms:['wilting','yellow-leaves','rotting-base'],
+    looks:'Onion and leek foliage yellows and collapses. Plants can be pulled up easily as the roots are destroyed. Small white maggots found in the bulb and surrounding soil. Plants may rot at the base.',
+    affects:'Onions, shallots, leeks and other alliums.',
+    organic:['Cover with enviromesh from planting — the most reliable protection','Grow from sets rather than seed — plants establish faster and are more resilient','Remove and bin affected plants including surrounding soil'],
+    chemical:['No effective chemical treatments licensed for home garden use'],
+    prevent:['Cover with enviromesh from day one','Avoid damaging bulbs when hoeing — the smell of damaged onions attracts the fly','Rotate alliums to a fresh bed each year'],
+  },
+  {
+    id:'pea-moth', name:'Pea Moth', emoji:'🟢', type:'pest', severity:2,
+    plants:['beans'],
+    symptoms:['dropping-fruit','holes-in-leaves'],
+    looks:'Pea pods appear normal from the outside but when opened contain small caterpillars feeding on the peas. The entry hole in the pod is often tiny and easy to miss. Affected peas have a small brown feeding scar.',
+    affects:'Peas — particularly those that flower between June and August.',
+    organic:['Cover plants with fine mesh when in flower to prevent egg-laying','Sow early (February/March) or late (June) to avoid the main flight period','Use pheromone traps to monitor adult moth activity'],
+    chemical:['Insecticide sprays timed at petal fall — difficult to time accurately'],
+    prevent:['The most reliable approach is to sow early or late to miss the flight period','Fine mesh over flowering plants is highly effective','Clear crop debris promptly after harvest — pupae overwinter in the soil'],
+  },
+  {
+    id:'big-bud-mite', name:'Big Bud Mite (Blackcurrant Gall Mite)', emoji:'🫐', type:'pest', severity:3,
+    plants:['fruit'],
+    symptoms:['galls-lumps','stunted','no-flowers'],
+    looks:'Buds are swollen and rounded (like little cabbages) rather than the normal elongated shape. Swollen buds fail to open and develop properly. Also vectors reversion virus which permanently stunts plants.',
+    affects:'Blackcurrants almost exclusively.',
+    organic:['Pick off and bin all swollen buds in late winter before they open','Remove severely infected plants entirely and replant with certified virus-free stock','No other effective treatments available'],
+    chemical:['No effective chemical treatments licensed for home garden use'],
+    prevent:['Buy certified virus-free planting stock from a reputable supplier','Inspect all buds carefully in late winter and remove any that are abnormally swollen','Replace old bushes every 10 years with certified clean stock'],
+  },
+  {
+    id:'brown-rot', name:'Brown Rot', emoji:'🍎', type:'disease', severity:2,
+    plants:['fruit','trees'],
+    symptoms:['brown-patches','sunken-patches','dropping-fruit'],
+    looks:'Fruit develops brown, spreading rot with concentric rings of creamy-white pustules. Affected fruits may mummify on the tree and persist over winter. The whole fruit rots rapidly once infection begins.',
+    affects:'Apples, pears, plums, cherries and other tree fruit.',
+    organic:['Remove and bin all mummified fruits in winter — they are the main source of infection','Remove any affected fruits as soon as you spot them','Improve air circulation by careful pruning'],
+    chemical:['No effective chemical treatments for brown rot on home-grown fruit'],
+    prevent:['Prevent physical damage to fruit (wasps, codling moth, birds) — wounds are the entry point for brown rot','Remove all mummified fruits from trees and the ground in winter','Harvest fruit carefully — handle gently to avoid bruising'],
+  },
+  {
+    id:'phosphorus-deficiency', name:'Phosphorus Deficiency', emoji:'🟣', type:'deficiency', severity:2,
+    plants:['all'],
+    symptoms:['purple-red','stunted','yellow-leaves'],
+    looks:'Leaves develop a distinct purple or reddish-purple colouration, starting on the underside and then the upper surface. Growth is noticeably slow. Most common in cold, wet conditions when root uptake is reduced.',
+    affects:'Any plant, but most visible in brassicas, tomatoes, and young seedlings in cold spring soil.',
+    organic:['Bone meal worked into the soil before planting — slow-release phosphorus','Rock phosphate for a very long-term improvement','Improve drainage — waterlogged cold soil restricts phosphorus uptake even when phosphorus is present'],
+    chemical:['Superphosphate fertiliser for quick correction','Balanced NPK fertiliser'],
+    prevent:['Warm the soil with cloches or black polythene before planting out young plants in spring','Don't overwater in cold weather — cold wet soil locks up phosphorus','Add bone meal to planting holes for phosphorus-hungry crops like brassicas'],
+  },
+  {
+    id:'potassium-deficiency', name:'Potassium Deficiency', emoji:'🍅', type:'deficiency', severity:2,
+    plants:['tomatoes','fruit','roses','beans','all'],
+    symptoms:['brown-tips','scorched-edges','yellow-leaves'],
+    looks:'Leaf margins and tips turn brown and crispy — as if scorched. The rest of the leaf may be pale yellow. Fruit crops produce poor yields with poor flavour. Most common in light, sandy soils after heavy rain.',
+    affects:'Any plant, but most visible in tomatoes, fruit, roses and beans. Sandy soils are most susceptible.',
+    organic:['Comfrey liquid feed is one of the richest sources of potassium available organically','Wood ash dug into the soil or used as a top dressing — high in potassium','Seaweed meal or liquid seaweed feed'],
+    chemical:['Sulphate of potash — fast-acting and widely available','High-potassium tomato feed for container plants'],
+    prevent:['Mulch generously to prevent rain leaching potassium from light soils','Feed fruiting and flowering crops regularly with a high-potash feed from midsummer','Sandy soils need regular organic matter additions to improve nutrient retention'],
+  },
+  {
+    id:'magnesium-deficiency', name:'Magnesium Deficiency', emoji:'🌿', type:'deficiency', severity:2,
+    plants:['tomatoes','roses','fruit','all'],
+    symptoms:['yellow-leaves','pale-bleached'],
+    looks:'Yellowing between the veins of older (lower) leaves, while the veins themselves stay green. Starts on the oldest leaves and works upward. Very common in containers and in tomatoes after heavy feeding.',
+    affects:'Tomatoes in containers are very commonly affected. Also roses, chrysanthemums and many other plants fed with high-potassium fertilisers (excess potassium prevents magnesium uptake).',
+    organic:['Spray with Epsom salts solution (20g per litre of water) — very fast-acting foliar feed','Incorporate Epsom salts into the soil around affected plants','Reduce potassium fertiliser if over-feeding has caused the deficiency'],
+    chemical:['Magnesium sulphate (Epsom salts) — available at garden centres and pharmacies'],
+    prevent:['Don't over-feed with high-potassium fertilisers — they block magnesium uptake','Water consistently — dry conditions reduce magnesium uptake','Use a balanced fertiliser rather than a specialist product for most plants'],
+  },
+  {
+    id:'frost-damage', name:'Frost Damage', emoji:'❄️', type:'deficiency', severity:2,
+    plants:['all'],
+    symptoms:['brown-patches','wilting','dropping-fruit','scorched-edges'],
+    looks:'Soft tissue (new growth, flowers, young fruit) turns brown or black and collapses after a frost. The damage appears suddenly after a cold night. Affected tissue is usually water-soaked at first, then turns dark and mushy.',
+    affects:'Any plant with soft new growth in spring, or tender plants left out too late in autumn.',
+    organic:['Do not remove frosted growth immediately — it protects what's underneath. Wait until new growth begins','Fleece or horticultural fleece provides significant frost protection','Water the ground before a frost — moist soil holds heat better than dry soil'],
+    chemical:['Anti-transpirant sprays can provide limited frost protection'],
+    prevent:['Harden off indoor-raised plants gradually over 7–10 days before planting out','Keep fleece or old sheets handy for late spring frosts — the forecast can change quickly','Avoid planting tender crops until after the last expected frost date for your area (mid-May for most of the UK)'],
+  },
+  {
+    id:'drought-stress', name:'Drought Stress', emoji:'💧', type:'deficiency', severity:2,
+    plants:['all'],
+    symptoms:['wilting','scorched-edges','brown-tips','dropping-fruit'],
+    looks:'Leaves wilt, curl inward and feel dry or papery. Leaf edges and tips turn brown and crispy. Flowers and fruits may drop. Plants recover quickly if watered promptly, but prolonged drought causes permanent damage.',
+    affects:'Any plant, but containers, newly planted specimens and shallow-rooted plants are worst affected.',
+    organic:['Water deeply and less frequently — encourages deep rooting','Apply a generous mulch (7–10cm) of compost, bark or straw to retain moisture','Move container plants to shade during a heatwave'],
+    chemical:['Water-retaining gels mixed into container compost help retain moisture'],
+    prevent:['Mulch all borders in spring before soil dries out','Incorporate organic matter into soil to improve water retention','Group containers together to reduce water loss and make watering more efficient'],
+  },
+  {
+    id:'waterlogging', name:'Waterlogging', emoji:'💦', type:'deficiency', severity:3,
+    plants:['all'],
+    symptoms:['wilting','yellow-leaves','roots-rotted','stunted'],
+    looks:'Plants look surprisingly similar to drought stress — wilting, yellowing and poor growth — despite the soil being wet. Roots are brown and rotten rather than white and healthy. Leaves may have a yellowish pallor. The soil smells sour.',
+    affects:'Any plant in poorly drained soil, but particularly those not adapted to wet conditions.',
+    organic:['Improve drainage by adding grit and organic matter to heavy clay soils','Raise beds to lift plants above the waterlogged layer','Plant in raised beds if drainage cannot be improved'],
+    chemical:['No chemical fixes — drainage improvement is the only solution'],
+    prevent:['Improve drainage before planting — add plenty of grit to clay soils','Never plant into waterlogged soil','Choose appropriate plants for wet areas: willows, alders, astilbes and irises tolerate wet conditions well'],
+  },
   {
     id:'blossom-end-rot', name:'Blossom End Rot', emoji:'🍅', type:'deficiency', severity:2,
     plants:['tomatoes','courgettes'],
@@ -726,5 +994,6 @@ function resetAll(){
 
 init();
 </script>
+<script src="/ask-the-gardener.js"></script>
 </body>
 </html>
