@@ -3,7 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What to Plant This Month — GrowGuide</title>
+<title>What to Plant This Month UK — GrowGuide</title>
+<meta name="description" content="Find out exactly what to sow, plant out and harvest this month in your UK region. 100+ vegetables, herbs, fruit and flowers with beginner tags and practical UK growing tips.">
+<meta name="keywords" content="what to plant this month UK, what to sow in April UK, UK planting calendar, veg to plant now, allotment planting guide">
+<link rel="canonical" href="https://growguideuk.netlify.app/what-to-plant/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguideuk.netlify.app/what-to-plant/">
+<meta property="og:title" content="What to Plant This Month UK — GrowGuide">
+<meta property="og:description" content="Pick your UK region and month to see exactly what to sow, plant out and harvest — with beginner tags and a tip for every plant.">
+<meta property="og:site_name" content="GrowGuide">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What to Plant This Month UK — GrowGuide">
+<meta name="twitter:description" content="Pick your UK region and month to see exactly what to sow, plant out and harvest — with beginner tags and a tip for every plant.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -584,6 +597,48 @@ const PLANTS = [
   {name:'Penstemon', emoji:'🌸', type:'flowers', sow:[2,3], plant:[4,5,9], harvest:[], where:'indoor', easy:true, tip:'Long-flowering tubular blooms in pinks and purples. Semi-evergreen and very reliable in UK gardens.'},
   {name:'Astrantia (Masterwort)', emoji:'⬜', type:'flowers', sow:[2,3], plant:[3,4,9], harvest:[], where:'indoor', easy:false, tip:'Intricate pincushion flowers loved by florists. Prefers damp, part-shaded spots. Slowly spreads.'},
 
+
+  // ADDITIONAL VEGETABLES
+  {name:'Aubergine', emoji:'🍆', type:'veg', sow:[1,2,3], plant:[5], harvest:[7,8,9], where:'greenhouse', easy:false, tip:'Needs a long warm season — sow early in heat. Best in a greenhouse or very sheltered sunny spot.'},
+  {name:'Peppers & Chillies', emoji:'🌶️', type:'veg', sow:[1,2], plant:[5], harvest:[7,8,9,10], where:'greenhouse', easy:false, tip:'Sow even earlier than tomatoes — they need the longest season. Keep warm and sheltered.'},
+  {name:'Calabrese', emoji:'🥦', type:'veg', sow:[3,4,5], plant:[5,6], harvest:[7,8,9,10], where:'indoor', easy:true, tip:'Cut the central head before flowers open. Side shoots continue to produce for weeks.'},
+  {name:'Sprouting Broccoli', emoji:'🥦', type:'veg', sow:[4,5], plant:[6,7], harvest:[1,2,3,4], where:'indoor', easy:true, tip:'A long-season crop but worth it — provides fresh veg in the hungry gap.'},
+  {name:'Cabbage', emoji:'🥬', type:'veg', sow:[1,2,3,4,5,6], plant:[3,4,5,6,7], harvest:[4,5,6,7,8,9,10,11], where:'indoor', easy:true, tip:'Different varieties cover every season — choose spring, summer or winter types.'},
+  {name:'Cauliflower', emoji:'🥦', type:'veg', sow:[1,2,3,4], plant:[4,5,6], harvest:[6,7,8,9,10,11], where:'indoor', easy:false, tip:'The most demanding brassica — needs rich, firm, moist soil and consistent care.'},
+  {name:'Brussels Sprouts', emoji:'🟢', type:'veg', sow:[2,3], plant:[5,6], harvest:[10,11,0,1,2], where:'indoor', easy:false, tip:'Needs a long season — sow by March and stake plants well against autumn winds.'},
+  {name:'Swiss Chard', emoji:'🌈', type:'veg', sow:[3,4,5,6,7,8], plant:[4,5,6,7,8,9], harvest:[5,6,7,8,9,10,11,0,1,2], where:'outdoor', easy:true, tip:'One of the most ornamental vegetables — brilliant rainbow colours. Very hardy.'},
+  {name:'Pak Choi', emoji:'🥬', type:'veg', sow:[2,3,4,7,8], plant:[3,4,5,8,9], harvest:[4,5,6,9,10,11], where:'outdoor', easy:true, tip:'Avoid midsummer sowing — it bolts in heat. Spring and autumn sowings work best.'},
+  {name:'Rocket', emoji:'🌿', type:'veg', sow:[2,3,4,5,6,7,8,9], plant:[], harvest:[3,4,5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Sow little and often every 3 weeks. Bolts quickly in heat — best in spring and autumn.'},
+  {name:'Parsnips', emoji:'🤍', type:'veg', sow:[2,3,4], plant:[], harvest:[10,11,0,1,2], where:'outdoor', easy:false, tip:'Slow to germinate — be patient. Sow fresh seed. Frost dramatically improves flavour.'},
+  {name:'Swede', emoji:'🟣', type:'veg', sow:[4,5], plant:[], harvest:[9,10,11,0,1], where:'outdoor', easy:true, tip:'Sow direct — swedes hate transplanting. A reliable winter staple.'},
+  {name:'Turnips', emoji:'⚪', type:'veg', sow:[2,3,4,5,6,7], plant:[], harvest:[4,5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Pull at tennis-ball size for best flavour. Sow every 4 weeks for continuous supply.'},
+  {name:'Florence Fennel', emoji:'🌿', type:'veg', sow:[5,6,7], plant:[6,7], harvest:[8,9,10], where:'outdoor', easy:false, tip:'Sow after midsummer to avoid bolting. Earth up around the swelling bulb to blanch it.'},
+  {name:'Kohl Rabi', emoji:'🟢', type:'veg', sow:[3,4,5,6,7], plant:[4,5,6,7,8], harvest:[5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Harvest when the size of a tennis ball — tastes like mild broccoli stem. Great raw in salads.'},
+  {name:'Celery', emoji:'🌿', type:'veg', sow:[2,3], plant:[5,6], harvest:[8,9,10], where:'indoor', easy:false, tip:'Needs light to germinate — don\'t cover seeds. Never let it dry out — celery is very thirsty.'},
+  {name:'Celeriac', emoji:'🟤', type:'veg', sow:[2,3], plant:[5], harvest:[9,10,11,0], where:'indoor', easy:false, tip:'Slow starter — sow early. Far easier than celery. Leave in the ground and harvest as needed.'},
+  {name:'Asparagus', emoji:'🌿', type:'veg', sow:[2,3], plant:[3,4], harvest:[4,5,6], where:'outdoor', easy:false, tip:'A long-term investment — buy crowns for a quicker harvest. Don\'t pick at all in year one.'},
+  {name:'Jerusalem Artichoke', emoji:'🟤', type:'veg', sow:[], plant:[2,3,4], harvest:[10,11,0,1,2], where:'outdoor', easy:true, tip:'Plant once and it returns every year. Can reach 3m — plant where it won\'t shade other crops.'},
+  {name:'Spring Cabbage', emoji:'🥬', type:'veg', sow:[7,8], plant:[9,10], harvest:[2,3,4,5], where:'outdoor', easy:true, tip:'Sow in late summer, plant in autumn for spring greens. A brilliant use of winter space.'},
+  {name:'Watercress', emoji:'🌿', type:'veg', sow:[3,4,5,6], plant:[4,5,6,7], harvest:[5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Grow in a pot sat in a tray of water — no stream needed. Pick fresh growing tips regularly.'},
+  {name:'Sorrel', emoji:'🌿', type:'veg', sow:[2,3,4], plant:[3,4,5], harvest:[3,4,5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Perennial — comes back every year. Lemony flavour is excellent in soups and salads.'},
+
+  // ADDITIONAL HERBS
+  {name:'Basil', emoji:'🌿', type:'veg', sow:[3,4,5], plant:[5,6], harvest:[5,6,7,8,9], where:'indoor', easy:false, tip:'Hates cold — never leave outside until temperatures are reliably above 10°C at night.'},
+  {name:'Coriander', emoji:'🌿', type:'veg', sow:[2,3,4,5,6,7,8], plant:[], harvest:[3,4,5,6,7,8,9], where:'outdoor', easy:false, tip:'Sow direct every 3 weeks — bolts readily. Slow-bolt varieties last much longer.'},
+  {name:'Parsley', emoji:'🌿', type:'veg', sow:[2,3,4,7], plant:[3,4,5,8], harvest:[4,5,6,7,8,9,10,11], where:'indoor', easy:false, tip:'Notoriously slow to germinate (up to 6 weeks). Soak seeds overnight to speed things up.'},
+  {name:'Chives', emoji:'🌿', type:'veg', sow:[2,3,4], plant:[3,4,5], harvest:[3,4,5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Perennial and very easy. Cut down to 5cm after first flush to stimulate fresh growth.'},
+  {name:'Mint', emoji:'🌿', type:'veg', sow:[2,3,4], plant:[3,4,5], harvest:[4,5,6,7,8,9,10], where:'outdoor', easy:true, tip:'Always grow in a pot — it spreads aggressively by underground runners if planted in the ground.'},
+  {name:'Thyme', emoji:'🌿', type:'veg', sow:[2,3,4], plant:[3,4,5], harvest:[3,4,5,6,7,8,9,10,11], where:'outdoor', easy:true, tip:'Thrives in poor, well-drained soil. Cut back after flowering to keep bushy and productive.'},
+  {name:'Rosemary', emoji:'🌿', type:'veg', sow:[2,3], plant:[3,4,5], harvest:[0,1,2,3,4,5,6,7,8,9,10,11], where:'outdoor', easy:true, tip:'An evergreen perennial — harvest virtually year-round. Needs excellent drainage.'},
+  {name:'Sage', emoji:'🌿', type:'veg', sow:[2,3,4], plant:[3,4,5], harvest:[3,4,5,6,7,8,9,10,11], where:'outdoor', easy:true, tip:'Replace plants every 3–4 years as they become woody. Cut back hard in spring.'},
+  {name:'Dill', emoji:'🌿', type:'veg', sow:[3,4,5,6], plant:[], harvest:[5,6,7,8,9], where:'outdoor', easy:true, tip:'Sow direct every 3 weeks. Don\'t grow near fennel — they cross-pollinate.'},
+
+  // ADDITIONAL FRUIT
+  {name:'Blackberries', emoji:'🫐', type:'fruit', sow:[], plant:[10,11,2,3], harvest:[7,8,9], where:'outdoor', easy:true, tip:'Tie new canes to a wire frame as they grow. Thornless varieties are much easier to manage.'},
+  {name:'Redcurrants', emoji:'🔴', type:'fruit', sow:[], plant:[10,11,2,3], harvest:[6,7], where:'outdoor', easy:true, tip:'Can be trained as a cordon against a fence to save space. Net against birds before fruits ripen.'},
+  {name:'Figs', emoji:'🫐', type:'fruit', sow:[], plant:[3,4], harvest:[8,9,10], where:'outdoor', easy:false, tip:'Restrict roots in a container or lined pit to encourage fruiting. Brown Turkey is most reliable in the UK.'},
+  {name:'Plums', emoji:'🍑', type:'fruit', sow:[], plant:[10,11,2,3], harvest:[7,8,9], where:'outdoor', easy:true, tip:'Never prune in winter — always prune in summer to avoid silver leaf disease.'},
+
   // FLOWERS — BULBS & CLIMBERS
   {name:'Gladioli', emoji:'🌸', type:'flowers', sow:[], plant:[3,4,5], harvest:[], where:'outdoor', easy:true, tip:'Plant corms in succession from March to May for blooms all summer. Lift in autumn and store frost-free.'},
   {name:'Tulips', emoji:'🌷', type:'flowers', sow:[], plant:[10,11], harvest:[], where:'outdoor', easy:true, tip:'Plant last of all spring bulbs — late October to November gives the best results.'},
@@ -887,5 +942,6 @@ function renderJobs() {
 
 init();
 </script>
+<script src="/ask-the-gardener.js"></script>
 </body>
 </html>
