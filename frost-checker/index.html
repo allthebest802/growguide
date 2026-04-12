@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frost Date Checker UK — GrowGuide</title>
+<meta name="description" content="Find your last spring frost date and first autumn frost date for your UK region. Know exactly when it's safe to plant out tender crops and when to bring plants in for winter.">
+<meta name="keywords" content="last frost date UK, first frost date UK, when is last frost UK, safe planting date UK, frost dates by region UK, when to plant out tomatoes UK">
+<link rel="canonical" href="https://growguideuk.netlify.app/frost-checker/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguideuk.netlify.app/frost-checker/">
+<meta property="og:title" content="Frost Date Checker UK — GrowGuide">
+<meta property="og:description" content="Find your last spring frost and first autumn frost date for your UK region — and know exactly when it\'s safe to plant out tender crops.">
+<meta property="og:site_name" content="GrowGuide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Frost Date Checker UK — GrowGuide">
+<meta name="twitter:description" content="Find your last spring frost and first autumn frost date for your UK region.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810; --soil2:#3D2315; --bark:#6B4226;
+  --moss:#4A6741; --moss-d:#2E4228; --moss-l:#7A9E72; --moss-ll:#C8DBC4;
+  --sage:#8FAF87; --sage-l:#D4E8D0;
+  --cream:#F5F0E8; --cream2:#EDE6D8; --parchment:#FAF6EE;
+  --stone:#A89880; --amber:#C8842A; --amber-l:#F0D4A0; --amber-ll:#FDF5E4;
+  --rust:#B85C2A; --rust-l:#F5DDD4;
+  --sky:#7AAEC8; --sky-l:#C8E0EE;
+  --text:#1E130C; --text2:#4A3020; --text3:#8A7060;
+  --border:#D8C8B0; --border2:#C0A888;
+  --radius:12px; --radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.16);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),
+    radial-gradient(ellipse 600px 500px at 100% 100%,rgba(122,174,200,0.08),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 16px;font-size:0.8rem;color:var(--moss-ll);font-weight:700;letter-spacing:0.5px}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:28px 24px 80px;position:relative;z-index:1}
+
+/* INTRO */
+.intro-banner{
+  background:linear-gradient(135deg,#0E2A3A,#1A4A6A);
+  border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:28px;
+  display:flex;align-items:center;gap:20px;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;flex-wrap:wrap;
+}
+.intro-banner::before{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.intro-emoji{font-size:3rem;flex-shrink:0}
+.intro-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;font-weight:700;margin-bottom:5px}
+.intro-text p{font-size:0.88rem;color:#A8D0E8;line-height:1.6;font-weight:300;max-width:500px}
+
+/* REGION PICKER */
+.region-picker{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:22px 24px;margin-bottom:24px;box-shadow:var(--shadow);
+}
+.region-picker h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px}
+.region-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.region-btn{
+  padding:12px 10px;border-radius:var(--radius);border:1.5px solid var(--border2);
+  background:var(--parchment);color:var(--text2);font-size:0.82rem;font-weight:700;
+  text-align:center;transition:all 0.15s;cursor:pointer;
+}
+.region-btn:hover{border-color:var(--sky);background:var(--sky-l);color:#103050}
+.region-btn.active{background:#1A4A6A;border-color:#1A4A6A;color:white}
+.region-btn .r-emoji{font-size:1.4rem;display:block;margin-bottom:4px}
+.region-btn .r-name{display:block;font-size:0.78rem}
+.region-btn .r-sub{display:block;font-size:0.65rem;opacity:0.7;font-weight:400;margin-top:2px}
+
+/* RESULTS CARD */
+.results-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:24px;
+}
+.results-header{
+  background:linear-gradient(135deg,#0E2A3A,#1A4A6A);
+  padding:20px 24px;display:flex;align-items:center;gap:14px;
+}
+.results-header-icon{font-size:2rem}
+.results-header-text h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:white;margin-bottom:2px}
+.results-header-text p{font-size:0.78rem;color:#A8D0E8}
+
+.frost-dates-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.frost-date-panel{padding:22px 24px;position:relative}
+.frost-date-panel:first-child{border-right:1px solid var(--border)}
+.frost-date-panel .fdp-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:6px}
+.frost-date-panel .fdp-date{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.1;margin-bottom:4px}
+.frost-date-panel .fdp-range{font-size:0.75rem;color:var(--text3);margin-bottom:8px}
+.frost-date-panel .fdp-badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.68rem;font-weight:700;letter-spacing:0.3px}
+.spring-badge{background:#E8F4FF;color:#1A4A6A;border:1px solid #A0C8E8}
+.autumn-badge{background:#FDF0D8;color:#7A4A10;border:1px solid #E8C080}
+
+/* GROWING SEASON BAR */
+.season-bar-section{padding:20px 24px;border-top:1px solid var(--border)}
+.season-bar-section h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:14px}
+.season-bar{position:relative;height:36px;border-radius:8px;background:#EDE6D8;overflow:hidden;margin-bottom:8px}
+.season-segment{position:absolute;top:0;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:white;letter-spacing:0.3px}
+.seg-frost{background:#7AAEC8}
+.seg-safe{background:#4A6741}
+.seg-peak{background:#C8842A}
+.month-labels{display:flex;justify-content:space-between;margin-top:4px}
+.month-label{font-size:0.6rem;color:var(--text3);text-align:center;flex:1}
+.bar-legend{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:0.72rem;color:var(--text2)}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* WHAT THIS MEANS */
+.advice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:24px}
+.advice-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:18px;box-shadow:var(--shadow);
+}
+.advice-card .ac-icon{font-size:1.8rem;margin-bottom:8px;display:block}
+.advice-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.advice-card p{font-size:0.82rem;color:var(--text2);line-height:1.6}
+.advice-card .ac-date{font-size:0.72rem;font-weight:700;color:var(--moss-d);background:var(--sage-l);border-radius:100px;padding:2px 8px;display:inline-block;margin-top:8px;border:1px solid var(--moss-l)}
+
+/* TENDER PLANTS */
+.tender-section{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:24px;box-shadow:var(--shadow)}
+.tender-section h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:16px}
+.tender-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.tender-item{
+  background:var(--parchment);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:12px 14px;
+}
+.tender-item .ti-top{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.tender-item .ti-emoji{font-size:1.2rem}
+.tender-item .ti-name{font-size:0.85rem;font-weight:700;color:var(--text)}
+.tender-item .ti-action{font-size:0.75rem;color:var(--text3);line-height:1.5}
+.ti-safe{border-left:3px solid var(--moss)}
+.ti-caution{border-left:3px solid var(--amber)}
+.ti-risk{border-left:3px solid var(--rust)}
+
+/* TIPS */
+.tips-section{background:var(--amber-ll);border:1.5px solid var(--amber-l);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:24px}
+.tips-section h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--soil);margin-bottom:14px}
+.tips-list{display:flex;flex-direction:column;gap:10px}
+.tip-item{display:flex;gap:10px;align-items:flex-start}
+.tip-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.tip-text{font-size:0.85rem;color:var(--text2);line-height:1.6}
+
+/* FOOTER */
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
+
+@media(max-width:600px){
+  .frost-dates-grid{grid-template-columns:1fr}
+  .frost-date-panel:first-child{border-right:none;border-bottom:1px solid var(--border)}
+  .fdp-date{font-size:1.3rem!important}
+  .region-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="https://growguideuk.netlify.app/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">🌡️ Frost Date Checker</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="intro-banner">
+    <div class="intro-emoji">❄️</div>
+    <div class="intro-text">
+      <h2>UK Frost Date Checker</h2>
+      <p>Find your last spring frost and first autumn frost dates. Know exactly when it's safe to plant out tender crops — and when to bring plants in before winter.</p>
+    </div>
+  </div>
+
+  <div class="region-picker">
+    <h3>📍 Select your UK region</h3>
+    <div class="region-grid" id="regionGrid"></div>
+  </div>
+
+  <div class="results-card" id="resultsCard">
+    <div class="results-header">
+      <div class="results-header-icon">🌡️</div>
+      <div class="results-header-text">
+        <h2 id="regionTitle">Select a region above</h2>
+        <p id="regionSub">Frost dates based on Met Office historical averages</p>
+      </div>
+    </div>
+    <div class="frost-dates-grid">
+      <div class="frost-date-panel">
+        <div class="fdp-label">🌸 Last Spring Frost</div>
+        <div class="fdp-date" id="lastFrostDate">—</div>
+        <div class="fdp-range" id="lastFrostRange"></div>
+        <span class="fdp-badge spring-badge" id="lastFrostBadge"></span>
+      </div>
+      <div class="frost-date-panel">
+        <div class="fdp-label">🍂 First Autumn Frost</div>
+        <div class="fdp-date" id="firstFrostDate">—</div>
+        <div class="fdp-range" id="firstFrostRange"></div>
+        <span class="fdp-badge autumn-badge" id="firstFrostBadge"></span>
+      </div>
+    </div>
+    <div class="season-bar-section">
+      <h4>Growing season at a glance</h4>
+      <div class="season-bar" id="seasonBar"></div>
+      <div class="month-labels" id="monthLabels"></div>
+      <div class="bar-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#7AAEC8"></div>Frost risk</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4A6741"></div>Safe to plant out tender crops</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C8842A"></div>Peak growing season</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="advice-grid" id="adviceGrid"></div>
+
+  <div class="tender-section" id="tenderSection">
+    <h3>🌱 When to plant out tender crops</h3>
+    <div class="tender-grid" id="tenderGrid"></div>
+  </div>
+
+  <div class="tips-section">
+    <h3>💡 Frost date tips for UK gardeners</h3>
+    <div class="tips-list">
+      <div class="tip-item"><span class="tip-icon">📅</span><span class="tip-text"><strong>These are averages, not guarantees.</strong> A cold snap can arrive 2–3 weeks after the "last frost" date in any given year. Always watch the forecast in spring and keep fleece to hand.</span></div>
+      <div class="tip-item"><span class="tip-icon">🌡️</span><span class="tip-text"><strong>Your garden has its own microclimate.</strong> A south-facing, sheltered spot can be 2–3°C warmer than an exposed north-facing one. Frost pockets in low-lying areas stay colder for longer.</span></div>
+      <div class="tip-item"><span class="tip-icon">🌱</span><span class="tip-text"><strong>Harden off before planting out.</strong> Spend 7–10 days putting indoor-raised plants outside in the day and bringing them in at night before leaving them out permanently.</span></div>
+      <div class="tip-item"><span class="tip-icon">🥶</span><span class="tip-text"><strong>A light frost (0 to -2°C) is survivable</strong> for many plants if covered with fleece overnight. A hard frost (-4°C or below) will kill unprotected tender plants regardless.</span></div>
+      <div class="tip-item"><span class="tip-icon">📱</span><span class="tip-text"><strong>Check the Met Office forecast the night before</strong> planting out anything tender. A clear night with low humidity after a cold day is the highest frost risk combination.</span></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://growguideuk.netlify.app/" style="color:var(--stone);text-decoration:none">Home</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/what-to-plant/" style="color:var(--stone);text-decoration:none">What to Plant</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/pest-identifier/" style="color:var(--stone);text-decoration:none">Pest Identifier</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/seed-to-harvest/" style="color:var(--stone);text-decoration:none">Seed Timelines</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/companion-planting/" style="color:var(--stone);text-decoration:none">Companion Planting</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/monthly-jobs/" style="color:var(--stone);text-decoration:none">Monthly Jobs</a>
+  <br><br>GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+<script>
+const REGIONS = [
+  {
+    id:'london',      name:'London & SE',   emoji:'🏙️', sub:'Thames Valley, Kent, Sussex',
+    lastFrost:{month:'March', day:28, label:'Late March'},   lastRange:'Typically 15 Mar – 10 Apr',
+    firstFrost:{month:'November', day:10, label:'Early November'}, firstRange:'Typically 25 Oct – 25 Nov',
+    safeOut:'mid-April', peakStart:4, peakEnd:9,
+    growingDays:225,
+  },
+  {
+    id:'south',       name:'South England', emoji:'🌻', sub:'Dorset, Somerset, Hampshire, Wiltshire',
+    lastFrost:{month:'April', day:5, label:'Early April'},   lastRange:'Typically 20 Mar – 20 Apr',
+    firstFrost:{month:'November', day:1, label:'Early November'}, firstRange:'Typically 20 Oct – 20 Nov',
+    safeOut:'mid-April', peakStart:4, peakEnd:9,
+    growingDays:210,
+  },
+  {
+    id:'southwest',   name:'South West',    emoji:'🌊', sub:'Cornwall, Devon, Scilly Isles',
+    lastFrost:{month:'March', day:20, label:'Late March'},   lastRange:'Typically 5 Mar – 5 Apr',
+    firstFrost:{month:'November', day:20, label:'Late November'}, firstRange:'Typically 5 Nov – 5 Dec',
+    safeOut:'early April', peakStart:3, peakEnd:10,
+    growingDays:245,
+  },
+  {
+    id:'midlands',    name:'Midlands',      emoji:'🏭', sub:'West Midlands, East Midlands, Lincs',
+    lastFrost:{month:'April', day:15, label:'Mid April'},    lastRange:'Typically 1 Apr – 1 May',
+    firstFrost:{month:'October', day:20, label:'Late October'}, firstRange:'Typically 5 Oct – 5 Nov',
+    safeOut:'late April / early May', peakStart:4, peakEnd:9,
+    growingDays:188,
+  },
+  {
+    id:'eastanglia',  name:'East Anglia',   emoji:'🌾', sub:'Norfolk, Suffolk, Cambridgeshire',
+    lastFrost:{month:'April', day:10, label:'Early–Mid April'}, lastRange:'Typically 25 Mar – 25 Apr',
+    firstFrost:{month:'October', day:25, label:'Late October'}, firstRange:'Typically 10 Oct – 10 Nov',
+    safeOut:'mid to late April', peakStart:4, peakEnd:9,
+    growingDays:198,
+  },
+  {
+    id:'wales',       name:'Wales',         emoji:'🐉', sub:'North & South Wales, Brecon Beacons',
+    lastFrost:{month:'April', day:18, label:'Mid–Late April'}, lastRange:'Typically 5 Apr – 5 May',
+    firstFrost:{month:'October', day:18, label:'Mid October'}, firstRange:'Typically 3 Oct – 3 Nov',
+    safeOut:'late April / early May', peakStart:4, peakEnd:9,
+    growingDays:183,
+  },
+  {
+    id:'northengland',name:'North England', emoji:'⛰️', sub:'Yorkshire, Lancashire, Cumbria',
+    lastFrost:{month:'May', day:5, label:'Early May'},       lastRange:'Typically 20 Apr – 20 May',
+    firstFrost:{month:'October', day:10, label:'Early–Mid October'}, firstRange:'Typically 25 Sep – 25 Oct',
+    safeOut:'mid May', peakStart:5, peakEnd:8,
+    growingDays:158,
+  },
+  {
+    id:'nireland',    name:'N. Ireland',    emoji:'☘️', sub:'Belfast, Antrim, Down, Fermanagh',
+    lastFrost:{month:'April', day:20, label:'Late April'},   lastRange:'Typically 5 Apr – 10 May',
+    firstFrost:{month:'October', day:15, label:'Mid October'}, firstRange:'Typically 1 Oct – 1 Nov',
+    safeOut:'early May', peakStart:4, peakEnd:9,
+    growingDays:178,
+  },
+  {
+    id:'scotland_c',  name:'Central Scotland', emoji:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', sub:'Glasgow, Edinburgh, Stirling',
+    lastFrost:{month:'May', day:10, label:'Early–Mid May'},  lastRange:'Typically 25 Apr – 25 May',
+    firstFrost:{month:'October', day:5, label:'Early October'}, firstRange:'Typically 20 Sep – 20 Oct',
+    safeOut:'mid to late May', peakStart:5, peakEnd:8,
+    growingDays:148,
+  },
+  {
+    id:'scotland_n',  name:'Highland Scotland', emoji:'🦌', sub:'Inverness, Highlands, Orkney',
+    lastFrost:{month:'May', day:25, label:'Late May'},       lastRange:'Typically 10 May – 10 Jun',
+    firstFrost:{month:'September', day:20, label:'Late September'}, firstRange:'Typically 5 Sep – 5 Oct',
+    safeOut:'early June', peakStart:5, peakEnd:7,
+    growingDays:118,
+  },
+  {
+    id:'channel',     name:'Channel Islands', emoji:'🌴', sub:'Jersey, Guernsey',
+    lastFrost:{month:'February', day:28, label:'Late February'}, lastRange:'Typically 10 Feb – 15 Mar',
+    firstFrost:{month:'December', day:1, label:'Early December'}, firstRange:'Typically 15 Nov – 15 Dec',
+    safeOut:'mid March', peakStart:2, peakEnd:10,
+    growingDays:275,
+  },
+];
+
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTH_FULL  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+const MONTH_NUM = {
+  'January':0,'February':1,'March':2,'April':3,'May':4,'June':5,
+  'July':6,'August':7,'September':8,'October':9,'November':10,'December':11
+};
+
+const TENDER_CROPS = [
+  {emoji:'🍅', name:'Tomatoes',          action:'Plant out after last frost date. Harden off for 10 days first.', risk:'risk'},
+  {emoji:'🥒', name:'Courgettes',        action:'Plant out 2 weeks after last frost — they hate any cold.', risk:'risk'},
+  {emoji:'🌶️', name:'Peppers & Chillies',action:'Plant out 2–3 weeks after last frost. Prefer greenhouse in most of UK.', risk:'risk'},
+  {emoji:'🍆', name:'Aubergines',        action:'Greenhouse only in most areas. Plant out only in warmest UK regions.', risk:'risk'},
+  {emoji:'🌽', name:'Sweetcorn',         action:'Plant out on last frost date. Grows well outdoors across most of UK.', risk:'caution'},
+  {emoji:'🫘', name:'French Beans',      action:'Plant out on or just after last frost date.', risk:'caution'},
+  {emoji:'🫘', name:'Runner Beans',      action:'Plant out on last frost date. Sow direct outdoors 2 weeks after.', risk:'caution'},
+  {emoji:'🎃', name:'Squash & Pumpkins', action:'Plant out 1–2 weeks after last frost. Very frost-sensitive.', risk:'risk'},
+  {emoji:'🌸', name:'Dahlias',           action:'Plant tubers out on last frost date. Lift again in autumn.', risk:'caution'},
+  {emoji:'🌺', name:'Pelargoniums',      action:'Plant out 2 weeks after last frost. Bring in before first autumn frost.', risk:'risk'},
+  {emoji:'🌿', name:'Basil',             action:'Plant out 2–3 weeks after last frost. One cold night kills it.', risk:'risk'},
+  {emoji:'🍠', name:'Sweet Potatoes',    action:'Plant slips out 3 weeks after last frost — needs warm soil.', risk:'risk'},
+];
+
+let activeRegion = null;
+
+function init() {
+  const grid = document.getElementById('regionGrid');
+  REGIONS.forEach(r => {
+    const btn = document.createElement('button');
+    btn.className = 'region-btn';
+    btn.dataset.id = r.id;
+    btn.innerHTML = `<span class="r-emoji">${r.emoji}</span><span class="r-name">${r.name}</span><span class="r-sub">${r.sub}</span>`;
+    btn.addEventListener('click', () => selectRegion(r.id));
+    grid.appendChild(btn);
+  });
+
+  // Month labels for season bar
+  const labelsEl = document.getElementById('monthLabels');
+  MONTH_NAMES.forEach(m => {
+    const span = document.createElement('span');
+    span.className = 'month-label';
+    span.textContent = m;
+    labelsEl.appendChild(span);
+  });
+
+  // Render tender grid (static)
+  const tg = document.getElementById('tenderGrid');
+  TENDER_CROPS.forEach(c => {
+    const div = document.createElement('div');
+    div.className = `tender-item ti-${c.risk}`;
+    div.innerHTML = `<div class="ti-top"><span class="ti-emoji">${c.emoji}</span><span class="ti-name">${c.name}</span></div><div class="ti-action">${c.action}</div>`;
+    tg.appendChild(div);
+  });
+
+  // Auto-select based on rough time of year hint
+  selectRegion('south');
+}
+
+function selectRegion(id) {
+  activeRegion = id;
+  const r = REGIONS.find(x => x.id === id);
+  if (!r) return;
+
+  // Update buttons
+  document.querySelectorAll('.region-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.id === id);
+  });
+
+  // Update header
+  document.getElementById('regionTitle').textContent = `${r.emoji} ${r.name}`;
+  document.getElementById('regionSub').textContent = r.sub + ' — based on Met Office historical averages';
+
+  // Update frost dates
+  document.getElementById('lastFrostDate').textContent = `${r.lastFrost.day} ${r.lastFrost.month}`;
+  document.getElementById('lastFrostRange').textContent = r.lastRange;
+  document.getElementById('lastFrostBadge').textContent = `Safe to plant out from ${r.safeOut}`;
+
+  document.getElementById('firstFrostDate').textContent = `${r.firstFrost.day} ${r.firstFrost.month}`;
+  document.getElementById('firstFrostRange').textContent = r.firstRange;
+  document.getElementById('firstFrostBadge').textContent = `Bring tender plants in by ${r.firstFrost.label}`;
+
+  // Season bar
+  renderSeasonBar(r);
+
+  // Advice cards
+  renderAdvice(r);
+}
+
+function renderSeasonBar(r) {
+  const bar = document.getElementById('seasonBar');
+  bar.innerHTML = '';
+
+  const lastM  = MONTH_NUM[r.lastFrost.month];
+  const firstM = MONTH_NUM[r.firstFrost.month];
+
+  // Each month = 1/12 of bar width
+  for (let m = 0; m < 12; m++) {
+    const seg = document.createElement('div');
+    seg.className = 'season-segment';
+    seg.style.left  = (m / 12 * 100) + '%';
+    seg.style.width = (1 / 12 * 100) + '%';
+
+    if (m < lastM || m > firstM) {
+      seg.classList.add('seg-frost');
+    } else if (m >= r.peakStart && m <= r.peakEnd) {
+      seg.classList.add('seg-peak');
+    } else {
+      seg.classList.add('seg-safe');
+    }
+    bar.appendChild(seg);
+  }
+}
+
+function renderAdvice(r) {
+  const grid = document.getElementById('adviceGrid');
+  grid.innerHTML = '';
+
+  const lastM  = MONTH_NUM[r.lastFrost.month];
+  const firstM = MONTH_NUM[r.firstFrost.month];
+  const growWeeks = Math.round(r.growingDays / 7);
+
+  const cards = [
+    {
+      icon:'🌱',
+      title:'Safe planting out date',
+      text:`Tender crops like tomatoes, courgettes and peppers can safely go outside from <strong>${r.safeOut}</strong> in ${r.name}. Always watch the forecast and keep fleece handy for the first few weeks.`,
+      date: r.safeOut,
+    },
+    {
+      icon:'🍂',
+      title:'Bring plants in by',
+      text:`The first autumn frost typically arrives around <strong>${r.firstFrost.day} ${r.firstFrost.month}</strong>. Move tender plants indoors and lift dahlias, cannas and begonias before this date.`,
+      date: r.firstFrost.label,
+    },
+    {
+      icon:'📅',
+      title:'Growing season length',
+      text:`Your frost-free growing season lasts approximately <strong>${r.growingDays} days (${growWeeks} weeks)</strong> — from the last spring frost to the first autumn frost. Plan successional sowing around this window.`,
+      date: `${r.growingDays} days`,
+    },
+    {
+      icon:'🥔',
+      title:'Potato planting guide',
+      text:`Plant first earlies <strong>6 weeks before</strong> your last frost date — around <strong>${getPotatoDate(lastM, -6)}</strong>. Maincrops go in 2–4 weeks before the last frost. Earth up as shoots appear.`,
+      date: getPotatoDate(lastM, -6),
+    },
+  ];
+
+  cards.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'advice-card';
+    div.innerHTML = `<span class="ac-icon">${c.icon}</span><h4>${c.title}</h4><p>${c.text}</p><span class="ac-date">${c.date}</span>`;
+    grid.appendChild(div);
+  });
+}
+
+function getPotatoDate(lastFrostMonth, weekOffset) {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  let m = lastFrostMonth + Math.round(weekOffset / 4);
+  if (m < 0) m = 0;
+  const early = ['early','mid','late'];
+  return early[1] + ' ' + months[m];
+}
+
+init();
+</script>
+<script src="/ask-the-gardener.js"></script>
+</body>
+</html>
