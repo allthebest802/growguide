@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Gardening Jobs Checklist UK — GrowGuide</title>
+<meta name="description" content="What gardening jobs to do this month in the UK. A practical monthly checklist covering sowing, planting, pruning, feeding and general tasks — tailored to your UK region.">
+<meta name="keywords" content="monthly gardening jobs UK, what to do in the garden this month, April gardening jobs UK, gardening checklist UK, monthly garden tasks">
+<link rel="canonical" href="https://growguideuk.netlify.app/monthly-jobs/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguideuk.netlify.app/monthly-jobs/">
+<meta property="og:title" content="Monthly Gardening Jobs Checklist UK — GrowGuide">
+<meta property="og:description" content="A practical monthly gardening checklist for UK growers — tailored to your region.">
+<meta property="og:site_name" content="GrowGuide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Monthly Gardening Jobs Checklist UK — GrowGuide">
+<meta name="twitter:description" content="A practical monthly gardening checklist for UK growers — tailored to your region.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810; --soil2:#3D2315; --bark:#6B4226;
+  --moss:#4A6741; --moss-d:#2E4228; --moss-l:#7A9E72; --moss-ll:#C8DBC4;
+  --sage:#8FAF87; --sage-l:#D4E8D0;
+  --cream:#F5F0E8; --cream2:#EDE6D8; --parchment:#FAF6EE;
+  --stone:#A89880; --amber:#C8842A; --amber-l:#F0D4A0; --amber-ll:#FDF5E4;
+  --rust:#B85C2A; --rust-l:#F5DDD4;
+  --text:#1E130C; --text2:#4A3020; --text3:#8A7060;
+  --border:#D8C8B0; --border2:#C0A888;
+  --radius:12px; --radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.16);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),
+    radial-gradient(ellipse 600px 500px at 100% 100%,rgba(200,132,42,0.08),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 16px;font-size:0.8rem;color:var(--moss-ll);font-weight:700;letter-spacing:0.5px}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:28px 24px 80px;position:relative;z-index:1}
+
+/* INTRO BANNER */
+.intro-banner{
+  background:linear-gradient(135deg,#1E3A18,#3A5E30);
+  border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:28px;
+  display:flex;align-items:center;gap:20px;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;flex-wrap:wrap;
+}
+.intro-banner::before{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.intro-emoji{font-size:3rem;flex-shrink:0}
+.intro-text h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;font-weight:700;margin-bottom:5px}
+.intro-text p{font-size:0.88rem;color:var(--moss-ll);line-height:1.6;font-weight:300;max-width:500px}
+
+/* CONTROLS */
+.controls-row{
+  display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:center;
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:16px 20px;box-shadow:var(--shadow);
+}
+.control-group{display:flex;flex-direction:column;gap:4px;flex:1;min-width:160px}
+.control-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3)}
+.control-select{
+  border:1.5px solid var(--border2);border-radius:100px;
+  padding:8px 14px;font-family:'Lato',sans-serif;font-size:0.88rem;
+  color:var(--text);background:var(--parchment);outline:none;
+  transition:border-color 0.15s;cursor:pointer;
+}
+.control-select:focus{border-color:var(--moss)}
+.progress-pill{
+  margin-left:auto;background:var(--sage-l);border:1.5px solid var(--moss-l);
+  border-radius:100px;padding:8px 16px;font-size:0.82rem;font-weight:700;
+  color:var(--moss-d);white-space:nowrap;align-self:flex-end;
+}
+
+/* MONTH NAV */
+.month-nav{
+  display:flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.month-nav-btn{
+  width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border2);
+  color:var(--text2);font-size:1.1rem;display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;flex-shrink:0;background:white;
+}
+.month-nav-btn:hover{background:var(--moss);border-color:var(--moss);color:white}
+.month-heading{
+  flex:1;background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:14px 20px;box-shadow:var(--shadow);
+}
+.month-heading-top{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.month-season{font-size:0.75rem;font-weight:700;color:var(--text3);letter-spacing:0.5px;text-transform:uppercase}
+.month-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text)}
+.month-desc{font-size:0.82rem;color:var(--text3);line-height:1.5;font-style:italic}
+.frost-badge{
+  padding:3px 10px;border-radius:100px;font-size:0.65rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:0.5px;margin-left:auto;
+}
+.frost-0{background:var(--sage-l);color:var(--moss-d);border:1px solid var(--moss-l)}
+.frost-1{background:#FDF5E4;color:#7A5010;border:1px solid #E8D090}
+.frost-2{background:#E8F0FF;color:#203070;border:1px solid #A0B8F0}
+.frost-3{background:#E0E8FF;color:#102060;border:1px solid #80A0E8}
+
+/* CATEGORY SECTIONS */
+.category-section{margin-bottom:20px}
+.category-header{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;border-radius:var(--radius) var(--radius) 0 0;
+  cursor:pointer;user-select:none;
+}
+.category-header h3{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:white;flex:1}
+.category-count{font-size:0.72rem;font-weight:700;background:rgba(255,255,255,0.2);border-radius:100px;padding:2px 8px;color:white}
+.category-toggle{color:rgba(255,255,255,0.7);font-size:0.9rem;transition:transform 0.2s}
+.category-toggle.open{transform:rotate(180deg)}
+
+.cat-sowing{background:linear-gradient(135deg,#2E5A22,#4A8038)}
+.cat-planting{background:linear-gradient(135deg,#3A5010,#6A8820)}
+.cat-pruning{background:linear-gradient(135deg,#6B4226,#A06840)}
+.cat-feeding{background:linear-gradient(135deg,#3A4A20,#5A7038)}
+.cat-general{background:linear-gradient(135deg,#2C1810,#5A3828)}
+.cat-lawn{background:linear-gradient(135deg,#1A4A20,#2E7A38)}
+.cat-protect{background:linear-gradient(135deg,#1A3060,#2A5090)}
+
+.jobs-list{
+  background:white;border:1.5px solid var(--border);
+  border-top:none;border-radius:0 0 var(--radius) var(--radius);
+  overflow:hidden;
+}
+.jobs-list.collapsed{display:none}
+
+/* JOB ITEM */
+.job-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 18px;border-bottom:1px solid var(--border);
+  transition:background 0.15s;cursor:pointer;
+}
+.job-item:last-child{border-bottom:none}
+.job-item:hover{background:var(--parchment)}
+.job-item.done{background:var(--sage-l)}
+.job-item.done .job-text{text-decoration:line-through;color:var(--text3)}
+.job-check{
+  width:22px;height:22px;border-radius:6px;border:2px solid var(--border2);
+  flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;background:white;
+}
+.job-item.done .job-check{background:var(--moss);border-color:var(--moss);color:white}
+.job-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
+.job-content{flex:1}
+.job-text{font-size:0.88rem;color:var(--text2);line-height:1.6}
+.job-text strong{color:var(--text);font-weight:700}
+.job-tag{
+  display:inline-block;font-size:0.62rem;font-weight:900;text-transform:uppercase;
+  letter-spacing:0.5px;padding:2px 7px;border-radius:100px;margin-top:5px;
+}
+.tag-beginner{background:var(--sage-l);color:var(--moss-d);border:1px solid var(--moss-l)}
+.tag-urgent{background:#FCDCDC;color:#8A1020;border:1px solid #F0A0A8}
+.tag-tip{background:var(--amber-ll);color:#7A4A10;border:1px solid var(--amber-l)}
+
+/* RESET BTN */
+.reset-row{display:flex;justify-content:flex-end;margin-bottom:16px}
+.btn-reset{
+  background:transparent;color:var(--text3);border-radius:100px;
+  padding:8px 18px;font-size:0.82rem;font-weight:700;
+  border:1.5px solid var(--border2);transition:all 0.15s;
+}
+.btn-reset:hover{border-color:var(--bark);color:var(--text2)}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:40px 20px;background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg)}
+.empty-state span{font-size:3rem;display:block;margin-bottom:10px;opacity:0.4}
+.empty-state p{font-size:0.88rem;color:var(--text3)}
+
+/* FOOTER */
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
+
+@media(max-width:600px){
+  .controls-row{flex-direction:column}
+  .progress-pill{align-self:flex-start}
+  .month-nav{gap:8px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="https://growguideuk.netlify.app/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">📋 Monthly Jobs</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="intro-banner">
+    <div class="intro-emoji">📋</div>
+    <div class="intro-text">
+      <h2>Monthly Jobs Checklist</h2>
+      <p>A practical tick-off checklist of everything to do in your garden this month — sowing, planting, pruning, feeding and more. Tailored to your UK region.</p>
+    </div>
+  </div>
+
+  <div class="controls-row">
+    <div class="control-group">
+      <div class="control-label">Month</div>
+      <select class="control-select" id="monthSel">
+        <option value="0">January</option>
+        <option value="1">February</option>
+        <option value="2">March</option>
+        <option value="3">April</option>
+        <option value="4">May</option>
+        <option value="5">June</option>
+        <option value="6">July</option>
+        <option value="7">August</option>
+        <option value="8">September</option>
+        <option value="9">October</option>
+        <option value="10">November</option>
+        <option value="11">December</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <div class="control-label">Region</div>
+      <select class="control-select" id="regionSel">
+        <option value="south">South England</option>
+        <option value="midlands">Midlands</option>
+        <option value="north">North England</option>
+        <option value="wales">Wales</option>
+        <option value="scotland">Scotland</option>
+        <option value="nireland">Northern Ireland</option>
+      </select>
+    </div>
+    <div class="progress-pill" id="progressPill">0 / 0 done</div>
+  </div>
+
+  <div class="month-nav">
+    <button class="month-nav-btn" id="prevBtn" title="Previous month">◀</button>
+    <div class="month-heading">
+      <div class="month-heading-top">
+        <span class="month-season" id="monthSeason"></span>
+        <span class="frost-badge" id="frostBadge"></span>
+      </div>
+      <div class="month-name" id="monthName"></div>
+      <div class="month-desc" id="monthDesc"></div>
+    </div>
+    <button class="month-nav-btn" id="nextBtn" title="Next month">▶</button>
+  </div>
+
+  <div class="reset-row">
+    <button class="btn-reset" id="resetBtn">↺ Clear all ticks</button>
+  </div>
+
+  <div id="jobsContainer"></div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://growguideuk.netlify.app/" style="color:var(--stone);text-decoration:none">Home</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/what-to-plant/" style="color:var(--stone);text-decoration:none">What to Plant</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/pest-identifier/" style="color:var(--stone);text-decoration:none">Pest Identifier</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/seed-to-harvest/" style="color:var(--stone);text-decoration:none">Seed Timelines</a> &nbsp;·&nbsp;
+  <a href="https://growguideuk.netlify.app/companion-planting/" style="color:var(--stone);text-decoration:none">Companion Planting</a>
+  <br><br>GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+<script>
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const SEASONS = {
+  0:'❄️ Midwinter', 1:'❄️ Late Winter', 2:'🌱 Early Spring',
+  3:'🌸 Spring', 4:'🌸 Late Spring', 5:'☀️ Early Summer',
+  6:'☀️ Midsummer', 7:'☀️ Late Summer', 8:'🍂 Early Autumn',
+  9:'🍂 Autumn', 10:'🍂 Late Autumn', 11:'❄️ Early Winter'
+};
+const MONTH_DESC = [
+  'The garden sleeps but planning season is in full swing. Order seeds and prep your beds.',
+  'Days are lengthening — time for the first indoor sows. Spring is around the corner.',
+  'The growing year begins in earnest. A busy month for sowing indoors and out.',
+  'Frosts ease in the south. Get outdoors and start planting in earnest.',
+  'The most exciting month in the garden — everything is growing fast.',
+  'Long warm days. Keep on top of watering and enjoy the first harvests.',
+  'Midsummer abundance. Harvest regularly to keep plants productive.',
+  'The harvest season peaks. Start thinking about autumn and winter crops.',
+  'A second spring for many crops. Clear spent plants and sow winter veg.',
+  'Autumn jobs in full swing. Protect tender plants and lift root veg.',
+  'The garden winds down. Plant garlic and spring bulbs before the ground freezes.',
+  'Rest, reflect and plan. The best seed catalogues arrive this month.'
+];
+const FROST = {
+  south:   [2,2,1,0,0,0,0,0,0,0,1,2],
+  midlands:[3,2,2,1,0,0,0,0,0,1,1,2],
+  north:   [3,3,2,1,1,0,0,0,0,1,2,3],
+  wales:   [2,2,1,1,0,0,0,0,0,1,1,2],
+  scotland:[3,3,3,2,1,0,0,0,1,1,2,3],
+  nireland:[2,2,2,1,0,0,0,0,0,1,1,2],
+};
+const REGION_OFFSET = {south:0, midlands:1, north:2, wales:1, scotland:3, nireland:2};
+
+// ── FULL JOBS DATA ─────────────────────────────────────────────────────────
+// Each month has categories: sowing, planting, pruning, feeding, general, lawn, protect
+const JOBS = [
+  // 0 - JANUARY
+  {
+    sowing:[
+      {icon:'🌶️', text:'<strong>Sow chillies and peppers</strong> on a heated propagator — they need the longest season of any vegetable.', tags:['tip']},
+      {icon:'🫘', text:'<strong>Sow broad beans</strong> in modules indoors if not done in autumn — they\'ll get a good head start.', tags:['beginner']},
+      {icon:'🧅', text:'<strong>Sow onions</strong> in gentle heat (15°C) if you want large bulbs — much earlier than most people realise.', tags:['tip']},
+    ],
+    planting:[
+      {icon:'🌹', text:'<strong>Plant bare-root roses, trees and hedging</strong> while dormant — bare root is cheaper and establishes better.', tags:['beginner']},
+      {icon:'🧄', text:'<strong>Plant garlic</strong> if the ground isn\'t frozen — January planting still gives good results.', tags:['beginner']},
+    ],
+    pruning:[
+      {icon:'🍎', text:'<strong>Prune apple and pear trees</strong> while fully dormant — aim for an open, goblet shape to improve light and air.', tags:[]},
+      {icon:'🌹', text:'<strong>Hard prune wisteria</strong> — cut sideshoots back to 2–3 buds. January and July are the two key times.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Top-dress containers</strong> with fresh compost — scrape off the top 5cm and replace with new compost.', tags:['tip']},
+    ],
+    general:[
+      {icon:'📖', text:'<strong>Order seeds now</strong> — the best varieties sell out early. Make a crop rotation plan at the same time.', tags:['urgent']},
+      {icon:'🧹', text:'<strong>Clean and disinfect pots and seed trays</strong> — kills overwintering disease spores before sowing season.', tags:[]},
+      {icon:'🌿', text:'<strong>Force rhubarb</strong> by covering crowns with an upturned pot or bucket — you\'ll get sweet pink stalks 4–6 weeks earlier.', tags:['tip']},
+      {icon:'📦', text:'<strong>Check stored fruit, veg and tubers</strong> — remove anything rotting before it spreads to its neighbours.', tags:[]},
+    ],
+    lawn:[
+      {icon:'🌿', text:'<strong>Stay off frozen or waterlogged lawns</strong> — footprints compact the soil and damage grass roots.', tags:[]},
+      {icon:'🔧', text:'<strong>Service your mower</strong> — sharpen the blade, change the oil and clean the deck ready for spring.', tags:['tip']},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Protect tender plants</strong> with fleece on forecast frosty nights — even "hardy" plants can be caught out.', tags:['urgent']},
+      {icon:'💧', text:'<strong>Check pots aren\'t waterlogged</strong> — raise them on pot feet or move under cover. Roots drown in standing water.', tags:[]},
+      {icon:'🐦', text:'<strong>Feed garden birds</strong> — a well-stocked bird feeder brings insect-eating birds that will help you all season.', tags:['beginner']},
+    ],
+  },
+  // 1 - FEBRUARY
+  {
+    sowing:[
+      {icon:'🍅', text:'<strong>Sow tomatoes</strong> in a heated propagator at 18–21°C — don\'t rush, but February is ideal for most UK growers.', tags:['beginner']},
+      {icon:'🌶️', text:'<strong>Sow aubergines</strong> — they need an even longer season than tomatoes. Start in heat as early as possible.', tags:[]},
+      {icon:'🌸', text:'<strong>Sow antirrhinums (snapdragons)</strong> indoors — slow to germinate but worth it for long-lasting summer colour.', tags:[]},
+      {icon:'🌿', text:'<strong>Sow leeks</strong> in modules indoors — thin and slow to start but will be ready for planting out in May.', tags:[]},
+    ],
+    planting:[
+      {icon:'🥔', text:'<strong>Chit seed potatoes</strong> — stand them in egg boxes on a light windowsill to develop short, stubby sprouts.', tags:['beginner']},
+      {icon:'🌹', text:'<strong>Finish planting bare-root plants</strong> — bare root season ends when plants come into growth in March.', tags:['urgent']},
+    ],
+    pruning:[
+      {icon:'✂️', text:'<strong>Prune fruit trees and bushes</strong> — apples, pears, gooseberries and currants while still fully dormant.', tags:[]},
+      {icon:'🌹', text:'<strong>Cut back dogwood (Cornus) hard</strong> — the brightest stem colours come on young growth.', tags:['tip']},
+      {icon:'🌿', text:'<strong>Prune late-summer-flowering clematis</strong> (Group 3) — cut back hard to about 30cm from the ground.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Apply a balanced granular fertiliser</strong> to beds and borders — scratch in lightly as growth begins.', tags:[]},
+      {icon:'🍓', text:'<strong>Feed strawberries</strong> with a high-potassium fertiliser as the leaves start to emerge.', tags:['tip']},
+    ],
+    general:[
+      {icon:'🧹', text:'<strong>Clear beds</strong> of dead plant material and add a thick layer of compost as a mulch.', tags:[]},
+      {icon:'🌿', text:'<strong>Divide perennials</strong> now while the ground isn\'t too hard — replant sections immediately.', tags:[]},
+      {icon:'🌱', text:'<strong>Set up your greenhouse or cold frame</strong> — clean the glass to maximise light before sowing season.', tags:[]},
+    ],
+    lawn:[
+      {icon:'🌿', text:'<strong>Give the lawn its first feed</strong> if the weather is mild — a spring lawn fertiliser gets grass growing strongly.', tags:[]},
+      {icon:'🔧', text:'<strong>Repair bare patches</strong> with grass seed or turf — easier now before weeds colonise them.', tags:[]},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Keep fleece handy</strong> — February can bring late cold snaps that damage early sowings and emerging bulbs.', tags:['urgent']},
+      {icon:'🐛', text:'<strong>Set up slug traps</strong> near vulnerable plants — slugs are active on mild nights from February onwards.', tags:[]},
+    ],
+  },
+  // 2 - MARCH
+  {
+    sowing:[
+      {icon:'🌱', text:'<strong>Sow tomatoes</strong> if not already done — the last sensible date for most UK growers.', tags:['urgent']},
+      {icon:'🥒', text:'<strong>Sow celery and celeriac</strong> in warmth — both need a long season and hate cold.', tags:[]},
+      {icon:'🌸', text:'<strong>Sow sweet peas</strong> if not done in autumn — pinch out the tip when two pairs of leaves have formed.', tags:['beginner']},
+      {icon:'🌼', text:'<strong>Sow marigolds and cosmos</strong> indoors — they\'ll be ready to plant out after the last frosts.', tags:['beginner']},
+      {icon:'🥬', text:'<strong>Sow salad leaves, spinach and rocket</strong> direct outdoors under fleece — quick crops to fill the hungry gap.', tags:['beginner']},
+      {icon:'🥕', text:'<strong>Sow first carrots</strong> direct under fleece in the south — fine, stone-free soil gives the best results.', tags:[]},
+    ],
+    planting:[
+      {icon:'🥔', text:'<strong>Plant first early potatoes</strong> in the south and midlands — earth up shoots as they appear.', tags:['beginner']},
+      {icon:'🌸', text:'<strong>Plant summer-flowering bulbs</strong> — gladioli, crocosmia and ranunculus in sunny, sheltered spots.', tags:[]},
+      {icon:'🌳', text:'<strong>Plant trees, shrubs and perennials</strong> — early spring is one of the best planting times before summer heat.', tags:[]},
+    ],
+    pruning:[
+      {icon:'🌹', text:'<strong>Prune roses</strong> — cut hybrid teas back to 30cm, remove dead wood and open up the centre.', tags:['beginner']},
+      {icon:'✂️', text:'<strong>Cut back ornamental grasses</strong> before new growth emerges — use shears or hedge trimmers.', tags:[]},
+      {icon:'🌿', text:'<strong>Divide and replant</strong> herbaceous perennials before growth gets too advanced.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Apply a general fertiliser</strong> to borders and vegetable beds as growth picks up.', tags:[]},
+      {icon:'🌹', text:'<strong>Feed roses</strong> with a specialist rose fertiliser as they come into growth.', tags:['tip']},
+    ],
+    general:[
+      {icon:'🐛', text:'<strong>Watch for slugs and snails</strong> — they emerge as temperatures rise. Go out after dark with a torch.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Mulch borders</strong> while the soil is still moist — mulching dry soil locks moisture out, not in.', tags:['tip']},
+      {icon:'🌱', text:'<strong>Start a compost heap</strong> if you don\'t have one — spring is the ideal time.', tags:['beginner']},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Give the lawn its first cut</strong> when grass is actively growing — mow high (5cm) for the first few cuts.', tags:['beginner']},
+      {icon:'🌿', text:'<strong>Scarify and aerate</strong> if needed — use a rake or hollow-tine aerator to improve drainage.', tags:[]},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Watch the forecast carefully</strong> — March frosts are common and can devastate early sowings and blossom.', tags:['urgent']},
+      {icon:'🐛', text:'<strong>Net brassica seedlings</strong> from the start — cabbage white butterflies are active from March in mild areas.', tags:[]},
+    ],
+  },
+  // 3 - APRIL
+  {
+    sowing:[
+      {icon:'🥒', text:'<strong>Sow courgettes, cucumbers and pumpkins</strong> indoors — sow on their side to prevent rotting.', tags:['beginner']},
+      {icon:'🫘', text:'<strong>Sow French and runner beans</strong> indoors in modules — don\'t plant out until frosts have passed.', tags:[]},
+      {icon:'🌽', text:'<strong>Sow sweetcorn</strong> in modules indoors — it needs warmth to germinate reliably.', tags:[]},
+      {icon:'🥬', text:'<strong>Continue sowing salads, radishes and peas</strong> direct outdoors — sow a short row every 2–3 weeks.', tags:['beginner']},
+      {icon:'🌸', text:'<strong>Sow hardy annuals direct</strong> — cornflowers, nigella, calendula and borage all do well sown straight outside.', tags:['beginner']},
+    ],
+    planting:[
+      {icon:'🌿', text:'<strong>Plant onion sets and shallots</strong> directly in the ground in rows 10cm apart.', tags:['beginner']},
+      {icon:'🥔', text:'<strong>Plant maincrop potatoes</strong> in prepared trenches 30cm apart, 15cm deep.', tags:[]},
+      {icon:'🌸', text:'<strong>Plant dahlia tubers</strong> in pots to get them started — plant out after the last frost date.', tags:[]},
+    ],
+    pruning:[
+      {icon:'✂️', text:'<strong>Pinch out sweet peas</strong> when 10cm tall — remove the growing tip to encourage bushy, productive plants.', tags:['tip']},
+      {icon:'🌿', text:'<strong>Cut back winter-damaged growth</strong> on shrubs — wait until now to be sure what is and isn\'t dead.', tags:[]},
+    ],
+    feeding:[
+      {icon:'💧', text:'<strong>Start watering regularly</strong> — spring can be deceptively dry. Check containers every day.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Feed emerging perennials</strong> with a balanced fertiliser as growth accelerates.', tags:[]},
+    ],
+    general:[
+      {icon:'🌱', text:'<strong>Harden off indoor-raised seedlings</strong> — put outside in the day, bring in at night over 7–10 days.', tags:['beginner']},
+      {icon:'🐛', text:'<strong>Protect brassicas</strong> with fine netting — cabbage white butterflies are actively laying eggs now.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Thin out direct-sown seedlings</strong> — crowding is one of the most common mistakes in the veg garden.', tags:[]},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Mow regularly</strong> — aim to cut every 7–10 days. Gradually lower the cutting height as spring progresses.', tags:[]},
+      {icon:'🌿', text:'<strong>Feed the lawn</strong> with a spring/summer lawn fertiliser — this is the key application of the year.', tags:['tip']},
+      {icon:'🌱', text:'<strong>Sow new lawn areas or fill bare patches</strong> with seed — warm, moist April conditions are ideal.', tags:[]},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Keep fleece handy</strong> — late April frosts are common across most of the UK. Never assume the last frost has passed.', tags:['urgent']},
+    ],
+  },
+  // 4 - MAY
+  {
+    sowing:[
+      {icon:'🫘', text:'<strong>Sow French beans direct</strong> outdoors once the soil has warmed to at least 12°C.', tags:[]},
+      {icon:'🥬', text:'<strong>Sow winter brassicas</strong> — kale, Brussels sprouts and purple sprouting broccoli for autumn and winter.', tags:[]},
+      {icon:'🌿', text:'<strong>Keep sowing salads</strong> every 2–3 weeks — lettuce, rocket, spinach and spring onions.', tags:['beginner']},
+      {icon:'🌸', text:'<strong>Sow biennials</strong> — wallflowers, foxgloves and sweet Williams for flowering next year.', tags:['tip']},
+    ],
+    planting:[
+      {icon:'🍅', text:'<strong>Plant out tomatoes, peppers and aubergines</strong> in the greenhouse — protect from cold nights.', tags:[]},
+      {icon:'🥒', text:'<strong>Plant out courgettes and squash</strong> after the last frost — harden off thoroughly first.', tags:['beginner']},
+      {icon:'🌽', text:'<strong>Plant out sweetcorn</strong> in a block (not a row) for reliable wind pollination.', tags:['tip']},
+      {icon:'🌸', text:'<strong>Plant out summer bedding</strong> after the last frost — impatiens, petunias and pelargoniums.', tags:['beginner']},
+    ],
+    pruning:[
+      {icon:'✂️', text:'<strong>Chelsea chop perennials</strong> around the third week of May — cutting back by half delays flowering and creates bushier plants.', tags:['tip']},
+      {icon:'🍓', text:'<strong>Remove strawberry runners</strong> unless you want new plants — energy goes into fruit if runners are removed.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🍅', text:'<strong>Start feeding tomatoes weekly</strong> with high-potash feed as soon as the first truss of flowers appears.', tags:['beginner']},
+      {icon:'💧', text:'<strong>Water and feed container plants regularly</strong> — growth is fast now and containers dry out quickly.', tags:['urgent']},
+    ],
+    general:[
+      {icon:'🌱', text:'<strong>Harden off and plant out tender plants</strong> once the last frost date for your region has passed.', tags:['urgent']},
+      {icon:'🐛', text:'<strong>Check under leaves for aphids</strong> — squash colonies early before they explode into thousands.', tags:[]},
+      {icon:'🌿', text:'<strong>Thin out seedlings</strong> sown direct to give remaining plants the space they need.', tags:[]},
+      {icon:'🏡', text:'<strong>Erect supports for tall plants</strong> — beans, dahlias, delphiniums — before they need them, not after.', tags:['tip']},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Mow weekly</strong> and consider using a grass box — long clippings left on the lawn can cause yellowing.', tags:[]},
+      {icon:'🌿', text:'<strong>Apply a lawn weedkiller</strong> if needed — selective weedkillers are most effective when weeds are actively growing.', tags:[]},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Watch the forecast for late frosts</strong> — a single late frost can wipe out months of growing in minutes.', tags:['urgent']},
+    ],
+  },
+  // 5 - JUNE
+  {
+    sowing:[
+      {icon:'🥬', text:'<strong>Sow autumn and winter salads</strong> — land cress, lamb\'s lettuce, oriental leaves and spinach.', tags:[]},
+      {icon:'🥕', text:'<strong>Sow a final batch of carrots</strong> for autumn harvest — last sensible date is mid-June.', tags:['tip']},
+      {icon:'🌿', text:'<strong>Sow herbs</strong> like basil, coriander and dill direct outdoors — the warm soil suits them perfectly.', tags:['beginner']},
+      {icon:'🟢', text:'<strong>Sow spring onions</strong> every 3 weeks for a continuous supply right through to autumn.', tags:[]},
+    ],
+    planting:[
+      {icon:'🍅', text:'<strong>Plant out tomatoes outdoors</strong> (south only) — the last safe date before the season gets too short.', tags:[]},
+      {icon:'🌸', text:'<strong>Plant out tender perennials</strong> — dahlias, cannas and salvias are all safe outside now.', tags:['beginner']},
+    ],
+    pruning:[
+      {icon:'🍓', text:'<strong>Remove strawberry runners</strong> unless propagating — they divert energy from fruit production.', tags:[]},
+      {icon:'🌿', text:'<strong>Trim early-flowering shrubs</strong> like lilac and philadelphus immediately after flowering.', tags:[]},
+      {icon:'🍎', text:'<strong>Summer prune plums and cherries</strong> — never prune stone fruit in winter to avoid silver leaf disease.', tags:['urgent']},
+    ],
+    feeding:[
+      {icon:'💧', text:'<strong>Water consistently</strong> — irregular watering causes blossom end rot in tomatoes and splitting in root veg.', tags:['urgent']},
+      {icon:'🍅', text:'<strong>Feed fruiting crops weekly</strong> — tomatoes, peppers, cucumbers and courgettes all benefit from high-potash feed.', tags:['beginner']},
+    ],
+    general:[
+      {icon:'🍓', text:'<strong>Harvest strawberries</strong> regularly — pick every day or two at their peak. Leave even one day too long and they\'re past their best.', tags:['beginner']},
+      {icon:'✂️', text:'<strong>Deadhead flowers constantly</strong> — stopping seed production keeps plants flowering for months longer.', tags:['beginner']},
+      {icon:'🌿', text:'<strong>Side-shoot tomatoes</strong> — remove sideshoots growing in the leaf axils to keep plants manageable.', tags:[]},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Mow regularly but raise the cutting height</strong> in dry spells — longer grass is more drought-resistant.', tags:['tip']},
+    ],
+    protect:[
+      {icon:'🐛', text:'<strong>Watch for vine weevil</strong> in containers — the adults notch leaf edges at night. Check plants with a torch.', tags:[]},
+      {icon:'🐌', text:'<strong>Continue slug patrols</strong> — warm, damp June nights are ideal slug weather.', tags:[]},
+    ],
+  },
+  // 6 - JULY
+  {
+    sowing:[
+      {icon:'🥬', text:'<strong>Sow kale and spring cabbages</strong> for overwintering — sow now to have plants ready for autumn planting.', tags:[]},
+      {icon:'🌸', text:'<strong>Sow wallflowers and sweet Williams</strong> for flowering next spring — biennials need to be sown now.', tags:['tip']},
+      {icon:'🥬', text:'<strong>Sow pak choi and Oriental leaves</strong> — they prefer the shorter, cooler days of late summer.', tags:[]},
+      {icon:'🌿', text:'<strong>Sow Japanese onions and overwintering salad onions</strong> for harvest next spring.', tags:[]},
+    ],
+    planting:[
+      {icon:'🥦', text:'<strong>Plant out winter brassicas</strong> — Brussels sprouts, kale and sprouting broccoli sown in May.', tags:['urgent']},
+    ],
+    pruning:[
+      {icon:'💜', text:'<strong>Trim lavender</strong> after flowering — cut back by a third to keep it bushy. Never cut into old brown wood.', tags:['beginner']},
+      {icon:'🌹', text:'<strong>Deadhead roses</strong> and give them their midsummer feed — many will give a second flush of flowers.', tags:[]},
+      {icon:'🍇', text:'<strong>Summer prune wisteria</strong> — cut sideshoots back to 5 leaves. The second prune is in January.', tags:['tip']},
+      {icon:'✂️', text:'<strong>Trim hedges</strong> — most formal hedges are best trimmed in July and again in September.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🍅', text:'<strong>Feed tomatoes, peppers and cucumbers</strong> with a high-potash liquid feed every week without fail.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Feed container plants</strong> — they\'re at peak growth and using nutrients fast.', tags:[]},
+    ],
+    general:[
+      {icon:'🥒', text:'<strong>Harvest courgettes when small</strong> (10–15cm) — they become marrows overnight if left on the plant.', tags:['urgent']},
+      {icon:'💧', text:'<strong>Water morning and evening</strong> in hot weather. Mulch to retain moisture.', tags:[]},
+      {icon:'📋', text:'<strong>Keep records</strong> of what has and hasn\'t worked — notes made now are invaluable for planning next year.', tags:['tip']},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Raise mower height in dry weather</strong> — never cut a drought-stressed lawn short.', tags:['tip']},
+      {icon:'💧', text:'<strong>Water new lawns</strong> and recently seeded patches — established lawns will brown but recover when rain returns.', tags:[]},
+    ],
+    protect:[
+      {icon:'🐛', text:'<strong>Check under leaves for red spider mite</strong> in greenhouses — fine webbing and mottled leaves are the signs.', tags:[]},
+      {icon:'🍎', text:'<strong>Net fruit trees and bushes</strong> before harvest — birds act quickly once fruit starts to colour.', tags:['urgent']},
+    ],
+  },
+  // 7 - AUGUST
+  {
+    sowing:[
+      {icon:'🥬', text:'<strong>Sow winter salads</strong> — rocket, spinach, lamb\'s lettuce and land cress for autumn harvests.', tags:['beginner']},
+      {icon:'🌸', text:'<strong>Sow sweet peas</strong> for next year — autumn-sown sweet peas produce earlier, better flowers.', tags:['tip']},
+      {icon:'🥬', text:'<strong>Last chance to sow spring cabbages</strong> and Japanese onions for overwintering.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Sow green manures</strong> on empty beds — phacelia or mustard will protect bare soil over winter.', tags:[]},
+    ],
+    planting:[
+      {icon:'🍓', text:'<strong>Plant new strawberry plants</strong> (or pot up runners) for cropping next year.', tags:['beginner']},
+      {icon:'🌸', text:'<strong>Plant autumn-flowering bulbs</strong> — colchicum and nerines now for flowers in September and October.', tags:[]},
+    ],
+    pruning:[
+      {icon:'🍓', text:'<strong>Cut back strawberry foliage</strong> after fruiting — remove all old leaves and tidy around plants.', tags:[]},
+      {icon:'🍎', text:'<strong>Summer prune trained fruit trees</strong> — espaliers, fans and cordons should be pruned now.', tags:[]},
+      {icon:'🌿', text:'<strong>Cut back tired perennials</strong> and pull out spent annuals to keep beds productive and tidy.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🍅', text:'<strong>Continue feeding tomatoes weekly</strong> — right up until the first frosts. Don\'t stop feeding too early.', tags:[]},
+      {icon:'🌿', text:'<strong>Feed autumn-cropping raspberries</strong> and other soft fruit with a balanced fertiliser.', tags:[]},
+    ],
+    general:[
+      {icon:'🍎', text:'<strong>Check apples and pears</strong> — early varieties start ripening now. Test by cupping the fruit and twisting.', tags:[]},
+      {icon:'🌱', text:'<strong>Take cuttings of tender perennials</strong> — pelargoniums, fuchsias and salvias. These will overwinter on a windowsill.', tags:['tip']},
+      {icon:'🧄', text:'<strong>Harvest and dry garlic and onions</strong> thoroughly before storing — store in a cool, dry, airy place.', tags:[]},
+    ],
+    lawn:[
+      {icon:'🌿', text:'<strong>Apply autumn lawn fertiliser</strong> (low nitrogen, high phosphorus) in late August to strengthen roots.', tags:['tip']},
+      {icon:'🔧', text:'<strong>Scarify and aerate the lawn</strong> in late August — the most important annual lawn maintenance task.', tags:[]},
+    ],
+    protect:[
+      {icon:'🐛', text:'<strong>Apply vine weevil nematodes</strong> to containers and beds — soil is still warm enough for them to be effective.', tags:['tip']},
+    ],
+  },
+  // 8 - SEPTEMBER
+  {
+    sowing:[
+      {icon:'🌸', text:'<strong>Sow hardy annuals direct</strong> — cornflowers, nigella, calendula and larkspur for early flowers next year.', tags:['tip']},
+      {icon:'🥬', text:'<strong>Sow last batch of winter salads</strong> under cover — spinach, rocket and mizuna do well.', tags:[]},
+      {icon:'🌸', text:'<strong>Sow sweet peas</strong> for the best early flowers next summer — autumn plants are more robust.', tags:['beginner']},
+    ],
+    planting:[
+      {icon:'🧄', text:'<strong>Plant autumn garlic</strong> — the best cloves for planting are the largest outer cloves of a good variety.', tags:['beginner']},
+      {icon:'🌷', text:'<strong>Start planting spring bulbs</strong> — daffodils, alliums, muscari and fritillaries. Tulips wait until October.', tags:['beginner']},
+      {icon:'🌳', text:'<strong>Plant trees, shrubs and perennials</strong> — September to November is the best time for most hardy plants.', tags:[]},
+    ],
+    pruning:[
+      {icon:'🍓', text:'<strong>Cut back summer-fruiting raspberry canes</strong> that have fruited — cut to the ground. Tie in new canes.', tags:[]},
+      {icon:'✂️', text:'<strong>Give hedges their final trim</strong> — most formal hedges benefit from a September tidy after summer growth.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Apply autumn lawn fertiliser</strong> to strengthen grass roots before winter.', tags:[]},
+      {icon:'🌹', text:'<strong>Stop feeding roses</strong> — late feeding encourages soft growth that won\'t harden before frost.', tags:['tip']},
+    ],
+    general:[
+      {icon:'🥔', text:'<strong>Harvest maincrop potatoes</strong> on a dry day — leave on the surface briefly to dry before storing.', tags:['beginner']},
+      {icon:'🍂', text:'<strong>Clear spent crops</strong> and add to the compost heap — good autumn hygiene reduces next year\'s pest problems.', tags:[]},
+      {icon:'🌿', text:'<strong>Pot up herbs for the windowsill</strong> — basil, chives and parsley can keep going indoors through winter.', tags:['tip']},
+    ],
+    lawn:[
+      {icon:'🔧', text:'<strong>Scarify and aerate the lawn</strong> if not done in August — removes thatch and improves drainage.', tags:[]},
+      {icon:'🌱', text:'<strong>Overseed thin or bare patches</strong> — September is the best time to sow new grass seed.', tags:['tip']},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Watch for early frosts</strong> — September frosts are rare in the south but common in Scotland and the north.', tags:[]},
+      {icon:'🌿', text:'<strong>Move tender container plants under cover</strong> before the first frost — dahlias, pelargoniums and salvias.', tags:['urgent']},
+    ],
+  },
+  // 9 - OCTOBER
+  {
+    sowing:[
+      {icon:'🌸', text:'<strong>Sow sweet peas</strong> in root trainers — deep pots encourage the long roots that make big, productive plants.', tags:[]},
+      {icon:'🫘', text:'<strong>Sow broad beans</strong> direct outdoors in mild areas — autumn-sown plants crop 3–4 weeks earlier.', tags:['tip']},
+    ],
+    planting:[
+      {icon:'🌷', text:'<strong>Plant tulip bulbs</strong> — October and November is the ideal window for the best results.', tags:['urgent']},
+      {icon:'🧅', text:'<strong>Plant spring bulbs</strong> — daffodils, alliums, hyacinths. The more you plant now, the better next spring looks.', tags:['beginner']},
+      {icon:'🌹', text:'<strong>Plant bare-root roses, trees and fruit bushes</strong> — bare root season starts this month and lasts until March.', tags:[]},
+      {icon:'🧄', text:'<strong>Plant garlic</strong> — autumn is the best time. Split bulbs into individual cloves and plant 2cm deep.', tags:['beginner']},
+    ],
+    pruning:[
+      {icon:'🌹', text:'<strong>Shorten rose stems by one third</strong> to prevent wind rock — the main hard prune is in March.', tags:[]},
+      {icon:'✂️', text:'<strong>Cut back perennials</strong> — but leave some seedheads for birds and for winter structural interest.', tags:['tip']},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Apply a top dressing of compost or manure</strong> to empty beds — let the worms work it in over winter.', tags:[]},
+    ],
+    general:[
+      {icon:'🍂', text:'<strong>Collect fallen leaves for leaf mould</strong> — bag them damp and leave 1–2 years for superb free compost.', tags:['beginner']},
+      {icon:'🥕', text:'<strong>Lift root veg for storage</strong> — carrots, beetroot and celeriac. Parsnips can stay in the ground all winter.', tags:[]},
+      {icon:'🌺', text:'<strong>Lift dahlias, cannas and gladioli</strong> after the first frost — store tubers in a cool, frost-free place.', tags:['urgent']},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Continue mowing while grass is still growing</strong> — usually until late October in most of the UK.', tags:[]},
+      {icon:'🍂', text:'<strong>Remove leaves from the lawn promptly</strong> — a thick layer blocks light and leads to dead patches.', tags:['urgent']},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Protect tender plants</strong> before the first hard frost — mulch around the base of borderline-hardy plants.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Drain and store garden hoses and irrigation</strong> — water left in pipes freezes and splits them.', tags:[]},
+    ],
+  },
+  // 10 - NOVEMBER
+  {
+    sowing:[
+      {icon:'🫘', text:'<strong>Sow broad beans and garlic</strong> if not already done — this is the last comfortable month for both.', tags:['urgent']},
+    ],
+    planting:[
+      {icon:'🌹', text:'<strong>Plant bare-root hedging, trees and shrubs</strong> — bare root plants establish brilliantly over winter.', tags:['beginner']},
+      {icon:'🌷', text:'<strong>Last chance to plant tulip bulbs</strong> — plant before the ground freezes hard.', tags:['urgent']},
+      {icon:'🌳', text:'<strong>Plant hedges</strong> — bare root hedging (hawthorn, blackthorn, beech) is cheaper and establishes well.', tags:[]},
+    ],
+    pruning:[
+      {icon:'🍎', text:'<strong>Prune apple and pear trees</strong> — now fully dormant. Remove crossing branches and open up the canopy.', tags:[]},
+      {icon:'✂️', text:'<strong>Cut back tall perennials</strong> to the ground — but leave some hollow stems for overwintering insects.', tags:['tip']},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Mulch borders generously</strong> with compost or bark chippings — protects roots and suppresses weeds.', tags:[]},
+    ],
+    general:[
+      {icon:'🧹', text:'<strong>Clean out the greenhouse thoroughly</strong> — scrub the glass to maximise winter light for overwintering plants.', tags:[]},
+      {icon:'🔧', text:'<strong>Service and oil garden tools</strong> before putting them away for winter — clean blades and oil moving parts.', tags:['tip']},
+      {icon:'🌿', text:'<strong>Insulate outdoor taps and pipes</strong> before the first hard freeze.', tags:[]},
+    ],
+    lawn:[
+      {icon:'✂️', text:'<strong>Give the lawn a final cut</strong> if still growing — a slightly longer finish protects grass through winter.', tags:[]},
+      {icon:'🍂', text:'<strong>Keep clearing leaves</strong> — they quickly matt down and smother the grass.', tags:[]},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Wrap the crowns of tree ferns and bananas</strong> in fleece or straw — essential for borderline-hardy exotics.', tags:[]},
+      {icon:'🌿', text:'<strong>Check on stored bulbs and tubers</strong> — remove any showing signs of rot before they spread.', tags:[]},
+    ],
+  },
+  // 11 - DECEMBER
+  {
+    sowing:[
+      {icon:'🌶️', text:'<strong>Sow chillies and peppers from mid-December</strong> if you have good heat and light — they love a long season.', tags:['tip']},
+    ],
+    planting:[
+      {icon:'🌹', text:'<strong>Plant bare-root plants in mild spells</strong> — whenever the ground isn\'t frozen or waterlogged.', tags:[]},
+      {icon:'🌷', text:'<strong>Force hyacinths and paperwhites</strong> indoors for Christmas flowers — pot up now if not already done.', tags:['beginner']},
+    ],
+    pruning:[
+      {icon:'✂️', text:'<strong>Prune apple and pear trees</strong> — winter is ideal. Aim for an open structure to improve light and air circulation.', tags:[]},
+    ],
+    feeding:[
+      {icon:'🌿', text:'<strong>Top-dress containers and raised beds</strong> with fresh compost — the best winter improvement you can make.', tags:[]},
+    ],
+    general:[
+      {icon:'📖', text:'<strong>Plan next year\'s garden</strong> — draw a crop rotation plan, order seeds and check what worked and what didn\'t.', tags:['beginner']},
+      {icon:'🎁', text:'<strong>Give (or ask for) gardening gifts</strong> — seeds, quality tools, books and RHS memberships are brilliant choices.', tags:[]},
+      {icon:'📦', text:'<strong>Check stored veg and tubers</strong> — remove anything rotting before it affects neighbours.', tags:['urgent']},
+      {icon:'🌿', text:'<strong>Force chicory</strong> — pot up roots and keep in the dark for 3–4 weeks for sweet, pale chicons.', tags:['tip']},
+    ],
+    lawn:[
+      {icon:'🌿', text:'<strong>Stay off the lawn</strong> when frozen or waterlogged — footprints compact the soil and cause bare patches.', tags:[]},
+    ],
+    protect:[
+      {icon:'❄️', text:'<strong>Check insulation on outdoor pots</strong> — terracotta and glazed pots can crack in hard frosts.', tags:[]},
+      {icon:'🐦', text:'<strong>Keep feeding birds generously</strong> — they\'ll repay you by eating pests throughout the growing season.', tags:['beginner']},
+    ],
+  },
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentMonth = new Date().getMonth();
+let currentRegion = 'south';
+let checked = {}; // key: `${month}-${cat}-${idx}` -> bool
+let collapsed = {}; // key: cat -> bool
+
+// ── CATEGORIES ───────────────────────────────────────────────────────────────
+const CATS = [
+  {key:'sowing',   label:'🌱 Sowing',             cls:'cat-sowing'},
+  {key:'planting', label:'🌿 Planting & Bulbs',   cls:'cat-planting'},
+  {key:'pruning',  label:'✂️ Pruning & Cutting',  cls:'cat-pruning'},
+  {key:'feeding',  label:'💧 Feeding & Watering', cls:'cat-feeding'},
+  {key:'general',  label:'📋 General Tasks',       cls:'cat-general'},
+  {key:'lawn',     label:'🌾 Lawn Care',           cls:'cat-lawn'},
+  {key:'protect',  label:'🛡️ Protection & Pests', cls:'cat-protect'},
+];
+
+const FROST_LABELS = ['✅ Frost-free','⚠️ Frost possible','🥶 Frost likely','❄️ Hard frosts'];
+const FROST_CLS    = ['frost-0','frost-1','frost-2','frost-3'];
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function getAdjustedMonth(m, region) {
+  return Math.min(11, m + REGION_OFFSET[region]);
+}
+
+function getJobsForMonth(m, region) {
+  const adj = getAdjustedMonth(m, region);
+  return JOBS[adj] || JOBS[m];
+}
+
+function countAll(jobs) {
+  return CATS.reduce((n, c) => n + (jobs[c.key] ? jobs[c.key].length : 0), 0);
+}
+
+function countDone(m) {
+  return Object.keys(checked).filter(k => k.startsWith(`${m}-`) && checked[k]).length;
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function render() {
+  const m = currentMonth;
+  const region = currentRegion;
+  const jobs = getJobsForMonth(m, region);
+  const frost = FROST[region][m];
+  const total = countAll(jobs);
+  const done = countDone(m);
+
+  // Header
+  document.getElementById('monthSeason').textContent = SEASONS[m];
+  document.getElementById('monthName').textContent = MONTHS[m];
+  document.getElementById('monthDesc').textContent = MONTH_DESC[m];
+  document.getElementById('frostBadge').textContent = FROST_LABELS[frost];
+  document.getElementById('frostBadge').className = 'frost-badge ' + FROST_CLS[frost];
+  document.getElementById('progressPill').textContent = `${done} / ${total} done`;
+  document.getElementById('monthSel').value = m;
+
+  // Jobs
+  const container = document.getElementById('jobsContainer');
+  container.innerHTML = '';
+
+  CATS.forEach(cat => {
+    const items = jobs[cat.key];
+    if (!items || items.length === 0) return;
+
+    const isCollapsed = collapsed[cat.key] || false;
+    const doneCat = items.filter((_, i) => checked[`${m}-${cat.key}-${i}`]).length;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+
+    const header = document.createElement('div');
+    header.className = `category-header ${cat.cls}`;
+    header.innerHTML = `
+      <h3>${cat.label}</h3>
+      <span class="category-count">${doneCat}/${items.length}</span>
+      <span class="category-toggle ${isCollapsed ? '' : 'open'}">▼</span>
+    `;
+    header.addEventListener('click', () => {
+      collapsed[cat.key] = !collapsed[cat.key];
+      render();
+    });
+
+    const list = document.createElement('div');
+    list.className = 'jobs-list' + (isCollapsed ? ' collapsed' : '');
+
+    items.forEach((job, i) => {
+      const key = `${m}-${cat.key}-${i}`;
+      const isDone = checked[key] || false;
+
+      const item = document.createElement('div');
+      item.className = 'job-item' + (isDone ? ' done' : '');
+      item.innerHTML = `
+        <div class="job-check">${isDone ? '✓' : ''}</div>
+        <div class="job-icon">${job.icon}</div>
+        <div class="job-content">
+          <div class="job-text">${job.text}</div>
+          <div>${(job.tags || []).map(t => `<span class="job-tag tag-${t}">${t}</span>`).join('')}</div>
+        </div>
+      `;
+      item.addEventListener('click', () => {
+        checked[key] = !checked[key];
+        render();
+      });
+      list.appendChild(item);
+    });
+
+    section.appendChild(header);
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// ── EVENTS ────────────────────────────────────────────────────────────────────
+document.getElementById('monthSel').addEventListener('change', e => {
+  currentMonth = parseInt(e.target.value);
+  render();
+});
+document.getElementById('regionSel').addEventListener('change', e => {
+  currentRegion = e.target.value;
+  render();
+});
+document.getElementById('prevBtn').addEventListener('click', () => {
+  currentMonth = (currentMonth + 11) % 12;
+  render();
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  currentMonth = (currentMonth + 1) % 12;
+  render();
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  Object.keys(checked).forEach(k => { if(k.startsWith(`${currentMonth}-`)) delete checked[k]; });
+  render();
+});
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+render();
+</script>
+<script src="/ask-the-gardener.js"></script>
+</body>
+</html>
