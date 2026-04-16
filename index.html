@@ -182,26 +182,27 @@ body::before{
 .why-text{font-size:0.8rem;color:var(--text3);line-height:1.55}
 
 /* ── DONATE ── */
-.donate-section{
-  background:linear-gradient(135deg,var(--soil),var(--soil2));
-  border-radius:var(--radius-lg);padding:32px 36px;margin-bottom:44px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+.donate-section{display:none}
+
+/* FLOATING COFFEE BUTTON */
+.coffee-float {
+  position:fixed; bottom:24px; right:24px; z-index:999;
+  display:flex; align-items:center; gap:8px;
+  background:#FFDD00; color:#000;
+  border-radius:100px; padding:10px 18px 10px 14px;
+  font-family:'Lato',sans-serif; font-size:0.85rem; font-weight:700;
+  text-decoration:none; letter-spacing:0.2px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  transition:transform 0.15s, box-shadow 0.15s;
 }
-.donate-section::before{content:'';position:absolute;right:-30px;top:-30px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.03)}
-.donate-section::after{content:'';position:absolute;left:60%;bottom:-40px;width:150px;height:150px;border-radius:50%;background:rgba(200,132,42,0.06)}
-.donate-text{flex:1;min-width:240px;position:relative;z-index:1}
-.donate-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:8px}
-.donate-text p{font-size:0.88rem;color:var(--stone);line-height:1.65;font-weight:300}
-.donate-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--amber);color:var(--soil);
-  padding:14px 26px;border-radius:100px;
-  font-size:0.92rem;font-weight:700;letter-spacing:0.2px;
-  box-shadow:0 6px 20px rgba(200,132,42,0.35);
-  transition:all 0.18s;white-space:nowrap;position:relative;z-index:1;flex-shrink:0;
+.coffee-float:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.25); }
+.coffee-float-icon { font-size:1.1rem; }
+@media(max-width:480px){
+  .coffee-float span.coffee-label { display:none; }
+  .coffee-float { padding:10px 12px; }
 }
-.donate-btn:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,132,42,0.45)}
+
+
 
 /* ── FOOTER ── */
 .site-footer{background:var(--soil);padding:24px;text-align:center;position:relative;z-index:1}
@@ -213,7 +214,7 @@ body::before{
 
 @media(max-width:600px){
   .hero{padding:40px 20px 36px}
-  .donate-section{padding:24px 22px}
+
   .main{padding:32px 16px 16px}
   .seasonal-link{margin-left:0}
 }
@@ -440,14 +441,6 @@ body::before{
     </div>
   </div>
 
-  <!-- DONATE -->
-  <div class="donate-section">
-    <div class="donate-text">
-      <h3>☕ Find GrowGuide useful?</h3>
-      <p>GrowGuide is free to use and always will be. If it's saved you time or helped you grow something great, a small donation keeps the site running and helps us build more tools.</p>
-    </div>
-    <a class="donate-btn" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy us a coffee</a>
-  </div>
 
 </main>
 
@@ -493,5 +486,10 @@ document.getElementById('seasHeading').textContent = headingParts[1] || tip.head
 document.getElementById('seasBody').textContent = tip.body;
 </script>
 <script src="/ask-the-gardener.js"></script>
+<a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">
+  <span class="coffee-float-icon">☕</span>
+  <span class="coffee-label">Buy me a coffee</span>
+</a>
+
 </body>
 </html>
