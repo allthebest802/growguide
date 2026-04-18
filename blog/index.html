@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowGuide Blog — UK Gardening Guides, Tips and Advice</title>
+<meta name="description" content="Free UK gardening guides from GrowGuide. What to grow, when to plant, how to deal with pests and the best plants for every garden — practical advice for UK growers.">
+<link rel="canonical" href="https://growguide.co.uk/blog/">
+<meta property="og:title" content="GrowGuide Blog — UK Gardening Guides">
+<meta property="og:description" content="Practical gardening guides for UK growers. Allotments, containers, indoor plants, pests and seasonal advice.">
+<meta property="og:url" content="https://growguide.co.uk/blog/">
+<meta property="og:site_name" content="GrowGuide">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
+  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
+  --sage:#8FAF87;--sage-l:#D4E8D0;
+  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
+  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;
+  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
+  --border:#D8C8B0;--radius:12px;--radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:6px 16px;font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:0.5px}
+
+.main{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+
+.page-header{margin-bottom:40px}
+.eyebrow{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--moss);margin-bottom:10px}
+.page-title{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--soil);margin-bottom:10px}
+.page-desc{font-size:1rem;color:var(--text3);line-height:1.7;max-width:560px}
+
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.post-card{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:all 0.2s}
+.post-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(44,24,16,0.15);border-color:var(--moss-ll)}
+.post-card-top{background:linear-gradient(135deg,var(--moss-d),#3A5830);padding:24px;position:relative}
+.post-emoji{font-size:2.4rem;display:block;margin-bottom:8px}
+.post-tag{display:inline-block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);padding:3px 10px;border-radius:100px;margin-bottom:10px}
+.post-card-body{padding:20px}
+.post-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--soil);margin-bottom:8px;line-height:1.35}
+.post-excerpt{font-size:0.85rem;color:var(--text3);line-height:1.65;margin-bottom:16px}
+.post-meta{display:flex;align-items:center;justify-content:space-between;font-size:0.75rem;color:var(--stone)}
+.post-read{font-size:0.8rem;font-weight:700;color:var(--moss-d)}
+.post-read:hover{color:var(--moss)}
+
+.tools-strip{background:var(--cream2);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin-top:48px}
+.tools-strip h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--soil);margin-bottom:14px}
+.tools-links{display:flex;flex-wrap:wrap;gap:10px}
+.tool-pill{padding:7px 16px;border-radius:100px;font-size:0.8rem;font-weight:700;background:white;border:1.5px solid var(--border);color:var(--text2);transition:all 0.15s}
+.tool-pill:hover{border-color:var(--moss);color:var(--moss-d)}
+
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.8rem;color:var(--stone)}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+.footer-links a{color:var(--stone);text-decoration:none;font-weight:700;font-size:0.8rem;transition:color 0.15s}
+.footer-links a:hover{color:var(--moss-ll)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">📝 Gardening Guides</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="page-header">
+    <div class="eyebrow">GrowGuide Blog</div>
+    <h2 class="page-title">UK Gardening Guides</h2>
+    <p class="page-desc">Practical advice for UK growers — what to plant, when to plant it, how to fix common problems and the best plants for every space.</p>
+  </div>
+
+  <div class="posts-grid">
+
+    <a class="post-card" href="/blog/best-indoor-plants-uk/">
+      <div class="post-card-top">
+        <span class="post-emoji">🪴</span>
+        <span class="post-tag">Indoor plants</span>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">The best indoor plants for UK homes</h3>
+        <p class="post-excerpt">The 10 most rewarding houseplants for UK conditions — chosen for how they handle central heating, low winter light and British draughts.</p>
+        <div class="post-meta">
+          <span>6 min read</span>
+          <span class="post-read">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="post-card" href="/blog/north-facing-garden/">
+      <div class="post-card-top">
+        <span class="post-emoji">🌿</span>
+        <span class="post-tag">Garden planning</span>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">What to grow in a north-facing garden</h3>
+        <p class="post-excerpt">A north-facing garden isn't a problem — it's an opportunity. Here's what thrives in shade and how to make the most of limited sun.</p>
+        <div class="post-meta">
+          <span>5 min read</span>
+          <span class="post-read">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="post-card" href="/blog/start-an-allotment-uk/">
+      <div class="post-card-top">
+        <span class="post-emoji">🥕</span>
+        <span class="post-tag">Allotment</span>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">How to start an allotment in the UK</h3>
+        <p class="post-excerpt">Everything you need to know before your first season — getting on a waiting list, what to grow first and how to avoid the most common beginner mistakes.</p>
+        <div class="post-meta">
+          <span>7 min read</span>
+          <span class="post-read">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="post-card" href="/blog/vegetables-in-containers/">
+      <div class="post-card-top">
+        <span class="post-emoji">🪣</span>
+        <span class="post-tag">Container growing</span>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">The best vegetables to grow in containers</h3>
+        <p class="post-excerpt">No garden? No problem. These vegetables and herbs thrive in pots, grow bags and containers on patios, balconies and doorsteps.</p>
+        <div class="post-meta">
+          <span>5 min read</span>
+          <span class="post-read">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="post-card" href="/blog/when-to-start-seeds-indoors-uk/">
+      <div class="post-card-top">
+        <span class="post-emoji">🌱</span>
+        <span class="post-tag">Sowing</span>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">When to start seeds indoors UK</h3>
+        <p class="post-excerpt">A month-by-month guide to starting seeds indoors — what to sow in January through to April, and how to avoid the most common mistakes.</p>
+        <div class="post-meta">
+          <span>6 min read</span>
+          <span class="post-read">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="post-card" href="/blog/companion-planting-guide/">
+      <div class="post-card-top">
+        <span class="post-emoji">🤝</span>
+        <span class="post-tag">Companion planting</span>
+      </div>
+      <div class="post-card-body">
+        <h3 class="post-title">Companion planting: what grows well together</h3>
+        <p class="post-excerpt">The classic combinations that help plants thrive — and the pairings to avoid. With a focus on vegetables most UK gardeners actually grow.</p>
+        <div class="post-meta">
+          <span>5 min read</span>
+          <span class="post-read">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="tools-strip">
+    <h3>Free GrowGuide tools</h3>
+    <div class="tools-links">
+      <a class="tool-pill" href="/what-to-plant/">🌿 What to Plant This Month</a>
+      <a class="tool-pill" href="/pest-identifier/">🐛 Pest Identifier</a>
+      <a class="tool-pill" href="/seed-to-harvest/">⏱️ Seed to Harvest</a>
+      <a class="tool-pill" href="/companion-planting/">🤝 Companion Planting</a>
+      <a class="tool-pill" href="/indoor-plants/">🪴 Indoor Plants</a>
+      <a class="tool-pill" href="/frost-checker/">❄️ Frost Checker</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+  </div>
+  GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+</body>
+</html>
