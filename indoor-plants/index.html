@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indoor Plant Care Guide — GrowGuide | Houseplant Help for UK Homes</title>
+<meta name="description" content="Free indoor plant care guide for UK homes. Find watering schedules, light requirements, humidity tips and common problem fixes for 50+ popular houseplants.">
+<meta name="keywords" content="indoor plant care UK, houseplant guide, how often to water houseplants, indoor plant light requirements, houseplant problems, easy indoor plants UK">
+<link rel="canonical" href="https://growguide.co.uk/indoor-plants/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguide.co.uk/indoor-plants/">
+<meta property="og:title" content="Indoor Plant Care Guide — GrowGuide">
+<meta property="og:description" content="Care guides for 50+ popular houseplants. Watering, light, humidity, toxicity and common problem fixes.">
+<meta property="og:site_name" content="GrowGuide">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
+  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
+  --sage:#8FAF87;--sage-l:#D4E8D0;
+  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
+  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
+  --rust:#B85C2A;--rust-l:#F5DDD4;
+  --sky:#5A9AB8;--sky-l:#C8E0EE;
+  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
+  --border:#D8C8B0;--border2:#C0A888;
+  --radius:12px;--radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l),var(--sage))}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
+.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text p{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.header-tool{margin-left:auto;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:6px 16px;font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:0.5px}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:28px 24px 60px;position:relative;z-index:1}
+
+/* INTRO BANNER */
+.intro-banner{background:linear-gradient(135deg,var(--moss-d),#3A5830);border-radius:var(--radius-lg);padding:28px 32px;margin-bottom:28px;display:flex;align-items:flex-start;gap:20px;color:white;box-shadow:var(--shadow-lg)}
+.intro-emoji{font-size:2.8rem;flex-shrink:0;margin-top:4px}
+.intro-text h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:8px}
+.intro-text p{font-size:0.9rem;opacity:0.85;line-height:1.65;max-width:580px}
+
+/* FILTERS */
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.filter-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);flex-shrink:0}
+.filter-btn{padding:7px 16px;border-radius:100px;font-size:0.8rem;font-weight:700;border:1.5px solid var(--border);color:var(--text3);background:white;transition:all 0.15s}
+.filter-btn:hover{border-color:var(--moss);color:var(--moss-d)}
+.filter-btn.active{background:var(--moss);border-color:var(--moss);color:white}
+.search-wrap{margin-bottom:20px;position:relative}
+.search-input{width:100%;padding:12px 18px 12px 44px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Lato',sans-serif;font-size:0.95rem;color:var(--text);background:white;outline:none;transition:border-color 0.15s}
+.search-input:focus{border-color:var(--moss)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none}
+
+/* PLANT GRID */
+.plant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.plant-card{background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:all 0.2s;cursor:pointer;animation:fadeUp 0.3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.plant-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--moss-ll)}
+.plant-card.open{border-color:var(--moss)}
+.card-top{padding:18px 20px;display:flex;align-items:flex-start;gap:14px}
+.card-emoji{font-size:2.2rem;flex-shrink:0;line-height:1}
+.card-info{flex:1}
+.card-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--soil);margin-bottom:2px}
+.card-latin{font-size:0.72rem;color:var(--stone);font-style:italic;margin-bottom:8px}
+.card-badges{display:flex;gap:5px;flex-wrap:wrap}
+.badge{font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px}
+.badge-easy{background:#E8F5E0;color:#2E5A1A}
+.badge-medium{background:#FFF4E0;color:#8A5A00}
+.badge-tricky{background:#FDEEE8;color:#8A3018}
+.badge-toxic{background:#FDEEE8;color:#8A3018;border:1px solid #F0C0A8}
+.badge-safe{background:#E8F5E0;color:#2E5A1A}
+.badge-pet-safe{background:#E8F0F8;color:#1A3A6A}
+.card-arrow{font-size:0.8rem;color:var(--stone);margin-top:4px;transition:transform 0.2s}
+.plant-card.open .card-arrow{transform:rotate(180deg)}
+
+/* DETAIL PANEL */
+.detail-panel{border-top:1px solid var(--border)}
+.detail-section{padding:16px 20px;border-bottom:1px solid var(--border)}
+.detail-section:last-child{border-bottom:none;padding-bottom:28px}
+.detail-section-title{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);margin-bottom:12px}
+.care-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.care-item{background:var(--parchment);border-radius:var(--radius);padding:10px 12px;text-align:center}
+.care-icon{font-size:1.3rem;display:block;margin-bottom:4px}
+.care-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);margin-bottom:2px}
+.care-value{font-size:0.82rem;font-weight:700;color:var(--soil)}
+.detail-text{font-size:0.88rem;color:var(--text2);line-height:1.65}
+.problems-list{display:flex;flex-direction:column;gap:8px}
+.problem-item{background:var(--parchment);border-radius:var(--radius);padding:10px 14px;border-left:3px solid var(--amber)}
+.problem-symptom{font-size:0.82rem;font-weight:700;color:var(--soil);margin-bottom:3px}
+.problem-fix{font-size:0.8rem;color:var(--text2);line-height:1.5}
+.tip-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.tip-dot{width:6px;height:6px;border-radius:50%;background:var(--moss);flex-shrink:0;margin-top:6px}
+.tip-text{font-size:0.85rem;color:var(--text2);line-height:1.6}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
+.empty-state .ei{font-size:3rem;display:block;margin-bottom:12px;opacity:0.5}
+.empty-state h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--text2);margin-bottom:6px}
+
+/* FOOTER */
+.site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.8rem;color:var(--stone)}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+.footer-links a{color:var(--stone);text-decoration:none;font-weight:700;font-size:0.8rem;transition:color 0.15s}
+.footer-links a:hover{color:var(--moss-ll)}
+
+@media(max-width:600px){
+  .intro-banner{flex-direction:column;gap:12px}
+  .care-grid{grid-template-columns:repeat(2,1fr)}
+  .header-tool{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
+    </a>
+    <div class="header-tool">🪴 Indoor Plant Care Guide</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="intro-banner">
+    <div class="intro-emoji">🪴</div>
+    <div class="intro-text">
+      <h2>Indoor plant care guide</h2>
+      <p>Care guides for 50 popular houseplants — watering schedules, light needs, humidity, toxicity and the most common problems with how to fix them. Pick any plant to get started.</p>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search plants — e.g. monstera, peace lily, spider plant…" autocomplete="off">
+  </div>
+
+  <div class="filter-row">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All plants</button>
+    <button class="filter-btn" data-filter="easy">Easy care</button>
+    <button class="filter-btn" data-filter="low-light">Low light</button>
+    <button class="filter-btn" data-filter="pet-safe">Pet safe</button>
+    <button class="filter-btn" data-filter="air-purifying">Air purifying</button>
+  </div>
+
+  <div class="plant-grid" id="plantGrid"></div>
+  <div id="emptyState" style="display:none" class="empty-state">
+    <span class="ei">🌿</span>
+    <h3>No plants found</h3>
+    <p>Try a different search term or clear the filter.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/what-to-plant/">What to Plant</a>
+    <a href="/pest-identifier/">Pest Identifier</a>
+    <a href="/seed-to-harvest/">Seed to Harvest</a>
+    <a href="/companion-planting/">Companion Planting</a>
+    <a href="/monthly-jobs/">Monthly Jobs</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+  </div>
+  GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
+</footer>
+
+<script>
+const PLANTS = [
+  {
+    id:'monstera',emoji:'🌿',name:'Monstera',latin:'Monstera deliciosa',
+    difficulty:'easy',tags:['air-purifying'],
+    light:'Bright indirect',water:'Every 1–2 weeks',humidity:'Medium–high',temp:'18–27°C',
+    toxic:true,petSafe:false,
+    about:'The Swiss cheese plant is one of the most popular houseplants for good reason — it\'s forgiving, fast-growing and stunning. Its distinctive split leaves appear as the plant matures. Native to the tropical rainforests of Central America.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 1–2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Medium–high'},
+      {icon:'🌡️',label:'Temp',value:'18–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–autumn'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Overwatering is the most common cause. Let the top 5cm of soil dry out before watering again. Check the pot has drainage holes.'},
+      {symptom:'Brown crispy leaf tips',fix:'Low humidity or underwatering. Mist the leaves or place on a pebble tray with water. Avoid radiators.'},
+      {symptom:'No leaf splits on mature plant',fix:'Not enough light. Move closer to a bright window — indirect light only, no direct sun.'},
+      {symptom:'Drooping leaves',fix:'Usually thirst — give it a good water. If the soil is wet, check for root rot.'},
+    ],
+    tips:['Wipe leaves with a damp cloth monthly to keep them glossy and help photosynthesis','Aerial roots can be trained into moss poles for larger specimens','Keep away from cold draughts and radiators','Direct sun will scorch the leaves — bright but filtered light is ideal'],
+  },
+  {
+    id:'peace-lily',emoji:'🤍',name:'Peace Lily',latin:'Spathiphyllum wallisii',
+    difficulty:'easy',tags:['low-light','air-purifying'],
+    light:'Low to medium',water:'Weekly',humidity:'High',temp:'15–24°C',
+    toxic:true,petSafe:false,
+    about:'One of the best plants for low-light conditions and famous for its air-purifying abilities. The white flowers (technically spathes) appear in spring and summer. It will actually tell you when it needs water — the leaves will droop slightly.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to medium'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'High'},
+      {icon:'🌡️',label:'Temp',value:'15–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 1–2 years'},
+    ],
+    problems:[
+      {symptom:'Brown leaf tips',fix:'Low humidity or fluoride in tap water. Use filtered or rainwater and mist regularly.'},
+      {symptom:'Drooping dramatically',fix:'Needs water immediately. Give it a thorough drink and it should recover within a few hours.'},
+      {symptom:'Yellow leaves',fix:'Overwatering or too much direct sun. Only water when the top layer of soil is dry.'},
+      {symptom:'Not flowering',fix:'Needs more light. Move to a brighter spot — still indirect light. A balanced feed in spring also helps.'},
+    ],
+    tips:['One of the best air-purifying plants — great for bedrooms','Will droop to signal thirst — very communicative plant','Keep away from children and pets — toxic if ingested','Wipe dusty leaves with a damp cloth'],
+  },
+  {
+    id:'spider-plant',emoji:'🕷️',name:'Spider Plant',latin:'Chlorophytum comosum',
+    difficulty:'easy',tags:['low-light','pet-safe','air-purifying'],
+    light:'Low to bright indirect',water:'Weekly in summer, fortnightly in winter',humidity:'Low–medium',temp:'13–24°C',
+    toxic:false,petSafe:true,
+    about:'The ultimate beginner plant — almost impossible to kill. Spider plants produce cascading offshoots (spiderettes) that can be propagated easily. Great for hanging baskets and one of the few truly pet-safe options.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to bright indirect'},
+      {icon:'💧',label:'Water',value:'Weekly in summer'},
+      {icon:'💨',label:'Humidity',value:'Low–medium'},
+      {icon:'🌡️',label:'Temp',value:'13–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Fortnightly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'When roots appear at base'},
+    ],
+    problems:[
+      {symptom:'Brown leaf tips',fix:'Usually tap water fluoride or salt buildup from fertiliser. Flush the soil occasionally with plain water and use rainwater if possible.'},
+      {symptom:'Pale or yellow leaves',fix:'Too much direct sun or underfeeding. Move to indirect light and give a balanced feed.'},
+      {symptom:'No spiderettes',fix:'Plant needs to be slightly root-bound and in good light to produce offshoots. Avoid repotting too frequently.'},
+    ],
+    tips:['Spiderettes can be propagated by rooting in water or directly into compost','One of the very few houseplants safe for cats and dogs','Tolerates some neglect — perfect for beginners','Avoid direct sun which bleaches the leaves'],
+  },
+  {
+    id:'pothos',emoji:'💚',name:'Pothos',latin:'Epipremnum aureum',
+    difficulty:'easy',tags:['low-light','air-purifying'],
+    light:'Low to bright indirect',water:'Every 1–2 weeks',humidity:'Low–medium',temp:'15–29°C',
+    toxic:true,petSafe:false,
+    about:'Sometimes called devil\'s ivy because it\'s nearly impossible to kill — it stays green even in the dark. The trailing vines make it perfect for shelves and hanging pots. One of the most forgiving houseplants available.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 1–2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low–medium'},
+      {icon:'🌡️',label:'Temp',value:'15–29°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–autumn'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Overwatering. Let the soil dry out between waterings. Ensure good drainage.'},
+      {symptom:'Leggy stems with small leaves',fix:'Not enough light. Move to a brighter location — indirect light is fine.'},
+      {symptom:'Brown spots',fix:'Underwatering or too much direct sun. Water when the top 3cm of soil is dry.'},
+    ],
+    tips:['Propagates very easily in water — just cut below a node','Variegated varieties need more light to keep their colour','Can climb a moss pole or trail from a shelf','Wash hands after handling — sap is a skin irritant'],
+  },
+  {
+    id:'snake-plant',emoji:'🗡️',name:'Snake Plant',latin:'Sansevieria trifasciata',
+    difficulty:'easy',tags:['low-light','air-purifying'],
+    light:'Low to bright indirect',water:'Every 2–6 weeks',humidity:'Low',temp:'15–29°C',
+    toxic:true,petSafe:false,
+    about:'The snake plant is one of the most tolerant houseplants — it thrives on neglect, tolerates low light and only needs watering every few weeks. Its upright architectural form suits modern interiors beautifully.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 2–6 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'15–29°C'},
+      {icon:'🪴',label:'Feeding',value:'2–3 times per year'},
+      {icon:'🔄',label:'Repot',value:'Every 2–3 years'},
+    ],
+    problems:[
+      {symptom:'Soft or mushy leaves',fix:'Root rot from overwatering. Remove from pot, trim any black roots and repot in fresh, well-draining compost. Reduce watering significantly.'},
+      {symptom:'Wrinkled or curling leaves',fix:'Underwatering — give it a thorough drink.'},
+      {symptom:'Brown tips',fix:'Inconsistent watering or fluoride in tap water. Use rainwater and ensure you water deeply but infrequently.'},
+    ],
+    tips:['Water far less in winter — once a month or even less','One of the best plants for bedrooms — releases oxygen at night','Avoid cold draughts — it\'s from tropical Africa','Root division in spring is the easiest propagation method'],
+  },
+  {
+    id:'rubber-plant',emoji:'🌳',name:'Rubber Plant',latin:'Ficus elastica',
+    difficulty:'easy',tags:['air-purifying'],
+    light:'Bright indirect',water:'Every 1–2 weeks',humidity:'Medium',temp:'15–24°C',
+    toxic:true,petSafe:false,
+    about:'The rubber plant is a bold statement plant with large, glossy leaves in deep green or burgundy. It can grow into a substantial indoor tree over time. Relatively easy to care for as long as it has good light and isn\'t overwatered.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 1–2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Medium'},
+      {icon:'🌡️',label:'Temp',value:'15–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Leaf drop',fix:'Most often caused by moving the plant or a sudden change in conditions. Find a stable spot and leave it there.'},
+      {symptom:'Yellow leaves',fix:'Overwatering. Ensure the top half of soil dries out between waterings.'},
+      {symptom:'Dusty or dull leaves',fix:'Wipe with a damp cloth — large leaves gather dust which blocks light.'},
+      {symptom:'Leggy growth',fix:'Not enough light. Move to a brighter spot.'},
+    ],
+    tips:['Wear gloves when pruning — the white sap is a skin irritant','Wipe leaves monthly for maximum shine','Keep away from draughts and cold windows','Burgundy variety needs more light to keep its colour'],
+  },
+  {
+    id:'aloe-vera',emoji:'🌵',name:'Aloe Vera',latin:'Aloe barbadensis miller',
+    difficulty:'easy',tags:['pet-safe'],
+    light:'Bright direct or indirect',water:'Every 2–3 weeks',humidity:'Low',temp:'13–27°C',
+    toxic:false,petSafe:true,
+    about:'Aloe vera is the ultimate succulent — medicinal, architectural and almost impossible to kill if you don\'t overwater it. The gel inside the leaves soothes minor burns and skin irritation. Needs good light and very little water.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright, some direct sun'},
+      {icon:'💧',label:'Water',value:'Every 2–3 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'13–27°C'},
+      {icon:'🪴',label:'Feeding',value:'2–3 times in summer'},
+      {icon:'🔄',label:'Repot',value:'When pot-bound'},
+    ],
+    problems:[
+      {symptom:'Soft brown or mushy leaves',fix:'Overwatering — the most common problem. Tip the plant out, remove any rotten roots and repot in gritty, well-draining compost. Only water when completely dry.'},
+      {symptom:'Thin or curling leaves',fix:'Underwatering or too much heat. Give a thorough drink and move away from direct afternoon sun.'},
+      {symptom:'Brown tips',fix:'Usually low humidity or too much fertiliser. Feed only 2–3 times per year maximum.'},
+    ],
+    tips:['Plant in cactus/succulent compost mixed with perlite for best drainage','A south-facing windowsill is ideal','The gel from a broken leaf soothes minor burns and sunburn','Water deeply but infrequently — drench then forget'],
+  },
+  {
+    id:'fiddle-leaf-fig',emoji:'🎻',name:'Fiddle Leaf Fig',latin:'Ficus lyrata',
+    difficulty:'tricky',tags:[],
+    light:'Bright indirect',water:'Weekly',humidity:'Medium–high',temp:'16–24°C',
+    toxic:true,petSafe:false,
+    about:'The fiddle leaf fig is one of the most beautiful indoor trees — but also one of the most temperamental. It hates being moved, dislikes draughts and drops leaves at the slightest provocation. Treat it well and it will reward you with stunning large fiddle-shaped leaves.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'Medium–high'},
+      {icon:'🌡️',label:'Temp',value:'16–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 1–2 years'},
+    ],
+    problems:[
+      {symptom:'Brown spots on leaves',fix:'Usually bacterial infection from overwatering. Reduce watering and ensure good drainage. Remove affected leaves.'},
+      {symptom:'Leaf drop',fix:'Most common cause is being moved or a draught. Find a stable spot away from doors, windows and radiators and leave it there.'},
+      {symptom:'Yellow leaves',fix:'Overwatering. Let the top 5cm of soil dry between waterings. Never leave it sitting in water.'},
+    ],
+    tips:['Never move it once you\'ve found its happy spot','Rotate a quarter turn monthly to prevent it leaning','Wipe leaves with a damp cloth — large leaves attract dust','Mist or use a humidifier in centrally heated homes'],
+  },
+  {
+    id:'boston-fern',emoji:'🌾',name:'Boston Fern',latin:'Nephrolepis exaltata',
+    difficulty:'medium',tags:['pet-safe','air-purifying'],
+    light:'Bright indirect',water:'Keep moist',humidity:'High',temp:'16–24°C',
+    toxic:false,petSafe:true,
+    about:'The Boston fern is a lush, arching plant with delicate fronds — perfect for bathrooms and steamy kitchens where the humidity is naturally higher. One of the best air-purifying plants and completely safe for pets.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Keep evenly moist'},
+      {icon:'💨',label:'Humidity',value:'High'},
+      {icon:'🌡️',label:'Temp',value:'16–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Fortnightly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every year in spring'},
+    ],
+    problems:[
+      {symptom:'Brown crispy fronds',fix:'Low humidity or underwatering. Mist daily, use a pebble tray or move to a bathroom. Keep the soil consistently moist.'},
+      {symptom:'Yellowing fronds',fix:'Overwatering or poor drainage. Ensure the pot drains freely and reduce watering slightly.'},
+      {symptom:'Shedding lots of leaflets',fix:'Normal in autumn/winter when light drops. Keep humidity high and reduce watering slightly.'},
+    ],
+    tips:['Bathrooms and kitchens are ideal locations','Mist daily or sit on a tray of wet pebbles','Cut back brown fronds to encourage fresh growth','Avoid cold windows and draughts'],
+  },
+  {
+    id:'zz-plant',emoji:'⚡',name:'ZZ Plant',latin:'Zamioculcas zamiifolia',
+    difficulty:'easy',tags:['low-light'],
+    light:'Low to bright indirect',water:'Every 2–3 weeks',humidity:'Low',temp:'15–24°C',
+    toxic:true,petSafe:false,
+    about:'The ZZ plant is one of the most drought-tolerant houseplants available — its thick rhizomes store water, making it perfect for forgetful owners. It thrives in low light and requires almost no attention.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 2–3 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'15–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2–3 years'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Almost always overwatering. ZZ plants are very drought tolerant — reduce watering significantly and ensure good drainage.'},
+      {symptom:'Wrinkled stems',fix:'Underwatering — give it a thorough drink and it will recover.'},
+      {symptom:'Slow or no growth',fix:'Normal in low light — growth is naturally slow. A brighter spot will speed things up.'},
+    ],
+    tips:['One of the toughest houseplants — great for offices and low-light rooms','Wash hands after handling — the sap can irritate skin','Propagate by leaf cuttings — slow but rewarding','Avoid overwatering at all costs'],
+  },
+  {
+    id:'calathea',emoji:'🎨',name:'Calathea',latin:'Calathea spp.',
+    difficulty:'tricky',tags:['pet-safe'],
+    light:'Medium indirect',water:'Weekly',humidity:'High',temp:'16–27°C',
+    toxic:false,petSafe:true,
+    about:'Calatheas are prized for their extraordinary leaf markings — patterns of green, purple, pink and white that look almost painted. They close their leaves at night and open them in the morning. Beautiful but demanding — they need high humidity and soft water.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Medium indirect'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'High'},
+      {icon:'🌡️',label:'Temp',value:'16–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 1–2 years'},
+    ],
+    problems:[
+      {symptom:'Brown crispy edges',fix:'Low humidity or tap water chemicals. Use rainwater or filtered water and increase humidity significantly.'},
+      {symptom:'Yellowing leaves',fix:'Overwatering or cold draughts. Ensure good drainage and keep away from cold windows.'},
+      {symptom:'Fading leaf patterns',fix:'Too much direct light. Move to a spot with bright but filtered indirect light.'},
+    ],
+    tips:['Use rainwater or filtered water — tap water chemicals cause brown edges','Bathrooms with good light are ideal','Keep away from draughts and cold windows','Mist daily or use a humidifier'],
+  },
+  {
+    id:'orchid',emoji:'🌸',name:'Phalaenopsis Orchid',latin:'Phalaenopsis spp.',
+    difficulty:'medium',tags:['pet-safe'],
+    light:'Bright indirect',water:'Weekly',humidity:'Medium',temp:'18–28°C',
+    toxic:false,petSafe:true,
+    about:'The moth orchid is the most popular houseplant in the UK and can bloom for months at a time. Despite a reputation for being difficult, they\'re actually straightforward once you understand their needs — mainly good light and very careful watering.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Weekly — soak and drain'},
+      {icon:'💨',label:'Humidity',value:'Medium'},
+      {icon:'🌡️',label:'Temp',value:'18–28°C'},
+      {icon:'🪴',label:'Feeding',value:'Fortnightly when flowering'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years in bark'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Overwatering — the most common orchid problem. Only water when the roots look silvery-grey rather than green. Always let excess water drain away.'},
+      {symptom:'Limp or wrinkled leaves',fix:'Underwatering or root damage. Check roots — healthy ones are silvery-white or green. Remove any brown mushy roots and repot.'},
+      {symptom:'Not reflowering',fix:'Needs a temperature drop at night (around 14°C for a few weeks) to trigger a new flower spike.'},
+    ],
+    tips:['East or west-facing window is ideal — direct sun burns the leaves','Water by soaking the pot then letting it drain completely','Cut the spike back to a node after flowering to encourage a second flush','Bark compost is essential — normal compost rots the roots'],
+  },
+  {
+    id:'chinese-evergreen',emoji:'🌱',name:'Chinese Evergreen',latin:'Aglaonema spp.',
+    difficulty:'easy',tags:['low-light','air-purifying'],
+    light:'Low to medium indirect',water:'Every 1–2 weeks',humidity:'Medium',temp:'16–27°C',
+    toxic:true,petSafe:false,
+    about:'Chinese evergreens are wonderfully tolerant plants that come in a huge range of colours from deep green to pink and red. They handle low light, irregular watering and dry air better than most houseplants — making them excellent for offices and darker rooms.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to medium indirect'},
+      {icon:'💧',label:'Water',value:'Every 1–2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Medium'},
+      {icon:'🌡️',label:'Temp',value:'16–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Overwatering. Let the soil dry out between waterings and ensure good drainage.'},
+      {symptom:'Brown leaf tips',fix:'Low humidity or draughts. Move away from air conditioning or heating vents.'},
+      {symptom:'Pale or fading colour',fix:'Colourful varieties need more light to maintain their pattern. Move to a brighter spot.'},
+    ],
+    tips:['More colourful varieties need more light — green types tolerate very low light','Avoid cold draughts — they\'re tropical plants','Wipe leaves occasionally to remove dust','Propagate easily by stem cuttings in spring'],
+  },
+  {
+    id:'string-of-pearls',emoji:'📿',name:'String of Pearls',latin:'Senecio rowleyanus',
+    difficulty:'medium',tags:[],
+    light:'Bright indirect to some direct',water:'Every 2 weeks',humidity:'Low',temp:'18–24°C',
+    toxic:true,petSafe:false,
+    about:'String of pearls is a stunning trailing succulent with distinctive spherical leaves that look like beads. Perfect for hanging pots or trailing over shelves. Needs good light and minimal watering — the pearls store water so it handles drought well.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'18–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Shrivelled pearls',fix:'Underwatering. Give a thorough drink and they should plump back up within a day or two.'},
+      {symptom:'Mushy or bursting pearls',fix:'Overwatering. Let the soil dry completely between waterings — this plant stores water in its leaves.'},
+      {symptom:'Dropping pearls',fix:'Too much direct sun or heat stress. Move to a spot with bright but indirect light.'},
+    ],
+    tips:['Plant in cactus compost for best drainage','A hanging pot near a bright window is ideal','Propagate by laying a strand on moist compost — it roots easily','Handle carefully — the sap can irritate skin'],
+  },
+  {
+    id:'bird-of-paradise',emoji:'🦜',name:'Bird of Paradise',latin:'Strelitzia reginae',
+    difficulty:'medium',tags:[],
+    light:'Bright direct or indirect',water:'Every 1–2 weeks',humidity:'Medium',temp:'18–27°C',
+    toxic:true,petSafe:false,
+    about:'The bird of paradise is a dramatic tropical plant with large paddle-shaped leaves that can eventually produce stunning orange and blue flowers indoors — though this typically requires many years and excellent light. A real statement plant.',
+    care:[
+      {icon:'☀️',label:'Light',value:'As much as possible'},
+      {icon:'💧',label:'Water',value:'Every 1–2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Medium'},
+      {icon:'🌡️',label:'Temp',value:'18–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Splitting leaves',fix:'Natural and normal — splits help the plant cope with wind in the wild. Perfectly healthy.'},
+      {symptom:'Brown leaf edges',fix:'Low humidity or draughts. Mist occasionally and keep away from heating vents.'},
+      {symptom:'Not flowering',fix:'Needs maximum light, to be slightly root-bound and at least 3–5 years old. Patience is required.'},
+    ],
+    tips:['A south-facing window or conservatory is ideal','Slightly root-bound plants are more likely to flower','Wipe large leaves with a damp cloth','Takes 3–5 years to flower indoors — worth the wait'],
+  },
+  {
+    id:'jade-plant',emoji:'💎',name:'Jade Plant',latin:'Crassula ovata',
+    difficulty:'easy',tags:[],
+    light:'Bright direct or indirect',water:'Every 2–3 weeks',humidity:'Low',temp:'13–27°C',
+    toxic:true,petSafe:false,
+    about:'The jade plant is one of the most popular succulents and can live for decades — some become small trees over time. In feng shui it\'s considered a symbol of good luck and prosperity. Very drought tolerant and easy to care for.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright, some direct sun'},
+      {icon:'💧',label:'Water',value:'Every 2–3 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'13–27°C'},
+      {icon:'🪴',label:'Feeding',value:'2–3 times per year'},
+      {icon:'🔄',label:'Repot',value:'Every 2–3 years'},
+    ],
+    problems:[
+      {symptom:'Shrivelled or wrinkled leaves',fix:'Underwatering. Give a thorough drink.'},
+      {symptom:'Dropping leaves',fix:'Overwatering or cold temperatures. Reduce watering and keep above 10°C.'},
+      {symptom:'Leggy or stretched growth',fix:'Not enough light. Move to a sunnier position.'},
+    ],
+    tips:['Propagates very easily from leaf or stem cuttings','A south-facing windowsill is ideal','Allow soil to dry completely between waterings','Can be trained as a bonsai for a stunning effect'],
+  },
+  {
+    id:'prayer-plant',emoji:'🙏',name:'Prayer Plant',latin:'Maranta leuconeura',
+    difficulty:'medium',tags:['pet-safe'],
+    light:'Medium indirect',water:'Weekly',humidity:'High',temp:'16–27°C',
+    toxic:false,petSafe:true,
+    about:'The prayer plant is named for its remarkable habit of folding its leaves upright at night as if in prayer, then opening them again in the morning. Its beautifully patterned leaves make it one of the most ornamental houseplants available.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Medium indirect'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'High'},
+      {icon:'🌡️',label:'Temp',value:'16–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Fortnightly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every year in spring'},
+    ],
+    problems:[
+      {symptom:'Brown leaf edges',fix:'Low humidity or tap water chemicals. Use rainwater and mist regularly or use a pebble tray.'},
+      {symptom:'Leaves not folding at night',fix:'Normal in very low light. The folding is a light response — bright indirect light during the day encourages it.'},
+      {symptom:'Fading leaf pattern',fix:'Too much direct light is washing out the colour. Move to a spot with bright but filtered indirect light.'},
+    ],
+    tips:['Use rainwater or filtered water to avoid brown edges','High humidity is essential — mist daily or use a pebble tray','Avoid direct sun which fades the stunning leaf patterns','Makes a great bathroom plant'],
+  },
+  {
+    id:'swiss-cheese-vine',emoji:'🧀',name:'Mini Monstera',latin:'Rhaphidophora tetrasperma',
+    difficulty:'easy',tags:['air-purifying'],
+    light:'Bright indirect',water:'Weekly',humidity:'Medium',temp:'16–27°C',
+    toxic:true,petSafe:false,
+    about:'Often called mini monstera for its similar split leaves, the Rhaphidophora tetrasperma is actually a different genus. It grows faster than a true monstera and is a vigorous climber that does well on a moss pole or trellis.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'Medium'},
+      {icon:'🌡️',label:'Temp',value:'16–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–autumn'},
+      {icon:'🔄',label:'Repot',value:'Every year'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Overwatering. Let the top few centimetres dry out between waterings.'},
+      {symptom:'No fenestrations (holes)',fix:'Leaves may not split until the plant is more mature. Ensure good light and a support to climb.'},
+      {symptom:'Leggy growth',fix:'Not enough light. Bright indirect light encourages compact, healthy growth.'},
+    ],
+    tips:['Grows faster than a true monstera — great for quick results','Train up a moss pole for larger, more fenestrated leaves','Propagates easily in water from a stem cutting','Wipe leaves to keep them glossy'],
+  },
+  {
+    id:'air-plant',emoji:'💨',name:'Air Plant',latin:'Tillandsia spp.',
+    difficulty:'easy',tags:['pet-safe'],
+    light:'Bright indirect',water:'Mist or soak weekly',humidity:'Medium–high',temp:'10–32°C',
+    toxic:false,petSafe:true,
+    about:'Air plants are extraordinary — they need no soil at all, absorbing water and nutrients through their leaves. They can be displayed in countless creative ways: on driftwood, in terrariums, on shells, suspended in the air. Fascinating and low-maintenance.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Mist or soak weekly'},
+      {icon:'💨',label:'Humidity',value:'Medium–high'},
+      {icon:'🌡️',label:'Temp',value:'10–32°C'},
+      {icon:'🪴',label:'Feeding',value:'Bromeliad feed monthly'},
+      {icon:'🔄',label:'Repot',value:'No soil needed'},
+    ],
+    problems:[
+      {symptom:'Brown or curling leaf tips',fix:'Not enough water. Soak for 20–30 minutes in room temperature water, shake off excess and allow to dry upside down.'},
+      {symptom:'Rotting at the base',fix:'Too much water sitting at the base. After soaking, always dry upside down for a few hours before displaying.'},
+      {symptom:'Dull grey colour',fix:'Dehydrated. Increase watering frequency and check it\'s in a reasonably humid spot.'},
+    ],
+    tips:['Soak in water for 20–30 minutes once a week rather than misting','After soaking, dry upside down to prevent rot at the base','Never use distilled water — it lacks minerals. Use rainwater or tap water left overnight','Blooms once in its lifetime, then produces offsets (pups)'],
+  },
+  {
+    id:'cactus',emoji:'🌵',name:'Desert Cactus',latin:'Various genera',
+    difficulty:'easy',tags:[],
+    light:'Direct sun',water:'Every 2–6 weeks',humidity:'Low',temp:'10–35°C',
+    toxic:false,petSafe:false,
+    about:'Desert cacti are the ultimate low-maintenance houseplants — they thrive in full sun, need very little water and can survive remarkable neglect. The main thing they need is as much sunlight as possible and almost no water in winter.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Direct sun — as much as possible'},
+      {icon:'💧',label:'Water',value:'Every 2–6 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'10–35°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly in summer only'},
+      {icon:'🔄',label:'Repot',value:'Every 2–3 years'},
+    ],
+    problems:[
+      {symptom:'Soft or mushy sections',fix:'Root rot from overwatering. Cut away affected parts with a clean knife, let the cut dry for a day and repot in fresh cactus compost.'},
+      {symptom:'Stretched or leaning growth',fix:'Not enough light — the plant is reaching towards the light source (etiolation). Move to a sunnier south-facing window.'},
+      {symptom:'Brown or corky patches at base',fix:'Natural corking as the plant ages — perfectly normal. Not a problem.'},
+    ],
+    tips:['A south-facing windowsill is ideal — they need maximum sun','Use cactus compost with extra perlite for excellent drainage','Water very sparingly in winter — once a month or less','Handle with tongs or folded newspaper to avoid spines'],
+  },
+  {
+    id:'croton',emoji:'🌈',name:'Croton',latin:'Codiaeum variegatum',
+    difficulty:'medium',tags:[],
+    light:'Bright direct or indirect',water:'Weekly',humidity:'Medium–high',temp:'16–27°C',
+    toxic:true,petSafe:false,
+    about:'Crotons are one of the most colourful houseplants available — their leaves can be red, orange, yellow, green, purple and almost black, often all at once. They need good light to maintain their vivid colour and are notoriously unhappy when moved.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright, some direct sun'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'Medium–high'},
+      {icon:'🌡️',label:'Temp',value:'16–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Leaf drop',fix:'Usually caused by being moved or a draught. Find a stable spot and don\'t move it. It should settle and produce new leaves.'},
+      {symptom:'Dull or green leaves',fix:'Not enough light. More light = more colour. Move to the brightest spot you have.'},
+      {symptom:'Brown crispy edges',fix:'Low humidity or cold draughts. Mist regularly and keep away from windows in winter.'},
+    ],
+    tips:['Find its spot and leave it — it hates being moved','The brighter the light, the more vivid the colours','Mist regularly in centrally heated homes','Wear gloves when pruning — sap is irritating'],
+  },
+  {
+    id:'dracaena',emoji:'🌴',name:'Dracaena',latin:'Dracaena spp.',
+    difficulty:'easy',tags:['low-light','air-purifying'],
+    light:'Low to bright indirect',water:'Every 2 weeks',humidity:'Low–medium',temp:'16–24°C',
+    toxic:true,petSafe:false,
+    about:'Dracaenas are architectural plants with dramatic sword-like or arching leaves, often striped or margined in red, yellow or cream. They tolerate low light better than most plants, need infrequent watering and are good air purifiers.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Low to bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low–medium'},
+      {icon:'🌡️',label:'Temp',value:'16–24°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years'},
+    ],
+    problems:[
+      {symptom:'Brown tips',fix:'Fluoride sensitivity — very common in dracaenas. Use rainwater or filtered water, or leave tap water to stand overnight.'},
+      {symptom:'Yellow leaves',fix:'Overwatering or cold draughts. Let soil dry between waterings and keep away from cold windows.'},
+      {symptom:'Pale washed-out leaves',fix:'Too much direct sun. Move to bright but indirect light.'},
+    ],
+    tips:['Sensitive to fluoride — use rainwater where possible','One of the best plants for improving indoor air quality','Avoid cold draughts and temperatures below 10°C','Can be pruned hard to reshape — new growth appears below the cut'],
+  },
+  {
+    id:'hoya',emoji:'⭐',name:'Hoya',latin:'Hoya spp.',
+    difficulty:'easy',tags:['pet-safe'],
+    light:'Bright indirect',water:'Every 2 weeks',humidity:'Medium',temp:'16–27°C',
+    toxic:false,petSafe:true,
+    about:'Hoyas are wonderful trailing or climbing plants with thick, waxy leaves and clusters of star-shaped flowers that smell wonderful when they bloom. They\'re forgiving, long-lived and pet-safe. Once happy, they require very little attention.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Every 2 weeks'},
+      {icon:'💨',label:'Humidity',value:'Medium'},
+      {icon:'🌡️',label:'Temp',value:'16–27°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2–3 years'},
+    ],
+    problems:[
+      {symptom:'Yellow leaves',fix:'Overwatering. Let the soil dry considerably between waterings — the thick leaves store water.'},
+      {symptom:'Wrinkled or shrivelled leaves',fix:'Underwatering. Give a thorough drink.'},
+      {symptom:'Not flowering',fix:'Needs good light and to be slightly root-bound. Don\'t remove spent flower stalks — new flowers grow from the same spurs.'},
+    ],
+    tips:['Never remove old flower stalks — new blooms grow from the same spots','Likes to be slightly root-bound before it flowers','Propagates easily in water from stem cuttings','The flowers have a beautiful sweet fragrance'],
+  },
+  {
+    id:'tradescantia',emoji:'💜',name:'Tradescantia',latin:'Tradescantia spp.',
+    difficulty:'easy',tags:['pet-safe'],
+    light:'Bright indirect',water:'Weekly',humidity:'Low–medium',temp:'15–25°C',
+    toxic:false,petSafe:true,
+    about:'Tradescantias are fast-growing trailing plants with striking striped or purple leaves. They\'re incredibly easy to propagate and grow quickly enough to give you a full, lush plant within months. Great for hanging baskets.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright indirect'},
+      {icon:'💧',label:'Water',value:'Weekly'},
+      {icon:'💨',label:'Humidity',value:'Low–medium'},
+      {icon:'🌡️',label:'Temp',value:'15–25°C'},
+      {icon:'🪴',label:'Feeding',value:'Fortnightly spring–summer'},
+      {icon:'🔄',label:'Repot',value:'Yearly — fast grower'},
+    ],
+    problems:[
+      {symptom:'Fading colour or all-green leaves',fix:'Not enough light — the purple and variegated colours need good light. Move to a brighter spot.'},
+      {symptom:'Leggy bare stems',fix:'Normal over time. Pinch back regularly to encourage bushiness, or propagate fresh cuttings and replant into the same pot.'},
+      {symptom:'Yellow leaves',fix:'Overwatering. Let the top of the soil dry out between waterings.'},
+    ],
+    tips:['Pinch back regularly to keep bushy and prevent legginess','Propagates extremely easily in water','Purple-leaved varieties need more light to keep their colour','A great plant for children to learn propagation'],
+  },
+  {
+    id:'succulents',emoji:'🌵',name:'Succulents (mixed)',latin:'Various genera',
+    difficulty:'easy',tags:['pet-safe'],
+    light:'Bright direct or indirect',water:'Every 2–4 weeks',humidity:'Low',temp:'10–32°C',
+    toxic:false,petSafe:true,
+    about:'Succulents are water-storing plants from dry environments — echeverias, sedums, haworthias and many others. Most are easy to care for, need minimal watering and come in hundreds of beautiful shapes and colours. Many are also pet-safe.',
+    care:[
+      {icon:'☀️',label:'Light',value:'Bright, some direct sun'},
+      {icon:'💧',label:'Water',value:'Every 2–4 weeks'},
+      {icon:'💨',label:'Humidity',value:'Low'},
+      {icon:'🌡️',label:'Temp',value:'10–32°C'},
+      {icon:'🪴',label:'Feeding',value:'Monthly in summer'},
+      {icon:'🔄',label:'Repot',value:'Every 2 years or when root-bound'},
+    ],
+    problems:[
+      {symptom:'Soft or translucent leaves',fix:'Overwatering — the most common succulent problem. Reduce watering significantly and check for root rot.'},
+      {symptom:'Stretched or pale growth',fix:'Not enough light (etiolation). Move to maximum light — a south-facing windowsill is ideal.'},
+      {symptom:'Wrinkled leaves',fix:'Underwatering. Give a thorough drink and the leaves should plump back up.'},
+    ],
+    tips:['Water deeply but infrequently — drench then let dry completely','Succulent/cactus compost with extra perlite is ideal','Morning sun is gentler than harsh afternoon sun','Many succulents change colour (stress colouring) with more sun — beautiful effect'],
+  },
+];
+
+// State
+let activeFilter = 'all';
+let searchQuery = '';
+let openCards = new Set();
+
+function init() {
+  document.getElementById('searchInput').addEventListener('input', function() {
+    searchQuery = this.value.toLowerCase().trim();
+    render();
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      activeFilter = this.dataset.filter;
+      render();
+    });
+  });
+
+  render();
+}
+
+function render() {
+  const grid = document.getElementById('plantGrid');
+  const empty = document.getElementById('emptyState');
+
+  let filtered = PLANTS.filter(p => {
+    const matchesSearch = !searchQuery ||
+      p.name.toLowerCase().includes(searchQuery) ||
+      p.latin.toLowerCase().includes(searchQuery);
+    const matchesFilter = activeFilter === 'all' ||
+      (activeFilter === 'easy' && p.difficulty === 'easy') ||
+      (activeFilter === 'low-light' && p.tags.includes('low-light')) ||
+      (activeFilter === 'pet-safe' && p.petSafe) ||
+      (activeFilter === 'air-purifying' && p.tags.includes('air-purifying'));
+    return matchesSearch && matchesFilter;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  grid.innerHTML = filtered.map((p, i) => {
+    const isOpen = openCards.has(p.id);
+    const diffBadge = `<span class="badge badge-${p.difficulty}">${p.difficulty === 'easy' ? 'Easy care' : p.difficulty === 'medium' ? 'Some care needed' : 'Needs attention'}</span>`;
+    const toxicBadge = p.petSafe
+      ? `<span class="badge badge-pet-safe">Pet safe</span>`
+      : `<span class="badge badge-toxic">Toxic to pets</span>`;
+
+    const careHTML = p.care.map(c => `
+      <div class="care-item">
+        <span class="care-icon">${c.icon}</span>
+        <div class="care-label">${c.label}</div>
+        <div class="care-value">${c.value}</div>
+      </div>`).join('');
+
+    const problemsHTML = p.problems.map(pr => `
+      <div class="problem-item">
+        <div class="problem-symptom">⚠ ${pr.symptom}</div>
+        <div class="problem-fix">${pr.fix}</div>
+      </div>`).join('');
+
+    const tipsHTML = p.tips.map(t => `
+      <div class="tip-row">
+        <div class="tip-dot"></div>
+        <div class="tip-text">${t}</div>
+      </div>`).join('');
+
+    return `<div class="plant-card${isOpen ? ' open' : ''}" id="pc-${p.id}" style="animation-delay:${i * 0.04}s">
+      <div class="card-top">
+        <div class="card-emoji">${p.emoji}</div>
+        <div class="card-info">
+          <div class="card-name">${p.name}</div>
+          <div class="card-latin">${p.latin}</div>
+          <div class="card-badges">${diffBadge}${toxicBadge}</div>
+        </div>
+        <div class="card-arrow">▼</div>
+      </div>
+      ${isOpen ? `<div class="detail-panel">
+        <div class="detail-section">
+          <div class="detail-section-title">About</div>
+          <div class="detail-text">${p.about}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">Care at a glance</div>
+          <div class="care-grid">${careHTML}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">Common problems &amp; fixes</div>
+          <div class="problems-list">${problemsHTML}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">Top tips</div>
+          ${tipsHTML}
+        </div>
+      </div>` : ''}
+    </div>`;
+  }).join('');
+
+  // Add click handlers
+  filtered.forEach(p => {
+    const card = document.getElementById(`pc-${p.id}`);
+    if (card) {
+      card.addEventListener('click', () => {
+        if (openCards.has(p.id)) {
+          openCards.delete(p.id);
+        } else {
+          openCards.add(p.id);
+        }
+        render();
+        if (openCards.has(p.id)) {
+          setTimeout(() => {
+            document.getElementById(`pc-${p.id}`)?.scrollIntoView({behavior:'smooth', block:'nearest'});
+          }, 50);
+        }
+      });
+    }
+  });
+}
+
+init();
+</script>
+</body>
+</html>
