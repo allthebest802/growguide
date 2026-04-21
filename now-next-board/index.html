@@ -171,7 +171,11 @@ input,select{font-family:var(--font-body)}
 .presets-wrap{max-width:700px;margin:14px auto 0}
 .presets-label{font-size:0.72rem;font-weight:800;text-transform:uppercase;
   letter-spacing:0.4px;color:var(--muted);margin-bottom:6px}
-.presets-strip{display:flex;flex-wrap:wrap;gap:6px}
+.presets-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px}
+.presets-list .preset-btn{text-align:left;justify-content:flex-start;padding:8px 12px;border-radius:10px;
+  font-size:0.8rem;font-weight:700;background:var(--surface);border:1.5px solid var(--border);color:var(--ink);
+  display:flex;align-items:center;gap:6px;transition:all 0.15s;width:100%}
+.presets-list .preset-btn:hover{background:var(--indigo-l);border-color:var(--indigo)}
 .preset-btn{padding:5px 12px;border-radius:100px;font-size:0.75rem;font-weight:700;
   border:1.5px solid var(--border2);color:var(--ink2);background:var(--surface);
   cursor:pointer;transition:all 0.12s;display:flex;align-items:center;gap:4px}
@@ -325,7 +329,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
   <!-- PRESET COMBINATIONS -->
   <div class="presets-wrap no-print">
     <div class="presets-label">⚡ Quick presets</div>
-    <div class="presets-strip" id="presetsStrip"></div>
+    <div class="presets-list" id="presetsStrip"></div>
   </div>
 
   <!-- SELECTORS -->
@@ -469,6 +473,7 @@ function init() {
   // Auto-load first quick word results
   searchAndShow('now', 'maths');
   searchAndShow('next', 'break');
+  searchAndShow('then', 'play');
 }
 
 function buildQuickWords() {
@@ -490,10 +495,12 @@ function quickSearch(side, word) {
 function buildPresets() {
   const el = document.getElementById('presetsStrip');
   if (!el) return;
-  el.innerHTML = PRESETS.map(p => `
-    <button class="preset-btn" onclick="loadPreset('${p.now}','${p.next}','${p.then || ''}')">
-      ${p.label}
-    </button>`).join('');
+  el.innerHTML = PRESETS.map(p => {
+    const thenPart = p.then ? ` <span style="opacity:0.5">→</span> ${p.then}` : '';
+    return `<button class="preset-btn" onclick="loadPreset('${p.now}','${p.next}','${p.then||''}')">
+      ${p.label} <span style="font-size:0.72rem;opacity:0.7;font-weight:600">${p.now} → ${p.next}${thenPart}</span>
+    </button>`;
+  }).join('');
 }
 
 function buildColourPickers() {
@@ -555,7 +562,7 @@ async function searchAndShow(side, query) {
       }).join('')
     }</div>`;
   } catch(e) {
-    el.innerHTML = `<div class="pic-status">Search failed. Check your connection.</div>`;
+    el.innerHTML = `<div class="pic-status" style="color:#DC2626">⚠️ Search failed — check your internet connection.</div>`;
   }
 }
 
@@ -635,17 +642,11 @@ function renderBoard() {
   const thenPanel = document.getElementById('thenPanel');
   const thenDivider = document.getElementById('thenDivider');
   const thenSel = document.getElementById('thenSelector');
-  if (state.showThen) {
-    mainBoard.classList.add('show-then');
-    thenPanel.style.display = '';
-    thenDivider.style.display = '';
-    if(thenSel) thenSel.style.display = '';
-  } else {
-    mainBoard.classList.remove('show-then');
-    thenPanel.style.display = 'none';
-    thenDivider.style.display = 'none';
-    if(thenSel) thenSel.style.display = 'none';
-  }
+  // THEN is always visible
+  mainBoard.classList.add('show-then');
+  thenPanel.style.display = '';
+  thenDivider.style.display = '';
+  if(thenSel) thenSel.style.display = '';
   const sizeMap = {small:'80px', standard:'120px', large:'170px'};
   const imgSize = sizeMap[state.size] || '120px';
   const labelSizeMap = {small:'0.95rem', standard:'1.2rem', large:'1.6rem'};
