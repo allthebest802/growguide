@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Garden Pest & Disease Identifier UK — GrowGuide</title>
-<meta name="description" content="Identify garden pests and diseases by plant type and symptoms — yellowing leaves, holes, mould, wilting and more. Get organic fixes and prevention advice free.">
-<meta name="keywords" content="garden pest identifier UK, plant disease identifier, yellowing leaves cause, holes in leaves UK, organic pest control garden, what's wrong with my plant">
-<link rel="canonical" href="https://growguideuk.netlify.app/pest-identifier/">
-
+<title>Garden Pest & Disease Identifier UK — Diagnose by Symptom | GrowGuide</title>
+<meta name="description" content="Free UK garden pest and disease identifier. Select your plant type and symptoms — yellowing leaves, holes, mould, wilting, white powder — to find out what's wrong and how to fix it organically.">
+<meta name="keywords" content="garden pest identifier UK, plant disease identifier UK, yellowing leaves plant UK, holes in leaves UK, white powder on leaves, wilting plant causes, organic pest control UK, what's wrong with my plant, garden pests UK, aphids treatment UK, slug control UK, vine weevil UK, powdery mildew treatment, blight tomatoes UK, club root brassicas">
+<link rel="canonical" href="https://growguide.co.uk/pest-identifier/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://growguideuk.netlify.app/pest-identifier/">
-<meta property="og:title" content="Garden Pest & Disease Identifier UK — GrowGuide">
-<meta property="og:description" content="Select your plant type and symptoms to find out what's wrong and how to fix it — organically where possible.">
+<meta property="og:url" content="https://growguide.co.uk/pest-identifier/">
+<meta property="og:title" content="Garden Pest & Disease Identifier UK — Diagnose by Symptom">
+<meta property="og:description" content="Select your plant type and symptoms to identify garden pests and diseases. Get organic and conventional fixes for 30+ common UK garden problems. Free, no login.">
 <meta property="og:site_name" content="GrowGuide">
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Garden Pest & Disease Identifier UK — GrowGuide">
-<meta name="twitter:description" content="Select your plant type and symptoms to find out what's wrong and how to fix it — organically where possible.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Garden Pest & Disease Identifier for UK Gardens | GrowGuide">
+<meta name="twitter:description" content="Diagnose garden problems by symptom — yellowing leaves, holes, mould, wilting and more. Organic fixes included. Free, no login.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -196,7 +194,24 @@ body::before{
 .site-footer{background:var(--soil);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--stone);position:relative;z-index:1}
 .site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:16px}
 
-@media(max-width:600px){
+/* FLOATING COFFEE BUTTON */
+.coffee-float {
+  position:fixed; bottom:24px; right:24px; z-index:999;
+  display:flex; align-items:center; gap:8px;
+  background:#FFDD00; color:#000;
+  border-radius:100px; padding:10px 18px 10px 14px;
+  font-family:'Lato',sans-serif; font-size:0.85rem; font-weight:700;
+  text-decoration:none; letter-spacing:0.2px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.coffee-float:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.25); }
+.coffee-float-icon { font-size:1.1rem; }
+@media(max-width:480px){
+  .coffee-float span.coffee-label { display:none; }
+  .coffee-float { padding:10px 12px; }
+}
+
   .result-grid{grid-template-columns:1fr}
   .intro-banner{padding:18px}
   .intro-emoji{font-size:2rem}
@@ -207,7 +222,7 @@ body::before{
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="#">
+    <a class="logo" href="/">
       <div class="logo-icon">🌱</div>
       <div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div>
     </a>
@@ -995,5 +1010,59 @@ function resetAll(){
 init();
 </script>
 <script src="/ask-the-gardener.js"></script>
+
+<!-- SEO CONTENT -->
+<section style="max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem;font-family:'Lato',sans-serif;line-height:1.75;font-size:0.95rem;">
+
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#2C1810;margin-bottom:0.7rem;font-weight:700;">Identifying common UK garden pests and diseases</h2>
+  <p style="color:#5C4033;margin-bottom:1rem;">Most garden problems are diagnosable from the symptoms on the plant — the pattern of damage, the colour change, the location on the plant, and whether it's spreading. The identifier above works by narrowing down possibilities from your plant type and the symptoms you can see, then explaining what is causing the problem and how to treat it. Here are the most common issues UK gardeners face:</p>
+
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#2C1810;margin-bottom:0.7rem;font-weight:700;margin-top:2rem;">Common symptoms and their causes</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:1.5rem;">
+
+    <div style="background:#F5F0E8;border:1px solid #D4C8B0;border-radius:8px;padding:1rem;">
+      <div style="font-weight:700;color:#2C1810;margin-bottom:0.3rem;">🟡 Yellowing leaves</div>
+      <p style="color:#5C4033;font-size:0.88rem;margin:0;">Overwatering is the most common cause — roots deprived of oxygen can't take up nutrients. Also caused by nitrogen deficiency (pale yellow starting on older leaves), iron deficiency (yellowing between veins on young leaves), or natural ageing on lower leaves.</p>
+    </div>
+
+    <div style="background:#F5F0E8;border:1px solid #D4C8B0;border-radius:8px;padding:1rem;">
+      <div style="font-weight:700;color:#2C1810;margin-bottom:0.3rem;">🕳️ Holes in leaves</div>
+      <p style="color:#5C4033;font-size:0.88rem;margin:0;">Irregular holes with slime trails indicate slugs or snails — most active after rain and at night. Small round holes on brassicas are flea beetle. Ragged holes on leaves with caterpillars present are usually cabbage white caterpillars or vine moth larvae.</p>
+    </div>
+
+    <div style="background:#F5F0E8;border:1px solid #D4C8B0;border-radius:8px;padding:1rem;">
+      <div style="font-weight:700;color:#2C1810;margin-bottom:0.3rem;">🤍 White powder on leaves</div>
+      <p style="color:#5C4033;font-size:0.88rem;margin:0;">Powdery mildew — a fungal disease that thrives in warm, dry conditions with poor air circulation. Common on courgettes, cucumbers, roses and gooseberries. Treat with a bicarbonate of soda spray or remove and dispose of affected leaves.</p>
+    </div>
+
+    <div style="background:#F5F0E8;border:1px solid #D4C8B0;border-radius:8px;padding:1rem;">
+      <div style="font-weight:700;color:#2C1810;margin-bottom:0.3rem;">🥀 Wilting plants</div>
+      <p style="color:#5C4033;font-size:0.88rem;margin:0;">Wilting in dry soil means underwatering. Wilting in moist soil usually indicates root rot from overwatering, vine weevil larvae eating roots, or a fungal wilt disease. Check the roots — healthy roots are white or cream, rotted roots are brown and mushy.</p>
+    </div>
+
+    <div style="background:#F5F0E8;border:1px solid #D4C8B0;border-radius:8px;padding:1rem;">
+      <div style="font-weight:700;color:#2C1810;margin-bottom:0.3rem;">🟤 Brown patches on tomatoes</div>
+      <p style="color:#5C4033;font-size:0.88rem;margin:0;">Blossom end rot is calcium deficiency caused by irregular watering — not enough water prevents calcium uptake. Blight appears as brown patches spreading from leaf tips with a damp smell. Remove blighted material immediately and don't compost it.</p>
+    </div>
+
+    <div style="background:#F5F0E8;border:1px solid #D4C8B0;border-radius:8px;padding:1rem;">
+      <div style="font-weight:700;color:#2C1810;margin-bottom:0.3rem;">🐜 Sticky or distorted growth</div>
+      <p style="color:#5C4033;font-size:0.88rem;margin:0;">Sticky honeydew on leaves with distorted new growth usually indicates aphids — check the undersides of leaves and growing tips. Encourage natural predators like ladybirds and lacewings, or use an organic insecticidal soap spray.</p>
+    </div>
+
+  </div>
+
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#2C1810;margin-bottom:0.7rem;font-weight:700;margin-top:2rem;">Organic pest control in UK gardens</h2>
+  <p style="color:#5C4033;margin-bottom:1rem;">The most effective organic pest control combines physical barriers, encouraging beneficial insects, and targeted treatments only when needed. Copper tape deters slugs. Fine mesh netting prevents carrot fly, cabbage white butterflies and vine weevil. Companion planting with marigolds, nasturtiums and herbs confuses and deters many common pests — see the <a href="/companion-planting/" style="color:#4A6741;">companion planting checker</a> for specific plant combinations.</p>
+  <p style="color:#5C4033;">Use the identifier above to diagnose your specific problem, then follow the treatment advice for organic and conventional solutions. <a href="https://growguide.co.uk/" style="color:#4A6741;">See all free GrowGuide tools →</a></p>
+
+</section>
+
+<a class="coffee-float" href="https://www.buymeacoffee.com/growguide" target="_blank" rel="noopener">
+  <span class="coffee-float-icon">☕</span>
+  <span class="coffee-label">Buy me a coffee</span>
+</a>
+
 </body>
 </html>
