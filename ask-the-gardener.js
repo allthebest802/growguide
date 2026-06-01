@@ -296,7 +296,7 @@
   let isOpen = false;
   let isLoading = false;
 
-  const SYSTEM_PROMPT = `You are "Ask the Gardener", the friendly AI gardening advisor for GrowGuide (growguideuk.netlify.app) — a free UK gardening tools website.
+  const SYSTEM_PROMPT = `You are "Ask the Gardener", the friendly AI gardening advisor for GrowGuide (growguideuk.co.uk) — a free UK gardening tools website.
 
 Your role:
 - Give practical, accurate, friendly UK-specific gardening advice

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://growguideuk.netlify.app/sitemap.xml
+Sitemap: https://growguideuk.co.uk/sitemap.xml
