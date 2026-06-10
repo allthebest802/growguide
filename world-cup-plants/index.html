@@ -110,6 +110,191 @@ footer a:hover{color:var(--sage)}
 .coffee-float:hover{transform:translateY(-2px)}
 
 @media(max-width:600px){.nations-grid{grid-template-columns:1fr}.quiz-inner{flex-direction:column}}
+
+/* ── FLOWER QUIZ ── */
+.flower-quiz {
+  max-width:680px; margin:2rem auto 0;
+  padding:0 24px;
+}
+.quiz-card {
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+.quiz-card-header {
+  background:linear-gradient(135deg,var(--moss-d),var(--moss));
+  padding:1.5rem 1.8rem;
+  text-align:center;
+}
+.quiz-card-header h2 {
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem; font-weight:700;
+  color:var(--cream); margin-bottom:0.3rem;
+}
+.quiz-card-header p {
+  font-size:0.85rem;
+  color:rgba(245,240,232,0.75);
+}
+.quiz-body { padding:1.5rem 1.8rem; }
+
+/* Score / progress */
+.fq-scorebar {
+  display:flex; justify-content:space-between;
+  font-size:0.82rem; color:var(--text3);
+  margin-bottom:0.6rem;
+}
+.fq-scorebar .fq-score { color:var(--moss); font-weight:700; }
+.fq-progress {
+  background:var(--cream2); border-radius:100px;
+  height:5px; margin-bottom:1.2rem; overflow:hidden;
+}
+.fq-progress-fill {
+  height:100%; border-radius:100px;
+  background:linear-gradient(90deg,var(--moss),var(--moss-l));
+  transition:width 0.4s ease;
+}
+
+/* Question */
+.fq-question {
+  background:var(--parchment);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.2rem;
+  text-align:center;
+  margin-bottom:1rem;
+}
+.fq-badge {
+  display:inline-block;
+  font-size:0.7rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.08em;
+  background:var(--sage-l); color:var(--moss-d);
+  padding:0.2rem 0.7rem; border-radius:100px;
+  margin-bottom:0.6rem;
+}
+.fq-qtext {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem; color:var(--soil);
+  line-height:1.4;
+}
+.fq-flag {
+  width:80px; height:auto;
+  border-radius:4px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.2);
+  margin:0.8rem auto 0.4rem;
+  display:block;
+}
+
+/* Answers */
+.fq-answers {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.6rem;
+  margin-bottom:0.8rem;
+}
+.fq-btn {
+  background:var(--cream2);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius);
+  padding:0.75rem 0.8rem;
+  font-family:'Lato',sans-serif;
+  font-size:0.85rem; font-weight:600;
+  color:var(--text2);
+  cursor:pointer; transition:all 0.15s;
+  text-align:left; line-height:1.3;
+}
+.fq-btn:hover:not(:disabled) {
+  background:var(--sage-l);
+  border-color:var(--moss);
+  color:var(--moss-d);
+}
+.fq-btn.correct {
+  background:#D4EEDC;
+  border-color:#2E7040; color:#1A4525;
+}
+.fq-btn.wrong {
+  background:#FDDCDC;
+  border-color:#A02020; color:#6B0F0F;
+}
+.fq-btn:disabled { cursor:default; }
+
+/* Feedback */
+.fq-feedback {
+  font-size:0.85rem; line-height:1.5;
+  padding:0.8rem 1rem;
+  border-radius:var(--radius);
+  margin-bottom:0.8rem;
+  display:none;
+}
+.fq-feedback.show { display:block; }
+.fq-feedback.correct { background:#D4EEDC; color:#1A4525; }
+.fq-feedback.wrong { background:#FDDCDC; color:#6B0F0F; }
+
+.fq-next {
+  display:none; width:100%;
+  background:var(--moss); color:var(--cream);
+  border:none; border-radius:var(--radius);
+  padding:0.8rem;
+  font-family:'Lato',sans-serif;
+  font-size:0.9rem; font-weight:700;
+  cursor:pointer; transition:background 0.2s;
+}
+.fq-next.show { display:block; }
+.fq-next:hover { background:var(--moss-l); }
+
+/* Results */
+.fq-results {
+  text-align:center; padding:1rem 0;
+}
+.fq-results-emoji { font-size:3rem; margin-bottom:0.5rem; display:block; }
+.fq-results-score {
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem; font-weight:700;
+  color:var(--amber); margin-bottom:0.3rem;
+}
+.fq-results-msg {
+  font-size:0.9rem; color:var(--text2);
+  line-height:1.6; margin-bottom:1.2rem;
+}
+.fq-share {
+  margin-top:1rem; padding-top:1rem;
+  border-top:1px solid var(--border);
+}
+.fq-share-label {
+  font-size:0.72rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--text3); margin-bottom:0.6rem;
+}
+.fq-share-btns {
+  display:flex; justify-content:center;
+  gap:0.5rem; flex-wrap:wrap;
+}
+.fq-share-btn {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.5rem 0.9rem; border-radius:100px;
+  font-size:0.78rem; font-weight:700;
+  text-decoration:none; border:none; cursor:pointer;
+  font-family:'Lato',sans-serif; transition:opacity 0.2s;
+}
+.fq-share-btn:hover { opacity:0.85; }
+.fq-sb-x { background:#000; color:#fff; }
+.fq-sb-wa { background:#25d366; color:#fff; }
+.fq-sb-fb { background:#1877f2; color:#fff; }
+.fq-sb-copy { background:var(--cream2); color:var(--text2); border:1px solid var(--border); }
+.fq-copy-confirm { font-size:0.75rem; color:var(--moss); margin-top:0.4rem; height:1rem; }
+.fq-retry-btn {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:var(--amber); color:var(--soil);
+  border:none; border-radius:100px;
+  padding:0.75rem 1.8rem;
+  font-family:'Lato',sans-serif;
+  font-size:0.88rem; font-weight:700;
+  cursor:pointer; margin-bottom:0.8rem;
+  transition:opacity 0.2s;
+}
+.fq-retry-btn:hover { opacity:0.88; }
+
+@media(max-width:480px){ .fq-answers { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -142,13 +327,63 @@ footer a:hover{color:var(--sage)}
   <button class="filter-btn" onclick="filterCards('uk-tip')">🇬🇧 Grow in UK</button>
 </div>
 
-<div class="quiz-banner">
-  <div class="quiz-inner">
-    <div class="quiz-text">
-      <strong>🌸 Can you name the national flower from the flag?</strong>
-      <span>Test yourself on all 48 World Cup nations — flags, facts and plant knowledge combined</span>
+<!-- FLOWER QUIZ SECTION -->
+<div class="flower-quiz" id="flowerQuizSection">
+  <div class="quiz-card">
+    <div class="quiz-card-header">
+      <h2>🌸 National Flower Quiz</h2>
+      <p>Can you match the country to its national flower? 10 questions from the World Cup 2026 nations.</p>
     </div>
-    <a class="quiz-btn" href="https://flagatlas.co.uk/worldcup/">Take the flag quiz →</a>
+    <div class="quiz-body" id="fqBody">
+      <!-- Start screen -->
+      <div id="fqStart" style="text-align:center;padding:0.5rem 0;">
+        <p style="color:var(--text2);font-size:0.9rem;margin-bottom:1.2rem;line-height:1.6;">10 questions — 4 choices each. You'll be shown a country name and asked which national flower belongs to it. The answer reveals after each question.</p>
+        <button class="fq-next show" style="max-width:260px;margin:0 auto;" onclick="startFlowerQuiz()">🌸 Start Quiz →</button>
+      </div>
+      <!-- Quiz screen -->
+      <div id="fqQuiz" style="display:none;">
+        <div class="fq-scorebar">
+          <span id="fqQNum">Question 1 of 10</span>
+          <span class="fq-score" id="fqScore">Score: 0</span>
+        </div>
+        <div class="fq-progress">
+          <div class="fq-progress-fill" id="fqBar" style="width:0%"></div>
+        </div>
+        <div class="fq-question" id="fqQuestion"></div>
+        <div class="fq-answers" id="fqAnswers"></div>
+        <div class="fq-feedback" id="fqFeedback"></div>
+        <button class="fq-next" id="fqNext" onclick="fqNextQ()">Next →</button>
+      </div>
+      <!-- Results screen -->
+      <div id="fqResults" style="display:none;">
+        <div class="fq-results">
+          <span class="fq-results-emoji" id="fqEmoji">🌸</span>
+          <div class="fq-results-score" id="fqResultScore">0/10</div>
+          <div class="fq-results-msg" id="fqResultMsg"></div>
+          <button class="fq-retry-btn" onclick="startFlowerQuiz()">🔄 Try again</button>
+          <div class="fq-share">
+            <div class="fq-share-label">📣 Challenge a friend</div>
+            <div class="fq-share-btns">
+              <a class="fq-share-btn fq-sb-x" id="fqShareX" href="#" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.859L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Post on X
+              </a>
+              <a class="fq-share-btn fq-sb-fb" id="fqShareFB" href="#" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </a>
+              <a class="fq-share-btn fq-sb-wa" id="fqShareWA" href="#" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <button class="fq-share-btn fq-sb-copy" onclick="fqCopyLink()">📋 Copy link</button>
+            </div>
+            <div class="fq-copy-confirm" id="fqCopyConfirm"></div>
+            <p style="margin-top:1rem;font-size:0.8rem;color:var(--text3);">Know the flags too? <a href="https://flagatlas.co.uk/worldcup/" style="color:var(--moss);">Take the FlagAtlas World Cup quiz →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -286,6 +521,154 @@ function filterCards(filter) {
 }
 
 renderCards('all');
+
+// ── FLOWER QUIZ ──────────────────────────────────────────────────────────────
+let fqQuestions = [];
+let fqCurrent = 0;
+let fqScore = 0;
+let fqAnswered = false;
+
+function fqShuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildFlowerQuestions() {
+  // Two question types: country → flower, and flower → country
+  const pool = fqShuffle(NATIONS).slice(0, 10);
+  return pool.map((n, i) => {
+    const isCountryToFlower = i % 2 === 0;
+    const others = fqShuffle(NATIONS.filter(x => x.flower !== n.flower)).slice(0, 3);
+
+    if (isCountryToFlower) {
+      return {
+        badge: '🌸 Name the flower',
+        question: `What is the national flower of <strong>${n.name}</strong>?`,
+        flagCode: n.code,
+        flagName: n.name,
+        correct: n.flower,
+        opts: fqShuffle([n.flower, ...others.map(x => x.flower)]),
+        fact: n.fact,
+      };
+    } else {
+      return {
+        badge: '🌍 Name the country',
+        question: `Which World Cup nation has the <strong>${n.flower}</strong> as its national flower?`,
+        flagCode: null,
+        correct: n.name,
+        opts: fqShuffle([n.name, ...others.map(x => x.name)]),
+        fact: n.fact,
+      };
+    }
+  });
+}
+
+function startFlowerQuiz() {
+  fqQuestions = buildFlowerQuestions();
+  fqCurrent = 0; fqScore = 0; fqAnswered = false;
+  document.getElementById('fqStart').style.display = 'none';
+  document.getElementById('fqResults').style.display = 'none';
+  document.getElementById('fqQuiz').style.display = 'block';
+  fqRender();
+  document.getElementById('flowerQuizSection').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function fqRender() {
+  fqAnswered = false;
+  const q = fqQuestions[fqCurrent];
+  const total = fqQuestions.length;
+
+  document.getElementById('fqQNum').textContent = `Question ${fqCurrent + 1} of ${total}`;
+  document.getElementById('fqScore').textContent = `Score: ${fqScore}`;
+  document.getElementById('fqBar').style.width = `${(fqCurrent / total) * 100}%`;
+  document.getElementById('fqFeedback').className = 'fq-feedback';
+  document.getElementById('fqNext').className = 'fq-next';
+
+  // Question card
+  let qHTML = `<div class="fq-badge">${q.badge}</div>`;
+  if (q.flagCode) {
+    qHTML += `<img class="fq-flag" src="${CDN}${q.flagCode}.png" alt="${q.flagName}">`;
+  }
+  qHTML += `<div class="fq-qtext">${q.question}</div>`;
+  document.getElementById('fqQuestion').innerHTML = qHTML;
+
+  // Answers
+  document.getElementById('fqAnswers').innerHTML = q.opts.map(opt =>
+    `<button class="fq-btn" onclick="fqCheck('${opt.replace(/'/g,"\'")}','${q.correct.replace(/'/g,"\'")}',this)">${opt}</button>`
+  ).join('');
+}
+
+function fqCheck(chosen, correct, btn) {
+  if (fqAnswered) return;
+  fqAnswered = true;
+
+  const q = fqQuestions[fqCurrent];
+  const isCorrect = chosen === correct;
+  document.querySelectorAll('.fq-btn').forEach(b => b.disabled = true);
+  const fb = document.getElementById('fqFeedback');
+
+  if (isCorrect) {
+    fqScore++;
+    btn.classList.add('correct');
+    fb.innerHTML = `✓ Correct! <br><small style="font-weight:400">${q.fact}</small>`;
+    fb.className = 'fq-feedback correct show';
+    document.getElementById('fqScore').textContent = `Score: ${fqScore}`;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.fq-btn').forEach(b => {
+      if (b.textContent.trim() === correct) b.classList.add('correct');
+    });
+    fb.innerHTML = `✗ The answer was <strong>${correct}</strong><br><small style="font-weight:400">${q.fact}</small>`;
+    fb.className = 'fq-feedback wrong show';
+  }
+
+  document.getElementById('fqNext').className = 'fq-next show';
+}
+
+function fqNextQ() {
+  fqCurrent++;
+  if (fqCurrent >= fqQuestions.length) fqShowResults();
+  else fqRender();
+}
+
+function fqShowResults() {
+  document.getElementById('fqQuiz').style.display = 'none';
+  document.getElementById('fqResults').style.display = 'block';
+  const total = fqQuestions.length;
+  const pct = Math.round((fqScore / total) * 100);
+
+  let emoji, msg;
+  if (pct === 100) { emoji = '🏆'; msg = 'Perfect score! You know your World Cup national flowers better than anyone. Share your result!'; }
+  else if (pct >= 80) { emoji = '🌸'; msg = 'Excellent! A near-perfect knowledge of World Cup national flowers. Scroll up to check the ones you missed.'; }
+  else if (pct >= 60) { emoji = '🌿'; msg = 'Good effort! More than half right — scroll through the country cards to brush up on the rest.'; }
+  else if (pct >= 40) { emoji = '🌱'; msg = 'A decent start! National flowers are tricky — try again after reading through the country cards.'; }
+  else { emoji = '🪴'; msg = 'Room to grow! Have a read through the country cards above then try again.'; }
+
+  document.getElementById('fqEmoji').textContent = emoji;
+  document.getElementById('fqResultScore').textContent = `${fqScore}/${total}`;
+  document.getElementById('fqResultMsg').textContent = msg;
+
+  // Share links
+  const shareText = `I scored ${fqScore}/${total} on the World Cup 2026 National Flower Quiz! 🌸⚽ Can you beat me?`;
+  const shareUrl = 'https://growguide.co.uk/world-cup-plants/';
+  const enc = encodeURIComponent(shareText);
+  const encUrl = encodeURIComponent(shareUrl);
+  document.getElementById('fqShareX').href = `https://twitter.com/intent/tweet?text=${enc}&url=${encUrl}`;
+  document.getElementById('fqShareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${encUrl}&quote=${enc}`;
+  document.getElementById('fqShareWA').href = `https://wa.me/?text=${enc}%20${encUrl}`;
+}
+
+function fqCopyLink() {
+  navigator.clipboard.writeText('https://growguide.co.uk/world-cup-plants/').then(() => {
+    const el = document.getElementById('fqCopyConfirm');
+    el.textContent = '✓ Link copied!';
+    setTimeout(() => { el.textContent = ''; }, 2500);
+  });
+}
 </script>
 </body>
 </html>
