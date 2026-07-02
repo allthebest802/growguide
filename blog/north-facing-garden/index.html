@@ -28,7 +28,7 @@ a{text-decoration:none;color:inherit}
 .header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:20px 0}
 .logo{display:flex;align-items:center;gap:14px;text-decoration:none}
 .logo-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 3px rgba(74,103,65,0.4);flex-shrink:0}
-.logo-text h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1}
+.logo-text span.logo-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--cream);line-height:1;display:block}
 .logo-text p{font-size:0.75rem;font-weight:300;color:#D4E8D0;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
 .back-link{margin-left:auto;font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:5px 14px;transition:all 0.15s}
 .back-link:hover{color:white;border-color:rgba(255,255,255,0.5)}
@@ -75,7 +75,7 @@ a{text-decoration:none;color:inherit}
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="/"><div class="logo-icon">🌱</div><div class="logo-text"><h1>GrowGuide</h1><p>UK Garden Planner</p></div></a>
+    <a class="logo" href="/"><div class="logo-icon">🌱</div><div class="logo-text"><span class="logo-name">GrowGuide</span><p>UK Garden Planner</p></div></a>
     <a class="back-link" href="/blog/">← All guides</a>
   </div>
 </header>
@@ -184,5 +184,6 @@ a{text-decoration:none;color:inherit}
   <div class="footer-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/what-to-plant/">What to Plant</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   GrowGuide &mdash; Free UK Garden Planner &mdash; No login, no ads, no nonsense
 </footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
