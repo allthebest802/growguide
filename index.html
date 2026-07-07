@@ -110,6 +110,16 @@ body::before{
   transition:all 0.18s;
 }
 .hero-cta:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,132,42,0.5)}
+.hero-contact-link{
+  position:absolute;top:14px;right:18px;z-index:2;
+  font-size:0.78rem;font-weight:700;color:var(--moss-ll);
+  border:1px solid rgba(255,255,255,0.25);border-radius:100px;
+  padding:5px 14px;transition:all 0.15s;background:rgba(255,255,255,0.06);
+}
+.hero-contact-link:hover{color:white;border-color:rgba(255,255,255,0.5)}
+@media(max-width:600px){
+  .hero-contact-link{position:static;display:inline-block;margin-top:10px}
+}
 
 /* ── SEASONAL TIP ── */
 .seasonal-wrap{background:var(--amber-ll);border-top:3px solid var(--amber-l);border-bottom:3px solid var(--amber-l);padding:12px 24px;position:relative;z-index:1}
@@ -234,6 +244,7 @@ body::before{
 <section class="hero">
   <div class="hero-leaves l1">🌿</div>
   <div class="hero-leaves l2">🍃</div>
+  <a class="hero-contact-link" href="/contact/">✉️ Contact</a>
   <div class="hero-inner">
     <div class="hero-single-line">
       <div class="logo-inline">
@@ -517,6 +528,7 @@ body::before{
     <a href="/frost-checker/">Frost Checker</a>
     <a href="/watering-guide/">Watering Guide</a>
     <a href="/blog/">Blog</a>
+    <a href="/contact/">Contact</a>
     <a href="/privacy/">Privacy</a>
     <a href="/terms/">Terms</a>
   </div>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<title>Contact GrowGuide — Suggestions, Corrections & Feedback</title>
+<meta name="description" content="Get in touch with GrowGuide — suggest a new gardening tool, report a bug, or ask a question. We read every message.">
+<link rel="canonical" href="https://growguide.co.uk/contact/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguide.co.uk/contact/">
+<meta property="og:title" content="Contact GrowGuide">
+<meta property="og:description" content="Suggest a tool, report a bug or just say hello — we read every message.">
+<meta property="og:site_name" content="GrowGuide">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contact GrowGuide">
+<meta name="twitter:description" content="Suggest a tool, report a bug or just say hello — we read every message.">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810; --soil2:#3D2315; --bark:#6B4226;
+  --moss:#4A6741; --moss-d:#2E4228; --moss-l:#7A9E72; --moss-ll:#C8DBC4;
+  --sage:#8FAF87; --sage-l:#D4E8D0;
+  --cream:#F5F0E8; --cream2:#EDE6D8; --parchment:#FAF6EE;
+  --stone:#A89880; --amber:#C8842A; --amber-l:#F0D4A0; --amber-ll:#FDF5E4;
+  --rust:#B85C2A;
+  --text:#1E130C; --text2:#4A3020; --text3:#8A7060;
+  --border:#D8C8B0; --border2:#C0A888;
+  --radius:14px; --radius-lg:22px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 0% 0%,rgba(74,103,65,0.13),transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 100%,rgba(200,132,42,0.09),transparent 60%);
+}
+button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+a{text-decoration:none;color:inherit}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.45;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ── HERO ── */
+.logo-inline{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 0 0 2px rgba(200,219,196,0.4);flex-shrink:0}
+.logo-text-inline{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:white}
+.logo-sub{font-size:0.75rem;font-weight:300;color:var(--sage-l);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.hero-divider{width:1px;height:28px;background:rgba(255,255,255,0.2);flex-shrink:0}
+.hero{
+  background:linear-gradient(160deg,var(--moss-d) 0%,#3A5830 50%,#2A4820 100%);
+  padding:18px 24px 16px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(ellipse 500px 300px at 20% 80%,rgba(200,132,42,0.15),transparent),
+    radial-gradient(ellipse 400px 400px at 80% 20%,rgba(255,255,255,0.04),transparent);
+}
+.hero-leaves{position:absolute;font-size:8rem;opacity:0.05;user-select:none;line-height:1}
+.hero-leaves.l1{top:-10px;left:-20px;transform:rotate(-20deg)}
+.hero-leaves.l2{bottom:-20px;right:-10px;transform:rotate(15deg)}
+.hero-inner{position:relative;z-index:1;max-width:960px;margin:0 auto}
+.hero-single-line{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero-single-line h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;
+  color:white;line-height:1.2;margin:0;
+}
+.hero-single-line h1 em{color:var(--amber-l);font-style:italic}
+.hero-tagline{font-size:0.88rem;color:var(--moss-ll);line-height:1.4;font-weight:300;margin:0;white-space:nowrap}
+.hero-home-link{
+  position:absolute;top:14px;right:18px;z-index:2;
+  font-size:0.78rem;font-weight:700;color:var(--moss-ll);
+  border:1px solid rgba(255,255,255,0.25);border-radius:100px;
+  padding:5px 14px;transition:all 0.15s;background:rgba(255,255,255,0.06);
+}
+.hero-home-link:hover{color:white;border-color:rgba(255,255,255,0.5)}
+
+/* ── MAIN ── */
+.main{max-width:720px;margin:0 auto;padding:36px 24px 48px;position:relative;z-index:1}
+.section-title{
+  font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;
+  color:var(--text);margin-bottom:8px;
+}
+.section-sub{font-size:0.92rem;color:var(--text3);margin-bottom:26px;font-weight:300;line-height:1.6}
+
+/* ── FORM CARD ── */
+.form-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:28px;box-shadow:var(--shadow);
+}
+.form-row{margin-bottom:18px}
+.form-row label{
+  display:block;font-size:0.78rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.8px;color:var(--moss-d);margin-bottom:7px;
+}
+.form-row input,
+.form-row select,
+.form-row textarea{
+  width:100%;font-family:'Lato',sans-serif;font-size:0.95rem;color:var(--text);
+  background:var(--parchment);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:12px 14px;transition:border-color 0.15s,box-shadow 0.15s;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus{
+  outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(74,103,65,0.15);
+}
+.form-row textarea{min-height:160px;resize:vertical;line-height:1.6}
+.form-submit{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--amber);color:var(--soil);
+  padding:13px 30px;border-radius:100px;
+  font-size:0.95rem;font-weight:700;letter-spacing:0.3px;
+  box-shadow:0 6px 24px rgba(200,132,42,0.4);
+  transition:all 0.18s;
+}
+.form-submit:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,132,42,0.5)}
+.form-note{font-size:0.8rem;color:var(--text3);margin-top:14px;line-height:1.6}
+.hidden-field{display:none}
+
+/* ── SUCCESS ── */
+.success-card{
+  display:none;background:white;border:1.5px solid var(--moss-ll);border-radius:var(--radius-lg);
+  padding:36px 28px;box-shadow:var(--shadow);text-align:center;
+}
+.success-card .success-icon{font-size:2.6rem;display:block;margin-bottom:12px}
+.success-card h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--soil);margin-bottom:8px}
+.success-card p{font-size:0.92rem;color:var(--text2);line-height:1.65;margin-bottom:20px}
+.success-card a{
+  display:inline-block;font-size:0.88rem;font-weight:700;color:var(--moss-d);
+  border:1.5px solid var(--moss-ll);border-radius:100px;padding:9px 22px;transition:all 0.15s;
+}
+.success-card a:hover{background:var(--sage-l)}
+
+/* ── INFO CARDS ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:26px}
+.info-card{
+  background:white;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow);text-align:center;
+}
+.info-icon{font-size:1.6rem;display:block;margin-bottom:8px}
+.info-title{font-family:'Playfair Display',serif;font-size:0.92rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.info-text{font-size:0.78rem;color:var(--text3);line-height:1.55}
+
+/* FLOATING COFFEE BUTTON */
+.coffee-float {
+  position:fixed; bottom:24px; left:24px; z-index:999;
+  display:flex; align-items:center; gap:8px;
+  background:#FFDD00; color:#000;
+  border-radius:100px; padding:10px 18px 10px 14px;
+  font-family:'Lato',sans-serif; font-size:0.85rem; font-weight:700;
+  text-decoration:none; letter-spacing:0.2px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.coffee-float:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.25); }
+.coffee-float-icon { font-size:1.1rem; }
+@media(max-width:480px){
+  .coffee-float span.coffee-label { display:none; }
+  .coffee-float { padding:10px 12px; }
+}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--soil);padding:24px;text-align:center;position:relative;z-index:1}
+.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:18px}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px}
+.footer-links a{font-size:0.8rem;color:var(--stone);font-weight:700;transition:color 0.15s}
+.footer-links a:hover{color:var(--moss-ll)}
+.footer-copy{font-size:0.75rem;color:#C4B49A}
+
+@media(max-width:600px){
+  .main{padding:28px 16px 40px}
+  .form-card{padding:22px 18px}
+  .hero-home-link{position:static;display:inline-block;margin-top:10px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact GrowGuide","url":"https://growguide.co.uk/contact/","description":"Get in touch with GrowGuide — suggest a new gardening tool, report a bug, or ask a question.","isPartOf":{"@type":"WebSite","name":"GrowGuide","url":"https://growguide.co.uk"}}</script>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-leaves l1">🌿</div>
+  <div class="hero-leaves l2">🍃</div>
+  <a class="hero-home-link" href="/">← Back to tools</a>
+  <div class="hero-inner">
+    <div class="hero-single-line">
+      <a class="logo-inline" href="/">
+        <div class="logo-icon">🌱</div>
+        <div class="logo-text-inline"><span class="logo-name">GrowGuide</span><span class="logo-sub">UK Garden Planner</span></div>
+      </a>
+      <div class="hero-divider"></div>
+      <h1>Get in <em>touch</em></h1>
+      <p class="hero-tagline">Suggestions, corrections, bug reports — we read every message.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- SUCCESS MESSAGE (shown after submit) -->
+  <div class="success-card" id="successCard">
+    <span class="success-icon">🌻</span>
+    <h2>Message sent — thank you!</h2>
+    <p>Thanks for getting in touch. We read every message and will reply by email if a response is needed. In the meantime, happy growing.</p>
+    <a href="/">Back to the tools →</a>
+  </div>
+
+  <!-- FORM -->
+  <div id="formSection">
+    <div class="section-title">Contact GrowGuide</div>
+    <p class="section-sub">Spotted a mistake in one of our guides? Got an idea for a new tool? Or just want to say hello? Fill in the form below — it goes straight to us.</p>
+
+    <div class="form-card">
+      <form name="contact" method="POST" action="/contact/?sent=true" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden-field">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <div class="form-row">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-row">
+          <label for="topic">What's it about?</label>
+          <select id="topic" name="topic">
+            <option value="General question">General question</option>
+            <option value="Tool suggestion">Suggest a new tool</option>
+            <option value="Bug report">Report a bug or mistake</option>
+            <option value="Gardening question">Gardening question</option>
+            <option value="Other">Something else</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" required placeholder="Tell us what's on your mind…"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send message 🌱</button>
+        <p class="form-note">We only use your email address to reply to your message — it's never added to a mailing list or shared with anyone.</p>
+      </form>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">💡</span>
+        <div class="info-title">Tool ideas welcome</div>
+        <div class="info-text">Most of our tools started as suggestions from UK gardeners. If something would help you, tell us.</div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🐛</span>
+        <div class="info-title">Spotted a mistake?</div>
+        <div class="info-text">Let us know which page and what looks wrong — we'll fix it as quickly as we can.</div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">📬</span>
+        <div class="info-title">We reply by email</div>
+        <div class="info-text">No account needed, no newsletter sign-up. We'll simply reply if a response is needed.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/what-to-plant/">Plant Planner</a>
+    <a href="/pest-identifier/">Pest Identifier</a>
+    <a href="/seed-to-harvest/">Seed Timelines</a>
+    <a href="/companion-planting/">Companion Planting</a>
+    <a href="/monthly-jobs/">Monthly Jobs</a>
+    <a href="/frost-checker/">Frost Checker</a>
+    <a href="/watering-guide/">Watering Guide</a>
+    <a href="/blog/">Blog</a>
+    <a href="/contact/">Contact</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+  </div>
+  <div class="footer-copy">GrowGuide &mdash; Free UK Garden Tools &mdash; No login, no nonsense</div>
+</footer>
+
+<a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">
+  <span class="coffee-float-icon">☕</span>
+  <span class="coffee-label">Buy me a coffee</span>
+</a>
+
+<script>
+// Show the thank-you card after Netlify redirects back with ?sent=true
+if (new URLSearchParams(window.location.search).get('sent') === 'true') {
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('successCard').style.display = 'block';
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
