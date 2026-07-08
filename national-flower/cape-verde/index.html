@@ -108,11 +108,9 @@ footer a:hover{color:var(--sage)}
 </div>
 
 <div style="max-width:860px;margin:2rem auto 0;padding:0 24px">
-  <div class="uk-tip-box">
-    <div class="uk-tip-inner">
-      <strong>🇬🇧 UK Growing Tip</strong>
-      Grow in a large pot indoors in full sun. Feed monthly in summer. Don't repot until roots escape the container — pot-bound plants flower better.
-    </div>
+  <div class="uk-tip-inner" id="tip-wrap">
+    <strong>🇬🇧 UK Growing Tip</strong>
+    Grow in a large pot indoors in full sun. Feed monthly in summer. Don't repot until roots escape the container — pot-bound plants flower better.
   </div>
 </div>
 
@@ -148,29 +146,27 @@ footer a:hover{color:var(--sage)}
 <a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
 
 <script>
-// Load flower image from Wikimedia Commons — more reliable than REST API
-const wikiImg = document.createElement('img');
-wikiImg.alt = 'Bird of Paradise — Strelitzia reginae';
-wikiImg.style.cssText = 'width:100%;max-width:300px;border-radius:10px;box-shadow:0 3px 16px rgba(44,24,16,0.15);margin:1.5rem 0 0.5rem;display:block';
-wikiImg.loading = 'lazy';
-
-// Use the Wikimedia thumbnail API — stable and CORS-friendly
+// Load flower image — floated right inside UK tip box so text wraps around it
 fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Strelitzia_reginae&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
   .then(r => r.json())
   .then(data => {
     const pages = data.query.pages;
     const page = pages[Object.keys(pages)[0]];
     if (page.thumbnail) {
-      wikiImg.src = page.thumbnail.source;
+      const wrap = document.getElementById('tip-wrap');
+      const img = document.createElement('img');
+      img.src = page.thumbnail.source;
+      img.alt = 'Bird of Paradise — Strelitzia reginae';
+      img.loading = 'lazy';
+      img.style.cssText = 'float:right;width:160px;height:160px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);margin:0 0 8px 16px';
+      wrap.insertBefore(img, wrap.firstChild);
       const caption = document.createElement('p');
-      caption.style.cssText = 'font-size:0.72rem;color:#8A7060;margin-bottom:1.5rem';
-      caption.innerHTML = 'Bird of Paradise (<em>Strelitzia reginae</em>) · <a href="https://en.wikipedia.org/wiki/Strelitzia_reginae" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
-      const article = document.querySelector('.article');
-      article.insertBefore(caption, article.firstChild);
-      article.insertBefore(wikiImg, article.firstChild);
+      caption.style.cssText = 'font-size:0.7rem;color:#8A7060;margin-top:6px;clear:both;padding:0 24px;max-width:860px;margin-left:auto;margin-right:auto';
+      caption.innerHTML = '<em>Strelitzia reginae</em> · <a href="https://en.wikipedia.org/wiki/Strelitzia_reginae" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+      wrap.parentNode.insertBefore(caption, wrap.nextSibling);
     }
   })
-  .catch(() => {}); // fail silently — page works fine without image
+  .catch(() => {});
 </script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
