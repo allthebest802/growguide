@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url><loc>https://growguide.co.uk/</loc><lastmod>2026-06-10</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://growguide.co.uk/</loc><lastmod>2026-07-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://growguide.co.uk/what-to-plant/</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://growguide.co.uk/companion-planting/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://growguide.co.uk/pest-identifier/</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -14,6 +14,19 @@
 
   <!-- World Cup 2026 — timely content -->
   <url><loc>https://growguide.co.uk/world-cup-plants/</loc><lastmod>2026-06-10</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- National Flowers -->
+  <url><loc>https://growguide.co.uk/national-flower/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/cape-verde/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/ivory-coast/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/dr-congo/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/senegal/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/ghana/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/curacao/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/montenegro/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/sierra-leone/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/uzbekistan/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growguide.co.uk/national-flower/qatar/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Blog -->
   <url><loc>https://growguide.co.uk/blog/</loc><lastmod>2026-06-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
