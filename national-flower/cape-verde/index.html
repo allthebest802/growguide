@@ -50,19 +50,10 @@ a{text-decoration:none;color:inherit}
 .breadcrumb{max-width:860px;margin:1.5rem auto 0;padding:0 24px;font-size:0.82rem;color:var(--text3)}
 .breadcrumb a{color:var(--moss);text-decoration:underline}
 .hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:2.5rem 24px 2rem;text-align:center;margin-top:1.5rem;position:relative;overflow:hidden}
-.hero-flag{font-size:3rem;margin-bottom:0.8rem;display:block}
 .hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(200,132,42,0.2);border:1px solid rgba(200,132,42,0.4);color:var(--amber-l);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:0.5rem}
 .hero-sub{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
 .hero-intro{font-size:0.93rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
-
-/* FLOWER IMAGE */
-.flower-img-wrap{max-width:860px;margin:2rem auto 0;padding:0 24px;display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap}
-.flower-img-box{flex:0 0 auto;width:200px;background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 12px rgba(44,24,16,0.1)}
-.flower-img-box img{width:100%;height:200px;object-fit:cover;display:block}
-.flower-img-box .img-caption{font-size:0.72rem;color:var(--text3);padding:6px 8px;line-height:1.4;text-align:center}
-.flower-img-box .img-caption a{color:var(--moss);text-decoration:underline}
-.flower-img-loading{width:200px;height:200px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--cream2);border-radius:var(--radius) var(--radius) 0 0}
 
 /* UK TIP */
 .uk-tip-box{flex:1;min-width:220px}
@@ -110,18 +101,13 @@ footer a:hover{color:var(--sage)}
 </div>
 
 <div class="hero">
-  <img class="hero-flag" src="https://flagcdn.com/80x60/cv.png" alt="Cape Verde flag" width="80" height="60" style="border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.3)">
   <div class="hero-badge">🌸 National Flower</div>
   <h1>National Flower of Cape Verde</h1>
   <div class="hero-sub">Bird of Paradise — <em>Strelitzia reginae</em></div>
   <p class="hero-intro">The national flower of Cape Verde (Cabo Verde) is the Bird of Paradise flower — <em>Strelitzia reginae</em>. With its brilliant orange and vivid blue petals emerging from a boat-shaped spathe, it is one of the most instantly recognisable flowers in the world.</p>
 </div>
 
-<div class="flower-img-wrap">
-  <div class="flower-img-box" id="img-box">
-    <div class="flower-img-loading" id="img-loading">🌸</div>
-    <div class="img-caption" id="img-caption" style="display:none"></div>
-  </div>
+<div style="max-width:860px;margin:2rem auto 0;padding:0 24px">
   <div class="uk-tip-box">
     <div class="uk-tip-inner">
       <strong>🇬🇧 UK Growing Tip</strong>
@@ -145,7 +131,7 @@ footer a:hover{color:var(--sage)}
     <div class="related-links"><a class="related-link" href="https://www.google.com/search?q=national+flower+of+cape+verde" target="_blank" rel="noopener">national flower of cape verde</a><a class="related-link" href="https://www.google.com/search?q=cabo+verde+national+flower" target="_blank" rel="noopener">cabo verde national flower</a><a class="related-link" href="https://www.google.com/search?q=flor+nacional+de+cabo+verde" target="_blank" rel="noopener">flor nacional de cabo verde</a><a class="related-link" href="https://www.google.com/search?q=bird+of+paradise+plant+uk" target="_blank" rel="noopener">bird of paradise plant uk</a></div>
   </div>
   <div class="back-links">
-    <a class="back-link-btn" href="/national-flower/">← All national flower guides</a>
+    <a class="back-link-btn secondary" href="/national-flower/">← All national flower guides</a>
     <a class="back-link-btn secondary" href="/world-cup-plants/">World Cup plants</a>
     <a class="back-link-btn secondary" href="/companion-planting/">Companion planting</a>
     <a class="back-link-btn secondary" href="/what-to-plant/">Monthly planting guide</a>
@@ -162,27 +148,29 @@ footer a:hover{color:var(--sage)}
 <a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
 
 <script>
-// Load flower image from Wikipedia's free PageImages API
-fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Strelitzia_reginae')
+// Load flower image from Wikimedia Commons — more reliable than REST API
+const wikiImg = document.createElement('img');
+wikiImg.alt = 'Bird of Paradise — Strelitzia reginae';
+wikiImg.style.cssText = 'width:100%;max-width:300px;border-radius:10px;box-shadow:0 3px 16px rgba(44,24,16,0.15);margin:1.5rem 0 0.5rem;display:block';
+wikiImg.loading = 'lazy';
+
+// Use the Wikimedia thumbnail API — stable and CORS-friendly
+fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Strelitzia_reginae&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
   .then(r => r.json())
   .then(data => {
-    const box = document.getElementById('img-box');
-    const loading = document.getElementById('img-loading');
-    const caption = document.getElementById('img-caption');
-    if (data.thumbnail && data.thumbnail.source) {
-      const img = document.createElement('img');
-      // Request a slightly larger thumbnail for quality
-      img.src = data.thumbnail.source.replace(/\/\d+px-/, '/300px-');
-      img.alt = 'Bird of Paradise — Strelitzia reginae';
-      img.loading = 'lazy';
-      loading.replaceWith(img);
-      caption.style.display = 'block';
-      caption.innerHTML = 'Bird of Paradise (<em>Strelitzia reginae</em>) · <a href="https://en.wikipedia.org/wiki/Strelitzia_reginae" target="_blank" rel="noopener">Image via Wikipedia</a>';
-    } else {
-      loading.textContent = '🇨🇻';
+    const pages = data.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+    if (page.thumbnail) {
+      wikiImg.src = page.thumbnail.source;
+      const caption = document.createElement('p');
+      caption.style.cssText = 'font-size:0.72rem;color:#8A7060;margin-bottom:1.5rem';
+      caption.innerHTML = 'Bird of Paradise (<em>Strelitzia reginae</em>) · <a href="https://en.wikipedia.org/wiki/Strelitzia_reginae" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+      const article = document.querySelector('.article');
+      article.insertBefore(caption, article.firstChild);
+      article.insertBefore(wikiImg, article.firstChild);
     }
   })
-  .catch(() => { document.getElementById('img-loading').textContent = '🇨🇻'; });
+  .catch(() => {}); // fail silently — page works fine without image
 </script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
