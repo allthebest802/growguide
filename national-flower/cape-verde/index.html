@@ -108,10 +108,14 @@ footer a:hover{color:var(--sage)}
 </div>
 
 <div style="max-width:860px;margin:2rem auto 0;padding:0 24px">
-  <div class="uk-tip-inner" id="tip-wrap">
-    <strong>🇬🇧 UK Growing Tip</strong>
-    Grow in a large pot indoors in full sun. Feed monthly in summer. Don't repot until roots escape the container — pot-bound plants flower better.
+  <div style="display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap">
+    <div id="img-slot" style="flex:0 0 auto;width:180px;min-height:10px"></div>
+    <div class="uk-tip-inner" style="flex:1;min-width:200px">
+      <strong>🇬🇧 UK Growing Tip</strong>
+      Grow in a large pot indoors in full sun. Feed monthly in summer. Don't repot until roots escape the container — pot-bound plants flower better.
+    </div>
   </div>
+  <p id="img-caption" style="display:none;font-size:0.7rem;color:#8A7060;margin-top:5px"><em>Strelitzia reginae</em> · <a href="https://en.wikipedia.org/wiki/Strelitzia_reginae" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a></p>
 </div>
 
 <article class="article">
@@ -146,27 +150,25 @@ footer a:hover{color:var(--sage)}
 <a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
 
 <script>
-// Load flower image — floated right inside UK tip box so text wraps around it
 fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Strelitzia_reginae&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
   .then(r => r.json())
   .then(data => {
     const pages = data.query.pages;
     const page = pages[Object.keys(pages)[0]];
     if (page.thumbnail) {
-      const wrap = document.getElementById('tip-wrap');
+      const slot = document.getElementById('img-slot');
       const img = document.createElement('img');
       img.src = page.thumbnail.source;
       img.alt = 'Bird of Paradise — Strelitzia reginae';
       img.loading = 'lazy';
-      img.style.cssText = 'float:right;width:160px;height:160px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);margin:0 0 8px 16px';
-      wrap.insertBefore(img, wrap.firstChild);
-      const caption = document.createElement('p');
-      caption.style.cssText = 'font-size:0.7rem;color:#8A7060;margin-top:6px;clear:both;padding:0 24px;max-width:860px;margin-left:auto;margin-right:auto';
-      caption.innerHTML = '<em>Strelitzia reginae</em> · <a href="https://en.wikipedia.org/wiki/Strelitzia_reginae" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
-      wrap.parentNode.insertBefore(caption, wrap.nextSibling);
+      img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+      slot.appendChild(img);
+      document.getElementById('img-caption').style.display = 'block';
+    } else {
+      document.getElementById('img-slot').style.display = 'none';
     }
   })
-  .catch(() => {});
+  .catch(() => { document.getElementById('img-slot').style.display = 'none'; });
 </script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
