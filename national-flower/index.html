@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<title>National Flowers of the World — Country Guides with UK Growing Tips | GrowGuide</title>
+<meta name="description" content="Discover the national flower of every country — with botanical facts, cultural history and UK growing tips for each. Free guides from GrowGuide.">
+<meta name="keywords" content="national flowers of the world, national flower by country, national flower cape verde, national flower ivory coast, national flower senegal, national flower ghana, national flower dr congo, flor nacional, national flowers uk growing tips">
+<link rel="canonical" href="https://growguide.co.uk/national-flower/">
+<meta property="og:title" content="National Flowers of the World — Country Guides | GrowGuide">
+<meta property="og:description" content="Discover the national flower of every country — with botanical facts, cultural history and UK growing tips.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growguide.co.uk/national-flower/">
+<meta property="og:site_name" content="GrowGuide">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --soil:#2C1810;--soil2:#3D2315;--bark:#6B4226;
+  --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
+  --sage:#8FAF87;--sage-l:#D4E8D0;
+  --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
+  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
+  --rust:#B85C2A;
+  --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
+  --border:#D8C8B0;--border2:#C0A888;
+  --radius:12px;--radius-lg:20px;
+  --shadow:0 3px 18px rgba(44,24,16,0.10);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
+  background-image:radial-gradient(ellipse 800px 400px at 0% 0%,rgba(74,103,65,0.12),transparent 60%),radial-gradient(ellipse 600px 500px at 100% 100%,rgba(200,132,42,0.08),transparent 60%);
+}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.site-header{background:var(--soil);padding:0 24px}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;background:var(--moss);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--cream)}
+.logo-text span{color:var(--sage)}
+.nav-back{font-size:0.85rem;color:rgba(245,240,232,0.6)}
+.nav-back:hover{color:var(--sage)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:3rem 24px 2.5rem;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(200,132,42,0.2);border:1px solid rgba(200,132,42,0.4);color:var(--amber-l);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:0.7rem}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero p{font-size:0.95rem;color:rgba(245,240,232,0.7);max-width:580px;margin:0 auto}
+
+/* COUNTRY GRID */
+.grid-wrap{max-width:1100px;margin:0 auto;padding:2.5rem 24px 4rem}
+.grid-intro{font-size:0.9rem;color:var(--text3);margin-bottom:2rem;font-style:italic}
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+
+/* COUNTRY CARD */
+.country-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;display:block}
+.country-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:var(--border2)}
+.card-header{background:linear-gradient(135deg,var(--soil2),var(--moss-d));padding:1rem 1.2rem;display:flex;align-items:center;gap:0.9rem}
+.card-flag{font-size:2rem;flex-shrink:0}
+.card-country-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--cream)}
+.card-also{font-size:0.72rem;color:rgba(245,240,232,0.55);margin-top:2px}
+.card-body{padding:1rem 1.2rem}
+.flower-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.flower-latin{font-size:0.8rem;color:var(--text3);font-style:italic;margin-bottom:0.7rem}
+.flower-desc{font-size:0.84rem;color:var(--text2);line-height:1.55;margin-bottom:0.9rem}
+.card-tip{background:var(--sage-l);border:1px solid var(--moss-ll);border-radius:6px;padding:0.5rem 0.75rem;font-size:0.78rem;color:var(--moss-d);line-height:1.45}
+.card-tip::before{content:'🇬🇧 ';font-weight:700}
+.card-link{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:0.8rem;border-top:1px solid var(--border);font-size:0.82rem;font-weight:700;color:var(--moss)}
+.card-link span{transition:transform 0.15s}
+.country-card:hover .card-link span{transform:translateX(4px)}
+
+/* SEO SECTION */
+.seo-section{max-width:860px;margin:0 auto;padding:0 24px 4rem}
+.seo-section h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--soil);margin:2rem 0 0.7rem;font-weight:700}
+.seo-section p{color:var(--text2);margin-bottom:1rem;font-size:0.93rem;line-height:1.75}
+.seo-section a{color:var(--moss);text-decoration:underline}
+
+/* FOOTER */
+footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px}
+footer a{color:rgba(245,240,232,0.6)}
+footer a:hover{color:var(--sage)}
+.coffee-float{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FF5E5B;color:#fff;font-family:'Lato',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
+.coffee-float:hover{transform:translateY(-2px)}
+@media(max-width:600px){.country-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text">Grow<span>Guide</span></div>
+    </a>
+    <a class="nav-back" href="/">← Back to GrowGuide</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">🌸 Country Flower Guides</div>
+  <h1>National Flowers <em>of the World</em></h1>
+  <p>Botanical facts, cultural history and UK growing tips for the national flower of every country — one guide per nation.</p>
+</div>
+
+<div class="grid-wrap">
+  <p class="grid-intro">10 countries covered so far — more added regularly. Each guide includes the national flower's botanical name, appearance, cultural significance and whether it can be grown in the UK.</p>
+
+  <div class="country-grid">
+
+    <a class="country-card" href="/national-flower/cape-verde/">
+      <div class="card-header">
+        <span class="card-flag">🇨🇻</span>
+        <div><div class="card-country-name">Cape Verde</div><div class="card-also">Cabo Verde</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Bird of Paradise</div>
+        <div class="flower-latin">Strelitzia reginae</div>
+        <div class="flower-desc">One of the world's most dramatic flowers — brilliant orange and vivid blue petals that resemble a tropical bird in flight.</div>
+        <div class="card-tip">Grow as a houseplant in full sun. Pot-bound plants flower best.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/ivory-coast/">
+      <div class="card-header">
+        <span class="card-flag">🇨🇮</span>
+        <div><div class="card-country-name">Ivory Coast</div><div class="card-also">Côte d'Ivoire</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Flame Lily</div>
+        <div class="flower-latin">Gloriosa superba</div>
+        <div class="flower-desc">Extraordinary reflexed petals in fiery red and yellow — one of the most spectacular climbing plants in the world.</div>
+        <div class="card-tip">Plant tubers in spring after last frost. Lift and store in winter. All parts toxic — wear gloves.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/dr-congo/">
+      <div class="card-header">
+        <span class="card-flag">🇨🇩</span>
+        <div><div class="card-country-name">DR Congo</div><div class="card-also">Democratic Republic of the Congo</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Congolese Orchid</div>
+        <div class="flower-latin">Angraecum and related species</div>
+        <div class="flower-desc">The DRC's forests contain one of the world's greatest concentrations of orchid species — thousands found nowhere else on earth.</div>
+        <div class="card-tip">Heated greenhouse only — minimum 15°C year-round. High humidity essential.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/senegal/">
+      <div class="card-header">
+        <span class="card-flag">🇸🇳</span>
+        <div><div class="card-country-name">Senegal</div><div class="card-also">République du Sénégal</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Baobab Flower</div>
+        <div class="flower-latin">Adansonia digitata</div>
+        <div class="flower-desc">The bloom of the Tree of Life — large white flowers opening only at night on a tree that can live for over a thousand years.</div>
+        <div class="card-tip">Grow from seed in sandy compost. Very drought-tolerant. Keep frost-free year-round.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/ghana/">
+      <div class="card-header">
+        <span class="card-flag">🇬🇭</span>
+        <div><div class="card-country-name">Ghana</div><div class="card-also">Republic of Ghana</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Impala Lily</div>
+        <div class="flower-latin">Adenium obesum</div>
+        <div class="flower-desc">A sculptural succulent with dramatic swollen trunk and striking funnel-shaped flowers in pink, red and white — also known as the Desert Rose.</div>
+        <div class="card-tip">South-facing windowsill, cactus compost. Almost no water in winter. Keep above 10°C.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/curacao/">
+      <div class="card-header">
+        <span class="card-flag">🇨🇼</span>
+        <div><div class="card-country-name">Curaçao</div><div class="card-also">Curaçao</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Divi-divi Tree</div>
+        <div class="flower-latin">Caesalpinia coriaria</div>
+        <div class="flower-desc">Instantly recognisable by its permanently windswept silhouette — always pointing south-west due to the island's constant trade winds.</div>
+        <div class="card-tip">Try Caesalpinia gilliesii as a UK alternative — very sheltered sunny spot or frost-free greenhouse.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/montenegro/">
+      <div class="card-header">
+        <span class="card-flag">🇲🇪</span>
+        <div><div class="card-country-name">Montenegro</div><div class="card-also">Crna Gora</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">European Forsythia</div>
+        <div class="flower-latin">Forsythia europaea</div>
+        <div class="flower-desc">One of the few forsythia species native to Europe — grows wild in the rocky mountain terrain of the western Balkans.</div>
+        <div class="card-tip">One of the easiest UK shrubs. Any soil, any aspect, fully hardy. Prune hard immediately after flowering.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/sierra-leone/">
+      <div class="card-header">
+        <span class="card-flag">🇸🇱</span>
+        <div><div class="card-country-name">Sierra Leone</div><div class="card-also">Republic of Sierra Leone</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Longhorn Orchid</div>
+        <div class="flower-latin">Ancistrochilus rothschildianus</div>
+        <div class="flower-desc">A rare and beautiful epiphytic orchid from West Africa's tropical forests — highly prized by orchid collectors worldwide.</div>
+        <div class="card-tip">Specialist heated greenhouse orchid. Minimum 15°C in winter. High humidity essential.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/uzbekistan/">
+      <div class="card-header">
+        <span class="card-flag">🇺🇿</span>
+        <div><div class="card-country-name">Uzbekistan</div><div class="card-also">O'zbekiston</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Tulip</div>
+        <div class="flower-latin">Tulipa sp.</div>
+        <div class="flower-desc">Despite the tulip's association with the Netherlands, it is native to Central Asia — Uzbekistan is home to over 20 wild tulip species.</div>
+        <div class="card-tip">Plant bulbs in November in well-drained soil in full sun. Species tulips perennialise reliably.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="country-card" href="/national-flower/qatar/">
+      <div class="card-header">
+        <span class="card-flag">🇶🇦</span>
+        <div><div class="card-country-name">Qatar</div><div class="card-also">State of Qatar</div></div>
+      </div>
+      <div class="card-body">
+        <div class="flower-name">Sidr Tree</div>
+        <div class="flower-latin">Ziziphus spina-christi</div>
+        <div class="flower-desc">An ancient, sacred tree of the Arabian Peninsula — mentioned in the Quran and prized for its honey, fruit and medicinal properties.</div>
+        <div class="card-tip">Try the hardier Ziziphus jujuba as a UK alternative — against a south-facing wall in mild areas.</div>
+        <div class="card-link">Read the full guide <span>→</span></div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<section class="seo-section">
+  <h2>Why do countries have national flowers?</h2>
+  <p>National flowers are official or widely recognised symbols chosen to represent a country's natural heritage, cultural identity or history. Some are chosen by government decree, others by popular tradition. Many reflect the country's landscape — the baobab for Senegal's West African savannah, the Bird of Paradise for Cape Verde's Atlantic island climate, the wild tulip for Uzbekistan's Central Asian steppe. Others carry deep cultural or religious meaning, like the Sidr tree of Qatar, mentioned in the Quran.</p>
+
+  <h2>Can I grow these flowers in the UK?</h2>
+  <p>Each guide on this page includes a UK growing tip — whether the flower can be grown outdoors, as a houseplant, in a heated greenhouse, or not at all in the UK climate. Some national flowers — like the Uzbekistan tulip — are perfectly hardy UK garden plants. Others, like the Congolese orchid, require specialist heated greenhouse conditions. A few, like the Senegalese baobab, can be grown as curiosity container plants but will never achieve their full wild form in the UK.</p>
+
+  <h2>National flowers and the World Cup 2026</h2>
+  <p>This guide began as a companion to GrowGuide's <a href="/world-cup-plants/">World Cup 2026 national flowers page</a> — covering the national flower, tree and plant of all 48 World Cup nations. The individual country guides here provide much more detail on each flower — its appearance, cultural significance, botanical background and UK growing advice. More countries will be added over time beyond the World Cup nations.</p>
+
+  <h2>More GrowGuide tools</h2>
+  <p>GrowGuide is a free UK gardening resource covering <a href="/companion-planting/">companion planting</a>, <a href="/what-to-plant/">monthly planting guides</a>, <a href="/seed-to-harvest/">seed-to-harvest timelines</a>, <a href="/pest-identifier/">pest identification</a> and <a href="/frost-checker/">UK frost date checking</a>. All free, no login required.</p>
+</section>
+
+<footer>
+  <div style="margin-bottom:6px">
+    <a href="/">GrowGuide</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a> · <a href="/seed-to-harvest/">Seed to Harvest</a> · <a href="/blog/">Blog</a>
+  </div>
+  GrowGuide — Free UK Garden Tools — No login, no nonsense
+</footer>
+
+<a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
