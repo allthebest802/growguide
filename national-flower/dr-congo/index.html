@@ -15,12 +15,11 @@
 <meta property="og:url" content="https://growguide.co.uk/national-flower/dr-congo/">
 <meta property="og:site_name" content="GrowGuide">
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "National Flower of DR Congo — Congolese Orchid",
-  "description": "The national flower of the Democratic Republic of Congo is the Congolese Orchid. The DRC contains one of the world's largest concentrations of orchid species. Learn more about this biodiversity hotspot.",
-  "url": "https://growguide.co.uk/national-flower/dr-congo/",
-  "publisher": {"@type": "Organization", "name": "GrowGuide", "url": "https://growguide.co.uk"}
+  "@context":"https://schema.org","@type":"Article",
+  "headline":"National Flower of DR Congo — Bird of Paradise",
+  "description":"The national flower of the Democratic Republic of Congo is the Congolese Orchid. The DRC contains one of the world's largest concentrations of orchid species. Learn more about this biodiversity hotspot.",
+  "url":"https://growguide.co.uk/national-flower/dr-congo/",
+  "publisher":{"@type":"Organization","name":"GrowGuide","url":"https://growguide.co.uk"}
 }</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -30,11 +29,10 @@
   --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
   --sage:#8FAF87;--sage-l:#D4E8D0;
   --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
-  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
-  --rust:#B85C2A;
+  --amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
   --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
   --border:#D8C8B0;--border2:#C0A888;
-  --radius:12px;--radius-lg:20px;
+  --radius:12px;
 }
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
@@ -51,102 +49,127 @@ a{text-decoration:none;color:inherit}
 .nav-back:hover{color:var(--sage)}
 .breadcrumb{max-width:860px;margin:1.5rem auto 0;padding:0 24px;font-size:0.82rem;color:var(--text3)}
 .breadcrumb a{color:var(--moss);text-decoration:underline}
-.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:3rem 24px 2.5rem;text-align:center;margin-top:1.5rem}
-.hero-flag{font-size:3.5rem;margin-bottom:0.8rem;display:block}
+.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:2.5rem 24px 2rem;text-align:center;margin-top:1.5rem;position:relative;overflow:hidden}
 .hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(200,132,42,0.2);border:1px solid rgba(200,132,42,0.4);color:var(--amber-l);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:0.5rem}
-.hero-sub{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
-.hero-intro{font-size:0.95rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
-.uk-tip-box{max-width:860px;margin:2rem auto 0;padding:0 24px}
+.hero-sub{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
+.hero-intro{font-size:0.93rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
+
+/* UK TIP */
+.uk-tip-box{flex:1;min-width:220px}
 .uk-tip-inner{background:var(--sage-l);border:1px solid var(--moss-ll);border-left:4px solid var(--moss);border-radius:var(--radius);padding:1rem 1.2rem;font-size:0.88rem;color:var(--moss-d);line-height:1.6}
 .uk-tip-inner strong{display:block;margin-bottom:0.3rem;font-weight:700}
-.article{max-width:860px;margin:2rem auto;padding:0 24px 4rem;font-family:'Lato',sans-serif;line-height:1.75}
+
+/* ARTICLE */
+.article{max-width:860px;margin:1.5rem auto;padding:0 24px 4rem}
 .article h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--soil);margin:2rem 0 0.7rem;font-weight:700}
-.article p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem}
+.article p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
 .article a{color:var(--moss);text-decoration:underline}
+
+/* RELATED SEARCHES */
 .related-box{background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-top:2.5rem}
-.related-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--soil);margin-bottom:0.8rem}
+.related-box h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--soil);margin-bottom:0.8rem;font-weight:700}
 .related-links{display:flex;flex-wrap:wrap;gap:0.5rem}
-.related-link{background:var(--cream);border:1px solid var(--border2);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.82rem;color:var(--text2);font-weight:600}
+.related-link{background:var(--cream);border:1px solid var(--border2);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.82rem;color:var(--moss-d);font-weight:600;text-decoration:none;transition:all 0.15s}
 .related-link:hover{background:var(--moss);color:var(--cream);border-color:var(--moss)}
+
+/* BACK LINKS */
 .back-links{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.8rem}
 .back-link-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--moss);color:var(--cream);padding:0.55rem 1.1rem;border-radius:100px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s}
 .back-link-btn:hover{opacity:0.88}
-.back-link-btn.secondary{background:var(--cream2);color:var(--soil);border:1px solid var(--border2)}
-footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px;margin-top:0}
+.back-link-btn.secondary{background:#F0D4A0;color:#2C1810;border:1px solid #C0A888}
+.back-link-btn.secondary:hover{background:#F8D080;color:#2C1810;opacity:1}
+
+footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px}
 footer a{color:rgba(245,240,232,0.6)}
 footer a:hover{color:var(--sage)}
 .coffee-float{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FF5E5B;color:#fff;font-family:'Lato',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
 .coffee-float:hover{transform:translateY(-2px)}
-@media(max-width:600px){.hero h1{font-size:1.6rem}}
+@media(max-width:600px){.flower-img-wrap{flex-direction:column}.flower-img-box{width:100%}.flower-img-box img{height:220px}}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="/">
-      <div class="logo-icon">🌱</div>
-      <div class="logo-text">Grow<span>Guide</span></div>
-    </a>
-    <a class="nav-back" href="/world-cup-plants/">← All World Cup Plants</a>
+    <a class="logo" href="/"><div class="logo-icon">🌱</div><div class="logo-text">Grow<span>Guide</span></div></a>
+    <a class="nav-back" href="/national-flower/">← All National Flowers</a>
   </div>
 </header>
 
 <div class="breadcrumb">
-  <a href="/">Home</a> › <a href="/world-cup-plants/">World Cup Plants</a> › <a href="/national-flower/">National Flowers</a> › DR Congo
+  <a href="/">Home</a> › <a href="/national-flower/">National Flowers</a> › DR Congo
 </div>
 
 <div class="hero">
-  <span class="hero-flag">🇨🇩</span>
   <div class="hero-badge">🌸 National Flower</div>
   <h1>National Flower of DR Congo</h1>
   <div class="hero-sub">Congolese Orchid — extraordinary forest biodiversity</div>
-  <p class="hero-intro">The national flower of the Democratic Republic of Congo (DRC) is the Congolese Orchid — reflecting the country's extraordinary botanical heritage. The DRC contains one of the world's largest tropical rainforests and is home to thousands of plant species found nowhere else on earth, including hundreds of native orchid species from the Angraecum, Bulbophyllum and related genera.</p>
+  <p class="hero-intro">The national flower of the Democratic Republic of Congo (DRC) is the Congolese Orchid — reflecting the country's extraordinary botanical heritage. The DRC contains one of the world's largest tropical rainforests and is home to thousands of plant species found nowhere else on earth.</p>
 </div>
 
-<div class="uk-tip-box">
-  <div class="uk-tip-inner">
-    <strong>🇬🇧 UK Growing Tip</strong>
-    Angraecum orchids need 15°C+ year-round, high humidity and bright indirect light. Grow in bark compost. Water when nearly dry. Specialist plants for heated greenhouses.
+<div style="max-width:860px;margin:2rem auto 0;padding:0 24px">
+  <div style="display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap">
+    <div id="img-slot" style="flex:0 0 auto;width:180px;min-height:10px"></div>
+    <div class="uk-tip-inner" style="flex:1;min-width:200px">
+      <strong>🇬🇧 UK Growing Tip</strong>
+      Angraecum orchids need 15°C+ year-round, high humidity and bright indirect light. Grow in bark compost. Water when nearly dry. Specialist plants for heated greenhouses.
+    </div>
   </div>
+  <p id="img-caption" style="display:none;font-size:0.7rem;color:#8A7060;margin-top:5px"><em>Angraecum sesquipedale</em> · <a href="https://en.wikipedia.org/wiki/Angraecum_sesquipedale" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a></p>
 </div>
 
 <article class="article">
-
       <h2>The DRC's extraordinary orchid diversity</h2>
-      <p>The Congo Basin rainforest is one of the world's most biodiverse ecosystems, second only to the Amazon in size. Within it, orchids are extraordinarily diverse — epiphytic species grow on the bark and branches of forest trees, drawing moisture from humid air and nutrients from decomposing organic matter. Angraecum species, known for their star-shaped white flowers and often powerful night-time fragrance, are among the most celebrated. Bulbophyllum species, the most species-rich orchid genus, includes hundreds of DRC representatives with extraordinary floral forms.</p>
-
+      <p>The Congo Basin rainforest is one of the world's most biodiverse ecosystems, second only to the Amazon in size. Within it, orchids are extraordinarily diverse — epiphytic species grow on the bark and branches of forest trees. Angraecum species, known for their star-shaped white flowers and powerful night-time fragrance, are among the most celebrated.</p>
       <h2>What is the national flower of the Democratic Republic of Congo?</h2>
-      <p>The DRC does not have a single universally agreed official national flower in the way that some nations do, but the orchid — particularly African tropical orchid species native to the Congo Basin — is the most widely cited national floral symbol. The choice reflects the nation's identity as guardian of one of the world's greatest concentrations of plant life and biodiversity. The DRC's forests are under increasing pressure from deforestation, making this botanical identity all the more significant.</p>
-
+      <p>The DRC's orchid — particularly African tropical orchid species native to the Congo Basin — is the most widely cited national floral symbol. The choice reflects the nation's identity as guardian of one of the world's greatest concentrations of plant life and biodiversity.</p>
       <h2>Growing African orchids in the UK</h2>
-      <p>African tropical orchids from the Congo Basin require a heated greenhouse or heated indoor environment to thrive in the UK. Angraecum species need temperatures above 15°C year-round, high humidity, bright indirect light and careful watering — they should dry slightly between waterings and be grown in very free-draining bark-based compost. Many Angraecum species produce powerfully fragrant white flowers, particularly at night. They are specialist plants for experienced orchid growers, but richly rewarding when successfully established.</p>
-
+      <p>African tropical orchids from the Congo Basin require a heated greenhouse to thrive in the UK. Angraecum species need temperatures above 15°C year-round, high humidity, bright indirect light and careful watering — they should dry slightly between waterings and be grown in very free-draining bark-based compost.</p>
       <h2>Flor nacional del Congo</h2>
-      <p>La flor nacional de la República Democrática del Congo se asocia con las orquídeas del bosque tropical congoleño — particularmente las especies del género Angraecum y afines. El Congo alberga uno de los mayores bosques tropicales del mundo, con una diversidad de orquídeas extraordinaria. La orquídea congoleña simboliza la riqueza botánica única de este país africano.</p>
+      <p>La flor nacional de la República Democrática del Congo se asocia con las orquídeas del bosque tropical congoleño. El Congo alberga uno de los mayores bosques tropicales del mundo, con una diversidad de orquídeas extraordinaria.</p>
 
   <div class="related-box">
     <h3>People also search for</h3>
-    <div class="related-links">
-      <span class="related-link">national flower of dr congo</span><span class="related-link">dr congo national flower</span><span class="related-link">democratic republic of congo national flower</span><span class="related-link">drc national flower</span><span class="related-link">national flower of congo</span>
-    </div>
+    <div class="related-links"><a class="related-link" href="https://www.google.com/search?q=national+flower+of+dr+congo" target="_blank" rel="noopener">national flower of dr congo</a><a class="related-link" href="https://www.google.com/search?q=dr+congo+national+flower" target="_blank" rel="noopener">dr congo national flower</a><a class="related-link" href="https://www.google.com/search?q=democratic+republic+of+congo+national+flower" target="_blank" rel="noopener">democratic republic of congo national flower</a><a class="related-link" href="https://www.google.com/search?q=drc+national+flower" target="_blank" rel="noopener">drc national flower</a><a class="related-link" href="https://www.google.com/search?q=national+flower+of+congo" target="_blank" rel="noopener">national flower of congo</a></div>
   </div>
   <div class="back-links">
-    <a class="back-link-btn" href="/world-cup-plants/">← All 48 World Cup national flowers</a>
-    <a class="back-link-btn secondary" href="/national-flower/">National flower index</a>
-    <a class="back-link-btn secondary" href="/companion-planting/">Companion planting tool</a>
+    <a class="back-link-btn secondary" href="/national-flower/">← All national flower guides</a>
+    <a class="back-link-btn secondary" href="/world-cup-plants/">World Cup plants</a>
+    <a class="back-link-btn secondary" href="/companion-planting/">Companion planting</a>
     <a class="back-link-btn secondary" href="/what-to-plant/">Monthly planting guide</a>
   </div>
 </article>
 
 <footer>
   <div style="margin-bottom:6px">
-    <a href="/">GrowGuide</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a> · <a href="/seed-to-harvest/">Seed to Harvest</a>
+    <a href="/">GrowGuide</a> · <a href="/national-flower/">National Flowers</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a>
   </div>
   GrowGuide — Free UK Garden Tools — No login, no ads, no nonsense
 </footer>
 
-<a class="coffee-float" href="https://ko-fi.com/growguide" target="_blank" rel="noopener">☕ Support GrowGuide</a>
+<a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+
+<script>
+fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Angraecum_sesquipedale&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
+  .then(r => r.json())
+  .then(data => {
+    const pages = data.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+    if (page.thumbnail) {
+      const slot = document.getElementById('img-slot');
+      const img = document.createElement('img');
+      img.src = page.thumbnail.source;
+      img.alt = 'Congolese Orchid — Angraecum sesquipedale';
+      img.loading = 'lazy';
+      img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+      slot.appendChild(img);
+      document.getElementById('img-caption').style.display = 'block';
+    } else {
+      document.getElementById('img-slot').style.display = 'none';
+    }
+  })
+  .catch(() => { document.getElementById('img-slot').style.display = 'none'; });
+</script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

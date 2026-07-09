@@ -15,12 +15,11 @@
 <meta property="og:url" content="https://growguide.co.uk/national-flower/ivory-coast/">
 <meta property="og:site_name" content="GrowGuide">
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "National Flower of Ivory Coast — Flame Lily",
-  "description": "The national flower of Ivory Coast (Côte d'Ivoire) is the Flame Lily (Gloriosa superba) — a spectacular climbing plant with fiery red and yellow reflexed petals. Learn how to grow it in UK gardens.",
-  "url": "https://growguide.co.uk/national-flower/ivory-coast/",
-  "publisher": {"@type": "Organization", "name": "GrowGuide", "url": "https://growguide.co.uk"}
+  "@context":"https://schema.org","@type":"Article",
+  "headline":"National Flower of Ivory Coast — Bird of Paradise",
+  "description":"The national flower of Ivory Coast (Côte d'Ivoire) is the Flame Lily (Gloriosa superba) — a spectacular climbing plant with fiery red and yellow reflexed petals. Learn how to grow it in UK gardens.",
+  "url":"https://growguide.co.uk/national-flower/ivory-coast/",
+  "publisher":{"@type":"Organization","name":"GrowGuide","url":"https://growguide.co.uk"}
 }</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -30,11 +29,10 @@
   --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
   --sage:#8FAF87;--sage-l:#D4E8D0;
   --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
-  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
-  --rust:#B85C2A;
+  --amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
   --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
   --border:#D8C8B0;--border2:#C0A888;
-  --radius:12px;--radius-lg:20px;
+  --radius:12px;
 }
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
@@ -51,102 +49,127 @@ a{text-decoration:none;color:inherit}
 .nav-back:hover{color:var(--sage)}
 .breadcrumb{max-width:860px;margin:1.5rem auto 0;padding:0 24px;font-size:0.82rem;color:var(--text3)}
 .breadcrumb a{color:var(--moss);text-decoration:underline}
-.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:3rem 24px 2.5rem;text-align:center;margin-top:1.5rem}
-.hero-flag{font-size:3.5rem;margin-bottom:0.8rem;display:block}
+.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:2.5rem 24px 2rem;text-align:center;margin-top:1.5rem;position:relative;overflow:hidden}
 .hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(200,132,42,0.2);border:1px solid rgba(200,132,42,0.4);color:var(--amber-l);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:0.5rem}
-.hero-sub{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
-.hero-intro{font-size:0.95rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
-.uk-tip-box{max-width:860px;margin:2rem auto 0;padding:0 24px}
+.hero-sub{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
+.hero-intro{font-size:0.93rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
+
+/* UK TIP */
+.uk-tip-box{flex:1;min-width:220px}
 .uk-tip-inner{background:var(--sage-l);border:1px solid var(--moss-ll);border-left:4px solid var(--moss);border-radius:var(--radius);padding:1rem 1.2rem;font-size:0.88rem;color:var(--moss-d);line-height:1.6}
 .uk-tip-inner strong{display:block;margin-bottom:0.3rem;font-weight:700}
-.article{max-width:860px;margin:2rem auto;padding:0 24px 4rem;font-family:'Lato',sans-serif;line-height:1.75}
+
+/* ARTICLE */
+.article{max-width:860px;margin:1.5rem auto;padding:0 24px 4rem}
 .article h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--soil);margin:2rem 0 0.7rem;font-weight:700}
-.article p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem}
+.article p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
 .article a{color:var(--moss);text-decoration:underline}
+
+/* RELATED SEARCHES */
 .related-box{background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-top:2.5rem}
-.related-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--soil);margin-bottom:0.8rem}
+.related-box h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--soil);margin-bottom:0.8rem;font-weight:700}
 .related-links{display:flex;flex-wrap:wrap;gap:0.5rem}
-.related-link{background:var(--cream);border:1px solid var(--border2);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.82rem;color:var(--text2);font-weight:600}
+.related-link{background:var(--cream);border:1px solid var(--border2);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.82rem;color:var(--moss-d);font-weight:600;text-decoration:none;transition:all 0.15s}
 .related-link:hover{background:var(--moss);color:var(--cream);border-color:var(--moss)}
+
+/* BACK LINKS */
 .back-links{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.8rem}
 .back-link-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--moss);color:var(--cream);padding:0.55rem 1.1rem;border-radius:100px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s}
 .back-link-btn:hover{opacity:0.88}
-.back-link-btn.secondary{background:var(--cream2);color:var(--soil);border:1px solid var(--border2)}
-footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px;margin-top:0}
+.back-link-btn.secondary{background:#F0D4A0;color:#2C1810;border:1px solid #C0A888}
+.back-link-btn.secondary:hover{background:#F8D080;color:#2C1810;opacity:1}
+
+footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px}
 footer a{color:rgba(245,240,232,0.6)}
 footer a:hover{color:var(--sage)}
 .coffee-float{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FF5E5B;color:#fff;font-family:'Lato',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
 .coffee-float:hover{transform:translateY(-2px)}
-@media(max-width:600px){.hero h1{font-size:1.6rem}}
+@media(max-width:600px){.flower-img-wrap{flex-direction:column}.flower-img-box{width:100%}.flower-img-box img{height:220px}}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="/">
-      <div class="logo-icon">🌱</div>
-      <div class="logo-text">Grow<span>Guide</span></div>
-    </a>
-    <a class="nav-back" href="/world-cup-plants/">← All World Cup Plants</a>
+    <a class="logo" href="/"><div class="logo-icon">🌱</div><div class="logo-text">Grow<span>Guide</span></div></a>
+    <a class="nav-back" href="/national-flower/">← All National Flowers</a>
   </div>
 </header>
 
 <div class="breadcrumb">
-  <a href="/">Home</a> › <a href="/world-cup-plants/">World Cup Plants</a> › <a href="/national-flower/">National Flowers</a> › Ivory Coast
+  <a href="/">Home</a> › <a href="/national-flower/">National Flowers</a> › Ivory Coast
 </div>
 
 <div class="hero">
-  <span class="hero-flag">🇨🇮</span>
   <div class="hero-badge">🌸 National Flower</div>
   <h1>National Flower of Ivory Coast</h1>
   <div class="hero-sub">Flame Lily — <em>Gloriosa superba</em></div>
-  <p class="hero-intro">The national flower of Ivory Coast (Côte d'Ivoire) is the Flame Lily — <em>Gloriosa superba</em>. One of the most spectacular flowers in the plant world, the Flame Lily produces extraordinary blooms with reflexed petals in fiery red and yellow, curled back to reveal prominent stamens. It is also the national flower of Zimbabwe, reflecting its wide distribution across sub-Saharan Africa.</p>
+  <p class="hero-intro">The national flower of Ivory Coast (Côte d'Ivoire) is the Flame Lily — <em>Gloriosa superba</em>. One of the most spectacular flowers in the plant world, it produces extraordinary blooms with reflexed petals in fiery red and yellow, curled back to reveal prominent stamens.</p>
 </div>
 
-<div class="uk-tip-box">
-  <div class="uk-tip-inner">
-    <strong>🇬🇧 UK Growing Tip</strong>
-    Plant tubers horizontally 10cm deep after last frosts. Give support to climb. Lift and store dry in winter. Wear gloves — all parts are toxic.
+<div style="max-width:860px;margin:2rem auto 0;padding:0 24px">
+  <div style="display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap">
+    <div id="img-slot" style="flex:0 0 auto;width:180px;min-height:10px"></div>
+    <div class="uk-tip-inner" style="flex:1;min-width:200px">
+      <strong>🇬🇧 UK Growing Tip</strong>
+      Plant tubers horizontally 10cm deep after last frosts. Give support to climb. Lift and store dry in winter. Wear gloves — all parts are toxic.
+    </div>
   </div>
+  <p id="img-caption" style="display:none;font-size:0.7rem;color:#8A7060;margin-top:5px"><em>Gloriosa superba</em> · <a href="https://en.wikipedia.org/wiki/Gloriosa_superba" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a></p>
 </div>
 
 <article class="article">
-
       <h2>What does the Flame Lily look like?</h2>
-      <p>Gloriosa superba is a climbing plant that scrambles through vegetation using tendril-like leaf tips. Its flowers are unlike almost anything else in the plant world — the six petals are strongly reflexed (curled backwards), displaying vivid red and yellow colouring and prominent, widely spreading stamens. The effect is of a flower turned inside out, almost flame-like in its upward sweep of colour. Flowers appear in succession throughout summer on established plants.</p>
-
+      <p>Gloriosa superba is a climbing plant that scrambles through vegetation using tendril-like leaf tips. Its flowers are unlike almost anything else in the plant world — the six petals are strongly reflexed (curled backwards), displaying vivid red and yellow colouring and prominent, widely spreading stamens. The effect is of a flower turned inside out, almost flame-like in its upward sweep of colour.</p>
       <h2>Why is the Flame Lily the national flower of Ivory Coast?</h2>
-      <p>The Flame Lily was chosen as a symbol of Côte d'Ivoire's rich tropical flora and its connection to the wider African botanical world. Gloriosa superba grows wild in the tropical forests and savannahs of West Africa, where it has been used in traditional medicine for centuries. Its striking appearance makes it instantly recognisable as a symbol of natural beauty and strength — qualities that align with the national identity Ivory Coast wishes to project internationally.</p>
-
+      <p>The Flame Lily was chosen as a symbol of Côte d'Ivoire's rich tropical flora and its connection to the wider African botanical world. Gloriosa superba grows wild in the tropical forests and savannahs of West Africa, where it has been used in traditional medicine for centuries. It is also the national flower of Zimbabwe.</p>
       <h2>Growing Flame Lily in the UK</h2>
-      <p>Gloriosa superba can be grown successfully in UK gardens as a tender summer climber. Plant the elongated tubers in spring, after the last frost, in a warm sheltered spot with well-drained soil. The tubers are planted horizontally about 10cm deep. Provide a cane or trellis for support — the plant climbs actively and can reach 1.5–2 metres. Lift and store the tubers in dry compost over winter, as they will not survive UK frosts in the ground. Important: all parts of Gloriosa superba are highly toxic if ingested, particularly the tubers — handle with gloves and keep away from children and pets.</p>
-
+      <p>Gloriosa superba can be grown in UK gardens as a tender summer climber. Plant the elongated tubers in spring, after the last frost, in a warm sheltered spot with well-drained soil. Plant horizontally about 10cm deep and provide canes or trellis for support. Lift and store tubers dry over winter. Important: all parts are highly toxic if ingested — keep away from children and pets.</p>
       <h2>Flor nacional de Costa de Marfil</h2>
-      <p>La flor nacional de Costa de Marfil (Côte d'Ivoire) es el Lirio Llama (Gloriosa superba), una planta trepadora de origen tropical africano con flores extraordinarias de pétalos curvados en rojo y amarillo. También es la flor nacional de Zimbabue. Todas las partes de la planta son tóxicas si se ingieren.</p>
+      <p>La flor nacional de Costa de Marfil es el Lirio Llama (Gloriosa superba), una planta trepadora de origen tropical africano con flores extraordinarias de pétalos curvados en rojo y amarillo. Todas las partes de la planta son tóxicas si se ingieren.</p>
 
   <div class="related-box">
     <h3>People also search for</h3>
-    <div class="related-links">
-      <span class="related-link">national flower of ivory coast</span><span class="related-link">ivory coast national flower</span><span class="related-link">cote d'ivoire national flower</span><span class="related-link">flame lily uk</span>
-    </div>
+    <div class="related-links"><a class="related-link" href="https://www.google.com/search?q=national+flower+of+ivory+coast" target="_blank" rel="noopener">national flower of ivory coast</a><a class="related-link" href="https://www.google.com/search?q=ivory+coast+national+flower" target="_blank" rel="noopener">ivory coast national flower</a><a class="related-link" href="https://www.google.com/search?q=cote+d'ivoire+national+flower" target="_blank" rel="noopener">cote d'ivoire national flower</a><a class="related-link" href="https://www.google.com/search?q=flame+lily+uk" target="_blank" rel="noopener">flame lily uk</a></div>
   </div>
   <div class="back-links">
-    <a class="back-link-btn" href="/world-cup-plants/">← All 48 World Cup national flowers</a>
-    <a class="back-link-btn secondary" href="/national-flower/">National flower index</a>
-    <a class="back-link-btn secondary" href="/companion-planting/">Companion planting tool</a>
+    <a class="back-link-btn secondary" href="/national-flower/">← All national flower guides</a>
+    <a class="back-link-btn secondary" href="/world-cup-plants/">World Cup plants</a>
+    <a class="back-link-btn secondary" href="/companion-planting/">Companion planting</a>
     <a class="back-link-btn secondary" href="/what-to-plant/">Monthly planting guide</a>
   </div>
 </article>
 
 <footer>
   <div style="margin-bottom:6px">
-    <a href="/">GrowGuide</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a> · <a href="/seed-to-harvest/">Seed to Harvest</a>
+    <a href="/">GrowGuide</a> · <a href="/national-flower/">National Flowers</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a>
   </div>
   GrowGuide — Free UK Garden Tools — No login, no ads, no nonsense
 </footer>
 
-<a class="coffee-float" href="https://ko-fi.com/growguide" target="_blank" rel="noopener">☕ Support GrowGuide</a>
+<a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+
+<script>
+fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Gloriosa_superba&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
+  .then(r => r.json())
+  .then(data => {
+    const pages = data.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+    if (page.thumbnail) {
+      const slot = document.getElementById('img-slot');
+      const img = document.createElement('img');
+      img.src = page.thumbnail.source;
+      img.alt = 'Flame Lily — Gloriosa superba';
+      img.loading = 'lazy';
+      img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+      slot.appendChild(img);
+      document.getElementById('img-caption').style.display = 'block';
+    } else {
+      document.getElementById('img-slot').style.display = 'none';
+    }
+  })
+  .catch(() => { document.getElementById('img-slot').style.display = 'none'; });
+</script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

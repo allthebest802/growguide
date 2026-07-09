@@ -15,12 +15,11 @@
 <meta property="og:url" content="https://growguide.co.uk/national-flower/qatar/">
 <meta property="og:site_name" content="GrowGuide">
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "National Flower of Qatar — Sidr Tree Flower",
-  "description": "The national flower of Qatar is the Sidr tree (Ziziphus spina-christi), an ancient sacred tree of the Arabian Peninsula. Learn about Qatar's national plant and its extraordinary cultural history.",
-  "url": "https://growguide.co.uk/national-flower/qatar/",
-  "publisher": {"@type": "Organization", "name": "GrowGuide", "url": "https://growguide.co.uk"}
+  "@context":"https://schema.org","@type":"Article",
+  "headline":"National Flower of Qatar — Bird of Paradise",
+  "description":"The national flower of Qatar is the Sidr tree (Ziziphus spina-christi), an ancient sacred tree of the Arabian Peninsula. Learn about Qatar's national plant and its extraordinary cultural history.",
+  "url":"https://growguide.co.uk/national-flower/qatar/",
+  "publisher":{"@type":"Organization","name":"GrowGuide","url":"https://growguide.co.uk"}
 }</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -30,11 +29,10 @@
   --moss:#4A6741;--moss-d:#2E4228;--moss-l:#7A9E72;--moss-ll:#C8DBC4;
   --sage:#8FAF87;--sage-l:#D4E8D0;
   --cream:#F5F0E8;--cream2:#EDE6D8;--parchment:#FAF6EE;
-  --stone:#A89880;--amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
-  --rust:#B85C2A;
+  --amber:#C8842A;--amber-l:#F0D4A0;--amber-ll:#FDF5E4;
   --text:#1E130C;--text2:#4A3020;--text3:#8A7060;
   --border:#D8C8B0;--border2:#C0A888;
-  --radius:12px;--radius-lg:20px;
+  --radius:12px;
 }
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
@@ -51,102 +49,127 @@ a{text-decoration:none;color:inherit}
 .nav-back:hover{color:var(--sage)}
 .breadcrumb{max-width:860px;margin:1.5rem auto 0;padding:0 24px;font-size:0.82rem;color:var(--text3)}
 .breadcrumb a{color:var(--moss);text-decoration:underline}
-.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:3rem 24px 2.5rem;text-align:center;margin-top:1.5rem}
-.hero-flag{font-size:3.5rem;margin-bottom:0.8rem;display:block}
+.hero{background:linear-gradient(135deg,var(--soil2) 0%,var(--moss-d) 100%);padding:2.5rem 24px 2rem;text-align:center;margin-top:1.5rem;position:relative;overflow:hidden}
 .hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(200,132,42,0.2);border:1px solid rgba(200,132,42,0.4);color:var(--amber-l);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:0.5rem}
-.hero-sub{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
-.hero-intro{font-size:0.95rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
-.uk-tip-box{max-width:860px;margin:2rem auto 0;padding:0 24px}
+.hero-sub{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--sage);font-style:italic;margin-bottom:1rem}
+.hero-intro{font-size:0.93rem;color:rgba(245,240,232,0.75);max-width:640px;margin:0 auto;line-height:1.7}
+
+/* UK TIP */
+.uk-tip-box{flex:1;min-width:220px}
 .uk-tip-inner{background:var(--sage-l);border:1px solid var(--moss-ll);border-left:4px solid var(--moss);border-radius:var(--radius);padding:1rem 1.2rem;font-size:0.88rem;color:var(--moss-d);line-height:1.6}
 .uk-tip-inner strong{display:block;margin-bottom:0.3rem;font-weight:700}
-.article{max-width:860px;margin:2rem auto;padding:0 24px 4rem;font-family:'Lato',sans-serif;line-height:1.75}
+
+/* ARTICLE */
+.article{max-width:860px;margin:1.5rem auto;padding:0 24px 4rem}
 .article h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--soil);margin:2rem 0 0.7rem;font-weight:700}
-.article p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem}
+.article p{color:var(--text2);margin-bottom:1rem;font-size:0.95rem;line-height:1.75}
 .article a{color:var(--moss);text-decoration:underline}
+
+/* RELATED SEARCHES */
 .related-box{background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-top:2.5rem}
-.related-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--soil);margin-bottom:0.8rem}
+.related-box h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--soil);margin-bottom:0.8rem;font-weight:700}
 .related-links{display:flex;flex-wrap:wrap;gap:0.5rem}
-.related-link{background:var(--cream);border:1px solid var(--border2);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.82rem;color:var(--text2);font-weight:600}
+.related-link{background:var(--cream);border:1px solid var(--border2);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.82rem;color:var(--moss-d);font-weight:600;text-decoration:none;transition:all 0.15s}
 .related-link:hover{background:var(--moss);color:var(--cream);border-color:var(--moss)}
+
+/* BACK LINKS */
 .back-links{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.8rem}
 .back-link-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--moss);color:var(--cream);padding:0.55rem 1.1rem;border-radius:100px;font-size:0.85rem;font-weight:700;transition:opacity 0.2s}
 .back-link-btn:hover{opacity:0.88}
-.back-link-btn.secondary{background:var(--cream2);color:var(--soil);border:1px solid var(--border2)}
-footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px;margin-top:0}
+.back-link-btn.secondary{background:#F0D4A0;color:#2C1810;border:1px solid #C0A888}
+.back-link-btn.secondary:hover{background:#F8D080;color:#2C1810;opacity:1}
+
+footer{background:var(--soil);color:rgba(245,240,232,0.5);font-size:0.82rem;text-align:center;padding:24px}
 footer a{color:rgba(245,240,232,0.6)}
 footer a:hover{color:var(--sage)}
 .coffee-float{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FF5E5B;color:#fff;font-family:'Lato',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
 .coffee-float:hover{transform:translateY(-2px)}
-@media(max-width:600px){.hero h1{font-size:1.6rem}}
+@media(max-width:600px){.flower-img-wrap{flex-direction:column}.flower-img-box{width:100%}.flower-img-box img{height:220px}}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="/">
-      <div class="logo-icon">🌱</div>
-      <div class="logo-text">Grow<span>Guide</span></div>
-    </a>
-    <a class="nav-back" href="/world-cup-plants/">← All World Cup Plants</a>
+    <a class="logo" href="/"><div class="logo-icon">🌱</div><div class="logo-text">Grow<span>Guide</span></div></a>
+    <a class="nav-back" href="/national-flower/">← All National Flowers</a>
   </div>
 </header>
 
 <div class="breadcrumb">
-  <a href="/">Home</a> › <a href="/world-cup-plants/">World Cup Plants</a> › <a href="/national-flower/">National Flowers</a> › Qatar
+  <a href="/">Home</a> › <a href="/national-flower/">National Flowers</a> › Qatar
 </div>
 
 <div class="hero">
-  <span class="hero-flag">🇶🇦</span>
   <div class="hero-badge">🌸 National Flower</div>
   <h1>National Flower of Qatar</h1>
   <div class="hero-sub">Sidr Tree — <em>Ziziphus spina-christi</em></div>
-  <p class="hero-intro">The national flower of Qatar is associated with the Sidr tree — <em>Ziziphus spina-christi</em> — an ancient, drought-tolerant tree of enormous cultural, religious and ecological significance across the Arabian Peninsula and North Africa. The Sidr tree is mentioned in the Quran and has been cultivated in the Middle East for thousands of years, prized for its fruit, its honey and its medicinal properties.</p>
+  <p class="hero-intro">The national flower of Qatar is associated with the Sidr tree — <em>Ziziphus spina-christi</em> — an ancient, drought-tolerant tree of enormous cultural, religious and ecological significance across the Arabian Peninsula. The Sidr tree is mentioned in the Quran and has been cultivated in the Middle East for thousands of years.</p>
 </div>
 
-<div class="uk-tip-box">
-  <div class="uk-tip-inner">
-    <strong>🇬🇧 UK Growing Tip</strong>
-    Try the hardier Ziziphus jujuba (Chinese jujube) as a UK alternative — against a south-facing wall in mild areas. Sidr honey is available from Middle Eastern food suppliers in the UK.
+<div style="max-width:860px;margin:2rem auto 0;padding:0 24px">
+  <div style="display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap">
+    <div id="img-slot" style="flex:0 0 auto;width:180px;min-height:10px"></div>
+    <div class="uk-tip-inner" style="flex:1;min-width:200px">
+      <strong>🇬🇧 UK Growing Tip</strong>
+      Try the hardier Ziziphus jujuba (Chinese jujube) as a UK alternative — against a south-facing wall in mild areas. Sidr honey is available from Middle Eastern food suppliers in the UK.
+    </div>
   </div>
+  <p id="img-caption" style="display:none;font-size:0.7rem;color:#8A7060;margin-top:5px"><em>Ziziphus spina-christi</em> · <a href="https://en.wikipedia.org/wiki/Ziziphus_spina-christi" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a></p>
 </div>
 
 <article class="article">
-
       <h2>What is the Sidr tree?</h2>
-      <p>Ziziphus spina-christi is an evergreen or semi-evergreen tree native to arid regions of North Africa and the Middle East, including Qatar, Saudi Arabia, Egypt and Sudan. It can grow to 10 metres and is remarkably drought-tolerant, surviving on minimal rainfall in desert and semi-desert conditions. The tree produces small, cream to yellow flowers in clusters, followed by small round fruits (similar to jujubes or Chinese dates) that are eaten fresh, dried or made into juice. The flowers yield an exceptionally prized honey — Sidr honey from Yemen is among the most expensive honeys in the world.</p>
-
+      <p>Ziziphus spina-christi is an evergreen or semi-evergreen tree native to arid regions of North Africa and the Middle East. It can grow to 10 metres and is remarkably drought-tolerant, surviving on minimal rainfall. The tree produces small, cream to yellow flowers in clusters, followed by small round fruits similar to jujubes. The flowers yield an exceptionally prized honey — Sidr honey from Yemen is among the most expensive honeys in the world.</p>
       <h2>Cultural and religious significance of the Sidr tree</h2>
-      <p>The Sidr tree is mentioned in the Quran (as Sidrat al-Muntaha — the Lote Tree of the uttermost boundary) and has deep significance in Islamic tradition. Sidr leaves are used in the ritual washing of the deceased. The tree has been used in traditional medicine across the Arab world for millennia — its leaves, bark, fruit and roots all have documented medicinal applications. In Qatar, the Sidr tree represents endurance, continuity and deep roots in the desert landscape that has shaped the nation's identity.</p>
-
+      <p>The Sidr tree is mentioned in the Quran and has deep significance in Islamic tradition. Sidr leaves are used in the ritual washing of the deceased. The tree has been used in traditional medicine across the Arab world for millennia. In Qatar, the Sidr tree represents endurance, continuity and deep roots in the desert landscape.</p>
       <h2>Can Sidr tree be grown in the UK?</h2>
-      <p>Ziziphus spina-christi requires hot summers, low humidity and good drainage — conditions that are difficult to replicate in the UK. It is occasionally grown in very sheltered, sunny spots in the warmest parts of England, or as a container plant overwintered in a frost-free greenhouse. The related Ziziphus jujuba (Chinese jujube) is hardier and more commonly available in UK specialist nurseries — it can be grown against a south-facing wall in milder UK regions and produces edible fruit. For Sidr honey, it is available in specialist UK delicatessens and online from Middle Eastern food suppliers.</p>
-
+      <p>Ziziphus spina-christi requires hot summers, low humidity and good drainage. It is occasionally grown in very sheltered spots in the warmest parts of England, or as a container plant overwintered in a frost-free greenhouse. The related Ziziphus jujuba (Chinese jujube) is hardier and more commonly available in UK specialist nurseries.</p>
       <h2>Flor nacional de Qatar</h2>
-      <p>La flor nacional de Catar se asocia con el árbol Sidr (Ziziphus spina-christi), un árbol de gran importancia cultural, religiosa y ecológica en la Península Arábiga. Mencionado en el Corán, el Sidr es venerado en el mundo árabe e islámico. Produce flores pequeñas y frutas similares a las azufaifas. La miel de Sidr es una de las mieles más valiosas del mundo.</p>
+      <p>La flor nacional de Catar se asocia con el árbol Sidr (Ziziphus spina-christi), mencionado en el Corán y venerado en el mundo islámico. Produce flores pequeñas y frutas similares a las azufaifas. La miel de Sidr es una de las mieles más valiosas del mundo.</p>
 
   <div class="related-box">
     <h3>People also search for</h3>
-    <div class="related-links">
-      <span class="related-link">national flower of qatar</span><span class="related-link">qatar national flower</span><span class="related-link">flor nacional de qatar</span><span class="related-link">sidr tree uk</span><span class="related-link">ziziphus jujuba uk</span>
-    </div>
+    <div class="related-links"><a class="related-link" href="https://www.google.com/search?q=national+flower+of+qatar" target="_blank" rel="noopener">national flower of qatar</a><a class="related-link" href="https://www.google.com/search?q=qatar+national+flower" target="_blank" rel="noopener">qatar national flower</a><a class="related-link" href="https://www.google.com/search?q=flor+nacional+de+qatar" target="_blank" rel="noopener">flor nacional de qatar</a><a class="related-link" href="https://www.google.com/search?q=sidr+tree+uk" target="_blank" rel="noopener">sidr tree uk</a><a class="related-link" href="https://www.google.com/search?q=ziziphus+jujuba+uk" target="_blank" rel="noopener">ziziphus jujuba uk</a></div>
   </div>
   <div class="back-links">
-    <a class="back-link-btn" href="/world-cup-plants/">← All 48 World Cup national flowers</a>
-    <a class="back-link-btn secondary" href="/national-flower/">National flower index</a>
-    <a class="back-link-btn secondary" href="/companion-planting/">Companion planting tool</a>
+    <a class="back-link-btn secondary" href="/national-flower/">← All national flower guides</a>
+    <a class="back-link-btn secondary" href="/world-cup-plants/">World Cup plants</a>
+    <a class="back-link-btn secondary" href="/companion-planting/">Companion planting</a>
     <a class="back-link-btn secondary" href="/what-to-plant/">Monthly planting guide</a>
   </div>
 </article>
 
 <footer>
   <div style="margin-bottom:6px">
-    <a href="/">GrowGuide</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a> · <a href="/seed-to-harvest/">Seed to Harvest</a>
+    <a href="/">GrowGuide</a> · <a href="/national-flower/">National Flowers</a> · <a href="/world-cup-plants/">World Cup Plants</a> · <a href="/companion-planting/">Companion Planting</a> · <a href="/what-to-plant/">What to Plant</a>
   </div>
   GrowGuide — Free UK Garden Tools — No login, no ads, no nonsense
 </footer>
 
-<a class="coffee-float" href="https://ko-fi.com/growguide" target="_blank" rel="noopener">☕ Support GrowGuide</a>
+<a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+
+<script>
+fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Ziziphus_spina-christi&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
+  .then(r => r.json())
+  .then(data => {
+    const pages = data.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+    if (page.thumbnail) {
+      const slot = document.getElementById('img-slot');
+      const img = document.createElement('img');
+      img.src = page.thumbnail.source;
+      img.alt = 'Sidr Tree — Ziziphus spina-christi';
+      img.loading = 'lazy';
+      img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+      slot.appendChild(img);
+      document.getElementById('img-caption').style.display = 'block';
+    } else {
+      document.getElementById('img-slot').style.display = 'none';
+    }
+  })
+  .catch(() => { document.getElementById('img-slot').style.display = 'none'; });
+</script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
