@@ -152,17 +152,18 @@ footer a:hover{color:var(--sage)}
 <script>
 (function() {
   var slot = document.getElementById('img-slot');
+  var cap = document.getElementById('img-caption');
   if (!slot) return;
   var img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Rosa_rubiginosa_1.jpg/400px-Rosa_rubiginosa_1.jpg';
-  img.alt = 'Rose — Rosa';
+  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Rosa_gallica_var_officinalis_1.jpg/400px-Rosa_gallica_var_officinalis_1.jpg';
+  img.alt = 'Rose — Rosa gallica';
   img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
   img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
   slot.appendChild(img);
-  var cap = document.getElementById('img-caption');
   if (cap) {
     cap.style.display = 'block';
-    cap.innerHTML = '<em>Rosa</em> — national flower of the USA · <a href="https://en.wikipedia.org/wiki/Rose" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+    cap.innerHTML = 'Rose · <a href="https://en.wikipedia.org/wiki/Rosa_gallica" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
   }
 })();
 </script>

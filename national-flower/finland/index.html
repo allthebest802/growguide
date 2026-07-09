@@ -152,17 +152,18 @@ footer a:hover{color:var(--sage)}
 <script>
 (function() {
   var slot = document.getElementById('img-slot');
+  var cap = document.getElementById('img-caption');
   if (!slot) return;
   var img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Convallaria_majalis_1.jpg/400px-Convallaria_majalis_1.jpg';
+  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Lily_of_the_Valley_(Convallaria_majalis).JPG/400px-Lily_of_the_Valley_(Convallaria_majalis).JPG';
   img.alt = 'Lily of the Valley — Convallaria majalis';
   img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
   img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
   slot.appendChild(img);
-  var cap = document.getElementById('img-caption');
   if (cap) {
     cap.style.display = 'block';
-    cap.innerHTML = '<em>Convallaria majalis</em> — Lily of the Valley · <a href="https://en.wikipedia.org/wiki/Convallaria_majalis" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+    cap.innerHTML = 'Lily of the Valley · <a href="https://en.wikipedia.org/wiki/Lily_of_the_valley" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
   }
 })();
 </script>

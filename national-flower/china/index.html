@@ -152,17 +152,18 @@ footer a:hover{color:var(--sage)}
 <script>
 (function() {
   var slot = document.getElementById('img-slot');
+  var cap = document.getElementById('img-caption');
   if (!slot) return;
   var img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Paeonia_suffruticosa1.jpg/400px-Paeonia_suffruticosa1.jpg';
-  img.alt = 'Peony — Paeonia suffruticosa';
+  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Paeonia_lactiflora_1.jpg/400px-Paeonia_lactiflora_1.jpg';
+  img.alt = 'Peony — Paeonia lactiflora';
   img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
   img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
   slot.appendChild(img);
-  var cap = document.getElementById('img-caption');
   if (cap) {
     cap.style.display = 'block';
-    cap.innerHTML = '<em>Paeonia suffruticosa</em> — Tree Peony · <a href="https://en.wikipedia.org/wiki/Paeonia_suffruticosa" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+    cap.innerHTML = 'Peony · <a href="https://en.wikipedia.org/wiki/Paeonia_lactiflora" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
   }
 })();
 </script>

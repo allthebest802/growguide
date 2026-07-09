@@ -152,17 +152,18 @@ footer a:hover{color:var(--sage)}
 <script>
 (function() {
   var slot = document.getElementById('img-slot');
+  var cap = document.getElementById('img-caption');
   if (!slot) return;
   var img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Bellis_perennis_white_(aka).jpg/400px-Bellis_perennis_white_(aka).jpg';
+  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bellis_perennis_macro.jpg/400px-Bellis_perennis_macro.jpg';
   img.alt = 'Daisy — Bellis perennis';
   img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
   img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
   slot.appendChild(img);
-  var cap = document.getElementById('img-caption');
   if (cap) {
     cap.style.display = 'block';
-    cap.innerHTML = '<em>Bellis perennis</em> — Common Daisy · <a href="https://en.wikipedia.org/wiki/Bellis_perennis" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+    cap.innerHTML = 'Daisy · <a href="https://en.wikipedia.org/wiki/Bellis_perennis" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
   }
 })();
 </script>
