@@ -152,18 +152,27 @@ footer a:hover{color:var(--sage)}
 <script>
 (function() {
   var slot = document.getElementById('img-slot');
-  if (!slot) return;
-  var img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Iris_sanguinea_1.jpg/400px-Iris_sanguinea_1.jpg';
-  img.alt = 'Iris — Iris sibirica';
-  img.loading = 'lazy';
-  img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
-  slot.appendChild(img);
   var cap = document.getElementById('img-caption');
-  if (cap) {
-    cap.style.display = 'block';
-    cap.innerHTML = '<em>Iris sibirica</em> — Siberian Iris · <a href="https://en.wikipedia.org/wiki/Iris_sibirica" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
-  }
+  if (!slot) return;
+  fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Iris_sibirica&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var pages = data.query.pages;
+      var page = pages[Object.keys(pages)[0]];
+      if (page.thumbnail) {
+        var img = document.createElement('img');
+        img.src = page.thumbnail.source;
+        img.alt = 'Siberian Iris — Iris sibirica';
+        img.loading = 'lazy';
+        img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+        slot.appendChild(img);
+        if (cap) {
+          cap.style.display = 'block';
+          cap.innerHTML = '<em>Siberian Iris</em> · <a href="https://en.wikipedia.org/wiki/Iris_sibirica" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+        }
+      }
+    })
+    .catch(function() {});
 })();
 </script>
 
