@@ -150,25 +150,30 @@ footer a:hover{color:var(--sage)}
 <a class="coffee-float" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
 
 <script>
-fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Angraecum&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
-  .then(r => r.json())
-  .then(data => {
-    const pages = data.query.pages;
-    const page = pages[Object.keys(pages)[0]];
-    if (page.thumbnail) {
-      const slot = document.getElementById('img-slot');
-      const img = document.createElement('img');
-      img.src = page.thumbnail.source;
-      img.alt = 'Congolese Orchid — Angraecum sesquipedale';
-      img.loading = 'lazy';
-      img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
-      slot.appendChild(img);
-      document.getElementById('img-caption').style.display = 'block';
-    } else {
-      document.getElementById('img-slot').style.display = 'none';
-    }
-  })
-  .catch(() => { document.getElementById('img-slot').style.display = 'none'; });
+(function() {
+  var slot = document.getElementById('img-slot');
+  var cap = document.getElementById('img-caption');
+  if (!slot) return;
+  fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Angraecum&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var pages = data.query.pages;
+      var page = pages[Object.keys(pages)[0]];
+      if (page.thumbnail) {
+        var img = document.createElement('img');
+        img.src = page.thumbnail.source;
+        img.alt = 'Darwin's Orchid — Angraecum sesquipedale';
+        img.loading = 'lazy';
+        img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+        slot.appendChild(img);
+        if (cap) {
+          cap.style.display = 'block';
+          cap.innerHTML = '<em>Darwin's Orchid</em> · <a href="https://en.wikipedia.org/wiki/Angraecum_sesquipedale" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+        }
+      }
+    })
+    .catch(function() {});
+})();
 </script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0944f0c4f5d4412b36bd4e4bfb0bba3"}'></script><!-- End Cloudflare Web Analytics -->

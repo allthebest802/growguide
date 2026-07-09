@@ -152,18 +152,27 @@ footer a:hover{color:var(--sage)}
 <script>
 (function() {
   var slot = document.getElementById('img-slot');
-  if (!slot) return;
-  var img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Prunus_serrulata_var._serrulata.JPG/400px-Prunus_serrulata_var._serrulata.JPG';
-  img.alt = 'Cherry blossom — Prunus serrulata';
-  img.loading = 'lazy';
-  img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
-  slot.appendChild(img);
   var cap = document.getElementById('img-caption');
-  if (cap) {
-    cap.style.display = 'block';
-    cap.innerHTML = '<em>Prunus serrulata</em> — Japanese Cherry Blossom · <a href="https://en.wikipedia.org/wiki/Prunus_serrulata" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
-  }
+  if (!slot) return;
+  fetch('https://en.wikipedia.org/w/api.php?action=query&titles=Cerasus_serrulata&prop=pageimages&pithumbsize=400&pilicense=free&format=json&origin=*')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var pages = data.query.pages;
+      var page = pages[Object.keys(pages)[0]];
+      if (page.thumbnail) {
+        var img = document.createElement('img');
+        img.src = page.thumbnail.source;
+        img.alt = 'Cherry Blossom — Prunus serrulata';
+        img.loading = 'lazy';
+        img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+        slot.appendChild(img);
+        if (cap) {
+          cap.style.display = 'block';
+          cap.innerHTML = '<em>Cherry Blossom</em> · <a href="https://en.wikipedia.org/wiki/Prunus_serrulata" target="_blank" rel="noopener" style="color:#4A6741">Image: Wikipedia / CC</a>';
+        }
+      }
+    })
+    .catch(function() {});
 })();
 </script>
 
