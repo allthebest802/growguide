@@ -154,7 +154,7 @@ footer a:hover{color:var(--sage)}
   var slot = document.getElementById('img-slot');
   var cap = document.getElementById('img-caption');
   if (!slot) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Bellis_perennis')
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Oxeye_daisy')
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.thumbnail) {
