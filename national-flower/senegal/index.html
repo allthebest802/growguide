@@ -154,23 +154,17 @@ footer a:hover{color:var(--sage)}
   var slot = document.getElementById('img-slot');
   var cap = document.getElementById('img-caption');
   if (!slot) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Baobab')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (data.thumbnail && data.thumbnail.source) {
-        var img = document.createElement('img');
-        img.src = data.thumbnail.source;
-        img.alt = 'Baobab';
-        img.loading = 'lazy';
-        img.onerror = function() { this.style.display='none'; };
-        img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
-        slot.appendChild(img);
-        if (cap) {
-          cap.style.display = 'block';
-          cap.innerHTML = 'Baobab &middot; <a href="https://en.wikipedia.org/wiki/Adansonia_digitata" target="_blank" rel="noopener" style="color:#4A6741">Wikipedia / CC</a>';
-        }
-      }
-    }).catch(function() {});
+  var img = document.createElement('img');
+  img.src = '/national-flowers/senegal/flower-senegal.png';
+  img.alt = 'Senegal national flower — Adansonia digitata baobab flower';
+  img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
+  img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+  slot.appendChild(img);
+  if (cap) {
+    cap.style.display = 'block';
+    cap.innerHTML = 'Senegal national flower · <a href="https://en.wikipedia.org/wiki/Adansonia_digitata" target="_blank" rel="noopener" style="color:#4A6741">Wikipedia / CC</a>';
+  }
 })();
 </script>
 
