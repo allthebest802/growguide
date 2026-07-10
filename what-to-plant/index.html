@@ -272,6 +272,68 @@ body::before{
   box-shadow:var(--shadow-lg);
   border-color:var(--border2);
 }
+.plant-card.clickable{cursor:pointer}
+.plant-card.clickable:hover{border-color:var(--moss)}
+.plant-card.open{border-color:var(--moss);box-shadow:var(--shadow-lg);grid-column:1/-1}
+.card-top{position:relative}
+.card-chevron{
+  position:absolute;top:0;right:0;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--border);display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;color:var(--text3);transition:all 0.2s;
+}
+.plant-card.open .card-chevron{background:var(--moss);color:white;transform:rotate(180deg)}
+
+/* EXPAND PANEL */
+.plant-panel{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+.plant-panel.open{max-height:1400px}
+.panel-inner{
+  border-top:1px solid var(--border);
+  padding:16px 20px 18px;
+  background:var(--cream2);
+}
+.panel-body{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:12px;
+}
+.panel-body-left{}
+.panel-body-right{}
+.panel-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;
+}
+.panel-stat{
+  background:white;border:1px solid var(--border);
+  border-radius:8px;padding:9px 12px;
+}
+.panel-stat-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:2px}
+.panel-stat-value{font-size:0.88rem;font-weight:700;color:var(--text)}
+.panel-stat-sub{font-size:0.72rem;color:var(--text3);margin-top:1px}
+.panel-section{margin-bottom:10px}
+.panel-section h4{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--moss-d);margin-bottom:5px;
+  display:flex;align-items:center;gap:5px;
+}
+.panel-section h4::before{content:'';width:10px;height:2px;background:var(--moss);display:block}
+.panel-section p,.panel-section ul{font-size:0.82rem;color:var(--text2);line-height:1.6}
+.panel-section ul{padding-left:14px}
+.panel-section li{margin-bottom:3px}
+.panel-recipe{
+  background:linear-gradient(135deg,var(--moss-d),var(--soil2));
+  border-radius:8px;padding:12px 14px;margin-top:10px;
+}
+.panel-recipe-title{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--cream);margin-bottom:4px}
+.panel-recipe-text{font-size:0.78rem;color:rgba(245,240,232,0.8);line-height:1.55}
+.panel-companion{
+  display:inline-flex;align-items:center;gap:5px;margin-top:10px;
+  padding:6px 12px;border-radius:100px;
+  background:var(--sage-l);border:1px solid var(--moss-ll);
+  color:var(--moss-d);font-size:0.76rem;font-weight:700;
+  text-decoration:none;transition:all 0.15s;
+}
+.panel-companion:hover{background:var(--moss);color:white}
 @keyframes fadeCard{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 .plant-emoji{font-size:1.5rem;display:block;margin-bottom:6px}
@@ -353,6 +415,7 @@ body::before{
   .plant-grid{grid-template-columns:1fr 1fr}
   .controls-inner{flex-direction:column;align-items:stretch}
   .filter-group{padding-top:0}
+  .panel-body{grid-template-columns:1fr}
 }
 @media(max-width:380px){
   .plant-grid{grid-template-columns:1fr}
@@ -756,6 +819,94 @@ const MONTHLY_JOBS = [
   ],
 ];
 
+// ── PLANT DETAIL DATA ─────────────────────────────────────────────────────
+const PLANT_DETAIL = {
+  'Lettuce': {
+    depth:'0.5cm', spacing:'30cm (15cm cut-and-come)', harvest:'45–60 days', position:'Sun or part shade',
+    tips:'Sow in the evening in July — lettuce seed goes dormant above 25°C. A slightly shaded spot or under taller plants is ideal. Choose bolt-resistant varieties like Little Gem or cos types. Cut-and-come-again varieties give the most from one sowing.',
+    problems:['Bolting in heat — shade and regular water help. Choose bolt-resistant varieties','Slugs — main pest. Copper rings or evening patrols. Raised containers help','Aphids — check under leaves. A strong water jet dislodges them cleanly'],
+    varieties:'Little Gem (RHS AGM) — compact, heat-tolerant. Salad Bowl — loose-leaf, cut-and-come-again. Lollo Rossa — frilly red leaves. Winter Density — sow late July for autumn and winter.',
+    recipe:{title:'Warm bacon & lettuce salad',text:'Tear a whole lettuce into a bowl. Fry two rashers of bacon until crisp, deglaze the pan with a tablespoon of white wine vinegar and a teaspoon of Dijon mustard. Pour the warm dressing over — it wilts the lettuce slightly, which is the point. Top with a soft-boiled egg and eat immediately.'},
+  },
+  'Carrots': {
+    depth:'1cm', spacing:'Rows 15cm, thin to 5–7cm', harvest:'70–80 days (Oct–Nov)', position:'Full sun, open ground',
+    tips:'July is your last realistic window — sow by mid-month. Sow thinly in shallow drills in fine, stone-free soil. Cover immediately with enviromesh to exclude carrot fly. Water before sowing and cover gently. Thin in the evening to reduce fly risk.',
+    problems:['Carrot fly — cover with enviromesh from sowing. Crush no foliage when thinning','Forking — caused by stones or fresh manure. Improve soil deeply and avoid organic matter at sowing time','Slow germination — normal in July heat. Keep soil moist. Can take 2–3 weeks'],
+    varieties:'Nairobi (RHS AGM) — fast-maturing Nantes type, 12 weeks. Flyaway (RHS AGM) — genuine carrot fly resistance. Chantenay Red Cored — short, good in heavier soils.',
+    recipe:{title:'Roasted carrot & cumin soup',text:'Roast pulled carrots with olive oil, cumin and a pinch of chilli at 200°C for 25 minutes until caramelised. Blend with hot vegetable stock, a squeeze of lemon and a tablespoon of crème fraîche. The roasting concentrates the sweetness dramatically.'},
+  },
+  'Beetroot': {
+    depth:'2cm', spacing:'Rows 30cm, thin to 10cm', harvest:'60–70 days (Sep–Nov)', position:'Full sun, any well-drained soil',
+    tips:'Each beetroot seed is actually a cluster of 2–3 seeds — expect multiple seedlings per station and thin to the strongest. Water consistently — irregular watering causes concentric rings and tough texture. Harvest regularly; don\'t let roots exceed golf ball size for best eating.',
+    problems:['Bolting — choose bolt-resistant varieties. Caused by cold spells or stress','Leaf miners — pale tunnels in leaves. Remove affected leaves. Rarely affects root quality','Woody roots — harvest regularly when small for best texture and flavour'],
+    varieties:'Boltardy (RHS AGM) — bolt-resistant, reliable, the July standard. Pablo (RHS AGM) — fast-maturing, uniform. Chioggia — candy-stripe pink and white interior, very decorative.',
+    recipe:{title:'Beetroot, feta & walnut salad',text:'Roast beetroot whole, wrapped in foil, at 200°C for 45–60 minutes. Cool, peel and cut into wedges. Arrange on rocket with crumbled feta and toasted walnuts. Dress with red wine vinegar, olive oil and a little honey.'},
+  },
+  'French Beans': {
+    depth:'5cm', spacing:'15cm apart, rows 45cm', harvest:'55–65 days (Sep–Oct)', position:'Full sun, sheltered',
+    tips:'July is the last month — dwarf (bush) varieties only. Climbing types won\'t have time to mature. Sow direct, 5cm deep, in warm soil. Pick pods every 2–3 days once they start producing — leaving mature pods signals the plant to stop flowering. South of England only for reliable late-July results.',
+    problems:['Slugs — protect emerging seedlings. Most at risk in the first fortnight','Blackfly — pinch out growing tips when established to reduce infestation','Halo blight — water-soaked patches on leaves. Remove affected plants'],
+    varieties:'Safari (RHS AGM) — fast-maturing dwarf, stringless pods. Tendergreen — reliable, long harvest window. Purple Teepee — decorative purple pods, turns green when cooked.',
+    recipe:{title:'Green beans with garlic & almonds',text:'Blanch beans for 3 minutes then drain. Fry sliced garlic in butter until just golden. Add the beans and a handful of toasted flaked almonds, toss for 1 minute and season well. Fresh beans from the garden need very little doing to them.'},
+  },
+  'Courgettes': {
+    depth:'2cm', spacing:'90cm apart', harvest:'50–60 days', position:'Full sun, sheltered, fertile soil',
+    tips:'Plant out young plants now if you haven\'t already — this is the last chance for a reasonable harvest before autumn. Harvest every other day when fruits are 10–15cm long. A courgette can double in size in 48 hours and becomes a marrow overnight if missed.',
+    problems:['Powdery mildew — water at the base, not the leaves. Inevitable as summer progresses but manageable','Male-only flowers at first — female flowers (with a tiny courgette behind them) follow within a week or two. Be patient','Vine weevil — yellowing plant. Check roots for white grubs'],
+    varieties:'Defender (RHS AGM) — virus-resistant, consistent cropper. Patio Star — compact, excellent for containers. Romanesco — ridged, nutty flavour.',
+    recipe:{title:'Courgette fritters',text:'Grate two courgettes, squeeze out as much water as possible in a clean tea towel. Mix with one egg, 50g feta, a handful of mint, salt and enough flour to bind. Fry spoonfuls in olive oil for 2–3 minutes per side until golden. The squeezing step is everything — skip it and you get soggy fritters.'},
+  },
+  'Tomatoes': {
+    depth:'N/A — plant out', spacing:'45–60cm', harvest:'From August', position:'Full sun, sheltered — greenhouse best',
+    tips:'Side-shoot cordon tomatoes weekly — remove the shoots that grow in the leaf axils. Feed with high-potash liquid feed (tomato feed) every week once the first truss is set. Water consistently — irregular watering causes blossom end rot and splitting. Remove any leaves below the lowest ripening truss to improve air circulation.',
+    problems:['Blossom end rot — calcium deficiency caused by irregular watering. Water consistently','Blight — brown patches spreading rapidly. Remove affected plants immediately. Can\'t be cured once established','Splitting — caused by irregular watering after a dry period. Water little and often'],
+    varieties:'Gardener\'s Delight (RHS AGM) — reliable cherry, outstanding flavour. Alicante — classic medium slicer. Sungold — extraordinary sweet orange cherry, very popular.',
+    recipe:{title:'Slow-roasted tomatoes',text:'Halve a tray of tomatoes, scatter with olive oil, salt, pepper and a pinch of sugar. Roast at 130°C for 2 hours until concentrated and slightly caramelised at the edges. Eat on toast, stir through pasta, or blend into the richest tomato sauce you\'ve ever tasted.'},
+  },
+  'Spring Onions': {
+    depth:'1cm', spacing:'1cm — no thinning needed', harvest:'8 weeks', position:'Sun or light shade',
+    tips:'One of the fastest and most rewarding crops to sow in July. Sow a short row every 3 weeks for a continuous supply through autumn. Sow direct in shallow drills, very thinly. Ready to harvest when stems are pencil-thick — pull as needed rather than all at once.',
+    problems:['Bolting — less common than in spring. Keep watered in dry spells','White rot — yellowing leaves, fluffy white mould at base. Remove and destroy. Don\'t grow alliums in the same spot for 8 years','Onion fly — small maggots in bulbs. Cover with enviromesh from sowing'],
+    varieties:'White Lisbon (RHS AGM) — the reliable standard, quick-maturing. Ishikura — Japanese bunching type, very long white stems. Performer — bolt-resistant, good for later sowings.',
+    recipe:{title:'Spring onion & cheese scones',text:'Rub 50g cold butter into 225g self-raising flour. Add 75g grated strong cheddar, 3 finely sliced spring onions and a pinch of mustard powder. Mix in enough milk to make a soft dough. Pat out 2cm thick, cut into rounds. Bake at 220°C for 12–15 minutes until golden. Eat warm with more butter.'},
+  },
+  'Radishes': {
+    depth:'1cm', spacing:'2.5cm apart, rows 15cm', harvest:'25–30 days', position:'Sun or part shade',
+    tips:'Radishes are the fastest vegetable you can grow — ready in under 4 weeks. Sow a short row every 2 weeks rather than a big batch at once. They bolt and become woody if left too long. In July heat, a slightly shaded spot keeps them tender longer. Water regularly — dry conditions make them hot and pithy.',
+    problems:['Bolting — harvest promptly. Partial shade and consistent water help in summer','Flea beetle — small round holes in leaves. Cover with fleece or use garlic spray. Rarely fatal','Pithy texture — caused by drought or leaving too long. Harvest when marble-sized'],
+    varieties:'French Breakfast — long, mild, classic. Cherry Belle (RHS AGM) — round, reliable, slow to go pithy. Black Spanish Round — winter-type, sow August for autumn. Mooli — long white Asian type, very different flavour.',
+    recipe:{title:'Radish, butter & sea salt',text:'The simplest and best way to eat a just-pulled radish: slice thinly, layer on good bread spread thickly with salted butter, add a pinch of flaky sea salt. The peppery crunch against the cold butter is one of those combinations that needs nothing else. A French classic for good reason.'},
+  },
+  'Basil': {
+    depth:'Surface sow', spacing:'15cm', harvest:'28–35 days', position:'Full sun, warm — windowsill or greenhouse',
+    tips:'July is ideal for basil — warm temperatures make germination fast and reliable. Surface sow, don\'t cover, and keep at 20°C minimum. Pinch out flower spikes as soon as they appear — allowing basil to flower dramatically reduces leaf production and flavour. Grow in a pot on a sunny windowsill. Avoid cold draughts.',
+    problems:['Damping off — overwatering kills seedlings. Water from below, let compost dry slightly between waterings','Aphids — check growing tips. Pinch off affected shoots','Cold — basil collapses rapidly below 10°C. Bring inside before temperatures drop in September'],
+    varieties:'Aroma 2 (RHS AGM) — strong fragrance, good vigour, reliable UK performer. Sweet Genovese — classic large-leaf Italian type. Greek — compact, small leaves, good in containers.',
+    recipe:{title:'Classic pesto',text:'Blend two large handfuls of basil with 50g pine nuts or walnuts, 50g parmesan, one garlic clove and enough olive oil to make it flow. Season generously. The ratio matters less than using truly fresh basil — the fragrance is lost within days of picking. Make it and eat it the same day.'},
+  },
+  'Kale': {
+    depth:'1cm', spacing:'45cm apart', harvest:'November–April', position:'Full sun or light shade',
+    tips:'Kale sown now will establish before winter and provide nutritious leaves from November through to April — one of the most valuable sowings of the year. Pick leaves from the outside, leaving the growing centre intact. After the first hard frost, the leaves sweeten noticeably. Net against pigeons from the start.',
+    problems:['Pigeons — net from day one. No reliable deterrent without netting','Mealy cabbage aphid — grey waxy colonies on leaves. Remove by hand or use insecticidal soap','Whitefly — worse under cover. Generally manageable outdoors with good air circulation'],
+    varieties:'Cavolo Nero — Italian black kale, intense flavour, very hardy. Red Russian — flat, tender leaves, good for salads when young. Dwarf Green Curled — compact, suited to smaller plots.',
+    recipe:{title:'Kale, lemon & chilli pasta',text:'Strip kale leaves from stalks and tear into pieces. Cook with pasta in the last 3 minutes of boiling. Drain, keeping a cup of pasta water. Toss with olive oil, dried chilli, grated parmesan and lemon zest. Add pasta water to loosen. Post-frost kale in this dish has a sweetness that makes it feel genuinely luxurious.'},
+  },
+  'Coriander': {
+    depth:'1cm', spacing:'Direct sow, thin to 10cm', harvest:'21–28 days', position:'Part shade — avoid midday sun',
+    tips:'Sow direct — coriander has a long taproot and hates being transplanted. In July, choose a spot shaded from midday sun or sow under taller plants. Sow a small pinch of seed every two weeks rather than a large batch at once. Water consistently. When it bolts, let it seed — coriander seeds are also delicious.',
+    problems:['Bolting — the main July issue. Shade, water and slow-bolt varieties help','Poor germination — crack seeds lightly between two boards before sowing to improve germination rate'],
+    varieties:'Confetti — feathery leaves, slower to bolt than standard types. Leisure — developed specifically for bolt resistance. Santo — tall, good leaf yield before flowering.',
+    recipe:{title:'Coriander chutney',text:'Blend a large bunch of coriander (stalks included — they have more flavour) with one green chilli, a thumb of ginger, the juice of one lime, a pinch of salt and a teaspoon of sugar. Add water if needed to blend. Eat within two days. Brilliant with poppadoms, grilled fish or anything that needs lifting.'},
+  },
+  'Cabbage': {
+    depth:'1–2cm', spacing:'45cm apart, rows 60cm', harvest:'March–May (spring types)', position:'Full sun, firm soil',
+    tips:'Sow spring cabbage in modules in July and plant out in August or September. Firm planting is essential — push the plant in and tug a leaf gently; if it moves, firm again. Spring cabbage sown now fills the hungry gap from March to May. Net against pigeons and cabbage white caterpillars from the start.',
+    problems:['Pigeons — persistent and destructive. Net from planting. No other reliable deterrent','Cabbage white caterpillars — check under leaves weekly from August. Remove by hand','Club root — distorted roots, wilting. Improve drainage and add lime. Rotate brassicas strictly'],
+    varieties:'Pixie — compact, pointed heads, reliable spring cropper. April — a classic spring variety. Durham Early — very early, ready before most other spring cabbages.',
+    recipe:{title:'Buttered spring greens',text:'Pick the outer leaves before the head forms for the tenderest spring greens. Shred finely, blanch for 2 minutes, drain well and toss in butter with a generous grating of nutmeg and a squeeze of lemon. March eating from a July sowing — the most satisfying kind of gardening arithmetic.'},
+  },
+};
+
 // ── STATE ──────────────────────────────────────────────────────────────────
 
 let currentMonth = new Date().getMonth();
@@ -906,7 +1057,8 @@ function renderPlants() {
   grid.innerHTML = '';
   matches.forEach((p, i) => {
     const card = document.createElement('div');
-    card.className = 'plant-card';
+    const detail = PLANT_DETAIL[p.name];
+    card.className = 'plant-card' + (detail ? ' clickable' : '');
     card.style.animationDelay = (i * 0.04) + 's';
 
     const whereTag = p.where === 'indoor'
@@ -921,12 +1073,71 @@ function renderPlants() {
     }</span>`;
 
     const easyTag = p.easy ? '<span class="tag tag-easy">⭐ Beginner</span>' : '';
+    const chevron = detail ? '<div class="card-chevron">▼</div>' : '';
+
+    let panelHTML = '';
+    if (detail) {
+      const problems = detail.problems.map(pr => `<li>${pr}</li>`).join('');
+      panelHTML = `
+      <div class="plant-panel">
+        <div class="panel-inner">
+          <div class="panel-stats">
+            <div class="panel-stat"><div class="panel-stat-label">Sow depth</div><div class="panel-stat-value">${detail.depth}</div></div>
+            <div class="panel-stat"><div class="panel-stat-label">Spacing</div><div class="panel-stat-value">${detail.spacing}</div></div>
+            <div class="panel-stat"><div class="panel-stat-label">Harvest time</div><div class="panel-stat-value">${detail.harvest}</div></div>
+            <div class="panel-stat"><div class="panel-stat-label">Position</div><div class="panel-stat-value">${detail.position}</div></div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-body-left">
+              <div class="panel-section">
+                <h4>July growing tips</h4>
+                <p>${detail.tips}</p>
+              </div>
+              <div class="panel-section">
+                <h4>Best varieties</h4>
+                <p>${detail.varieties}</p>
+              </div>
+            </div>
+            <div class="panel-body-right">
+              <div class="panel-section">
+                <h4>Common problems</h4>
+                <ul>${problems}</ul>
+              </div>
+              ${detail.recipe ? `<div class="panel-recipe"><div class="panel-recipe-title">🍽️ ${detail.recipe.title}</div><div class="panel-recipe-text">${detail.recipe.text}</div></div>` : ''}
+              <a class="panel-companion" href="/companion-planting/">🌿 Companion plants for ${p.name}</a>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
 
     card.innerHTML = `
-      <span class="plant-emoji">${p.emoji}</span>
-      <div class="plant-name">${p.name}</div>
-      <div class="plant-tags">${actionTag}${whereTag}${easyTag}</div>
-      <div class="plant-tip">${p.tip}</div>`;
+      <div class="card-top">
+        <span class="plant-emoji">${p.emoji}</span>
+        ${chevron}
+        <div class="plant-name">${p.name}</div>
+        <div class="plant-tags">${actionTag}${whereTag}${easyTag}</div>
+        <div class="plant-tip">${p.tip}</div>
+      </div>
+      ${panelHTML}`;
+
+    if (detail) {
+      card.addEventListener('click', () => {
+        const panel = card.querySelector('.plant-panel');
+        const isOpen = card.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.plant-card.open').forEach(c => {
+          c.classList.remove('open');
+          c.querySelector('.plant-panel').classList.remove('open');
+        });
+        // Open this if it was closed
+        if (!isOpen) {
+          card.classList.add('open');
+          panel.classList.add('open');
+          setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 50);
+        }
+      });
+    }
 
     grid.appendChild(card);
   });
