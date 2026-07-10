@@ -154,23 +154,17 @@ footer a:hover{color:var(--sage)}
   var slot = document.getElementById('img-slot');
   var cap = document.getElementById('img-caption');
   if (!slot) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Angraecum_sesquipedale')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (data.thumbnail && data.thumbnail.source) {
-        var img = document.createElement('img');
-        img.src = data.thumbnail.source;
-        img.alt = 'Darwin's Orchid';
-        img.loading = 'lazy';
-        img.onerror = function() { this.style.display='none'; };
-        img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
-        slot.appendChild(img);
-        if (cap) {
-          cap.style.display = 'block';
-          cap.innerHTML = 'Darwin's Orchid &middot; <a href="https://en.wikipedia.org/wiki/Angraecum_sesquipedale" target="_blank" rel="noopener" style="color:#4A6741">Wikipedia / CC</a>';
-        }
-      }
-    }).catch(function() {});
+  var img = document.createElement('img');
+  img.src = '/national-flowers/dr-congo/flower-dr-congo.png';
+  img.alt = 'DR Congo national flower — Angraecum sesquipedale';
+  img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
+  img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+  slot.appendChild(img);
+  if (cap) {
+    cap.style.display = 'block';
+    cap.innerHTML = 'DR Congo national flower · <a href="https://en.wikipedia.org/wiki/Angraecum_sesquipedale" target="_blank" rel="noopener" style="color:#4A6741">Wikipedia / CC</a>';
+  }
 })();
 </script>
 
