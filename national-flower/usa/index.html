@@ -154,23 +154,17 @@ footer a:hover{color:var(--sage)}
   var slot = document.getElementById('img-slot');
   var cap = document.getElementById('img-caption');
   if (!slot) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Rosa_gallica_var._officinalis')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (data.thumbnail) {
-        var img = document.createElement('img');
-        img.src = data.thumbnail.source;
-        img.alt = 'Rose';
-        img.loading = 'lazy';
-        img.onerror = function() { this.style.display='none'; };
-        img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
-        slot.appendChild(img);
-        if (cap) {
-          cap.style.display = 'block';
-          cap.innerHTML = 'Rose &middot; <a href="https://en.wikipedia.org/wiki/Rosa_gallica" target="_blank" rel="noopener" style="color:#4A6741">Wikipedia / CC</a>';
-        }
-      }
-    }).catch(function() {});
+  var img = document.createElement('img');
+  img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Wild_Rosa_gallica_Romania.jpg/400px-Wild_Rosa_gallica_Romania.jpg';
+  img.alt = 'Rosa gallica — wild rose';
+  img.loading = 'lazy';
+  img.onerror = function() { this.style.display='none'; };
+  img.style.cssText = 'width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 3px 14px rgba(44,24,16,0.18);display:block';
+  slot.appendChild(img);
+  if (cap) {
+    cap.style.display = 'block';
+    cap.innerHTML = 'Rosa gallica &middot; <a href="https://en.wikipedia.org/wiki/Rosa_gallica" target="_blank" rel="noopener" style="color:#4A6741">Wikipedia / CC</a>';
+  }
 })();
 </script>
 
