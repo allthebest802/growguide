@@ -1871,12 +1871,13 @@ function renderPlants() {
         // Open this if it was closed
         if (!isOpen) {
           card.classList.add('open');
-          // Force a reflow so grid-column:1/-1 takes effect BEFORE the panel animates
-          card.offsetHeight; // eslint-disable-line no-unused-expressions
+          // Force reflow so grid-column:1/-1 takes effect before panel animates
+          card.offsetHeight;
           requestAnimationFrame(() => {
             panel.classList.add('open');
           });
-          setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 50);
+          // Scroll after animation completes (300ms transition + buffer)
+          setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'start'}), 350);
         }
       });
     }
